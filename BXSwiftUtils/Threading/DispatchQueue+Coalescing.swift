@@ -41,7 +41,8 @@ public extension DispatchQueue
 		else
 		{
 			let stacktrace = Thread.callStackSymbols.joined(separator:"\n")
-			log.error { "ERROR DispatchQueue.\(#function) must be called from the main thread! Offending stack trace is:\n\n\(stacktrace)\n" }
+            // TODO: This line currently doesn't compile because log can't be found
+			//log.error { "ERROR DispatchQueue.\(#function) must be called from the main thread! Offending stack trace is:\n\n\(stacktrace)\n" }
 		}
 	}
 }
