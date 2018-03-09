@@ -6,7 +6,7 @@
 //  Copyright © 2018 Boinx Software Ltd. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for BXSwiftUtils.
 FOUNDATION_EXPORT double BXSwiftUtilsVersionNumber;
