@@ -12,10 +12,11 @@
 		4875F2222051E74B009985EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4875F2212051E74B009985EC /* .gitignore */; };
 		4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2252051E9D0009985EC /* Array+Concatenation.swift */; };
 		4875F24F2051ECF9009985EC /* Array+ConcatenationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F24E2051ECF9009985EC /* Array+ConcatenationTest.swift */; };
-		D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */; };
-		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
 		4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */; };
 		4875F2552051EF7F009985EC /* Collection+SafeAccessTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2542051EF7F009985EC /* Collection+SafeAccessTest.swift */; };
+		4875F25720528420009985EC /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4875F25620528420009985EC /* .travis.yml */; };
+		D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */; };
+		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		4875F24E2051ECF9009985EC /* Array+ConcatenationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ConcatenationTest.swift"; sourceTree = "<group>"; };
 		4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeAccess.swift"; sourceTree = "<group>"; };
 		4875F2542051EF7F009985EC /* Collection+SafeAccessTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeAccessTest.swift"; sourceTree = "<group>"; };
+		4875F25620528420009985EC /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 			children = (
 				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
 				4875F2212051E74B009985EC /* .gitignore */,
+				4875F25620528420009985EC /* .travis.yml */,
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
 				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
 				4875F2082051E70E009985EC /* Products */,
@@ -105,15 +108,6 @@
 			path = BXSwiftUtilsTests;
 			sourceTree = "<group>";
 		};
-		D056D43220527B7500849EF2 /* Threading */ = {
-			isa = PBXGroup;
-			children = (
-				D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */,
-				D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */,
-			);
-			path = Threading;
-			sourceTree = "<group>";
-		};
 		4875F2242051E9B7009985EC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +124,15 @@
 				4875F2542051EF7F009985EC /* Collection+SafeAccessTest.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D056D43220527B7500849EF2 /* Threading */ = {
+			isa = PBXGroup;
+			children = (
+				D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */,
+				D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */,
+			);
+			path = Threading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4875F25720528420009985EC /* .travis.yml in Resources */,
 				4875F2222051E74B009985EC /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
