@@ -1,2 +1,6 @@
 # BXSwiftUtils
+![build status](https://api.travis-ci.org/boinx/BXSwiftUtils.svg?branch=master) ![lines of code](https://tokei.rs/b1/github/boinx/bxswiftutils?category=code) ![comments](https://tokei.rs/b1/github/boinx/bxswiftutils?category=comments)
+
 Swift Extensions and Classes written by Boinx Software Ltd.
+
+Feel free to browse the `BXSwiftUtils` directory. Also, check our [Styleguide](STYLEGUIDE.MD).

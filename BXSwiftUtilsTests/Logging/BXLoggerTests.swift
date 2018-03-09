@@ -80,4 +80,18 @@ class BXLoggerTests: XCTestCase {
         
         waitForExpectations(timeout: 0.1, handler: nil)
     }
+    
+    func testForceLog()
+    {
+        let expect = expectation(description: "Destination Called")
+        
+        var logger = BXLogger()
+        logger.addDestination { (level, message) in
+            // log shouldn't pass the default max log level, but is forced
+            expect.fulfill()
+        }
+        logger.print(level: .verbose, force: true, showLocation: false, message: { "bla" })
+        
+        waitForExpectations(timeout: 0.1, handler: nil)
+    }
 }
