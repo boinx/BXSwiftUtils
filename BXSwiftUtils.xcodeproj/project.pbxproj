@@ -18,6 +18,9 @@
 		4875F25920528D28009985EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4875F25820528D28009985EC /* LICENSE */; };
 		D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */; };
 		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
+		D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
+		D056D43E205296A500849EF2 /* BXLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43C205296A500849EF2 /* BXLogger.swift */; };
+		D056D440205296F100849EF2 /* Synchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43F205296F100849EF2 /* Synchronized.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		4875F25820528D28009985EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
+		D056D43B205296A500849EF2 /* BXLogger+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXLogger+Domains.swift"; sourceTree = "<group>"; };
+		D056D43C205296A500849EF2 /* BXLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXLogger.swift; sourceTree = "<group>"; };
+		D056D43F205296F100849EF2 /* Synchronized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronized.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				4875F2242051E9B7009985EC /* Collections */,
+				D056D43A2052968A00849EF2 /* Logging */,
 				D056D43220527B7500849EF2 /* Threading */,
 				4875F20A2051E70E009985EC /* BXSwiftUtils.h */,
 				4875F20B2051E70E009985EC /* Info.plist */,
@@ -130,10 +137,20 @@
 		D056D43220527B7500849EF2 /* Threading */ = {
 			isa = PBXGroup;
 			children = (
+				D056D43F205296F100849EF2 /* Synchronized.swift */,
 				D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */,
 				D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */,
 			);
 			path = Threading;
+			sourceTree = "<group>";
+		};
+		D056D43A2052968A00849EF2 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				D056D43C205296A500849EF2 /* BXLogger.swift */,
+				D056D43B205296A500849EF2 /* BXLogger+Domains.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +271,10 @@
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */,
+				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
+				D056D440205296F100849EF2 /* Synchronized.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
+				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
