@@ -3,4 +3,4 @@
 
 Swift Extensions and Classes written by Boinx Software Ltd.
 
-Feel free to browse the `BXSwiftUtils` directory. Also, check our [Styleguide](STYLEGUIDE.MD).
+Feel free to browse the [BXSwiftUtils](BXSwiftUtils)' directories. Also, check our [Styleguide](STYLEGUIDE.md).
