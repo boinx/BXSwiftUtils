@@ -15,6 +15,7 @@
 		4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */; };
 		4875F2552051EF7F009985EC /* Collection+SafeAccessTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2542051EF7F009985EC /* Collection+SafeAccessTest.swift */; };
 		4875F25720528420009985EC /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4875F25620528420009985EC /* .travis.yml */; };
+		4875F25920528D28009985EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4875F25820528D28009985EC /* LICENSE */; };
 		D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */; };
 		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
 /* End PBXBuildFile section */
@@ -38,11 +39,11 @@
 		4875F2212051E74B009985EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4875F2232051E7F4009985EC /* STYLEGUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = STYLEGUIDE.md; sourceTree = "<group>"; };
 		4875F2252051E9D0009985EC /* Array+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Concatenation.swift"; sourceTree = "<group>"; };
-		4875F24D2051ECF9009985EC /* BXSwiftUtilsTests-macOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BXSwiftUtilsTests-macOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		4875F24E2051ECF9009985EC /* Array+ConcatenationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ConcatenationTest.swift"; sourceTree = "<group>"; };
 		4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeAccess.swift"; sourceTree = "<group>"; };
 		4875F2542051EF7F009985EC /* Collection+SafeAccessTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeAccessTest.swift"; sourceTree = "<group>"; };
 		4875F25620528420009985EC /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		4875F25820528D28009985EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,10 +73,10 @@
 				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
 				4875F2212051E74B009985EC /* .gitignore */,
 				4875F25620528420009985EC /* .travis.yml */,
+				4875F25820528D28009985EC /* LICENSE */,
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
 				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
 				4875F2082051E70E009985EC /* Products */,
-				4875F24D2051ECF9009985EC /* BXSwiftUtilsTests-macOS-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,10 +92,10 @@
 		4875F2092051E70E009985EC /* BXSwiftUtils */ = {
 			isa = PBXGroup;
 			children = (
-				4875F2242051E9B7009985EC /* Extensions */,
+				4875F2242051E9B7009985EC /* Collections */,
+				D056D43220527B7500849EF2 /* Threading */,
 				4875F20A2051E70E009985EC /* BXSwiftUtils.h */,
 				4875F20B2051E70E009985EC /* Info.plist */,
-				D056D43220527B7500849EF2 /* Threading */,
 			);
 			path = BXSwiftUtils;
 			sourceTree = "<group>";
@@ -102,28 +103,28 @@
 		4875F2142051E70E009985EC /* BXSwiftUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
-				4875F24C2051EC75009985EC /* Extensions */,
+				4875F24C2051EC75009985EC /* Collection */,
 				4875F2172051E70E009985EC /* Info.plist */,
 			);
 			path = BXSwiftUtilsTests;
 			sourceTree = "<group>";
 		};
-		4875F2242051E9B7009985EC /* Extensions */ = {
+		4875F2242051E9B7009985EC /* Collections */ = {
 			isa = PBXGroup;
 			children = (
 				4875F2252051E9D0009985EC /* Array+Concatenation.swift */,
 				4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */,
 			);
-			path = Extensions;
+			path = Collections;
 			sourceTree = "<group>";
 		};
-		4875F24C2051EC75009985EC /* Extensions */ = {
+		4875F24C2051EC75009985EC /* Collection */ = {
 			isa = PBXGroup;
 			children = (
 				4875F24E2051ECF9009985EC /* Array+ConcatenationTest.swift */,
 				4875F2542051EF7F009985EC /* Collection+SafeAccessTest.swift */,
 			);
-			path = Extensions;
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		D056D43220527B7500849EF2 /* Threading */ = {
@@ -193,7 +194,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Boinx Software Ltd.";
+				ORGANIZATIONNAME = "Boinx Software Ltd. & Imagine GbR";
 				TargetAttributes = {
 					4875F2062051E70E009985EC = {
 						CreatedOnToolsVersion = 9.2;
@@ -230,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4875F25920528D28009985EC /* LICENSE in Resources */,
 				4875F25720528420009985EC /* .travis.yml in Resources */,
 				4875F2222051E74B009985EC /* .gitignore in Resources */,
 			);
@@ -447,7 +449,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BXSwiftUtilsTests-macOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
@@ -465,7 +466,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtilsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BXSwiftUtilsTests-macOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

@@ -22,7 +22,7 @@ else
     // foo
 }
 
-func myMethod(withArgument argument: Int)
+func myMethod(withArgument argument: Int, anotherArgument: Bool)
 {
     // content
 }
