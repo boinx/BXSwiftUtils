@@ -10,7 +10,7 @@ import XCTest
 import BXSwiftUtils
 
 
-class Collection_SafeAccessTest: XCTestCase {
+class Collection_SafeAccessTests: XCTestCase {
 
     let data = ["hello", "world"]
     

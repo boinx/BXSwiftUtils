@@ -9,42 +9,48 @@
 import XCTest
 import BXSwiftUtils
 
-class Array_ConcatenationTest: XCTestCase {
+class Array_ConcatenationTests: XCTestCase {
 
-    func testPlusEqualsOperator() {
+    func testPlusEqualsOperator()
+    {
         var myArray = [1, 2, 3]
         myArray += 4
         XCTAssertEqual(myArray, [1, 2, 3, 4], "non-nil elements are appended")
     }
     
-    func testPlusEqualsOperatorWithNil() {
+    func testPlusEqualsOperatorWithNil()
+    {
         var myArray = [1, 2, 3]
         myArray += nil
         XCTAssertEqual(myArray, [1, 2, 3], "nil elements are not appended")
     }
     
-    func testPlusOperatorAppend() {
+    func testPlusOperatorAppend()
+    {
         let myArray = [1, 2, 3]
         let newArray = myArray + 4
         XCTAssertEqual(myArray, [1, 2, 3], "original array is not modified")
         XCTAssertEqual(newArray, [1, 2, 3, 4], "new array is correctly concatenated")
     }
     
-    func testPlusOperatorAppendNil() {
+    func testPlusOperatorAppendNil()
+    {
         let myArray = [1, 2, 3]
         let newArray = myArray + nil
         XCTAssertEqual(myArray, [1, 2, 3], "original array is not modified")
         XCTAssertEqual(newArray, [1, 2, 3], "new array is correctly concatenated")
     }
 
-    func testPlusOperatorPrepend() {
+    func testPlusOperatorPrepend()
+    {
         let myArray = [1, 2, 3]
         let newArray = 0 + myArray
         XCTAssertEqual(myArray, [1, 2, 3], "original array is not modified")
         XCTAssertEqual(newArray, [0, 1, 2, 3], "new array is correctly concatenated")
     }
     
-    func testPlusOperatorPrependNil() {
+    func testPlusOperatorPrependNil()
+    {
         let myArray = [1, 2, 3]
         let newArray = nil + myArray
         XCTAssertEqual(myArray, [1, 2, 3], "original array is not modified")
