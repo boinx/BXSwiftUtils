@@ -323,8 +323,8 @@
 			projectRoot = "";
 			targets = (
 				4875F2062051E70E009985EC /* BXSwiftUtils-macOS */,
-				4875F20F2051E70E009985EC /* BXSwiftUtilsTests-macOS */,
 				4875F25E205299A6009985EC /* BXSwiftUtils-iOS */,
+				4875F20F2051E70E009985EC /* BXSwiftUtilsTests-macOS */,
 				4875F266205299A6009985EC /* BXSwiftUtilsTests-iOS */,
 			);
 		};
