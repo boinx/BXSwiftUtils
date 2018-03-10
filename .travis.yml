@@ -1,6 +1,9 @@
 language: objective-c
-osx_image:
-  - xcode9.2
-  - xcode9.3beta
+osx_image: xcode9.2
 xcode_project: BXSwiftUtils.xcodeproj
-xcode_scheme: BXSwiftUtils-macOS
+matrix:
+    include:
+        - xcode_scheme: BXSwiftUtils-macOS
+          xcode_sdk: macosx10.13
+        - xcode_scheme: BXSwiftUtils-iOS
+          xcode_sdk: iphonesimulator11.2
