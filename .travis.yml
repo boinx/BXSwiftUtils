@@ -1,14 +1,13 @@
 language: objective-c
 osx_image: xcode9.2
-
 xcode_project: BXSwiftUtils.xcodeproj
-
 before_install:
 - gem install xcpretty
-
 matrix:
-    include:
-        - env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
-        - env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.2"
-
-script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" build test | xcpretty
+  include:
+  - env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
+  - env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.2"
+script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
+notifications:
+  slack:
+    secure: lDBwPDqAmjCzH8BeZh1QgG57jV7H8F8SJb+NRuSDL/56yjwLz2TME4wnSGWh8ir762VjgwQ+kZHmOnYUz0PAJ7y/GAi4tHuHpz8BpgExB3G3B908ODviY7zE3XZ1FMG7elwiFPkW7Mv6DiaHGdk5P4qKqb3z5ni8d4Fm7ITX3NaA1sEccI4ph44jSrEYnh5dmVH5o9SQpidmbtIfZdxuojd86ANiykAh2q1sddzNBnraTj5Nsp2UqLWIENvC/SMgl+SbeMOKPX+CDjLYbN0mzvkPLROQ22daOwzuHVnBWR5h1Wxrup7E66/vUs0zoCFhnl8CpPQHrydT+7M6PZti1D5XRlpb0iI6ynqJtiIbcdj9gWusPHmwxXdg4HbZ+EVTPROc6tVYQmY1XNo5JN2kIKDFrOlPt1lNtT7tIeXy9wEgJm0Kl0VFE4PPqIX+AkjLNBff4tu4nhhCaydcg2hwxc/YC6PpXXo8G96WC/kEZB82EiOudmAQq/7EvX/fM/3SQ0LZYd7/kyZbb+m3eOs6MPs6pcqoAMttiDIjAt2J+bcIqIIRIxt7eIuOLzlOQ3efWqwzyu/pdHBkvoLXs5+QQ9ySH+RYk4B73apEVT26l7fwVCVWb+KQjX9JPF631DJDZFuBdET5+FgYec40ixq7OsXZBzp+8xf3swvWBA0IcIo=
