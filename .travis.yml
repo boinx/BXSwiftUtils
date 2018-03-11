@@ -5,6 +5,7 @@ xcode_project: BXSwiftUtils.xcodeproj
 
 before_install:
 - gem install xcpretty
+env: CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
 matrix:
     include:
