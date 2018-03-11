@@ -8,7 +8,7 @@ before_install:
 
 matrix:
     include:
-        - env: SCHEME=BXSwiftUtils-macOS DESTINATION='platform=OS X,arch=x86_64'
-        - env: SCHEME=BXSwiftUtils-iOS DESTINATION='platform=iOS Simulator,name=iPhone X,OS=11.2'
+        - env: SCHEME=BXSwiftUtils-macOS DESTINATION="'platform=macOS,arch=x86_64'"
+        - env: SCHEME=BXSwiftUtils-iOS DESTINATION="'platform=iOS Simulator,name=iPhone X,OS=11.2'"
 
-script: xcodebuild -scheme $SCHEME -destination $DESTINATION build test | xcpretty
+script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" build test | xcpretty
