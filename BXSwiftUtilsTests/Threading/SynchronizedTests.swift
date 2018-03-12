@@ -9,16 +9,19 @@
 import XCTest
 import BXSwiftUtils
 
-class SynchronizedTests: XCTestCase {
+class SynchronizedTests: XCTestCase
+{
     
-    enum TestError: Error {
+    enum TestError: Error
+    {
         case someError
     }
 
     /*
      Asserts that the given block is executed.
      */
-    func testSynchronized() {
+    func testSynchronized()
+    {
         var count = 0
         
         synchronized(self)
@@ -32,8 +35,10 @@ class SynchronizedTests: XCTestCase {
     /*
      Asserts that the block can return a value.
      */
-    func testSynchronizedReturn() {
-        let count = synchronized(self) {
+    func testSynchronizedReturn()
+    {
+        let count = synchronized(self)
+        {
             1
         }
         
@@ -43,7 +48,8 @@ class SynchronizedTests: XCTestCase {
     /*
      Asserts that the block may throw an error and that the error is re-thrown.
      */
-    func testSynchronizedThrows() {
+    func testSynchronizedThrows()
+    {
         XCTAssertThrowsError(try synchronized(self,
         {
             throw TestError.someError
