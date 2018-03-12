@@ -109,4 +109,12 @@ class BXLoggerTests: XCTestCase {
         
         XCTAssertEqual(count, 1, "printed once")
     }
+    
+    /*
+     Asserts that a global logger exists and is useable.
+     */
+    func testGlobalLoggerExists()
+    {
+        XCTAssert((log as Any) is BXLogger, "global logger object exists")
+    }
 }

@@ -9,20 +9,21 @@
 
 extension BXLogger
 {
-	/// This convenience function dynamically creates a flat list of loggers with the specified domain keys.
-	/// Frameworks and applications can each create domains as needed at runtime. Make sure that the keys are 
-	/// unique. Supplying a key that is already in use will cause an error to be thrown. After creating the
-	/// domains, the maxLevel should be sent on each domain (usually as stored in the preferences).
-	///
-	///		try BXLogger.createDomains(["General","Audio","Video"])
-	///		logDomain["General"].maxLevel = .error
-	///		logDomain["Audio"].maxLevel = .debug
-	///		logDomain["Video"].maxLevel = .error
-	///
-	/// - parameter keys: A list of domain keys. Make sure not to supply any keys that are already in use.
-	/// - throws: BXLogger.Err.domainAlreadyExists will be thrown if one of the domain keys is already in use.
-
-	public static func createDomains(_ keys:[AnyHashable]) throws
+    /**
+	 This convenience function dynamically creates a flat list of loggers with the specified domain keys.
+	 Frameworks and applications can each create domains as needed at runtime. Make sure that the keys are
+	 unique. Supplying a key that is already in use will cause an error to be thrown. After creating the
+	 domains, the maxLevel should be sent on each domain (usually as stored in the preferences).
+	
+			try BXLogger.createDomains(["General","Audio","Video"])
+			logDomain["General"].maxLevel = .error
+			logDomain["Audio"].maxLevel = .debug
+			logDomain["Video"].maxLevel = .error
+	
+	 - parameter keys: A list of domain keys. Make sure not to supply any keys that are already in use.
+	 - throws: `BXLogger.Err.domainAlreadyExists` if one of the domain keys is already in use.
+     */
+	public static func createDomains(_ keys: [AnyHashable]) throws
 	{
 		for key in keys
 		{
