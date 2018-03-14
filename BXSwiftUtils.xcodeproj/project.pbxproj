@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		484133742052D0C500DDB1E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 484133732052D0C500DDB1E2 /* README.md */; };
-		4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
-		4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
 		484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
 		484D065720592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
+		4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
+		4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
 		4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */; };
 		4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */; };
 		4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */; };
@@ -66,10 +66,10 @@
 /* Begin PBXFileReference section */
 		484133732052D0C500DDB1E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		484D0652205927EC003C6CA3 /* Array+AllEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqual.swift"; sourceTree = "<group>"; };
+		484D065520592898003C6CA3 /* Array+AllEqualTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqualTests.swift"; sourceTree = "<group>"; };
 		4853E3892056BDE400938B82 /* SynchronizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedTests.swift; sourceTree = "<group>"; };
 		4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXReadWriteLock.swift; sourceTree = "<group>"; };
 		4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXReadWriteLockTests.swift; sourceTree = "<group>"; };
-		484D065520592898003C6CA3 /* Array+AllEqualTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqualTests.swift"; sourceTree = "<group>"; };
 		4875F2072051E70E009985EC /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4875F20A2051E70E009985EC /* BXSwiftUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXSwiftUtils.h; sourceTree = "<group>"; };
 		4875F20B2051E70E009985EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -609,11 +609,20 @@
 				INFOPLIST_FILE = BXSwiftUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtils;
 				PRODUCT_NAME = BXSwiftUtils;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Werror=nonnull",
+					"-Werror=partial-availability",
+					"-Werror=incomplete-implementation",
+					"-Werror=protocol",
+					"-Werror=incompatible-pointer-types",
+				);
 			};
 			name = Debug;
 		};
@@ -631,10 +640,19 @@
 				INFOPLIST_FILE = BXSwiftUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtils;
 				PRODUCT_NAME = BXSwiftUtils;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Werror=nonnull",
+					"-Werror=partial-availability",
+					"-Werror=incomplete-implementation",
+					"-Werror=protocol",
+					"-Werror=incompatible-pointer-types",
+				);
 			};
 			name = Release;
 		};
@@ -687,6 +705,14 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Werror=nonnull",
+					"-Werror=partial-availability",
+					"-Werror=incomplete-implementation",
+					"-Werror=protocol",
+					"-Werror=incompatible-pointer-types",
+				);
 			};
 			name = Debug;
 		};
@@ -709,6 +735,14 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Werror=nonnull",
+					"-Werror=partial-availability",
+					"-Werror=incomplete-implementation",
+					"-Werror=protocol",
+					"-Werror=incompatible-pointer-types",
+				);
 			};
 			name = Release;
 		};
