@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		484133742052D0C500DDB1E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 484133732052D0C500DDB1E2 /* README.md */; };
+		4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
+		4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
 		484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
 		484D065720592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
+		4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */; };
+		4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */; };
+		4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */; };
+		4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */; };
 		4875F2112051E70E009985EC /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F2072051E70E009985EC /* BXSwiftUtils.framework */; };
 		4875F2182051E70E009985EC /* BXSwiftUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4875F20A2051E70E009985EC /* BXSwiftUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4875F2222051E74B009985EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4875F2212051E74B009985EC /* .gitignore */; };
@@ -60,6 +66,9 @@
 /* Begin PBXFileReference section */
 		484133732052D0C500DDB1E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		484D0652205927EC003C6CA3 /* Array+AllEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqual.swift"; sourceTree = "<group>"; };
+		4853E3892056BDE400938B82 /* SynchronizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedTests.swift; sourceTree = "<group>"; };
+		4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXReadWriteLock.swift; sourceTree = "<group>"; };
+		4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXReadWriteLockTests.swift; sourceTree = "<group>"; };
 		484D065520592898003C6CA3 /* Array+AllEqualTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqualTests.swift"; sourceTree = "<group>"; };
 		4875F2072051E70E009985EC /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4875F20A2051E70E009985EC /* BXSwiftUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXSwiftUtils.h; sourceTree = "<group>"; };
@@ -118,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4853E3882056BDB500938B82 /* Threading */ = {
+			isa = PBXGroup;
+			children = (
+				4853E3892056BDE400938B82 /* SynchronizedTests.swift */,
+				4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */,
+			);
+			path = Threading;
+			sourceTree = "<group>";
+		};
 		4875F1FD2051E70E009985EC = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +178,7 @@
 			children = (
 				4875F24C2051EC75009985EC /* Collection */,
 				489E56A72052CAB30071BBF1 /* Logging */,
+				4853E3882056BDB500938B82 /* Threading */,
 				4875F2172051E70E009985EC /* Info.plist */,
 			);
 			path = BXSwiftUtilsTests;
@@ -196,6 +215,7 @@
 		D056D43220527B7500849EF2 /* Threading */ = {
 			isa = PBXGroup;
 			children = (
+				4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */,
 				D056D43F205296F100849EF2 /* Synchronized.swift */,
 				D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */,
 				D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */,
@@ -401,6 +421,7 @@
 				D056D440205296F100849EF2 /* Synchronized.swift in Sources */,
 				484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
+				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,8 +432,10 @@
 			files = (
 				4875F2552051EF7F009985EC /* Collection+SafeAccessTests.swift in Sources */,
 				484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
+				4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */,
+				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +445,7 @@
 			files = (
 				4875F27820529A06009985EC /* DispatchQueue+Coalescing.swift in Sources */,
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
+				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
@@ -436,8 +460,10 @@
 			files = (
 				4875F27B20529A19009985EC /* Collection+SafeAccessTests.swift in Sources */,
 				484D065720592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
+				4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				4875F27A20529A17009985EC /* Array+ConcatenationTests.swift in Sources */,
+				4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
