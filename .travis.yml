@@ -11,5 +11,5 @@ script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION
 notifications:
   slack:
     template:
-    - "**%{repository_slug}**@%{branch} (<%{compare_url}|%{commit}>) by %{author} %{result} in %{duration}"
+    - "%{repository_slug}@%{branch} (<%{compare_url}|%{commit}>) by %{author} %{result} in %{duration}"
     secure: UovCzpghaeeBGXjTjvZGMr0jWpxwdOaT6tkGlzdOjwaMK8yS8EId7pP3/voe5FFt60t9QJtXi53dy//jccfCOKGDqmAyn71QnSG3Pw5wuBdNwTS+6EMWFJeJzcp/5mvbdxzfTUnmgdJYAUdcfQqcSdccQe/lPr9kvxO5nDuXGI+Tboofb2/DazktmRrbM8Dlq61q2jYrZ4KQihtBLlcl3+XZsWL2+Qfs4arG5S7DZjhrDWpTUYw8FPvumsIZ8j4PuvfKDEqB8J139bRMuj+NbLO+7Ki2Wucg96XPPf7co4qsLM8FMUN5GG3DReIKqR4+K8BQadpp8hJXtNqfRSG8miqMMe7hONwLXcVGHALCUHEy19JhWLeHYdpMMoVTnFG9qG4X39GDdCpPphCRCRT0HqJyljpIj1PSXPHc2W1Zy6mQa9C6bJ2zN9CGBmG6Pf5/glbtx7ahmUQcnFMgnysnupffa01akDjOvDs742lyxfKdAHasvY27TtOwh6yjUa5HrSuYXo5XZ3oYslpUAAeWEOpykNhgmRnUU5tkLMH8/R3CGMA8hyTPnbLXFElmycSiu8pChXFY8B7EbjqnbGGir3ebsNyUtByEUwKgbMRz6EYJZoMVCVRcY5pd93Kyqe4nYJSohrrabhwVoa1GoEJHtKeypC9e0UIgAYtkHEg6Rlc=
