@@ -222,7 +222,7 @@ extension URL
 		}
 	}
 
-	/// The creation date of a file URL
+	/// Returns the creation date of a file URL
 	
 	public var creationDate: Date?
 	{
@@ -239,7 +239,7 @@ extension URL
 		}
 	}
 
-	/// The modification date of a file URL
+	/// Returns the modification date of a file URL
 	
 	public var modificationDate: Date?
 	{
@@ -283,7 +283,7 @@ extension URL
 		return values?.volume
 	}
 
-	/// Return the URL of the volume
+	/// Return the UUID of the volume
 	
 	public var volumeUUID: String?
 	{
@@ -308,7 +308,7 @@ extension URL
 	/// by the MediaPlayer framework. Unfortunately URLs like this cannot be used with FileManager and other system
 	/// level APIs.
 	
-	var isiPodLibraryURL:Bool
+	public var isiPodLibraryURL:Bool
 	{
 		return self.scheme == "ipod-library"
 	}
