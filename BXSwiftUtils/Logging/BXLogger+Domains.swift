@@ -50,9 +50,9 @@ extension BXLogger
 	// This destination simply passes its log message to the global logger, regardless of level,
 	// since the 'force' parameter is true.
 
-	private static func sendToGlobalLogger(level:BXLogger.Level,string:String)
+	private static func sendToGlobalLogger(level: BXLogger.Level, string: String)
 	{
-		log.print(level:level,force:true) { string }
+		log.print(level: level, force: true) { string }
 	}
 }
 
@@ -64,7 +64,7 @@ extension BXLogger
 ///
 ///		logDomain["General"].debug {"This is a message"}
 
-public var logDomain:[AnyHashable:BXLogger] = [:]
+public var logDomain: [AnyHashable: BXLogger] = [:]
 
 
 //----------------------------------------------------------------------------------------------------------------------
