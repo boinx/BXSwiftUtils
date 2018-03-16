@@ -45,6 +45,10 @@
 		D03234EE205BFC9F003D6CCB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234ED205BFC9F003D6CCB /* String+Localized.swift */; };
 		D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234ED205BFC9F003D6CCB /* String+Localized.swift */; };
 		D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
+		D03234FD205C2919003D6CCB /* CGRect+Accessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */; };
+		D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */; };
+		D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */; };
+		D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */; };
 		D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */; };
 		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
 		D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
@@ -95,6 +99,8 @@
 		48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
 		D03234ED205BFC9F003D6CCB /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Accessors.swift"; sourceTree = "<group>"; };
+		D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operators.swift"; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D43B205296A500849EF2 /* BXLogger+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXLogger+Domains.swift"; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				D056D43220527B7500849EF2 /* Threading */,
 				D03234EC205BF93E003D6CCB /* Files */,
 				D03234F0205BFCA4003D6CCB /* Strings */,
+				D0323501205C2923003D6CCB /* Geometry */,
 				4875F20A2051E70E009985EC /* BXSwiftUtils.h */,
 				4875F20B2051E70E009985EC /* Info.plist */,
 			);
@@ -246,6 +253,15 @@
 				D03234ED205BFC9F003D6CCB /* String+Localized.swift */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		D0323501205C2923003D6CCB /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */,
+				D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */,
+			);
+			path = Geometry;
 			sourceTree = "<group>";
 		};
 		D056D43220527B7500849EF2 /* Threading */ = {
@@ -451,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */,
@@ -459,6 +476,7 @@
 				D03234EA205BF939003D6CCB /* URL+Info.swift in Sources */,
 				D03234EE205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				D056D440205296F100849EF2 /* Synchronized.swift in Sources */,
+				D03234FD205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
@@ -489,11 +507,13 @@
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */,
+				D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
+				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
