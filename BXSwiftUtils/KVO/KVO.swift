@@ -1,30 +1,33 @@
 //**********************************************************************************************************************
 //
 //  KVO.swift
-//	Small helper class that provides closure based API around KVO
-//  Copyright ©2016 Peter Baumgartner. All rights reserved.
+//	Lightweight wrapper class that provides closure based API around KVO
+//  Copyright ©2016-2018 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
-// TODO: Comment
+
+import Foundation
+
+// Importing AppKit is needed for the NSIsControllerMarker() function. On iOS BXSwiftUtils provides its own
+// implementation of this function.
+
 #if os(macOS)
 import AppKit
 #endif
-
-import Foundation
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
-/// Small helper class that provides closure based API around KVO. Instances of this class can be attached
+/// Lightweight wrapper class that provides closure based API around KVO. Instances of this class can be attached
 /// to other classes. When the instances are deallocated, the KVO is automatically unregistered.
 
 public class KVO : NSObject
 {
-    public/*(get)*/ private(set) weak var observedObject:NSObject?
-    public let keyPath:String
-    private let closure:(Any?,Any?)->()
+    public/*(get)*/ private(set) weak var observedObject: NSObject?
+    public let keyPath: String
+    private let closure: (Any?,Any?)->()
 	private var isActive = false
 
 
@@ -33,21 +36,25 @@ public class KVO : NSObject
 
 	// MARK: -
 	
-	/// Create a new KVO helper, observing the property `keypath` of `object`. When it changes,
-	/// the closure `callback' is called.
-	
-    public init(object inObject: NSObject, keyPath inKeyPath: String, options: NSKeyValueObservingOptions = [.initial, .new], _ inClosure:@escaping (Any?,Any?)->())
+	/// Create a new KVO helper, observing the property `keypath` of `object`. When it changes, the closure is called.
+	/// - parameter object: The root object that is being observed
+	/// - parameter keyPath: The String based keypath to the property that is observed
+	/// - parameter options: Valid options are .initial, .old, and .new
+	/// - parameter closure: This closure (with old and new value) will be called when the observed property changes
+	/// - returns: KVO wrapper object, which should be retained as long as you wish the observing to be active.
+
+    public init(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions = [.initial,.new], _ closure:@escaping (Any?,Any?)->())
 	{
-        self.observedObject = inObject
-        self.keyPath = inKeyPath
-        self.closure = inClosure
+        self.observedObject = object
+        self.keyPath = keyPath
+        self.closure = closure
 		super.init()
 		
 		// Gather all objects in the keypath, starting with inObject
 		
 		let keys = keyPath.components(separatedBy:".").dropLast()
-		var objectsInKeypath: [NSObject] = [inObject]
-		var nextObject: NSObject? = inObject
+		var objectsInKeypath: [NSObject] = [object]
+		var nextObject: NSObject? = object
 		
 		for key in keys
 		{
@@ -74,7 +81,7 @@ public class KVO : NSObject
   
         // Add the observer
         
-        inObject.addObserver(
+        object.addObserver(
             self,
             forKeyPath: keyPath,
             options: options,
@@ -82,9 +89,6 @@ public class KVO : NSObject
         
         self.isActive = true
     }
-
-
-//----------------------------------------------------------------------------------------------------------------------
 
 
 	/// The KVO is automatically removed when getting rid of the helper.
@@ -132,7 +136,7 @@ public class KVO : NSObject
 	/// Send out a notification letting KVO observers know that this object is about to disappear. Receivers
 	/// of this notification should remove their KVO observer, or they risk crashing due to an exception.
 	
-	public class func invalidate(for object:NSObject)
+	public class func invalidate(for object: NSObject)
 	{
 		NotificationCenter.default.post(
 			name:KVO.invalidateNotification,
@@ -152,7 +156,7 @@ public class KVO : NSObject
 
 	/// Removes the KVO observer again.
 	
-	private func invalidate(for inObject:NSObject?)
+	private func invalidate(for inObject: NSObject?)
 	{
         synchronized(self)
         {
@@ -167,4 +171,8 @@ public class KVO : NSObject
         }
 	}
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
