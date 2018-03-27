@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char BXSwiftUtilsVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <BXSwiftUtils/PublicHeader.h>
 
-
+#import "NSException+ToSwiftError.h"
