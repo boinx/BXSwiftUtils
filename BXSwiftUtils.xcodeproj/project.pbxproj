@@ -53,6 +53,8 @@
 		48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */; };
 		48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */; };
 		48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */; };
+		48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */; };
+		48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */; };
 		48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */; };
@@ -125,6 +127,7 @@
 		48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSException+ToSwiftError.h"; sourceTree = "<group>"; };
 		48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSException+ToSwiftError.m"; sourceTree = "<group>"; };
 		48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSException+ToSwiftErrorTests.swift"; sourceTree = "<group>"; };
+		48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOTestsObjC.m; sourceTree = "<group>"; };
 		48DF72F420697E1E00D224AA /* TypedKVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedKVOTests.swift; sourceTree = "<group>"; };
 		48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 			children = (
 				48DA8192206A4E9C009D1E6C /* KVOTests.swift */,
 				48DF72F420697E1E00D224AA /* TypedKVOTests.swift */,
+				48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */,
 			);
 			path = KVO;
 			sourceTree = "<group>";
@@ -505,6 +509,7 @@
 					};
 					4875F266205299A6009985EC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -602,6 +607,7 @@
 				484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
 				4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
+				48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				48DA8193206A4E9C009D1E6C /* KVOTests.swift in Sources */,
 				48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */,
@@ -645,6 +651,7 @@
 				484D065720592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
 				4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
+				48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				48DA8194206A4E9C009D1E6C /* KVOTests.swift in Sources */,
 				48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */,
@@ -937,6 +944,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = BXSwiftUtilsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -944,6 +952,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.BXSwiftUtils-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -953,6 +962,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = BXSwiftUtilsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;

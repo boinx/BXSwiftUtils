@@ -175,4 +175,16 @@ public class KVO : NSObject
 
 //----------------------------------------------------------------------------------------------------------------------
 
-
+// Objective C API that allows nicer setup for observations with or without options.
+extension KVO
+{
+    @objc public static func observe(_ object: NSObject, onKeyPath keyPath: String, usingBlock block: @escaping (_ oldValue: Any?, _ newValue: Any?) -> Void) -> KVO
+    {
+        return KVO(object: object, keyPath: keyPath, block)
+    }
+    
+    @objc public static func observe(_ object: NSObject, onKeyPath keyPath: String, options: NSKeyValueObservingOptions, usingBlock block: @escaping (_ oldValue: Any?, _ newValue: Any?) -> Void) -> KVO
+    {
+        return KVO(object: object, keyPath: keyPath, options: options, block)
+    }
+}
