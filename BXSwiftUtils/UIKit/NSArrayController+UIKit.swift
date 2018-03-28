@@ -101,7 +101,7 @@ open class NSArrayController : NSObject
 
 	// Create the controller and a selection proxy object
 	
-	override init()
+	override public init()
 	{
 		super.init()
 		_selection = _NSSelectionProxy(controller:self)
