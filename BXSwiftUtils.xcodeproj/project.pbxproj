@@ -69,8 +69,6 @@
 		D0323504205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */; };
 		D0323507205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */; };
 		D0323508205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */; };
-		D032350A205C2D63003D6CCB /* matrix_float4x4+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323509205C2D63003D6CCB /* matrix_float4x4+Operators.swift */; };
-		D032350B205C2D63003D6CCB /* matrix_float4x4+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323509205C2D63003D6CCB /* matrix_float4x4+Operators.swift */; };
 		D032350D205C362A003D6CCB /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032350C205C362A003D6CCB /* Date+Components.swift */; };
 		D032350E205C362A003D6CCB /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032350C205C362A003D6CCB /* Date+Components.swift */; };
 		D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */; };
@@ -135,7 +133,6 @@
 		D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operators.swift"; sourceTree = "<group>"; };
 		D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTLTexture+FMExtensions.swift"; sourceTree = "<group>"; };
 		D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+ConvenienceInit.swift"; sourceTree = "<group>"; };
-		D0323509205C2D63003D6CCB /* matrix_float4x4+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "matrix_float4x4+Operators.swift"; sourceTree = "<group>"; };
 		D032350C205C362A003D6CCB /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
@@ -355,7 +352,6 @@
 			children = (
 				D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */,
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
-				D0323509205C2D63003D6CCB /* matrix_float4x4+Operators.swift */,
 			);
 			path = Metal;
 			sourceTree = "<group>";
@@ -595,7 +591,6 @@
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
-				D032350A205C2D63003D6CCB /* matrix_float4x4+Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +618,6 @@
 				4875F27820529A06009985EC /* DispatchQueue+Coalescing.swift in Sources */,
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
-				D032350B205C2D63003D6CCB /* matrix_float4x4+Operators.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				487A39CE2069174E007BEC66 /* TypedKVO.swift in Sources */,
