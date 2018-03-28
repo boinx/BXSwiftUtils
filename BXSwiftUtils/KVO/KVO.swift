@@ -43,7 +43,7 @@ public class KVO : NSObject
 	/// - parameter closure: This closure (with old and new value) will be called when the observed property changes
 	/// - returns: KVO wrapper object, which should be retained as long as you wish the observing to be active.
 
-    public init(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions = [.initial,.new], _ closure:@escaping (Any?,Any?)->())
+    public init(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions = [], _ closure:@escaping (Any?,Any?)->())
 	{
         self.observedObject = object
         self.keyPath = keyPath
