@@ -10,7 +10,6 @@ import Foundation
 
 extension Collection where Element: Any
 {
-    
     public subscript (safe index: Index) -> Element?
     {
         return indices.contains(index) ? self[index] : nil

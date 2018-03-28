@@ -55,6 +55,10 @@
 		48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */; };
 		48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */; };
 		48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */; };
+		48DA81D0206BCD92009D1E6C /* Collection+Pluck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */; };
+		48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */; };
+		48DA81D3206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */; };
+		48DA81D4206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */; };
 		48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */; };
@@ -128,6 +132,8 @@
 		48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSException+ToSwiftError.m"; sourceTree = "<group>"; };
 		48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSException+ToSwiftErrorTests.swift"; sourceTree = "<group>"; };
 		48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOTestsObjC.m; sourceTree = "<group>"; };
+		48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Pluck.swift"; sourceTree = "<group>"; };
+		48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+PluckTests.swift"; sourceTree = "<group>"; };
 		48DF72F420697E1E00D224AA /* TypedKVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedKVOTests.swift; sourceTree = "<group>"; };
 		48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
@@ -252,6 +258,7 @@
 				4875F2252051E9D0009985EC /* Array+Concatenation.swift */,
 				484D0652205927EC003C6CA3 /* Array+AllEqual.swift */,
 				4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */,
+				48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -262,6 +269,7 @@
 				4875F24E2051ECF9009985EC /* Array+ConcatenationTests.swift */,
 				484D065520592898003C6CA3 /* Array+AllEqualTests.swift */,
 				4875F2542051EF7F009985EC /* Collection+SafeAccessTests.swift */,
+				48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -596,6 +604,7 @@
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
+				48DA81D0206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +622,7 @@
 				48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */,
 				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
+				48DA81D3206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +641,7 @@
 				D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
+				48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
@@ -657,6 +668,7 @@
 				48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F27A20529A17009985EC /* Array+ConcatenationTests.swift in Sources */,
 				4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
+				48DA81D4206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
