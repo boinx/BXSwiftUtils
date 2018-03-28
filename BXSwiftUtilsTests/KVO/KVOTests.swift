@@ -32,31 +32,33 @@ class KVOTests: XCTestCase {
     }
 
     /*
-     Tests regarding the general functionality can be found int he TypedKVOTests file.
+     Tests regarding the general functionality can be found int he TypedKVOTests file!
      */
 
     /*
-     Asserts that an NSException is thrown when the key path is invalid.
-     
-     NOTE: Not all cases are correctly detected! If self.exposedObject was nil, the last invocation would succeed nonetheless.
-     */
-    func testInvalidKeyPath()
+     Asserts the availability of the class and its basic usage.
+    */
+    func testBasicFunctionality()
     {
+        var count = 0
+        
         self.exposedObject = SomeClass()
-
-        XCTAssertThrowsError(try NSException.toSwiftError
-        {
-            let _ = KVO(object: self, keyPath: "", { (_, _) in })
-        })
+    
+        self.observers += KVO(object: self, keyPath: "exposedObject.intProp", options: [.new, .initial])
+        { (oldValue, newValue) in
+            if count == 0
+            {
+                XCTAssertEqual(newValue as? Int, 42)
+            }
+            else
+            {
+                XCTAssertEqual(newValue as? Int, 100)
+            }
+            count += 1
+        }
         
-        XCTAssertThrowsError(try NSException.toSwiftError
-        {
-            let _ = KVO(object: self, keyPath: "nonexistingObject", { (_, _) in })
-        })
+        self.exposedObject!.intProp = 100
         
-        XCTAssertThrowsError(try NSException.toSwiftError
-        {
-            let _ = KVO(object: self, keyPath: "exposedObject.foobar", { (_, _) in })
-        })
+        XCTAssertEqual(count, 2)
     }
 }

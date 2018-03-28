@@ -38,37 +38,30 @@
 @interface KVOTestsObjC : XCTestCase
 
 @property SomeClass *observationTarget;
-@property NSMutableArray *observers;
 
 @end
 
 
 @implementation KVOTestsObjC
 
-- (void)setUp {
-    [super setUp];
-    self.observers = NSMutableArray.new;
-}
 
 - (void)testExample {
     __block int count = 0;
 
     self.observationTarget = SomeClass.new;
 
-    [self.observers addObject:
-        [KVO observe:self onKeyPath:@"observationTarget.intProp" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew usingBlock:^(id _Nullable oldValue, id _Nullable newValue)
+    KVO *observer = [KVO observe:self onKeyPath:@"observationTarget.intProp" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew usingBlock:^(id _Nullable oldValue, id _Nullable newValue)
+    {
+        if (count == 0)
         {
-            if (count == 0)
-            {
-                XCTAssertEqual([newValue integerValue], 42);
-            }
-            else
-            {
-                XCTAssertEqual([newValue integerValue], 100);
-            }
-            count++;
-        }]
-    ];
+            XCTAssertEqual([newValue integerValue], 42);
+        }
+        else
+        {
+            XCTAssertEqual([newValue integerValue], 100);
+        }
+        count++;
+    }];
     
     self.observationTarget.intProp = 100;
 

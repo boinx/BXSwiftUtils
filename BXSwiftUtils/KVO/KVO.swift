@@ -37,13 +37,15 @@ public class KVO : NSObject
 	// MARK: -
 	
 	/// Create a new KVO helper, observing the property `keypath` of `object`. When it changes, the closure is called.
-	/// - parameter object: The root object that is being observed
-	/// - parameter keyPath: The String based keypath to the property that is observed
-	/// - parameter options: Valid options are .initial, .old, and .new
-	/// - parameter closure: This closure (with old and new value) will be called when the observed property changes
+	/// - parameter object: The root object that is being observed.
+	/// - parameter keyPath: The String based keypath to the property that is observed.
+	/// - parameter options: Valid options are .initial, .old, and .new.
+	/// - parameter closure: This closure (with old and new value) will be called when the observed property changes.
+    /// - parameter oldValue: The old value, if `options` contains `.old`.
+    /// - parameter newValue: The old value, if `options` contains `.new`.
 	/// - returns: KVO wrapper object, which should be retained as long as you wish the observing to be active.
 
-    public init(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions = [], _ closure:@escaping (Any?,Any?)->())
+    public init(object: NSObject, keyPath: String, options: NSKeyValueObservingOptions = [], _ closure:@escaping (_ oldValue: Any?, _ newValue: Any?)->())
 	{
         self.observedObject = object
         self.keyPath = keyPath
