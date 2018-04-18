@@ -59,6 +59,10 @@
 		48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */; };
 		48DA81D3206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */; };
 		48DA81D4206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */; };
+		48DE068A20876612000246CD /* Dictionary+EnumKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE068920876612000246CD /* Dictionary+EnumKeys.swift */; };
+		48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE068920876612000246CD /* Dictionary+EnumKeys.swift */; };
+		48DE068D20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */; };
+		48DE068E20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */; };
 		48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */; };
@@ -134,6 +138,8 @@
 		48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOTestsObjC.m; sourceTree = "<group>"; };
 		48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Pluck.swift"; sourceTree = "<group>"; };
 		48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+PluckTests.swift"; sourceTree = "<group>"; };
+		48DE068920876612000246CD /* Dictionary+EnumKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+EnumKeys.swift"; sourceTree = "<group>"; };
+		48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+EnumKeysTests.swift"; sourceTree = "<group>"; };
 		48DF72F420697E1E00D224AA /* TypedKVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedKVOTests.swift; sourceTree = "<group>"; };
 		48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 				484D0652205927EC003C6CA3 /* Array+AllEqual.swift */,
 				4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */,
 				48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */,
+				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -270,6 +277,7 @@
 				484D065520592898003C6CA3 /* Array+AllEqualTests.swift */,
 				4875F2542051EF7F009985EC /* Collection+SafeAccessTests.swift */,
 				48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */,
+				48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -591,6 +599,7 @@
 				D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
 				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
+				48DE068A20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				487A39CD2069174E007BEC66 /* TypedKVO.swift in Sources */,
 				D03234EA205BF939003D6CCB /* URL+Info.swift in Sources */,
 				D03234EE205BFC9F003D6CCB /* String+Localized.swift in Sources */,
@@ -614,6 +623,7 @@
 			files = (
 				4875F2552051EF7F009985EC /* Collection+SafeAccessTests.swift in Sources */,
 				484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
+				48DE068D20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */,
 				4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
@@ -646,6 +656,7 @@
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */,
+				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
@@ -660,6 +671,7 @@
 			files = (
 				4875F27B20529A19009985EC /* Collection+SafeAccessTests.swift in Sources */,
 				484D065720592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
+				48DE068E20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */,
 				4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
