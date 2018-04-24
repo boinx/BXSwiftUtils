@@ -1,12 +1,12 @@
 language: objective-c
-osx_image: xcode9.2
+osx_image: xcode9.3
 xcode_project: BXSwiftUtils.xcodeproj
 before_install:
 - gem install xcpretty
 matrix:
   include:
   - env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
-  - env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.2"
+  - env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.3"
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
 notifications:
   slack:
