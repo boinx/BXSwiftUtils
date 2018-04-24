@@ -181,10 +181,10 @@ class Array_DecodableTests: XCTestCase {
         let result = try! decoder.decode(Slide.self, from: data)
         
         // Compare the array elements' types
-        let expectedTypes: [VisualObject.Type] = visualObjects.map({ type(of: $0) })
-        let resultTypes: [VisualObject.Type] = result.visualObjects.map({ type(of: $0) })
+        let expectedTypes: [String] = visualObjects.map({ $0.className })
+        let resultTypes: [String] = result.visualObjects.map({ $0.className })
         
-        XCTAssertEqual(String(describing: expectedTypes), String(describing: resultTypes))
+        XCTAssertEqual(expectedTypes, resultTypes)
     }
     
 }
