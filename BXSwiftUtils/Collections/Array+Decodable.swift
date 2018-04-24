@@ -11,14 +11,14 @@ import Foundation
 
 extension KeyedDecodingContainer
 {
-	/// This method decodes a heterogeneous array of T. Since the array can contains arbitrary subclass instances
+	/// This method decodes a heterogeneous array of T. Since the array can contain arbitrary subclass instances
 	/// of T, the objectTypeMapper closure is used to determine the exact subclass type of each element in the array.
 	
 	public func decodeHeterogeneousArray<T: Decodable>(forKey key: Key, objectTypeMapper: (Decoder) throws -> T.Type) throws -> [T]
 	{
 		var arrayContainer = try self.nestedUnkeyedContainer(forKey:key)
 
-		// Since this array can contain subclasses of T, we first have to determine the type of each element.
+		// Since this array can contain subclasses of T, we first have to determine the exact type of each element.
 
 		var classTypes = [T.Type]()
 		
@@ -34,7 +34,8 @@ extension KeyedDecodingContainer
 		arrayContainer = try self.nestedUnkeyedContainer(forKey:key)
 
         return try classTypes.map
-        { type in
+        {
+        	type in
             return try arrayContainer.decode(type)
         }
 	}

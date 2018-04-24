@@ -6,7 +6,6 @@
 //  Copyright © 2018 Stefan Fochler. All rights reserved.
 //
 
-import Cocoa
 import XCTest
 import BXSwiftUtils
 
@@ -160,7 +159,7 @@ fileprivate class VideoObject: VisualObject
 class Array_DecodableTests: XCTestCase {
 
     /*
-     Asserts that a heterogenous array is decoded to the correc types after encoding and decoding.
+     Asserts that a heterogenous array is decoded to the correct types after encoding and decoding.
      */
     func testDecoding()
     {
