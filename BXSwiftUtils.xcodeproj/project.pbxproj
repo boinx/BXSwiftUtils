@@ -11,7 +11,6 @@
 		4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4826E57D208F533400A5BA9B /* Array+Decodable.swift */; };
 		4826E581208F534000A5BA9B /* Array+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4826E580208F534000A5BA9B /* Array+DecodableTests.swift */; };
 		4826E582208F534000A5BA9B /* Array+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4826E580208F534000A5BA9B /* Array+DecodableTests.swift */; };
-		484133742052D0C500DDB1E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 484133732052D0C500DDB1E2 /* README.md */; };
 		484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
@@ -24,12 +23,10 @@
 		4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */; };
 		4875F2112051E70E009985EC /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F2072051E70E009985EC /* BXSwiftUtils.framework */; };
 		4875F2182051E70E009985EC /* BXSwiftUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4875F20A2051E70E009985EC /* BXSwiftUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4875F2222051E74B009985EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4875F2212051E74B009985EC /* .gitignore */; };
 		4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2252051E9D0009985EC /* Array+Concatenation.swift */; };
 		4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F24E2051ECF9009985EC /* Array+ConcatenationTests.swift */; };
 		4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */; };
 		4875F2552051EF7F009985EC /* Collection+SafeAccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2542051EF7F009985EC /* Collection+SafeAccessTests.swift */; };
-		4875F25720528420009985EC /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4875F25620528420009985EC /* .travis.yml */; };
 		4875F25920528D28009985EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4875F25820528D28009985EC /* LICENSE */; };
 		4875F268205299A6009985EC /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
 		4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2252051E9D0009985EC /* Array+Concatenation.swift */; };
@@ -129,13 +126,11 @@
 		4875F20B2051E70E009985EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4875F2102051E70E009985EC /* BXSwiftUtilsTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXSwiftUtilsTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4875F2172051E70E009985EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4875F2212051E74B009985EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4875F2232051E7F4009985EC /* STYLEGUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = STYLEGUIDE.md; sourceTree = "<group>"; };
 		4875F2252051E9D0009985EC /* Array+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Concatenation.swift"; sourceTree = "<group>"; };
 		4875F24E2051ECF9009985EC /* Array+ConcatenationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ConcatenationTests.swift"; sourceTree = "<group>"; };
 		4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeAccess.swift"; sourceTree = "<group>"; };
 		4875F2542051EF7F009985EC /* Collection+SafeAccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeAccessTests.swift"; sourceTree = "<group>"; };
-		4875F25620528420009985EC /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		4875F25820528D28009985EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4875F25F205299A6009985EC /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4875F267205299A6009985EC /* BXSwiftUtilsTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXSwiftUtilsTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,8 +214,6 @@
 			children = (
 				484133732052D0C500DDB1E2 /* README.md */,
 				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
-				4875F2212051E74B009985EC /* .gitignore */,
-				4875F25620528420009985EC /* .travis.yml */,
 				4875F25820528D28009985EC /* LICENSE */,
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
 				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
@@ -585,9 +578,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4875F25920528D28009985EC /* LICENSE in Resources */,
-				4875F25720528420009985EC /* .travis.yml in Resources */,
-				484133742052D0C500DDB1E2 /* README.md in Resources */,
-				4875F2222051E74B009985EC /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
