@@ -46,26 +46,20 @@
 
 
 - (void)testExample {
-    __block int count = 0;
+    NSMutableArray *results = NSMutableArray.new;
 
     self.observationTarget = SomeClass.new;
 
     KVO *observer = [KVO observe:self onKeyPath:@"observationTarget.intProp" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew usingBlock:^(id _Nullable oldValue, id _Nullable newValue)
     {
-        if (count == 0)
-        {
-            XCTAssertEqual([newValue integerValue], 42);
-        }
-        else
-        {
-            XCTAssertEqual([newValue integerValue], 100);
-        }
-        count++;
+        [results addObject:newValue];
     }];
-    
+    #pragma unused (observer)
+
     self.observationTarget.intProp = 100;
 
-    XCTAssertEqual(count, 2);
+    NSArray *expected = @[@(42), @(100)];
+    XCTAssertEqualObjects(results, expected);
 }
 
 @end
