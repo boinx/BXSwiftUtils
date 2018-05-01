@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Sequence where Element: Hashable
+extension Sequence where Element
 {
     #if !swift(>=4.1)
     public func compactMap<ResultType>(_ transform: (Element) throws -> ResultType?) rethrows -> [ResultType]
