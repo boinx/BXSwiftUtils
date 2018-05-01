@@ -5,6 +5,10 @@ before_install:
 - gem install xcpretty
 matrix:
   include:
+  - osx_image: xcode9
+    env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
+  - osx_image: xcode9
+    env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.0"
   - osx_image: xcode9.2
     env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode9.2

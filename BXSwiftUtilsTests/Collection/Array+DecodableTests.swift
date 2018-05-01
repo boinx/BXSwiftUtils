@@ -9,7 +9,8 @@
 import XCTest
 import BXSwiftUtils
 
-// Whole file has to be disabled in older versions
+// Whole file has to be disabled in older versions, because in Swift 4.0 type(of:) delivers the "wrong" type (i.e. the
+// base class instead of the concrete subclass that would be required for the test to make sense).
 #if swift(>=4.1)
 
 fileprivate struct Slide: Codable

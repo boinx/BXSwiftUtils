@@ -143,6 +143,8 @@
 		487A39C920690635007BEC66 /* KVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVO.swift; sourceTree = "<group>"; };
 		487A39CC2069174E007BEC66 /* TypedKVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedKVO.swift; sourceTree = "<group>"; };
 		487A39CF20691E05007BEC66 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
+		487E623020986792007C4A8A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		487E62312098679A007C4A8A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLoggerTests.swift; sourceTree = "<group>"; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
 		48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+CodableTests.swift"; sourceTree = "<group>"; };
@@ -221,6 +223,8 @@
 				484133732052D0C500DDB1E2 /* README.md */,
 				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
 				4875F25820528D28009985EC /* LICENSE */,
+				487E623020986792007C4A8A /* .gitignore */,
+				487E62312098679A007C4A8A /* .travis.yml */,
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
 				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
 				4875F2082051E70E009985EC /* Products */,
