@@ -8,6 +8,7 @@
 
 
 import Foundation
+import CoreGraphics
 
 
 // The types Dictionary<String,Any> Array<Any> are not Codable by default, because Any does not conform to the
@@ -59,6 +60,10 @@ extension KeyedEncodingContainer
 			{
 				try container.encode(value)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value)
+			}
 			else if let value = v as? Float
 			{
 				try container.encode(value)
@@ -76,6 +81,10 @@ extension KeyedEncodingContainer
 				try container.encode(value)
 			}
 			else if let value = v as? String
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? Data
 			{
 				try container.encode(value)
 			}
@@ -112,6 +121,10 @@ extension KeyedEncodingContainer
 			{
 				try container.encode(value, forKey: key)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value, forKey: key)
+			}
 			else if let value = v as? Float
 			{
 				try container.encode(value, forKey: key)
@@ -129,6 +142,10 @@ extension KeyedEncodingContainer
 				try container.encode(value, forKey: key)
 			}
 			else if let value = v as? String
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? Data
 			{
 				try container.encode(value, forKey: key)
 			}
@@ -195,6 +212,10 @@ extension UnkeyedEncodingContainer
 			{
 				try container.encode(value)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value)
+			}
 			else if let value = v as? Float
 			{
 				try container.encode(value)
@@ -212,6 +233,10 @@ extension UnkeyedEncodingContainer
 				try container.encode(value)
 			}
 			else if let value = v as? String
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? Data
 			{
 				try container.encode(value)
 			}
@@ -248,6 +273,10 @@ extension UnkeyedEncodingContainer
 			{
 				try container.encode(value, forKey: key)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value, forKey: key)
+			}
 			else if let value = v as? Float
 			{
 				try container.encode(value, forKey: key)
@@ -265,6 +294,10 @@ extension UnkeyedEncodingContainer
 				try container.encode(value, forKey: key)
 			}
 			else if let value = v as? String
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? Data
 			{
 				try container.encode(value, forKey: key)
 			}
@@ -336,6 +369,10 @@ extension KeyedDecodingContainer
 			{
 				array += value
 			}
+			else if let value = try? container.decode(CGFloat.self)
+			{
+				array += value
+			}
 			else if let value = try? container.decode(Float.self)
 			{
 				array += value
@@ -353,6 +390,10 @@ extension KeyedDecodingContainer
 				array += value
 			}
 			else if let value = try? container.decode(String.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(Data.self)
 			{
 				array += value
 			}
@@ -390,6 +431,10 @@ extension KeyedDecodingContainer
 			{
 				dictionary[k.stringValue] = value
 			}
+			else if let value = try? container.decode(CGFloat.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
 			else if let value = try? container.decode(Float.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
@@ -407,6 +452,10 @@ extension KeyedDecodingContainer
 				dictionary[k.stringValue] = value
 			}
 			else if let value = try? container.decode(String.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(Data.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
 			}
@@ -479,6 +528,10 @@ extension UnkeyedDecodingContainer
 			{
 				array += value
 			}
+			else if let value = try? container.decode(CGFloat.self)
+			{
+				array += value
+			}
 			else if let value = try? container.decode(Float.self)
 			{
 				array += value
@@ -496,6 +549,10 @@ extension UnkeyedDecodingContainer
 				array += value
 			}
 			else if let value = try? container.decode(String.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(Data.self)
 			{
 				array += value
 			}
@@ -533,6 +590,10 @@ extension UnkeyedDecodingContainer
 			{
 				dictionary[k.stringValue] = value
 			}
+			else if let value = try? container.decode(CGFloat.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
 			else if let value = try? container.decode(Float.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
@@ -550,6 +611,10 @@ extension UnkeyedDecodingContainer
 				dictionary[k.stringValue] = value
 			}
 			else if let value = try? container.decode(String.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(Data.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
 			}
