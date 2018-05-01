@@ -11,7 +11,7 @@ import Foundation
 extension Sequence where Element: Hashable
 {
     #if !swift(>=4.1)
-    func compactMap<ResultType>(_ transform: (Element) throws -> ResultType?) rethrows -> [ResultType]
+    public func compactMap<ResultType>(_ transform: (Element) throws -> ResultType?) rethrows -> [ResultType]
     {
         return try flatMap(transform)
     }
