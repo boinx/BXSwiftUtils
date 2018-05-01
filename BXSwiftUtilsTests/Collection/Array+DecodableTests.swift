@@ -9,6 +9,8 @@
 import XCTest
 import BXSwiftUtils
 
+// Whole file has to be disabled in older versions
+#if swift(>=4.1)
 
 fileprivate struct Slide: Codable
 {
@@ -160,10 +162,7 @@ class Array_DecodableTests: XCTestCase {
 
     /*
      Asserts that a heterogenous array is decoded to the correct types after encoding and decoding.
-     
-     Method is only available in swift 4.1 and higher (its not working correctly below that).
      */
-    #if swift(>=4.1)
     func testDecoding()
     {
         let visualObjects = [
@@ -189,6 +188,6 @@ class Array_DecodableTests: XCTestCase {
         
         XCTAssertEqual(expectedTypes, resultTypes)
     }
-    #endif
 }
 
+#endif
