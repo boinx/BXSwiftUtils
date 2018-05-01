@@ -54,18 +54,26 @@ class TypedKVOTests: XCTestCase
      */
     func testBasicFunctionality()
     {
-        var results = [Int?]()
+        var count = 0
         
         self.exposedProperty = SomeClass()
     
         self.observers += observeSafe(self, \.exposedProperty?.intProp)
         { (target, change) in
-            results.append(change.newValue ?? nil)
+            if count == 0
+            {
+                XCTAssertEqual(change.newValue ?? nil, 42)
+            }
+            else
+            {
+                XCTAssertEqual(change.newValue ?? nil, 100)
+            }
+            count += 1
         }
         
         self.exposedProperty?.intProp = 100
         
-        XCTAssertEqual(results, [42, 100])
+        XCTAssertEqual(count, 2)
     }
     
     
@@ -104,20 +112,28 @@ class TypedKVOTests: XCTestCase
      */
     func testAutomaticCleanupOfObjectInKeyPath()
     {
-        var results = [String?]()
+        var count = 0
         
         self.exposedProperty = SomeClass()
     
         self.observers += observeSafe(self, \.exposedProperty?.nestedObj?.stringProp)
         { (target, change) in
-            results.append(change.newValue ?? nil)
+            if count == 0
+            {
+                XCTAssertEqual(change.newValue ?? nil, "hello")
+            }
+            else
+            {
+                XCTAssertEqual(change.newValue ?? nil, nil)
+            }
+            count += 1
         }
         
         // This would crash if the observer was not destroyed in time
         self.exposedProperty!.nestedObj = nil
         self.exposedProperty = nil
 
-        XCTAssertEqual(results, ["hello", nil, nil])
+        XCTAssertEqual(count, 3)
     }
     
     /*
@@ -125,20 +141,28 @@ class TypedKVOTests: XCTestCase
      */
     func testAutomaticCleanupOfIntermediateAndRootObject()
     {
-        var results = [String?]()
+        var count = 0
         
         self.exposedProperty = SomeClass()
     
         self.observers += observeSafe(self.exposedProperty!, \.nestedObj?.stringProp)
         { (target, change) in
-            results.append(change.newValue ?? nil)
+            if count == 0
+            {
+                XCTAssertEqual(change.newValue ?? nil, "hello")
+            }
+            else
+            {
+                XCTAssertEqual(change.newValue ?? nil, nil)
+            }
+            count += 1
         }
         
         // This would crash if the observer was not destroyed in time
         self.exposedProperty!.nestedObj = nil
         self.exposedProperty = nil
 
-        XCTAssertEqual(results, ["hello", nil])
+        XCTAssertEqual(count, 2)
     }
     
     /*
@@ -146,18 +170,22 @@ class TypedKVOTests: XCTestCase
      */
     func testAutomaticCleanupOfRootObject()
     {
-        var results = [String?]()
+        var count = 0
         
         self.exposedProperty = SomeClass()
     
         self.observers += observeSafe(self.exposedProperty!, \.nestedObj?.stringProp)
         { (target, change) in
-            results.append(change.newValue ?? nil)
+            if count == 0
+            {
+                XCTAssertEqual(change.newValue ?? nil, "hello")
+            }
+            count += 1
         }
         
         // This would crash if the observer was not destroyed in time
         self.exposedProperty = nil
 
-        XCTAssertEqual(results, ["hello"])
+        XCTAssertEqual(count, 1)
     }
 }

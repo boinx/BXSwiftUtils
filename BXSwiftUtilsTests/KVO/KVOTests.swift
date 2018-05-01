@@ -40,17 +40,25 @@ class KVOTests: XCTestCase {
     */
     func testBasicFunctionality()
     {
-        var results = [Int]()
+        var count = 0
         
         self.exposedObject = SomeClass()
     
         self.observers += KVO(object: self, keyPath: "exposedObject.intProp", options: [.new, .initial])
         { (oldValue, newValue) in
-            results += newValue as? Int
+            if count == 0
+            {
+                XCTAssertEqual(newValue as? Int, 42)
+            }
+            else
+            {
+                XCTAssertEqual(newValue as? Int, 100)
+            }
+            count += 1
         }
         
         self.exposedObject!.intProp = 100
         
-        XCTAssertEqual(results, [42, 100])
+        XCTAssertEqual(count, 2)
     }
 }
