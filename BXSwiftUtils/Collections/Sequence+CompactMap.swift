@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Sequence where Element
+extension Sequence
 {
     #if !swift(>=4.1)
     public func compactMap<ResultType>(_ transform: (Element) throws -> ResultType?) rethrows -> [ResultType]
