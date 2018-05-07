@@ -45,6 +45,10 @@
 		487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39CF20691E05007BEC66 /* NSArrayController+UIKit.swift */; };
 		487A39D220693A25007BEC66 /* KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39C920690635007BEC66 /* KVO.swift */; };
 		487A39D320693A25007BEC66 /* KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39C920690635007BEC66 /* KVO.swift */; };
+		487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487E641D20A0A659007C4A8A /* Collection+Flatten.swift */; };
+		487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487E641D20A0A659007C4A8A /* Collection+Flatten.swift */; };
+		487E642120A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */; };
+		487E642220A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */; };
 		489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */; };
 		489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */; };
 		489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43C205296A500849EF2 /* BXLogger.swift */; };
@@ -145,6 +149,8 @@
 		487A39CF20691E05007BEC66 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
 		487E623020986792007C4A8A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		487E62312098679A007C4A8A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
+		487E641D20A0A659007C4A8A /* Collection+Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Flatten.swift"; sourceTree = "<group>"; };
+		487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Flatten.swift"; sourceTree = "<group>"; };
 		489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLoggerTests.swift; sourceTree = "<group>"; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
 		48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+CodableTests.swift"; sourceTree = "<group>"; };
@@ -286,6 +292,7 @@
 				4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */,
 				48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */,
 				D06F462C209073D0000986B8 /* Collection+Codable.swift */,
+				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
 				481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */,
 			);
@@ -300,6 +307,7 @@
 				4826E580208F534000A5BA9B /* Array+DecodableTests.swift */,
 				4875F2542051EF7F009985EC /* Collection+SafeAccessTests.swift */,
 				48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */,
+				487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */,
 				48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */,
 				481BE6D52098368E00F12EDF /* Sequence+CompactMap.swift */,
 			);
@@ -629,6 +637,7 @@
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
+				487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
 				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
@@ -663,6 +672,7 @@
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
+				487E642120A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DA8193206A4E9C009D1E6C /* KVOTests.swift in Sources */,
 				48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */,
@@ -696,6 +706,7 @@
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */,
+				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
@@ -718,6 +729,7 @@
 				489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
+				487E642220A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DA8194206A4E9C009D1E6C /* KVOTests.swift in Sources */,
 				48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F27A20529A17009985EC /* Array+ConcatenationTests.swift in Sources */,
