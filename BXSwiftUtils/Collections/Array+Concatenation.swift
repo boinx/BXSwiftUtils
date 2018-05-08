@@ -33,7 +33,17 @@ extension Array where Element: Any
         }
     }
     
-    
+
+    /**
+     Convenient syntax around `Array.append(contentsOf:)` that allows appending an array to an array.
+      */
+	
+     public static func +=(lhs: inout [Element], rhs: [Element])
+    {
+        lhs.append(contentsOf:rhs)
+     }
+
+
     /**
      Returns a new array that has `rhs` appended to the end of the `lhs` array.
      If the added element is an optional that happens to be `nil`, then this operator stil returns a copy of the array.
