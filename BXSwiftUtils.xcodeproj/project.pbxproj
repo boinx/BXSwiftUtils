@@ -99,6 +99,8 @@
 		D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
 		D056D43E205296A500849EF2 /* BXLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43C205296A500849EF2 /* BXLogger.swift */; };
 		D056D440205296F100849EF2 /* Synchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43F205296F100849EF2 /* Synchronized.swift */; };
+		D0606C9420A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
+		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
 		D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 /* End PBXBuildFile section */
@@ -177,6 +179,7 @@
 		D056D43B205296A500849EF2 /* BXLogger+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXLogger+Domains.swift"; sourceTree = "<group>"; };
 		D056D43C205296A500849EF2 /* BXLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXLogger.swift; sourceTree = "<group>"; };
 		D056D43F205296F100849EF2 /* Synchronized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronized.swift; sourceTree = "<group>"; };
+		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -441,6 +444,7 @@
 			children = (
 				D056D43C205296A500849EF2 /* BXLogger.swift */,
 				D056D43B205296A500849EF2 /* BXLogger+Domains.swift */,
+				D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -641,6 +645,7 @@
 				D056D430205276ED00849EF2 /* DispatchQueue+Coalescing.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
 				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
+				D0606C9420A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */,
 				48DE068A20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				487A39CD2069174E007BEC66 /* TypedKVO.swift in Sources */,
 				D03234EA205BF939003D6CCB /* URL+Info.swift in Sources */,
@@ -711,6 +716,7 @@
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
+				D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
