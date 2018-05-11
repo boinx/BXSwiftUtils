@@ -111,29 +111,29 @@ extension DispatchQueue
 	/// Cancels any coalesced work that was scheduled with the coalesce(_:interval:block:) method.
 	/// - parameter identifier: A unique string that identifies the scheduled work that should be canceled
 
-	public func cancelCoalescedWork(withIdentifier identifier: String)
+	public static func cancelCoalescedWork(withIdentifier identifier: String)
 	{
 		DispatchQueue.lock.write()
 		{
-			let item = DispatchQueue.coalescedWorkItems[identifier]
+			let item = self.coalescedWorkItems[identifier]
 			item?.cancel()
-			DispatchQueue.coalescedWorkItems[identifier] = nil
+			self.coalescedWorkItems[identifier] = nil
 		}
 	}
 	
 
 	/// Cancels all scheduled coalesced work with identifiers that have a matching prefix.
 	
-	public func cancelCoalescedWork(withPrefix prefix: String)
+	public static func cancelCoalescedWork(withPrefix prefix: String)
 	{
 		DispatchQueue.lock.write()
 		{
-			for (identifier,item) in DispatchQueue.coalescedWorkItems
+			for (identifier,item) in self.coalescedWorkItems
 			{
 				if identifier.hasPrefix(prefix)
 				{
 					item.cancel()
-					DispatchQueue.coalescedWorkItems[identifier] = nil
+					self.coalescedWorkItems[identifier] = nil
 				}
 			}
 		}
@@ -141,16 +141,16 @@ extension DispatchQueue
 
 	/// Cancels all scheduled coalesced work that was scheduled with the coalesce(_:interval:block:) method.
 	
-	public func cancelAllCoalescedWork()
+	public static func cancelAllCoalescedWork()
 	{
 		DispatchQueue.lock.write()
 		{
-			for (_,item) in DispatchQueue.coalescedWorkItems
+			for (_,item) in self.coalescedWorkItems
 			{
 				item.cancel()
 			}
 			
-			DispatchQueue.coalescedWorkItems = [:]
+			self.coalescedWorkItems = [:]
 		}
 	}
 
