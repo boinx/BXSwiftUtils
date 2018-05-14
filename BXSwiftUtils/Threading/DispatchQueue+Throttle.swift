@@ -13,12 +13,6 @@ import Foundation
 
 extension DispatchQueue
 {
-    fileprivate enum WorkStatus
-    {
-        case dispatched
-        case executed(CFAbsoluteTime)
-    }
-    
     // Scheduled worker blocks, grouped by identifier string
     
     private static var coalescedWork: [String: (index: Int, item: DispatchWorkItem)] = [:]
@@ -28,6 +22,12 @@ extension DispatchQueue
     
     private static var throttledWork: [String: WorkStatus] = [:]
 
+    private enum WorkStatus
+    {
+        case dispatched
+        case executed(CFAbsoluteTime)
+    }
+	
     // A lock that protects against threading issue when accessing the two shared dictionaries above
     
     private static var lock = BXReadWriteLock(label: "com.boinx.BXSwiftUtils.DispatchQueue.lock")
@@ -38,12 +38,6 @@ extension DispatchQueue
 
     // MARK: -
     
-    /// Alias of `debounce(_:interval:block:)`.
-    public func coalesce(_ identifier: String, interval: CFTimeInterval = 0.0, block: @escaping () -> Void)
-    {
-        self.debounce(identifier, interval: interval, block: block)
-    }
-
     /**
      Debounces all blocks with the same identifier to the end of the specified interval. The block
      will only be executed once, when no calls occur for at least the specified interval time.
@@ -89,6 +83,14 @@ extension DispatchQueue
     }
     
     
+    /// Alias of `debounce(_:interval:block:)`
+	
+    public func coalesce(_ identifier: String, interval: CFTimeInterval = 0.0, block: @escaping () -> Void)
+    {
+        self.debounce(identifier, interval: interval, block: block)
+    }
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -113,15 +115,16 @@ extension DispatchQueue
     {
         let shouldDispatch: Bool = DispatchQueue.lock.write()
         {
-            let status = DispatchQueue.throttledWork[identifier] ?? .executed(-Double.greatestFiniteMagnitude)
-   
-            let dispatchTime = CFAbsoluteTimeGetCurrent()
+        	let distantPast = -Double.greatestFiniteMagnitude
+            let status = DispatchQueue.throttledWork[identifier] ?? .executed(distantPast)
+        	let dispatchTime = CFAbsoluteTimeGetCurrent()
             
             if case .executed(let lastTime) = status, dispatchTime >= (lastTime + interval)
             {
                 DispatchQueue.throttledWork[identifier] = .dispatched
                 return true
             }
+			
             return false
         }
   
@@ -130,10 +133,7 @@ extension DispatchQueue
         self.async
         {
             let executionTime = CFAbsoluteTimeGetCurrent()
-            DispatchQueue.lock.write()
-            {
-                DispatchQueue.throttledWork[identifier] = .executed(executionTime)
-            }
+            DispatchQueue.lock.write() { DispatchQueue.throttledWork[identifier] = .executed(executionTime) }
             block()
         }
     }
