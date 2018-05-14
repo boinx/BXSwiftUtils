@@ -20,7 +20,7 @@ import Foundation
  */
 class BXAtomic<T>
 {
-    private var lock = BXReadWriteLock(label: "com.boinx.atomic")
+    private var lock: BXReadWriteLock
     private var _value: T
     
     /**
@@ -29,6 +29,7 @@ class BXAtomic<T>
     init(_ value: T)
     {
         self._value = value
+        self.lock = BXReadWriteLock(label: "com.boinx.atomic.\(type(of: self._value))")
     }
     
     var value: T
