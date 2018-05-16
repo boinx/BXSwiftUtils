@@ -18,7 +18,7 @@ import Foundation
  Instead, use the `modify(_:)` function that executes a closure in a synchronized fashion or one of the convenience
  methods provided for specific data types.
  */
-class BXAtomic<T>
+public class BXAtomic<T>
 {
     private var lock: BXReadWriteLock
     private var _value: T
@@ -26,13 +26,13 @@ class BXAtomic<T>
     /**
      Create an atomic wrapper with an initial value.
      */
-    init(_ value: T)
+    public init(_ value: T)
     {
         self._value = value
         self.lock = BXReadWriteLock(label: "com.boinx.atomic.\(type(of: self._value))")
     }
     
-    var value: T
+    public var value: T
     {
         get
         {
@@ -50,7 +50,7 @@ class BXAtomic<T>
      - parameter block: Modification block that takes the current value and returns a value that will be stored as the
                         wrapper's new value.
      */
-    @discardableResult func modify(_ block: (T) throws -> T) rethrows -> T
+    @discardableResult public func modify(_ block: (T) throws -> T) rethrows -> T
     {
         return try self.lock.write
         {
@@ -62,12 +62,12 @@ class BXAtomic<T>
 
 extension BXAtomic where T: Numeric
 {
-    @discardableResult func increment() -> T
+    @discardableResult public func increment() -> T
     {
         return self.modify { $0 + 1 }
     }
     
-    @discardableResult func decrement() -> T
+    @discardableResult public func decrement() -> T
     {
         return self.modify { $0 - 1 }
     }
@@ -75,7 +75,7 @@ extension BXAtomic where T: Numeric
 
 extension BXAtomic where T == Bool
 {
-    @discardableResult func toggle() -> T
+    @discardableResult public func toggle() -> T
     {
         return self.modify { !$0 }
     }
