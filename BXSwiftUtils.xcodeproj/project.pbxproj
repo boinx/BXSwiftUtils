@@ -103,6 +103,8 @@
 		D056D440205296F100849EF2 /* Synchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43F205296F100849EF2 /* Synchronized.swift */; };
 		D0606C9420A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
+		D0693F8A20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
+		D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
 		D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +185,7 @@
 		D056D43C205296A500849EF2 /* BXLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXLogger.swift; sourceTree = "<group>"; };
 		D056D43F205296F100849EF2 /* Synchronized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronized.swift; sourceTree = "<group>"; };
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
+		D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,6 +264,7 @@
 				D056D43220527B7500849EF2 /* Threading */,
 				48DA8195206A509A009D1E6C /* Exceptions */,
 				487A39C820690628007BEC66 /* KVO */,
+				D0693F8820AC1C2700B5893C /* Undo */,
 				D03234EC205BF93E003D6CCB /* Files */,
 				D03234F0205BFCA4003D6CCB /* Strings */,
 				D032350F205C362F003D6CCB /* Date & Time */,
@@ -451,6 +455,14 @@
 				D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */,
 			);
 			path = Logging;
+			sourceTree = "<group>";
+		};
+		D0693F8820AC1C2700B5893C /* Undo */ = {
+			isa = PBXGroup;
+			children = (
+				D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */,
+			);
+			path = Undo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -649,6 +661,7 @@
 				D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
 				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
+				D0693F8A20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
 				487107EF20A9B8E000120024 /* BXAtomic.swift in Sources */,
 				D0606C9420A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */,
 				48DE068A20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
@@ -719,6 +732,7 @@
 				D0323504205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
+				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
