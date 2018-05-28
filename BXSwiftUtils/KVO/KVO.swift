@@ -138,7 +138,7 @@ public class KVO : NSObject
 	/// Send out a notification letting KVO observers know that this object is about to disappear. Receivers
 	/// of this notification should remove their KVO observer, or they risk crashing due to an exception.
 	
-	public class func invalidate(for object: NSObject)
+	@objc public class func invalidate(for object: NSObject)
 	{
 		NotificationCenter.default.post(
 			name:KVO.invalidateNotification,
