@@ -16,10 +16,10 @@ import Foundation
  */
 public class Weak<Value> where Value: AnyObject
 {
-    public private(set) weak var ref: Value?
+    public private(set) weak var value: Value?
     
-    public init(_ ref: Value)
+    public init(_ value: Value)
     {
-        self.ref = ref
+        self.value = value
     }
 }

@@ -25,10 +25,10 @@ class weakTests: XCTestCase
             weakStr = Weak(strongStr)
             
             // While the oirignal value is stil alive, the reference must point to the correct value.
-            XCTAssertEqual(weakStr!.ref, strongStr)
+            XCTAssertEqual(weakStr!.value, strongStr)
         }
         
         // When the original value goes out of scope and gets deallocated, the reference must be nil.
-        XCTAssertNil(weakStr!.ref)
+        XCTAssertNil(weakStr!.value)
     }
 }
