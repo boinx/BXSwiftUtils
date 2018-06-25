@@ -87,6 +87,10 @@
 		48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DF72F420697E1E00D224AA /* TypedKVOTests.swift */; };
 		48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */; };
+		48FF9BC720E116B100024C10 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF9BC620E116B100024C10 /* Weak.swift */; };
+		48FF9BC820E116B100024C10 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF9BC620E116B100024C10 /* Weak.swift */; };
+		48FF9BCA20E1174C00024C10 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF9BC920E1174C00024C10 /* Weak.swift */; };
+		48FF9BCB20E1174C00024C10 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF9BC920E1174C00024C10 /* Weak.swift */; };
 		D03234EA205BF939003D6CCB /* URL+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234E9205BF938003D6CCB /* URL+Info.swift */; };
 		D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234E9205BF938003D6CCB /* URL+Info.swift */; };
 		D03234EE205BFC9F003D6CCB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234ED205BFC9F003D6CCB /* String+Localized.swift */; };
@@ -181,6 +185,8 @@
 		48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+EnumKeysTests.swift"; sourceTree = "<group>"; };
 		48DF72F420697E1E00D224AA /* TypedKVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedKVOTests.swift; sourceTree = "<group>"; };
 		48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
+		48FF9BC620E116B100024C10 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
+		48FF9BC920E1174C00024C10 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
 		D03234ED205BFC9F003D6CCB /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Accessors.swift"; sourceTree = "<group>"; };
@@ -314,6 +320,7 @@
 				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
 				481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */,
+				48FF9BC620E116B100024C10 /* Weak.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -329,6 +336,7 @@
 				487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */,
 				48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */,
 				481BE6D52098368E00F12EDF /* Sequence+CompactMap.swift */,
+				48FF9BC920E1174C00024C10 /* Weak.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -688,6 +696,7 @@
 				D0323507205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */,
 				487A39D220693A25007BEC66 /* KVO.swift in Sources */,
 				D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */,
+				48FF9BC720E116B100024C10 /* Weak.swift in Sources */,
 				D032350D205C362A003D6CCB /* Date+Components.swift in Sources */,
 				484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
@@ -706,6 +715,7 @@
 				48DE068D20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */,
 				4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				4826E581208F534000A5BA9B /* Array+DecodableTests.swift in Sources */,
+				48FF9BCA20E1174C00024C10 /* Weak.swift in Sources */,
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
@@ -730,6 +740,7 @@
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
+				48FF9BC820E116B100024C10 /* Weak.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				481BE6D42098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				487A39CE2069174E007BEC66 /* TypedKVO.swift in Sources */,
@@ -769,6 +780,7 @@
 				48DE068E20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */,
 				4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */,
 				4826E582208F534000A5BA9B /* Array+DecodableTests.swift in Sources */,
+				48FF9BCB20E1174C00024C10 /* Weak.swift in Sources */,
 				489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
