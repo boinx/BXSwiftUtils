@@ -62,6 +62,10 @@
 		48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */; };
 		48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */; };
 		48C248152088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */; };
+		48C3DF6520E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3DF6420E10DC300359288 /* TypedKVO+propagateChanges.swift */; };
+		48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3DF6420E10DC300359288 /* TypedKVO+propagateChanges.swift */; };
+		48C3DF6820E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3DF6720E10E2400359288 /* TypedKVO+propagateChangesTests.swift */; };
+		48C3DF6920E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3DF6720E10E2400359288 /* TypedKVO+propagateChangesTests.swift */; };
 		48DA8193206A4E9C009D1E6C /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8192206A4E9C009D1E6C /* KVOTests.swift */; };
 		48DA8194206A4E9C009D1E6C /* KVOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8192206A4E9C009D1E6C /* KVOTests.swift */; };
 		48DA8198206A50DB009D1E6C /* NSException+ToSwiftError.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,6 +168,8 @@
 		489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLoggerTests.swift; sourceTree = "<group>"; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
 		48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+CodableTests.swift"; sourceTree = "<group>"; };
+		48C3DF6420E10DC300359288 /* TypedKVO+propagateChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedKVO+propagateChanges.swift"; sourceTree = "<group>"; };
+		48C3DF6720E10E2400359288 /* TypedKVO+propagateChangesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedKVO+propagateChangesTests.swift"; sourceTree = "<group>"; };
 		48DA8192206A4E9C009D1E6C /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
 		48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSException+ToSwiftError.h"; sourceTree = "<group>"; };
 		48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSException+ToSwiftError.m"; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 			children = (
 				487A39C920690635007BEC66 /* KVO.swift */,
 				487A39CC2069174E007BEC66 /* TypedKVO.swift */,
+				48C3DF6420E10DC300359288 /* TypedKVO+propagateChanges.swift */,
 			);
 			path = KVO;
 			sourceTree = "<group>";
@@ -382,6 +389,7 @@
 			children = (
 				48DA8192206A4E9C009D1E6C /* KVOTests.swift */,
 				48DF72F420697E1E00D224AA /* TypedKVOTests.swift */,
+				48C3DF6720E10E2400359288 /* TypedKVO+propagateChangesTests.swift */,
 				48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */,
 			);
 			path = KVO;
@@ -661,6 +669,7 @@
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
+				48C3DF6520E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
@@ -707,6 +716,7 @@
 				481BE6D62098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 				48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
+				48C3DF6820E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */,
 				48DA81D3206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,6 +748,7 @@
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
+				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
@@ -768,6 +779,7 @@
 				481BE6D72098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 				48C248152088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
+				48C3DF6920E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */,
 				48DA81D4206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
