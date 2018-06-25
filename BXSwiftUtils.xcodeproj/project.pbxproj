@@ -96,8 +96,8 @@
 		D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */; };
 		D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */; };
 		D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */; };
-		D0323503205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */; };
-		D0323504205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */; };
+		D0323503205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */; };
+		D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */; };
 		D0323507205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */; };
 		D0323508205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */; };
 		D032350D205C362A003D6CCB /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032350C205C362A003D6CCB /* Date+Components.swift */; };
@@ -185,7 +185,7 @@
 		D03234ED205BFC9F003D6CCB /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Accessors.swift"; sourceTree = "<group>"; };
 		D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operators.swift"; sourceTree = "<group>"; };
-		D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTLTexture+FMExtensions.swift"; sourceTree = "<group>"; };
+		D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTLTexture+Extensions.swift"; sourceTree = "<group>"; };
 		D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		D032350C205C362A003D6CCB /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Throttle.swift"; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 		D0323505205C2C3E003D6CCB /* Metal */ = {
 			isa = PBXGroup;
 			children = (
-				D0323502205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift */,
+				D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */,
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
 			);
 			path = Metal;
@@ -664,7 +664,7 @@
 				4826E57E208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				481BE6D32098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				48C248102088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
-				D0323503205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */,
+				D0323503205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
@@ -744,7 +744,7 @@
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
-				D0323504205C2C3B003D6CCB /* MTLTexture+FMExtensions.swift in Sources */,
+				D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,

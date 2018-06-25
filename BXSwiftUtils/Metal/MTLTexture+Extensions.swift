@@ -1,6 +1,6 @@
 //**********************************************************************************************************************
 //
-//  MTLTexture+FMExtensions.swift
+//  MTLTexture+Extensions.swift
 //	Adds convenience methods
 //  Copyright ©2017 Peter Baumgartner. All rights reserved.
 //
