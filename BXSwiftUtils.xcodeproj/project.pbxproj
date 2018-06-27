@@ -19,6 +19,8 @@
 		484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D0652205927EC003C6CA3 /* Array+AllEqual.swift */; };
 		484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
 		484D065720592898003C6CA3 /* Array+AllEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D065520592898003C6CA3 /* Array+AllEqualTests.swift */; };
+		484FC80020E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484FC7FF20E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift */; };
+		484FC80320E3845200AA6E3E /* NSMenu+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484FC80220E3845200AA6E3E /* NSMenu+Concatenation.swift */; };
 		4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
 		4853E38B2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
 		4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */; };
@@ -144,6 +146,8 @@
 		484133732052D0C500DDB1E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		484D0652205927EC003C6CA3 /* Array+AllEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqual.swift"; sourceTree = "<group>"; };
 		484D065520592898003C6CA3 /* Array+AllEqualTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllEqualTests.swift"; sourceTree = "<group>"; };
+		484FC7FF20E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+ConvenienceInit.swift"; sourceTree = "<group>"; };
+		484FC80220E3845200AA6E3E /* NSMenu+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Concatenation.swift"; sourceTree = "<group>"; };
 		4853E3892056BDE400938B82 /* SynchronizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedTests.swift; sourceTree = "<group>"; };
 		4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXReadWriteLock.swift; sourceTree = "<group>"; };
 		4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXReadWriteLockTests.swift; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 			isa = PBXGroup;
 			children = (
 				48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */,
+				484FC7FF20E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift */,
+				484FC80220E3845200AA6E3E /* NSMenu+Concatenation.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4826E57E208F533400A5BA9B /* Array+Decodable.swift in Sources */,
+				484FC80320E3845200AA6E3E /* NSMenu+Concatenation.swift in Sources */,
 				481BE6D32098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				48C248102088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323503205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
@@ -677,6 +684,7 @@
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
+				484FC80020E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift in Sources */,
 				48C3DF6520E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */,
