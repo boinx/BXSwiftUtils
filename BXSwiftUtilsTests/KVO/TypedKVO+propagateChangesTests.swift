@@ -15,6 +15,15 @@ class TypedKVO_PropagateChangesTests: XCTestCase
     @objc dynamic private var sourceProperty: String = "source"
     @objc dynamic private var destinationProperty: String = "destination"
     
+    private var propagation: Any?
+    private var observation: Any?
+    
+    override func tearDown() {
+        super.tearDown()
+        propagation = nil
+        observation = nil
+    }
+    
     /*
      Asserts that propagation works.
      */
@@ -22,8 +31,8 @@ class TypedKVO_PropagateChangesTests: XCTestCase
     {
         var count = 0
 
-        let propagation = TypedKVO.propagateChanges(from: self, \.sourceProperty, to: self, \.destinationProperty)
-        let observation = TypedKVO(self, \.destinationProperty, options: []) { (target, change) in
+        propagation = TypedKVO.propagateChanges(from: self, \.sourceProperty, to: self, \.destinationProperty)
+        observation = TypedKVO(self, \.destinationProperty, options: []) { (target, change) in
             count += 1
         }
         
@@ -40,8 +49,8 @@ class TypedKVO_PropagateChangesTests: XCTestCase
         let expectation = XCTestExpectation(description: "async propagation")
         var count = 0
 
-        let propagation = TypedKVO.propagateChanges(from: self, \.sourceProperty, to: self, \.destinationProperty, asyncOn: DispatchQueue.main)
-        let observation = TypedKVO(self, \.destinationProperty, options: []) { (target, change) in
+        propagation = TypedKVO.propagateChanges(from: self, \.sourceProperty, to: self, \.destinationProperty, asyncOn: DispatchQueue.main)
+        observation = TypedKVO(self, \.destinationProperty, options: []) { (target, change) in
             count += 1
             expectation.fulfill()
         }
