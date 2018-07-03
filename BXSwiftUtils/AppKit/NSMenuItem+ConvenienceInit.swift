@@ -17,10 +17,12 @@ extension NSMenuItem
      - parameter title: The item's displayable title.
      - parameter value: The value that is represented by this item.
      */
-    public convenience init(title: String, value: Any)
+    public convenience init(title: String, value: Any, indentationLevel: Int = 0, enabled: Bool = true)
     {
         self.init(title: title, action: nil, keyEquivalent: "")
         self.representedObject = value
+        self.indentationLevel = indentationLevel
+        self.isEnabled = enabled
     }
     
     /**
