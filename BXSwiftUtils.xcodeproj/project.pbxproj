@@ -109,6 +109,8 @@
 		D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
 		D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
+		D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
+		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +192,7 @@
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
 		D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
+		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,7 +274,7 @@
 				D03234EC205BF93E003D6CCB /* Files */,
 				D03234F0205BFCA4003D6CCB /* Strings */,
 				D032350F205C362F003D6CCB /* Date & Time */,
-				D0323501205C2923003D6CCB /* Geometry */,
+				D0323501205C2923003D6CCB /* Math & Geometry */,
 				4875F2242051E9B7009985EC /* Collections */,
 				D0323505205C2C3E003D6CCB /* Metal */,
 				48E449CE205BBE55008CF3D5 /* AppKit */,
@@ -412,13 +415,14 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
-		D0323501205C2923003D6CCB /* Geometry */ = {
+		D0323501205C2923003D6CCB /* Math & Geometry */ = {
 			isa = PBXGroup;
 			children = (
+				D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */,
 				D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */,
 				D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */,
 			);
-			path = Geometry;
+			path = "Math & Geometry";
 			sourceTree = "<group>";
 		};
 		D0323505205C2C3E003D6CCB /* Metal */ = {
@@ -681,6 +685,7 @@
 				D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */,
 				D032350D205C362A003D6CCB /* Date+Components.swift in Sources */,
 				484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */,
+				D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
@@ -730,6 +735,7 @@
 				D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
 				48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
+				D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
