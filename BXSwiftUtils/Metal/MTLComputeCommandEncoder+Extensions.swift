@@ -22,7 +22,7 @@ public extension MTLComputeCommandEncoder
 	/// Helper method that dispatches compute threads to the GPU. Depending on the OS version and the capabilties
 	/// of the hardware, the optimum API calls are chosen.
 	
-	public func dispatchThreads(for pipeline:MTLComputePipelineState,_ texture:MTLTexture)
+	public func dispatchThreads(for pipeline: MTLComputePipelineState,_ texture: MTLTexture)
 	{
 		// If OS and hardware supports it, then call the more modern (and more efficient) dispatchThreads() API
 		
@@ -30,18 +30,18 @@ public extension MTLComputeCommandEncoder
 		{
 			if self.device.supportsFeatureSet(.iOS_GPUFamily4_v1)
 			{
-				let threadCount = self.threadCount(for:texture)
-				let groupSize = self.threadGroupSize(for:pipeline)
-				self.dispatchThreads(threadCount,threadsPerThreadgroup:groupSize)
+				let threadCount = self.threadCount(for: texture)
+				let groupSize = self.threadGroupSize(for: pipeline)
+				self.dispatchThreads(threadCount, threadsPerThreadgroup: groupSize)
 			}
 		}
 
 		// As fallback use the older API - which requires defensive code in the compute shader kernels to avoid
 		// accessing pixel outside the textures.
 		
-		let groupSize = MTLSize(width:16,height:16,depth:1)
-		let groupCount = self.threadGroupCount(for:texture,groupSize)
-		self.dispatchThreadgroups(groupCount,threadsPerThreadgroup:groupSize)
+		let groupSize = MTLSize(width:16, height:16, depth:1)
+		let groupCount = self.threadGroupCount(for: texture,groupSize)
+		self.dispatchThreadgroups(groupCount, threadsPerThreadgroup: groupSize)
 
 	}
 
@@ -51,7 +51,7 @@ public extension MTLComputeCommandEncoder
 
 	// The total number of threads matches the number of pixels in our image
 	
-	internal func threadCount(for inputTexture:MTLTexture) -> MTLSize
+	internal func threadCount(for inputTexture: MTLTexture) -> MTLSize
 	{
 		let w = inputTexture.width
 		let h = inputTexture.height
@@ -60,7 +60,7 @@ public extension MTLComputeCommandEncoder
 	
 	// The image is divided into thread groups according to hardware capabilities
 	
-	internal func threadGroupSize(for pipeline:MTLComputePipelineState) -> MTLSize
+	internal func threadGroupSize(for pipeline: MTLComputePipelineState) -> MTLSize
 	{
 		let w = pipeline.threadExecutionWidth					// number of threads that will always be executed in parallel
 		let h = pipeline.maxTotalThreadsPerThreadgroup / w
@@ -69,7 +69,7 @@ public extension MTLComputeCommandEncoder
 	
 	// Calculates the number of thread groups for a given texture and group size
 	
-	internal func threadGroupCount(for texture:MTLTexture,_ groupSize:MTLSize) -> MTLSize
+	internal func threadGroupCount(for texture: MTLTexture,_ groupSize: MTLSize) -> MTLSize
 	{
 		return MTLSize(
 			width: (texture.width + groupSize.width - 1) / groupSize.width,
