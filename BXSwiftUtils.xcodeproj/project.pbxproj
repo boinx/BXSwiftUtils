@@ -123,6 +123,8 @@
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
+		D0EA52DA20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
+		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +214,7 @@
 		D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
+		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */,
+				D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */,
 				D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */,
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
 			);
@@ -690,6 +694,7 @@
 				D0323503205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D03F13B820F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
+				D0EA52DA20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
@@ -763,6 +768,7 @@
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				481BE6D42098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				487A39CE2069174E007BEC66 /* TypedKVO.swift in Sources */,
+				D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */,
 				487107F020A9B8E000120024 /* BXAtomic.swift in Sources */,
 				D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */,
