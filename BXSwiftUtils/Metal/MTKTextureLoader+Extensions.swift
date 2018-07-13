@@ -39,7 +39,7 @@ extension MTKTextureLoader
 
 	/// Loads a texture from an image
 	
-	public static func newTexture(image:CGImage, device:MTLDevice, name:String? = nil, allowSRGB:Bool = false, textureUsage:MTLTextureUsage = .shaderRead, storageMode:MTLStorageMode = .private, mipmap:Bool = false) throws -> MTLTexture
+	public static func newTexture(image:CGImage, device:MTLDevice, allowSRGB:Bool = false, textureUsage:MTLTextureUsage = .shaderRead, storageMode:MTLStorageMode = .private, mipmap:Bool = false) throws -> MTLTexture
 	{
 		let options:[MTKTextureLoader.Option:NSObject] = self.createOptions(
 			allowSRGB:allowSRGB,
@@ -49,7 +49,6 @@ extension MTKTextureLoader
 
 		let loader = MTKTextureLoader(device:device)
 		let texture = try loader.newTexture(cgImage:image,options:options)
-		texture.label = name
 		return texture
 	}
 
