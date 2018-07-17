@@ -26,16 +26,28 @@ public extension MTLComputeCommandEncoder
 	{
 		// If OS and hardware supports it, then call the more modern (and more efficient) dispatchThreads() API
 		
+		#if os(macOS)
+
 		if #available(macOS 10.13,*)
 		{
-			if self.device.supportsFeatureSet(.iOS_GPUFamily4_v1)
-			{
-				let threadCount = self.threadCount(for: texture)
-				let groupSize = self.threadGroupSize(for: pipeline)
-				self.dispatchThreads(threadCount, threadsPerThreadgroup: groupSize)
-			}
+			let threadCount = self.threadCount(for: texture)
+			let groupSize = self.threadGroupSize(for: pipeline)
+			self.dispatchThreads(threadCount, threadsPerThreadgroup: groupSize)
+			return
 		}
 
+		#elseif os(iOS)
+
+		if self.device.supportsFeatureSet(.iOS_GPUFamily4_v1)
+		{
+			let threadCount = self.threadCount(for: texture)
+			let groupSize = self.threadGroupSize(for: pipeline)
+			self.dispatchThreads(threadCount, threadsPerThreadgroup: groupSize)
+			return
+		}
+		
+		#endif
+		
 		// As fallback use the older API - which requires defensive code in the compute shader kernels to avoid
 		// accessing pixel outside the textures.
 		
