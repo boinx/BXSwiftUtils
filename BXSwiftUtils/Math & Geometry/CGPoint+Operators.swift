@@ -86,6 +86,36 @@ extension CGPoint
 	{
 		return self / self.length
 	}
+	
+	/// Returns the mid point between to points
+	
+	public static func midPoint(between p1:CGPoint,and p2:CGPoint) -> CGPoint
+	{
+		return self.interpolate( between:p1, and:p2, factor:0.5 )
+	}
+
+	/// Returns the mid point between to points
+	
+	public static func interpolate(between p1:CGPoint,and p2:CGPoint,factor:CGFloat) -> CGPoint
+	{
+		return CGPoint(
+			x: (1.0-factor) * p1.x + factor * p2.x,
+			y: (1.0-factor) * p1.y + factor * p2.y )
+	}
+
+	/// Returns a vector from a point to a point
+	
+	public static func vector(from:CGPoint,to:CGPoint) -> CGPoint
+	{
+		return CGPoint( x:to.x-from.x, y:to.y-from.y )
+	}
+
+	/// Returns the normal vector (perpendicular) to the vector stored in the receiver
+	
+	public var normal: CGPoint
+	{
+		return CGPoint( x: -self.y, y: self.x ).normalized
+	}
 }
 
 
