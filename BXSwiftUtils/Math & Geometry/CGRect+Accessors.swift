@@ -25,6 +25,34 @@ public extension CGRect
 		return CGPoint( x:self.midX, y:self.midY )
 	}
 
+	/// Returns the left point of a CGRect
+	
+	public var left: CGPoint
+	{
+		return CGPoint( x:self.minX, y:self.midY )
+	}
+
+	/// Returns the bottom point of a CGRect
+	
+	public var right: CGPoint
+	{
+		return CGPoint( x:self.maxX, y:self.midY )
+	}
+
+	/// Returns the top point of a CGRect
+	
+	public var top: CGPoint
+	{
+		return CGPoint( x:self.midX, y:self.maxY )
+	}
+
+	/// Returns the bottom point of a CGRect
+	
+	public var bottom: CGPoint
+	{
+		return CGPoint( x:self.midX, y:self.minY )
+	}
+
 	/// Returns the top left point of a CGRect
 	
 	public var topLeft: CGPoint
