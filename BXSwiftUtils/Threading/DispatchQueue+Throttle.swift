@@ -142,6 +142,64 @@ extension DispatchQueue
 //----------------------------------------------------------------------------------------------------------------------
 
 
+     /**
+     Throttles the execution of the specified block to match the performance capabilities of the current machine,
+     i.e. it doesn't schedule more blocks that can be handled at a given time. It will only schedule another block
+     after the previous one has finished executing. However a final execution after the specified timeout is always
+     guarranteed.
+	
+     ## Example
+     ```
+     serialQueue.dynamicThrottle("performExpensiveWork",with:semaphore)
+     {
+         performExpensiveWork()
+     }
+     ```
+
+     - parameter identifier: An identifier string that is used to group block invocations together.
+	 - parameter semaphore: A DispatchSemaphore that controls that the next block will only be schedules after the previous one has finished executing. Must be initialized to value 1.
+     - parameter delay: The delay to wait before the next block is allowed to be scheduled for execution.
+     - parameter finalExecutionTimeout: The timeout to wait before for the final execution.
+     - parameter block: The closure (block) to be executed.
+    */
+
+   public func dynamicThrottle(_ identifier: String, with semaphore: DispatchSemaphore, delay: CFTimeInterval = 0.01, finalExecutionTimeout: CFTimeInterval = 0.5, block: @escaping () -> Void)
+    {
+    	// If the semaphore is currently free, then schedule another execution of the block. After the block
+    	// has finished executing, wait a little bit before signaling the semaphore again. This helps to
+    	// reduce memory pressure.
+		
+		if semaphore.wait(timeout:.now()) == .success
+		{
+			DispatchQueue.cancelCoalescedWork(withIdentifier: identifier)	// Cancel previous final execution
+			
+			self.async														// Instead schedule "immediate" execution
+			{
+				block()
+				
+				DispatchQueue.main.asyncAfter(deadline:.now() + delay)		// Reducing memory pressure doesn't
+				{															// work reliably without this delay
+					semaphore.signal()
+				}
+			}
+		}
+		
+		// If the semaphore is not free, it means that we swallowed the above request. In this case schedule a
+		// final (coalesced) execution with a rather long timeout, so that a final execution will always happen.
+		
+		else
+		{
+			self.coalesce(identifier, interval: finalExecutionTimeout)
+			{
+				block()
+			}
+		}
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
     // MARK: -
     
     /// Cancels any coalesced work that was scheduled with the coalesce(_:interval:block:) method.
