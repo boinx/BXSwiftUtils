@@ -144,31 +144,50 @@ extension DispatchQueue
 
      /**
      Throttles the execution of the specified block to match the performance capabilities of the current machine,
-     i.e. it doesn't schedule more blocks that can be handled at a given time. It will only schedule another block
-     after the previous one has finished executing. However a final execution after the specified timeout is always
-     guarranteed.
+     i.e. it doesn't schedule more blocks that can be handled at a given time.
+     
+     It will only schedule another block after the previous one has finished executing.
+     However, a final execution after the specified timeout is always guarranteed.
+     This makes `dynamicThrottle` the best choice for performing UI work based on events that might occur more
+     frequently than the machine is capable of handling.
 	
      ## Example
-     ```
-     serialQueue.dynamicThrottle("performExpensiveWork",with:semaphore)
-     {
-         performExpensiveWork()
-     }
-     ```
+     
+         let semaphore = DispatchSemaphore(value: 1)
+         serialQueue.dynamicThrottle(with:semaphore)
+         {
+             performExpensiveWork()
+         }
 
-     - parameter identifier: An identifier string that is used to group block invocations together.
-	 - parameter semaphore: A DispatchSemaphore that controls that the next block will only be schedules after the previous one has finished executing. Must be initialized to value 1.
+     
+     The following diagram depicts the scheduling and execution of tasks 1-4 using `dynamicThrottle`. Only tasks 1 and 4
+     are being executed, while tasks 2 and 3 were cancelled because a new task was spawned and delayed.
+     
+         task1 -> |>- - - - - - - - - ->|
+         task2 ->    |.(*)...X
+         task3 ->            |.(*)...X
+         task4 ->                    |.(*)......|>- - - - - - - - - ->|
+     
+         |       = task is scheduled
+         |>      = task is scheduled & starts execution
+         ->|     = task finishes execution
+         .(*)... = delayed by `finalExecutionTimeout`
+         X       = delayed task is cancelled by following task
+     
+	 - parameter semaphore: A DispatchSemaphore that controls that the next block will only be schedules after the previous one has finished executing.
+                            **Important**: Must be initialized to value 1.
      - parameter delay: The delay to wait before the next block is allowed to be scheduled for execution.
      - parameter finalExecutionTimeout: The timeout to wait before for the final execution.
      - parameter block: The closure (block) to be executed.
     */
 
-   public func dynamicThrottle(_ identifier: String, with semaphore: DispatchSemaphore, delay: CFTimeInterval = 0.01, finalExecutionTimeout: CFTimeInterval = 0.5, block: @escaping () -> Void)
+   public func dynamicThrottle(with semaphore: DispatchSemaphore, delay: CFTimeInterval = 0.01, finalExecutionTimeout: CFTimeInterval = 0.5, block: @escaping () -> Void)
     {
     	// If the semaphore is currently free, then schedule another execution of the block. After the block
     	// has finished executing, wait a little bit before signaling the semaphore again. This helps to
     	// reduce memory pressure.
-		
+		let identifier = String(semaphore.hash)
+
 		if semaphore.wait(timeout:.now()) == .success
 		{
 			DispatchQueue.cancelCoalescedWork(withIdentifier: identifier)	// Cancel previous final execution
