@@ -82,7 +82,7 @@ extension String
      Same as `uniqueStringByIncrementing(rejectIf:appendAnnotation:separator)`, except that the string can end with a
      single file extension.
      */
-    public func uniqueFilenameByIncrementing(rejectIf rejector: (String) -> Bool, appendAnnotation: String? = nil, separator: String = " ") -> String
+    public func uniqueFilenameByIncrementing(rejectIf rejector: (_ suggestion: String) -> Bool, appendAnnotation: String? = nil, separator: String = " ") -> String
     {
         let nsString = self as NSString
         
@@ -115,5 +115,18 @@ extension String
         }
         
         return nil
+    }
+}
+
+extension NSString
+{
+    @objc public func uniqueStringByIncrementing(rejectIf rejector: (_ suggestion: NSString) -> Bool, appendAnnotation: NSString? = nil, separator: NSString = " ") -> NSString
+    {
+        return (self as String).uniqueStringByIncrementing(rejectIf: rejector, appendAnnotation: appendAnnotation, separator: separator) as NSString
+    }
+    
+    @objc public func uniqueFilenameByIncrementing(rejectIf rejector: (_ suggestion: NSString) -> Bool, appendAnnotation: NSString? = nil, separator: NSString = " ") -> NSString
+    {
+        return (self as String).uniqueFilenameByIncrementing(rejectIf: rejector, appendAnnotation: appendAnnotation, separator: separator) as NSString
     }
 }
