@@ -60,6 +60,10 @@
 		489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43C205296A500849EF2 /* BXLogger.swift */; };
 		489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
 		489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43F205296F100849EF2 /* Synchronized.swift */; };
+		48AD6C9D2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
+		48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
+		48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */; };
+		48AD6CA12147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */; };
 		48C248102088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */; };
 		48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */; };
 		48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */; };
@@ -184,6 +188,8 @@
 		487E641D20A0A659007C4A8A /* Collection+Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Flatten.swift"; sourceTree = "<group>"; };
 		487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Flatten.swift"; sourceTree = "<group>"; };
 		489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLoggerTests.swift; sourceTree = "<group>"; };
+		48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UniqueByIncrementing.swift"; sourceTree = "<group>"; };
+		48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+UniqueByIncrementingTests.swift"; path = "BXSwiftUtilsTests/Strings/String+UniqueByIncrementingTests.swift"; sourceTree = SOURCE_ROOT; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
 		48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+CodableTests.swift"; sourceTree = "<group>"; };
 		48C3DF6420E10DC300359288 /* TypedKVO+propagateChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedKVO+propagateChanges.swift"; sourceTree = "<group>"; };
@@ -383,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */,
+				48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -445,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				D03234ED205BFC9F003D6CCB /* String+Localized.swift */,
+				48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */,
 				48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */,
 			);
 			path = Strings;
@@ -710,6 +718,7 @@
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
 				484FC80020E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift in Sources */,
 				48C3DF6520E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
+				48AD6C9D2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */,
 				487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
@@ -756,6 +765,7 @@
 				48DA8193206A4E9C009D1E6C /* KVOTests.swift in Sources */,
 				48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */,
+				48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
 				481BE6D62098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 				48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
@@ -792,6 +802,7 @@
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
+				48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
@@ -826,6 +837,7 @@
 				48DA8194206A4E9C009D1E6C /* KVOTests.swift in Sources */,
 				48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F27A20529A17009985EC /* Array+ConcatenationTests.swift in Sources */,
+				48AD6CA12147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
 				481BE6D72098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 				48C248152088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
