@@ -60,6 +60,10 @@
 		489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43C205296A500849EF2 /* BXLogger.swift */; };
 		489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
 		489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43F205296F100849EF2 /* Synchronized.swift */; };
+		48A971DA2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */; };
+		48A971DB2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */; };
+		48A971DD2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */; };
+		48A971DE2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */; };
 		48AD6C9D2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
 		48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
 		48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */; };
@@ -199,6 +203,8 @@
 		487E641D20A0A659007C4A8A /* Collection+Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Flatten.swift"; sourceTree = "<group>"; };
 		487E642020A0A6C0007C4A8A /* Collection+Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Flatten.swift"; sourceTree = "<group>"; };
 		489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLoggerTests.swift; sourceTree = "<group>"; };
+		48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equatable+IsContainedIn.swift"; sourceTree = "<group>"; };
+		48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equatable+IsContainedInTests.swift"; sourceTree = "<group>"; };
 		48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UniqueByIncrementing.swift"; sourceTree = "<group>"; };
 		48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+UniqueByIncrementingTests.swift"; path = "BXSwiftUtilsTests/Strings/String+UniqueByIncrementingTests.swift"; sourceTree = SOURCE_ROOT; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
@@ -363,6 +369,7 @@
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
 				481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */,
 				48FF9BC620E116B100024C10 /* Weak.swift */,
+				48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -379,6 +386,7 @@
 				48DE068C20876E52000246CD /* Dictionary+EnumKeysTests.swift */,
 				481BE6D52098368E00F12EDF /* Sequence+CompactMap.swift */,
 				48FF9BC920E1174C00024C10 /* Weak.swift */,
+				48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -738,6 +746,7 @@
 				D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D03F13B820F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				D0EA52DA20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
+				48A971DA2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */,
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				D0859FD12158F7DD00F624C7 /* URL+Contents.swift in Sources */,
@@ -788,6 +797,7 @@
 				4826E581208F534000A5BA9B /* Array+DecodableTests.swift in Sources */,
 				48FF9BCA20E1174C00024C10 /* Weak.swift in Sources */,
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
+				48A971DD2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */,
 				48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				487E642120A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
@@ -815,6 +825,7 @@
 				D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				48FF9BC820E116B100024C10 /* Weak.swift in Sources */,
+				48A971DB2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				481BE6D42098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				D0149008213D566500A38870 /* KVO+propagateChanges.swift in Sources */,
@@ -865,6 +876,7 @@
 				4826E582208F534000A5BA9B /* Array+DecodableTests.swift in Sources */,
 				48FF9BCB20E1174C00024C10 /* Weak.swift in Sources */,
 				489E56AA2052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
+				48A971DE2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */,
 				48DA81A7206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				487E642220A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
