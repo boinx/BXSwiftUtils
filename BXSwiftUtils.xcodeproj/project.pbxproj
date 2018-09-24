@@ -127,6 +127,17 @@
 		D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
 		D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
+		D0859FD12158F7DD00F624C7 /* URL+Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD02158F7DD00F624C7 /* URL+Contents.swift */; };
+		D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD02158F7DD00F624C7 /* URL+Contents.swift */; };
+		D0859FD42158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */; };
+		D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */; };
+		D0859FD72158F97200F624C7 /* NSEvent+ModifierKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD62158F97200F624C7 /* NSEvent+ModifierKeys.swift */; };
+		D0859FD92158FAF900F624C7 /* AVAudioPlayer+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD82158FAF900F624C7 /* AVAudioPlayer+Play.swift */; };
+		D0859FDA2158FAF900F624C7 /* AVAudioPlayer+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD82158FAF900F624C7 /* AVAudioPlayer+Play.swift */; };
+		D0859FDC2158FBF100F624C7 /* CGSize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDB2158FBF100F624C7 /* CGSize+String.swift */; };
+		D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDB2158FBF100F624C7 /* CGSize+String.swift */; };
+		D0859FDF2158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */; };
+		D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */; };
 		D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0DA3332213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
@@ -224,6 +235,12 @@
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
 		D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
+		D0859FD02158F7DD00F624C7 /* URL+Contents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Contents.swift"; sourceTree = "<group>"; };
+		D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributes.swift"; sourceTree = "<group>"; };
+		D0859FD62158F97200F624C7 /* NSEvent+ModifierKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSEvent+ModifierKeys.swift"; sourceTree = "<group>"; };
+		D0859FD82158FAF900F624C7 /* AVAudioPlayer+Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Play.swift"; sourceTree = "<group>"; };
+		D0859FDB2158FBF100F624C7 /* CGSize+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+String.swift"; sourceTree = "<group>"; };
+		D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+FMExtensions.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
@@ -415,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				487A39CF20691E05007BEC66 /* NSArrayController+UIKit.swift */,
+				D0859FD82158FAF900F624C7 /* AVAudioPlayer+Play.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -433,9 +451,11 @@
 		48E449CE205BBE55008CF3D5 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
+				D0859FD62158F97200F624C7 /* NSEvent+ModifierKeys.swift */,
 				48E449D0205BBE81008CF3D5 /* BXMenuItem.swift */,
 				484FC7FF20E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift */,
 				484FC80220E3845200AA6E3E /* NSMenu+Concatenation.swift */,
+				D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -444,6 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				D03234E9205BF938003D6CCB /* URL+Info.swift */,
+				D0859FD02158F7DD00F624C7 /* URL+Contents.swift */,
+				D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -464,6 +486,7 @@
 				D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */,
 				D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */,
 				D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */,
+				D0859FDB2158FBF100F624C7 /* CGSize+String.swift */,
 			);
 			path = "Math & Geometry";
 			sourceTree = "<group>";
@@ -704,6 +727,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DA3332213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
+				D0859FD42158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
+				D0859FD92158FAF900F624C7 /* AVAudioPlayer+Play.swift in Sources */,
 				4826E57E208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				484FC80320E3845200AA6E3E /* NSMenu+Concatenation.swift in Sources */,
 				481BE6D32098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
@@ -715,11 +740,14 @@
 				D0EA52DA20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
+				D0859FD12158F7DD00F624C7 /* URL+Contents.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
+				D0859FDC2158FBF100F624C7 /* CGSize+String.swift in Sources */,
 				484FC80020E382A900AA6E3E /* NSMenuItem+ConvenienceInit.swift in Sources */,
 				48C3DF6520E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				48AD6C9D2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */,
 				487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
+				D0859FDF2158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
 				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
@@ -741,6 +769,7 @@
 				D032350D205C362A003D6CCB /* Date+Components.swift in Sources */,
 				484D0653205927EC003C6CA3 /* Array+AllEqual.swift in Sources */,
 				D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */,
+				D0859FD72158F97200F624C7 /* NSEvent+ModifierKeys.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
@@ -783,6 +812,7 @@
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
+				D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				48FF9BC820E116B100024C10 /* Weak.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
@@ -800,14 +830,18 @@
 				D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
+				D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
+				D0859FDA2158FAF900F624C7 /* AVAudioPlayer+Play.swift in Sources */,
 				487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */,
+				D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
+				D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
