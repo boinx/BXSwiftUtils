@@ -64,6 +64,10 @@
 		48A971DB2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */; };
 		48A971DD2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */; };
 		48A971DE2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */; };
+		48A971E12159024100215F9F /* Enum+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971E02159024100215F9F /* Enum+Comparable.swift */; };
+		48A971E22159024100215F9F /* Enum+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971E02159024100215F9F /* Enum+Comparable.swift */; };
+		48A971E52159122800215F9F /* Enum+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971E42159122800215F9F /* Enum+Comparable.swift */; };
+		48A971E62159122800215F9F /* Enum+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A971E42159122800215F9F /* Enum+Comparable.swift */; };
 		48AD6C9D2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
 		48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
 		48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */; };
@@ -205,6 +209,8 @@
 		489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLoggerTests.swift; sourceTree = "<group>"; };
 		48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equatable+IsContainedIn.swift"; sourceTree = "<group>"; };
 		48A971DC2158F78400215F9F /* Equatable+IsContainedInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equatable+IsContainedInTests.swift"; sourceTree = "<group>"; };
+		48A971E02159024100215F9F /* Enum+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Comparable.swift"; sourceTree = "<group>"; };
+		48A971E42159122800215F9F /* Enum+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Comparable.swift"; sourceTree = "<group>"; };
 		48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UniqueByIncrementing.swift"; sourceTree = "<group>"; };
 		48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+UniqueByIncrementingTests.swift"; path = "BXSwiftUtilsTests/Strings/String+UniqueByIncrementingTests.swift"; sourceTree = SOURCE_ROOT; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
@@ -323,6 +329,7 @@
 		4875F2092051E70E009985EC /* BXSwiftUtils */ = {
 			isa = PBXGroup;
 			children = (
+				48A971DF2159022D00215F9F /* Enums */,
 				D056D43A2052968A00849EF2 /* Logging */,
 				D056D43220527B7500849EF2 /* Threading */,
 				48DA8195206A509A009D1E6C /* Exceptions */,
@@ -345,6 +352,7 @@
 		4875F2142051E70E009985EC /* BXSwiftUtilsTests */ = {
 			isa = PBXGroup;
 			children = (
+				48A971E32159121000215F9F /* Enums */,
 				48DA819C206A5239009D1E6C /* Exceptions */,
 				48DF72EE20697DCE00D224AA /* KVO */,
 				48C248122088CF1C00DC9317 /* Strings */,
@@ -408,6 +416,22 @@
 				489E56A82052CAD00071BBF1 /* BXLoggerTests.swift */,
 			);
 			path = Logging;
+			sourceTree = "<group>";
+		};
+		48A971DF2159022D00215F9F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				48A971E02159024100215F9F /* Enum+Comparable.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		48A971E32159121000215F9F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				48A971E42159122800215F9F /* Enum+Comparable.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		48C248122088CF1C00DC9317 /* Strings */ = {
@@ -772,6 +796,7 @@
 				D03234FD205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				485E0CF020B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
 				D0323507205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */,
+				48A971E12159024100215F9F /* Enum+Comparable.swift in Sources */,
 				487A39D220693A25007BEC66 /* KVO.swift in Sources */,
 				D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */,
 				48FF9BC720E116B100024C10 /* Weak.swift in Sources */,
@@ -807,6 +832,7 @@
 				48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
 				481BE6D62098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
+				48A971E52159122800215F9F /* Enum+Comparable.swift in Sources */,
 				48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
 				48C3DF6820E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */,
 				48DA81D3206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */,
@@ -833,6 +859,7 @@
 				D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */,
 				487107F020A9B8E000120024 /* BXAtomic.swift in Sources */,
+				48A971E22159024100215F9F /* Enum+Comparable.swift in Sources */,
 				D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */,
 				D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
@@ -886,6 +913,7 @@
 				48AD6CA12147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
 				481BE6D72098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				4853E3912056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
+				48A971E62159122800215F9F /* Enum+Comparable.swift in Sources */,
 				48C248152088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
 				48C3DF6920E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */,
 				48DA81D4206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */,
