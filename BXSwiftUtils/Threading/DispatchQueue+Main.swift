@@ -29,6 +29,7 @@ extension DispatchQueue
          }
     
      */
+	
     public func asyncIfNeeded(_ block: @escaping () -> Void)
     {
         assert(self === DispatchQueue.main, "\(#function) is only available for the main queue.")
@@ -40,6 +41,20 @@ extension DispatchQueue
         else
         {
             self.async(execute: block)
+        }
+    }
+
+    public func syncIfNeeded(_ block: @escaping () -> Void)
+    {
+        assert(self === DispatchQueue.main, "\(#function) is only available for the main queue.")
+		
+        if Thread.isMainThread
+        {
+            block()
+        }
+        else
+        {
+            self.sync(execute: block)
         }
     }
 }
