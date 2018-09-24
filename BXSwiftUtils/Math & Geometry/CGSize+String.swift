@@ -22,14 +22,22 @@ extension CGSize
 	
 	public var string:String
 	{
-		return NSStringFromCGSize(self)
+        #if os(iOS)
+		    return NSStringFromCGSize(self)
+        #else
+            return NSStringFromSize(self)
+        #endif
 	}
 
 	/// Creates a CGSize from a string
 	
 	public init(with string:String)
 	{
-		let tmp = CGSizeFromString(string)
+        #if os(iOS)
+		    let tmp = CGSizeFromString(string)
+        #else
+            let tmp = NSSizeFromString(string)
+        #endif
 		self.init(width:tmp.width,height:tmp.height)
 	}
 }
