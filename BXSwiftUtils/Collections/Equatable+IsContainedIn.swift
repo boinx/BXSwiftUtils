@@ -6,7 +6,7 @@
 //  Copyright © 2018 Boinx Software Ltd. & Imagine GbR. All rights reserved.
 //
 
-infix operator ~==
+infix operator ~== : ComparisonPrecedence
 
 public extension Equatable
 {

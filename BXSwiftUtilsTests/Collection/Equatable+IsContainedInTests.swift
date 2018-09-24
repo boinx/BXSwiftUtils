@@ -31,4 +31,9 @@ class Equatable_IsContainedInTests: XCTestCase
         XCTAssertFalse(State.waiting ~== [.running])
         XCTAssertFalse(State.waiting ~== [])
     }
+    
+    func testPrecedence()
+    {
+        XCTAssert(State.waiting ~== [.waiting] && State.waiting ~== [.waiting, .running] )
+    }
 }
