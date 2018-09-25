@@ -15,7 +15,7 @@ import CoreGraphics
 //----------------------------------------------------------------------------------------------------------------------
 
 
-@available(iOS 10.0,macOS 10.12, *)
+@available(iOS 10.0, macOS 10.12, *)
 
 
 extension MTKTextureLoader
@@ -59,18 +59,15 @@ extension MTKTextureLoader
 	{
 		var options:[MTKTextureLoader.Option:NSObject] = [:]
 
-		if #available(macOS 10.12,*)
-		{
-			options[MTKTextureLoader.Option.SRGB] = allowSRGB as NSNumber
-			options[MTKTextureLoader.Option.textureUsage] = textureUsage.rawValue as NSNumber
-			options[MTKTextureLoader.Option.textureStorageMode] = storageMode.rawValue as NSNumber
+        options[MTKTextureLoader.Option.SRGB] = allowSRGB as NSNumber
+        options[MTKTextureLoader.Option.textureUsage] = textureUsage.rawValue as NSNumber
+        options[MTKTextureLoader.Option.textureStorageMode] = storageMode.rawValue as NSNumber
 
-			if mipmap
-			{
-				options[MTKTextureLoader.Option.allocateMipmaps] = true as NSNumber
-				options[MTKTextureLoader.Option.generateMipmaps] = true as NSNumber
-			}
-		}
+        if mipmap
+        {
+            options[MTKTextureLoader.Option.allocateMipmaps] = true as NSNumber
+            options[MTKTextureLoader.Option.generateMipmaps] = true as NSNumber
+        }
 		
 		return options
 	}

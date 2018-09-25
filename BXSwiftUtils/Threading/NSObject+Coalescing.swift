@@ -31,7 +31,12 @@ public extension NSObject
 	public func performCoalesced(_ selector: Selector, argument: AnyObject?=nil, delay: TimeInterval=0.0)
 	{
 		NSObject.cancelPreviousPerformRequests(withTarget:self, selector:selector, object:argument)
-		self.perform(selector, with:argument, afterDelay:delay, inModes:[RunLoopMode.commonModes])
+        #if swift(>=4.2)
+        let modes = [RunLoop.Mode.common]
+        #else
+        let modes = [RunLoopMode.commonModes]
+        #endif
+		self.perform(selector, with:argument, afterDelay:delay, inModes:modes)
 	}
 
 
