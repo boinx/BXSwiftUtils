@@ -23,9 +23,9 @@ extension CGSize
 	public var string:String
 	{
         #if os(iOS)
-		    return NSStringFromCGSize(self)
+		return NSStringFromCGSize(self)
         #else
-            return NSStringFromSize(self)
+		return NSStringFromSize(self)
         #endif
 	}
 
@@ -34,10 +34,11 @@ extension CGSize
 	public init(with string:String)
 	{
         #if os(iOS)
-		    let tmp = CGSizeFromString(string)
+		let tmp = CGSizeFromString(string)
         #else
-            let tmp = NSSizeFromString(string)
+		let tmp = NSSizeFromString(string)
         #endif
+		
 		self.init(width:tmp.width,height:tmp.height)
 	}
 }
