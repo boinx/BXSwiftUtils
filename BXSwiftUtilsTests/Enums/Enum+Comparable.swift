@@ -16,11 +16,34 @@ fileprivate enum State: Int, ComparableEnum
     case finished
 }
 
-class Enum_Comparable: XCTestCase {
+#if swift(>=4.2)
 
-    func testExample() {
+fileprivate enum StringState: String, CaseIterable, ComparableEnum
+{
+    case waiting
+    case running
+    case finished
+}
+
+#endif
+
+class Enum_Comparable: XCTestCase
+{
+
+    func testIntEnum()
+    {
         XCTAssert(State.waiting < State.running)
         XCTAssertEqual([State.running, State.finished, State.waiting].max(), State.finished)
     }
+    
+    #if swift(>=4.2)
+    
+    func testStringEnum()
+    {
+        XCTAssert(StringState.waiting < StringState.running)
+        XCTAssertEqual([StringState.running, StringState.finished, StringState.waiting].max(), StringState.finished)
+    }
+    
+    #endif
     
 }
