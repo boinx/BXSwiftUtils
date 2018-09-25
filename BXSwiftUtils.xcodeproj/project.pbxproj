@@ -146,6 +146,8 @@
 		D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDB2158FBF100F624C7 /* CGSize+String.swift */; };
 		D0859FDF2158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */; };
 		D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */; };
+		D0891244215A762200403100 /* CGPoint+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891243215A762200403100 /* CGPoint+String.swift */; };
+		D0891245215A762200403100 /* CGPoint+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891243215A762200403100 /* CGPoint+String.swift */; };
 		D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0DA3332213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
@@ -253,6 +255,7 @@
 		D0859FD82158FAF900F624C7 /* AVAudioPlayer+Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Play.swift"; sourceTree = "<group>"; };
 		D0859FDB2158FBF100F624C7 /* CGSize+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+String.swift"; sourceTree = "<group>"; };
 		D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+FMExtensions.swift"; sourceTree = "<group>"; };
+		D0891243215A762200403100 /* CGPoint+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+String.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
@@ -518,6 +521,7 @@
 				D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */,
 				D03234FC205C2919003D6CCB /* CGPoint+Operators.swift */,
 				D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */,
+				D0891243215A762200403100 /* CGPoint+String.swift */,
 				D0859FDB2158FBF100F624C7 /* CGSize+String.swift */,
 			);
 			path = "Math & Geometry";
@@ -760,6 +764,7 @@
 			files = (
 				D0DA3332213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
 				D0859FD42158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
+				D0891245215A762200403100 /* CGPoint+String.swift in Sources */,
 				D0859FD92158FAF900F624C7 /* AVAudioPlayer+Play.swift in Sources */,
 				4826E57E208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				484FC80320E3845200AA6E3E /* NSMenu+Concatenation.swift in Sources */,
@@ -879,6 +884,7 @@
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
+				D0891244215A762200403100 /* CGPoint+String.swift in Sources */,
 				D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
