@@ -1,7 +1,7 @@
 //**********************************************************************************************************************
 //
-//  CGPoint+String.swift
-//	Adds new methods to CGPoint
+//  CGVector+String.swift
+//	Adds new methods to CGVector
 //  Copyright ©2018 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
@@ -16,30 +16,30 @@ import UIKit
 //----------------------------------------------------------------------------------------------------------------------
 
 
-extension CGPoint
+extension CGVector
 {
-	/// Converts a CGPoint to a string
+	/// Converts a CGVector to a string
 	
 	public var string:String
 	{
         #if os(iOS)
-		return NSStringFromCGPoint(self)
+		return NSStringFromCGVector(self)
         #else
-		return NSStringFromPoint(self)
+		return NSStringFromCGVector(self)
         #endif
 	}
 
-	/// Creates a CGPoint from a string
+	/// Creates a CGVector from a string
 	
 	public init(with string:String)
 	{
         #if os(iOS)
-		let tmp = CGPointFromString(string)
+		let tmp = CGVectorFromString(string)
         #else
-		let tmp = NSPointFromString(string)
+		let tmp = CGVectorFromString(string)
         #endif
 		
-		self.init(x:tmp.x,y:tmp.y)
+		self.init(dx:tmp.dx,dy:tmp.dy)
 	}
 }
 
