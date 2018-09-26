@@ -25,7 +25,7 @@ extension CGVector
         #if os(iOS)
 		return NSStringFromCGVector(self)
         #else
-		return NSStringFromCGVector(self)
+		return NSStringFromPoint(self)
         #endif
 	}
 
@@ -36,7 +36,7 @@ extension CGVector
         #if os(iOS)
 		let tmp = CGVectorFromString(string)
         #else
-		let tmp = CGVectorFromString(string)
+		let tmp = NSPointFromString(string)
         #endif
 		
 		self.init(dx:tmp.dx,dy:tmp.dy)
