@@ -72,6 +72,12 @@
 		48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */; };
 		48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */; };
 		48AD6CA12147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */; };
+		48B61917215E2C8000E6E037 /* BXCleanupPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B61916215E2C8000E6E037 /* BXCleanupPool.swift */; };
+		48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B61916215E2C8000E6E037 /* BXCleanupPool.swift */; };
+		48B6191B215E2CD300E6E037 /* BXCleanupPool+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6191A215E2CD300E6E037 /* BXCleanupPool+Tests.swift */; };
+		48B6191C215E2CD300E6E037 /* BXCleanupPool+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6191A215E2CD300E6E037 /* BXCleanupPool+Tests.swift */; };
+		48B6191E215E35DB00E6E037 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6191D215E35DB00E6E037 /* OptionalType.swift */; };
+		48B6191F215E35DB00E6E037 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6191D215E35DB00E6E037 /* OptionalType.swift */; };
 		48C248102088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */; };
 		48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */; };
 		48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */; };
@@ -217,6 +223,9 @@
 		48A971E42159122800215F9F /* Enum+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Comparable.swift"; sourceTree = "<group>"; };
 		48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UniqueByIncrementing.swift"; sourceTree = "<group>"; };
 		48AD6C9F2147FD6400225D9C /* String+UniqueByIncrementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+UniqueByIncrementingTests.swift"; path = "BXSwiftUtilsTests/Strings/String+UniqueByIncrementingTests.swift"; sourceTree = SOURCE_ROOT; };
+		48B61916215E2C8000E6E037 /* BXCleanupPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXCleanupPool.swift; sourceTree = "<group>"; };
+		48B6191A215E2CD300E6E037 /* BXCleanupPool+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXCleanupPool+Tests.swift"; sourceTree = "<group>"; };
+		48B6191D215E35DB00E6E037 /* OptionalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalType.swift; sourceTree = "<group>"; };
 		48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Codable.swift"; sourceTree = "<group>"; };
 		48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+CodableTests.swift"; sourceTree = "<group>"; };
 		48C3DF6420E10DC300359288 /* TypedKVO+propagateChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedKVO+propagateChanges.swift"; sourceTree = "<group>"; };
@@ -340,6 +349,7 @@
 				D056D43220527B7500849EF2 /* Threading */,
 				48DA8195206A509A009D1E6C /* Exceptions */,
 				487A39C820690628007BEC66 /* KVO */,
+				48B61915215E2C2300E6E037 /* Memory Management */,
 				D0693F8820AC1C2700B5893C /* Undo */,
 				D03234EC205BF93E003D6CCB /* Files */,
 				D03234F0205BFCA4003D6CCB /* Strings */,
@@ -361,6 +371,7 @@
 				48A971E32159121000215F9F /* Enums */,
 				48DA819C206A5239009D1E6C /* Exceptions */,
 				48DF72EE20697DCE00D224AA /* KVO */,
+				48B61919215E2CBF00E6E037 /* Memory Management */,
 				48C248122088CF1C00DC9317 /* Strings */,
 				4875F24C2051EC75009985EC /* Collection */,
 				489E56A72052CAB30071BBF1 /* Logging */,
@@ -438,6 +449,23 @@
 				48A971E42159122800215F9F /* Enum+Comparable.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		48B61915215E2C2300E6E037 /* Memory Management */ = {
+			isa = PBXGroup;
+			children = (
+				48B6191D215E35DB00E6E037 /* OptionalType.swift */,
+				48B61916215E2C8000E6E037 /* BXCleanupPool.swift */,
+			);
+			path = "Memory Management";
+			sourceTree = "<group>";
+		};
+		48B61919215E2CBF00E6E037 /* Memory Management */ = {
+			isa = PBXGroup;
+			children = (
+				48B6191A215E2CD300E6E037 /* BXCleanupPool+Tests.swift */,
+			);
+			path = "Memory Management";
 			sourceTree = "<group>";
 		};
 		48C248122088CF1C00DC9317 /* Strings */ = {
@@ -799,6 +827,7 @@
 				48DE068A20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				487A39CD2069174E007BEC66 /* TypedKVO.swift in Sources */,
 				D03234EA205BF939003D6CCB /* URL+Info.swift in Sources */,
+				48B61917215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
 				D03234EE205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				D089124C215B723C00403100 /* CGRect+String.swift in Sources */,
 				48DA819A206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */,
@@ -816,6 +845,7 @@
 				D0859FD72158F97200F624C7 /* NSEvent+ModifierKeys.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
+				48B6191E215E35DB00E6E037 /* OptionalType.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
 				48DA81D0206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
 			);
@@ -837,6 +867,7 @@
 				48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				487E642120A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DA8193206A4E9C009D1E6C /* KVOTests.swift in Sources */,
+				48B6191B215E2CD300E6E037 /* BXCleanupPool+Tests.swift in Sources */,
 				48DF72F520697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */,
 				48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
@@ -874,11 +905,13 @@
 				D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
+				48B6191F215E35DB00E6E037 /* OptionalType.swift in Sources */,
 				48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
 				D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
+				48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				D089124B215B723C00403100 /* CGRect+String.swift in Sources */,
 				D0859FDA2158FAF900F624C7 /* AVAudioPlayer+Play.swift in Sources */,
@@ -920,6 +953,7 @@
 				48DA819F206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				487E642220A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
 				48DA8194206A4E9C009D1E6C /* KVOTests.swift in Sources */,
+				48B6191C215E2CD300E6E037 /* BXCleanupPool+Tests.swift in Sources */,
 				48DF72F620697E1E00D224AA /* TypedKVOTests.swift in Sources */,
 				4875F27A20529A17009985EC /* Array+ConcatenationTests.swift in Sources */,
 				48AD6CA12147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
