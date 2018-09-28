@@ -68,8 +68,7 @@ public class BXCleanupPool
     
     private func addItemToPool(_ item: Cleanable)
     {
-        self.pool.removeAll(where: { $0.equals(item) })
-        self.pool.append(item)
+        self.pool = self.pool.filter({ !$0.equals(item) }) + item
     }
     
     public func cleanup()
