@@ -103,6 +103,25 @@ public extension CGRect
 		let h = self.height
 		return sqrt(w*w + h*h)
 	}
+	
+	/// Scales a rectangle so that its longer edge has the specified length. This preserves the aspect ratio of the rect.
+	/// - parameter maxEdge: The length of the longer edge after scaling
+	/// - returns: The scaled CGRect
+	
+	public func scale(to maxEdge:CGFloat) -> CGRect
+	{
+		let fx = maxEdge / self.width
+		let fy = maxEdge / self.height
+		let f = min(fx,fy)
+		
+		var rect = self
+		rect.origin.x *= f		// Not sure if we should
+		rect.origin.y *= f		// scale the origin too?
+		rect.size.width *= f
+		rect.size.height *= f
+		return rect
+	}
+	
 }
 
 
