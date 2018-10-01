@@ -95,4 +95,20 @@ class BXCleanupPool_Tests: XCTestCase
         
         XCTAssertNil(weakCustomObject)
     }
+
+    func testCleanupClosure()
+    {
+        self.optionalProperty = NSObject()
+
+        self.cleanupPool.registerCleanup(self)
+        {
+        	target in
+        	target.optionalProperty = nil
+        }
+
+        XCTAssertNotNil(self.optionalProperty)
+        self.cleanupPool.cleanup()
+        XCTAssertNil(self.optionalProperty)
+    }
+	
 }
