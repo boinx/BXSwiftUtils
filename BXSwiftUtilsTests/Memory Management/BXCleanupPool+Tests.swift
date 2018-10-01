@@ -79,7 +79,7 @@ class BXCleanupPool_Tests: XCTestCase
         XCTAssert(self.nonoptionalProperty === customObject)
     }
     
-    func testMultipleRegistration()
+    func testMultipleRegistrationDropsPreviousRegistrations()
     {
         weak var weakCustomObject: NSObject?
         
@@ -111,4 +111,39 @@ class BXCleanupPool_Tests: XCTestCase
         XCTAssertNil(self.optionalProperty)
     }
 	
+    func testRegisterCleanupClosureDoesNotClearPreviousCleanups()
+    {
+        var results = [String]()
+        
+        self.cleanupPool.registerCleanup(self)
+        { _ in
+            results += ["a"]
+        }
+        
+        self.cleanupPool.registerCleanup(self)
+        { _ in
+            results += ["b"]
+        }
+        
+        self.cleanupPool.cleanup()
+        
+        XCTAssertEqual(results, ["a", "b"])
+    }
+    
+    func testDoesNotRetainTarget()
+    {
+        weak var target: NSObject?
+        
+        do {
+            let strongTarget = NSObject()
+            target = strongTarget
+            self.cleanupPool.registerCleanup(strongTarget, { _ in
+                XCTFail()
+            })
+        }
+        
+        self.cleanupPool.cleanup()
+        
+        XCTAssertNil(target)
+    }
 }
