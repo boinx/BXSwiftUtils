@@ -130,6 +130,8 @@
 		D032350E205C362A003D6CCB /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032350C205C362A003D6CCB /* Date+Components.swift */; };
 		D03F13B820F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */; };
 		D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */; };
+		D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
+		D046DF86216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
 		D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */; };
 		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
 		D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
@@ -252,6 +254,7 @@
 		D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		D032350C205C362A003D6CCB /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
 		D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTLComputeCommandEncoder+Extensions.swift"; sourceTree = "<group>"; };
+		D046DF84216B7ED0004331C3 /* Optional+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+If.swift"; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Throttle.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D43B205296A500849EF2 /* BXLogger+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXLogger+Domains.swift"; sourceTree = "<group>"; };
@@ -393,6 +396,7 @@
 				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
 				481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */,
+				D046DF84216B7ED0004331C3 /* Optional+If.swift */,
 				48FF9BC620E116B100024C10 /* Weak.swift */,
 				48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */,
 			);
@@ -827,6 +831,7 @@
 				48DE068A20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				487A39CD2069174E007BEC66 /* TypedKVO.swift in Sources */,
 				D03234EA205BF939003D6CCB /* URL+Info.swift in Sources */,
+				D046DF86216B7ED0004331C3 /* Optional+If.swift in Sources */,
 				48B61917215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
 				D03234EE205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				D089124C215B723C00403100 /* CGRect+String.swift in Sources */,
@@ -903,6 +908,7 @@
 				48A971E22159024100215F9F /* Enum+Comparable.swift in Sources */,
 				D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */,
 				D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */,
+				D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */,
 				D03234FE205C2919003D6CCB /* CGRect+Accessors.swift in Sources */,
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
 				48B6191F215E35DB00E6E037 /* OptionalType.swift in Sources */,
