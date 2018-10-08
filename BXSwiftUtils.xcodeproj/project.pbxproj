@@ -132,6 +132,8 @@
 		D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */; };
 		D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
 		D046DF86216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
+		D046DF88216BAB59004331C3 /* String+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+URLs.swift */; };
+		D046DF89216BAB59004331C3 /* String+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+URLs.swift */; };
 		D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */; };
 		D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */; };
 		D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D056D43B205296A500849EF2 /* BXLogger+Domains.swift */; };
@@ -255,6 +257,7 @@
 		D032350C205C362A003D6CCB /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
 		D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTLComputeCommandEncoder+Extensions.swift"; sourceTree = "<group>"; };
 		D046DF84216B7ED0004331C3 /* Optional+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+If.swift"; sourceTree = "<group>"; };
+		D046DF87216BAB59004331C3 /* String+URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URLs.swift"; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Throttle.swift"; sourceTree = "<group>"; };
 		D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Coalescing.swift"; sourceTree = "<group>"; };
 		D056D43B205296A500849EF2 /* BXLogger+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXLogger+Domains.swift"; sourceTree = "<group>"; };
@@ -545,6 +548,7 @@
 			children = (
 				D03234ED205BFC9F003D6CCB /* String+Localized.swift */,
 				48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */,
+				D046DF87216BAB59004331C3 /* String+URLs.swift */,
 				48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */,
 			);
 			path = Strings;
@@ -823,6 +827,7 @@
 				487E641E20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D0859FDF2158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D056D430205276ED00849EF2 /* DispatchQueue+Throttle.swift in Sources */,
+				D046DF89216BAB59004331C3 /* String+URLs.swift in Sources */,
 				48E449D1205BBE81008CF3D5 /* BXMenuItem.swift in Sources */,
 				D056D43D205296A500849EF2 /* BXLogger+Domains.swift in Sources */,
 				D0693F8A20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
@@ -926,6 +931,7 @@
 				D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
+				D046DF88216BAB59004331C3 /* String+URLs.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
