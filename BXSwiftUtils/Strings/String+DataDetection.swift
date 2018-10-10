@@ -1,7 +1,7 @@
 //**********************************************************************************************************************
 //
-//  String+URLs.swift
-//	Parses text for any URLs it contains
+//  String+DataDetection.swift
+//	Parses text for various data
 //  Copyright ©2018 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
