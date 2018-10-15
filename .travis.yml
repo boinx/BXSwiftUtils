@@ -7,6 +7,8 @@ env:
   global:
     # GH_TOKEN
     - secure: Chw5iyaWS4vid3Eoam8ouuhmZ+Gb65FxyJZsHH0wXfgXTR8T3CCx0lJa2JPFjFw8gY+pkvhyVzMGqqDGyiPK80La2Ah5wHWDurvdM9oLVT1OhloQPGKRZIwn35xVVhkQnYz+vs4pPb4/quVAtfMStCUZ4aKbXmrFh5sKQtvXzK3wwYvfWOnbxy9TJk0LYm+EHHktp541TNC2/BBNG7glQp5tzGX/nFxdE58bOWRZzF6ZDILd/hzDMCw8kyUC8305c+WqivpWK+n8yC4rT+pGvJt2RstcjcS8I2kb4ZNSBoiVT8ZWXFMP/dwSXDPMXdi8OJNfd3MGPC5SXeY1rpTNidbzwkhnlQLOqcUVVUeQtZfhfukjw2EFj0b9c4kKfE7zQxUHShcC6/iNCz5MplgoCXUZjrCI1Wacr7GUqRh+SZl6dE/oua8FcwihIWRrJdKIn6s0nu18RipkPsI3U1h74792kS1CmaN3oigSj5hJbrg2ygziWf3Zlb8CcpLhqZWJscIPo+MU1/lGOysKJ4ZI6pKRBZdKeu0OYjdx9GGU4ZtAuwR4+3QXtYD4C+KY4DdoKg8Hi/4CRcjyiAafD6yxBUoOGhj2Kgm+9eNnl2zYdPtUC57bHyHb0uMY73QulxJqFYxozYzu1euk9xzsZxvcs676Vph2iUNMFE4HSbz2LY8=
+# Don't build tags as the build script itself creates new tags...
+if: tag IS blank
 matrix:
   include:
   - osx_image: xcode9.2
@@ -35,7 +37,7 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: ezqVw0RZCz55IKJNs3mQboM2r1WbiyJnXI1gCMsMOicvp++NXR1X7eJVdJG/uho+/Pb1fQMPjyQeLUoAvVZste1LovnfJy+0PYup2fvQHGPtzntpaVUBSmPEvTRsOVbWdMkHnxztTdJZYoUMfQHtdm1R3rFSen41FNplc3INAeNtYVeGXVXDpRJ7lwOov+G1SgmMlYns10eT2S+6Iw/F9BK8eQMwShtM8JedI+Hy9e5UQ9O3qk36g2neYDTLR8fKVp8Gq7rUta5qP/j1ZcC9BZHawzsivaAfWio3PpV4UZXr7I+w1JQp9PQdbNJ4VZqYNBgwgRSF5eLHD6WV9oxhFMkZ0evh/90quFN+FTzXz16u2aSOJ/E83aqoaFVTy4ZNFppt4MmDlWLGW1AZDJyJt4a4wX7If06UPlQ1G3mR6kJxwgFW/wRxAKeSF1xiAeizA/FYnNiOfuq942LB+1BOTokE+50EFME9nvxYQzr66Z3v+G9SLFeDxTtEYsmjqOAJSKLf4wKG11cpYNzY+E0eRuxZGq278ukbYLkH2d8IEKKqRmTaan/ZhNAZUsS9go1hBlBJMiLgTCbCKuzb3GiqaQRQ71j8/sK2anPCpogJVidgv2gpHXg1E5tlXNevUJNlmBPtWReRRaNTLbEgNIayLwF2wh8IPgle3PxrtGoMPPA=
-  file: Artifacts/**/*
+  file: Artifacts/*
+  file_glob: true
   on:
-    repo: boinx/BXSwiftUtils
     condition: $CREATE_RELEASE = true
