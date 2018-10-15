@@ -18,7 +18,7 @@ cp -R $(cat .bx_product_path) "$_artifacts/iOS/"
 
 # Delete git tag if already existing
 _git_tag="latest"
-git tag -d ${_git_tag}
+#git tag -d ${_git_tag}
 #git push origin :refs/tags/${_git_tag}
 
 # Create new "latest" tag
