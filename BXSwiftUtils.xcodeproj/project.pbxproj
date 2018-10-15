@@ -189,6 +189,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		481A257B2174939600FB8E9A /* deploy.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = deploy.sh; sourceTree = "<group>"; };
 		481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CompactMap.swift"; sourceTree = "<group>"; };
 		481BE6D52098368E00F12EDF /* Sequence+CompactMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CompactMap.swift"; sourceTree = "<group>"; };
 		4826E57D208F533400A5BA9B /* Array+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Decodable.swift"; sourceTree = "<group>"; };
@@ -318,6 +319,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		481A257D217493D400FB8E9A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				484133732052D0C500DDB1E2 /* README.md */,
+				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
+				4875F25820528D28009985EC /* LICENSE */,
+				487E623020986792007C4A8A /* .gitignore */,
+				487E62312098679A007C4A8A /* .travis.yml */,
+				481A257B2174939600FB8E9A /* deploy.sh */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
 		4853E3882056BDB500938B82 /* Threading */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,11 +344,7 @@
 		4875F1FD2051E70E009985EC = {
 			isa = PBXGroup;
 			children = (
-				484133732052D0C500DDB1E2 /* README.md */,
-				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
-				4875F25820528D28009985EC /* LICENSE */,
-				487E623020986792007C4A8A /* .gitignore */,
-				487E62312098679A007C4A8A /* .travis.yml */,
+				481A257D217493D400FB8E9A /* Config */,
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
 				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
 				4875F2082051E70E009985EC /* Products */,

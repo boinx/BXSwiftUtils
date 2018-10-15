@@ -18,7 +18,7 @@ matrix:
   - osx_image: xcode10
     env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
   - osx_image: xcode10
-    script: echo "I will deploy..."
+    script: sh deploy.sh
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
 notifications:
   slack:
@@ -30,7 +30,7 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: ezqVw0RZCz55IKJNs3mQboM2r1WbiyJnXI1gCMsMOicvp++NXR1X7eJVdJG/uho+/Pb1fQMPjyQeLUoAvVZste1LovnfJy+0PYup2fvQHGPtzntpaVUBSmPEvTRsOVbWdMkHnxztTdJZYoUMfQHtdm1R3rFSen41FNplc3INAeNtYVeGXVXDpRJ7lwOov+G1SgmMlYns10eT2S+6Iw/F9BK8eQMwShtM8JedI+Hy9e5UQ9O3qk36g2neYDTLR8fKVp8Gq7rUta5qP/j1ZcC9BZHawzsivaAfWio3PpV4UZXr7I+w1JQp9PQdbNJ4VZqYNBgwgRSF5eLHD6WV9oxhFMkZ0evh/90quFN+FTzXz16u2aSOJ/E83aqoaFVTy4ZNFppt4MmDlWLGW1AZDJyJt4a4wX7If06UPlQ1G3mR6kJxwgFW/wRxAKeSF1xiAeizA/FYnNiOfuq942LB+1BOTokE+50EFME9nvxYQzr66Z3v+G9SLFeDxTtEYsmjqOAJSKLf4wKG11cpYNzY+E0eRuxZGq278ukbYLkH2d8IEKKqRmTaan/ZhNAZUsS9go1hBlBJMiLgTCbCKuzb3GiqaQRQ71j8/sK2anPCpogJVidgv2gpHXg1E5tlXNevUJNlmBPtWReRRaNTLbEgNIayLwF2wh8IPgle3PxrtGoMPPA=
-  file: Artifacts/BXSwiftUtils.framework
+  file: Artifacts/**/*
   on:
     repo: boinx/BXSwiftUtils
     tags: true
