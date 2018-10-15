@@ -833,7 +833,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Write product path to .bx_product_path\"\necho \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" > $SRCROOT/.bx_product_path\n";
+			shellScript = "echo \"Write build details to .bx_build_env\"\necho \"BUILD_PRODUCTS_DIR=$BUILT_PRODUCTS_DIR PRODUCT_NAME=$FULL_PRODUCT_NAME SRCROOT=$SRCROOT\" > $SRCROOT/.bx_build_env\n";
 			showEnvVarsInLog = 0;
 		};
 		481A257921748DBE00FB8E9A /* Export Product Location */ = {
@@ -852,7 +852,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Write product path to .bx_product_path\"\necho \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" > $SRCROOT/.bx_product_path\n";
+			shellScript = "echo \"Write build details to .bx_build_env\"\necho \"BUILD_PRODUCTS_DIR=$BUILT_PRODUCTS_DIR PRODUCT_NAME=$FULL_PRODUCT_NAME SRCROOT=$SRCROOT\" > $SRCROOT/.bx_build_env\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -67,5 +67,5 @@ fastlane/screenshots
 fastlane/test_output
 
 .DS_Store
-.bx_product_path
+.bx_build_env
 Artifacts
