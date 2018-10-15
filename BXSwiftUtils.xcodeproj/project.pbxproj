@@ -657,6 +657,7 @@
 				4875F2032051E70E009985EC /* Frameworks */,
 				4875F2042051E70E009985EC /* Headers */,
 				4875F2052051E70E009985EC /* Resources */,
+				481A257921748DBE00FB8E9A /* Export Product Location */,
 			);
 			buildRules = (
 			);
@@ -693,6 +694,7 @@
 				4875F25B205299A6009985EC /* Frameworks */,
 				4875F25C205299A6009985EC /* Headers */,
 				4875F25D205299A6009985EC /* Resources */,
+				481A257821748DAC00FB8E9A /* Export Product Location */,
 			);
 			buildRules = (
 			);
@@ -803,6 +805,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		481A257821748DAC00FB8E9A /* Export Product Location */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Export Product Location";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Write product path to .bx_product_path\"\necho \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" > $SRCROOT/.bx_product_path\n";
+			showEnvVarsInLog = 0;
+		};
+		481A257921748DBE00FB8E9A /* Export Product Location */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Export Product Location";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Write product path to .bx_product_path\"\necho \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" > $SRCROOT/.bx_product_path\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4875F2022051E70E009985EC /* Sources */ = {

@@ -17,9 +17,20 @@ matrix:
     env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode10
     env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
+  - osx_image: xcode10
+    script: echo "I will deploy..."
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
 notifications:
   slack:
     template:
     - "%{repository_slug}@%{branch} (<%{compare_url}|%{commit}>) by %{author} %{result} in %{duration}"
     secure: UovCzpghaeeBGXjTjvZGMr0jWpxwdOaT6tkGlzdOjwaMK8yS8EId7pP3/voe5FFt60t9QJtXi53dy//jccfCOKGDqmAyn71QnSG3Pw5wuBdNwTS+6EMWFJeJzcp/5mvbdxzfTUnmgdJYAUdcfQqcSdccQe/lPr9kvxO5nDuXGI+Tboofb2/DazktmRrbM8Dlq61q2jYrZ4KQihtBLlcl3+XZsWL2+Qfs4arG5S7DZjhrDWpTUYw8FPvumsIZ8j4PuvfKDEqB8J139bRMuj+NbLO+7Ki2Wucg96XPPf7co4qsLM8FMUN5GG3DReIKqR4+K8BQadpp8hJXtNqfRSG8miqMMe7hONwLXcVGHALCUHEy19JhWLeHYdpMMoVTnFG9qG4X39GDdCpPphCRCRT0HqJyljpIj1PSXPHc2W1Zy6mQa9C6bJ2zN9CGBmG6Pf5/glbtx7ahmUQcnFMgnysnupffa01akDjOvDs742lyxfKdAHasvY27TtOwh6yjUa5HrSuYXo5XZ3oYslpUAAeWEOpykNhgmRnUU5tkLMH8/R3CGMA8hyTPnbLXFElmycSiu8pChXFY8B7EbjqnbGGir3ebsNyUtByEUwKgbMRz6EYJZoMVCVRcY5pd93Kyqe4nYJSohrrabhwVoa1GoEJHtKeypC9e0UIgAYtkHEg6Rlc=
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: ezqVw0RZCz55IKJNs3mQboM2r1WbiyJnXI1gCMsMOicvp++NXR1X7eJVdJG/uho+/Pb1fQMPjyQeLUoAvVZste1LovnfJy+0PYup2fvQHGPtzntpaVUBSmPEvTRsOVbWdMkHnxztTdJZYoUMfQHtdm1R3rFSen41FNplc3INAeNtYVeGXVXDpRJ7lwOov+G1SgmMlYns10eT2S+6Iw/F9BK8eQMwShtM8JedI+Hy9e5UQ9O3qk36g2neYDTLR8fKVp8Gq7rUta5qP/j1ZcC9BZHawzsivaAfWio3PpV4UZXr7I+w1JQp9PQdbNJ4VZqYNBgwgRSF5eLHD6WV9oxhFMkZ0evh/90quFN+FTzXz16u2aSOJ/E83aqoaFVTy4ZNFppt4MmDlWLGW1AZDJyJt4a4wX7If06UPlQ1G3mR6kJxwgFW/wRxAKeSF1xiAeizA/FYnNiOfuq942LB+1BOTokE+50EFME9nvxYQzr66Z3v+G9SLFeDxTtEYsmjqOAJSKLf4wKG11cpYNzY+E0eRuxZGq278ukbYLkH2d8IEKKqRmTaan/ZhNAZUsS9go1hBlBJMiLgTCbCKuzb3GiqaQRQ71j8/sK2anPCpogJVidgv2gpHXg1E5tlXNevUJNlmBPtWReRRaNTLbEgNIayLwF2wh8IPgle3PxrtGoMPPA=
+  file: Artifacts/BXSwiftUtils.framework
+  on:
+    repo: boinx/BXSwiftUtils
+    tags: true
