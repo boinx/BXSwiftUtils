@@ -7,10 +7,10 @@ rm -Rf "$_artifacts"
 mkdir "$_artifacts"
 
 set -o pipefail; xcodebuild -scheme "BXSwiftUtils-macOS" -configuration "Release" clean build | xcpretty
-zip -ryq "$(cat .bx_product_path)" "$_artifacts/BXSwiftUtils-macoS.framework.zip"
+zip -ryq "$_artifacts/BXSwiftUtils-macoS.framework.zip" "$(cat .bx_product_path)"
 
 set -o pipefail; xcodebuild -scheme "BXSwiftUtils-iOS" -configuration "Release" clean build | xcpretty
-zip -ryq "$(cat .bx_product_path)" "$_artifacts/BXSwiftUtils-iOS.framework.zip"
+zip -ryq "$_artifacts/BXSwiftUtils-iOS.framework.zip" "$(cat .bx_product_path)" 
 
 # Delete git tag if already existing
 #git remote add origin-authenticated "https://${GH_TOKEN}@github.com/boinx/BXSwiftUtils.git"
