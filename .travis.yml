@@ -18,6 +18,7 @@ matrix:
   - osx_image: xcode10
     env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
   - osx_image: xcode10
+    env: CREATE_RELEASE="true"
     script: sh deploy.sh
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
 notifications:
@@ -33,4 +34,4 @@ deploy:
   file: Artifacts/**/*
   on:
     repo: boinx/BXSwiftUtils
-    tags: true
+    condition: $CREATE_RELEASE = true
