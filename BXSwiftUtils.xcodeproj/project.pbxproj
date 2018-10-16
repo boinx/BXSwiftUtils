@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		481A25BD2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25BC2175D36000FB8E9A /* CGPath+RoundedRect.swift */; };
+		481A25BE2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25BC2175D36000FB8E9A /* CGPath+RoundedRect.swift */; };
+		481A25C02175D38700FB8E9A /* CACornerMask+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25BF2175D38700FB8E9A /* CACornerMask+Convenience.swift */; };
+		481A25C12175D38700FB8E9A /* CACornerMask+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25BF2175D38700FB8E9A /* CACornerMask+Convenience.swift */; };
 		481BE6D32098362C00F12EDF /* Sequence+CompactMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */; };
 		481BE6D42098362C00F12EDF /* Sequence+CompactMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */; };
 		481BE6D62098368E00F12EDF /* Sequence+CompactMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BE6D52098368E00F12EDF /* Sequence+CompactMap.swift */; };
@@ -183,6 +187,8 @@
 
 /* Begin PBXFileReference section */
 		481A257B2174939600FB8E9A /* deploy.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = deploy.sh; sourceTree = "<group>"; };
+		481A25BC2175D36000FB8E9A /* CGPath+RoundedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+RoundedRect.swift"; sourceTree = "<group>"; };
+		481A25BF2175D38700FB8E9A /* CACornerMask+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CACornerMask+Convenience.swift"; sourceTree = "<group>"; };
 		481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CompactMap.swift"; sourceTree = "<group>"; };
 		481BE6D52098368E00F12EDF /* Sequence+CompactMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CompactMap.swift"; sourceTree = "<group>"; };
 		4826E57D208F533400A5BA9B /* Array+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Decodable.swift"; sourceTree = "<group>"; };
@@ -319,6 +325,13 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
+		481A25BB2175D33400FB8E9A /* Core Animation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Core Animation";
+			sourceTree = "<group>";
+		};
 		4853E3882056BDB500938B82 /* Threading */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +365,7 @@
 		4875F2092051E70E009985EC /* BXSwiftUtils */ = {
 			isa = PBXGroup;
 			children = (
+				481A25BB2175D33400FB8E9A /* Core Animation */,
 				48A971DF2159022D00215F9F /* Enums */,
 				D056D43A2052968A00849EF2 /* Logging */,
 				D056D43220527B7500849EF2 /* Threading */,
@@ -553,6 +567,8 @@
 				D0891243215A762200403100 /* CGPoint+String.swift */,
 				D0859FDB2158FBF100F624C7 /* CGSize+String.swift */,
 				D089124A215B723C00403100 /* CGRect+String.swift */,
+				481A25BC2175D36000FB8E9A /* CGPath+RoundedRect.swift */,
+				481A25BF2175D38700FB8E9A /* CACornerMask+Convenience.swift */,
 			);
 			path = "Math & Geometry";
 			sourceTree = "<group>";
@@ -844,6 +860,7 @@
 				D0149007213D566500A38870 /* KVO+propagateChanges.swift in Sources */,
 				D0323503205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
 				D03234FF205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
+				481A25C02175D38700FB8E9A /* CACornerMask+Convenience.swift in Sources */,
 				D03F13B820F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				D0EA52DA20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				48A971DA2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */,
@@ -883,6 +900,7 @@
 				D0C47CE420EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D056D431205276ED00849EF2 /* NSObject+Coalescing.swift in Sources */,
 				4853E38D2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
+				481A25BD2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */,
 				48B6191E215E35DB00E6E037 /* OptionalType.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
 				48DA81D0206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
@@ -932,6 +950,7 @@
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				48FF9BC820E116B100024C10 /* Weak.swift in Sources */,
 				48A971DB2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */,
+				481A25C12175D38700FB8E9A /* CACornerMask+Convenience.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
 				481BE6D42098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				D0149008213D566500A38870 /* KVO+propagateChanges.swift in Sources */,
@@ -971,6 +990,7 @@
 				D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */,
 				485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
+				481A25BE2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */,
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
