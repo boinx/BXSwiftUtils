@@ -23,7 +23,7 @@ matrix:
     env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode10
     env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
-  - osx_image: xcode9.4
+  - osx_image: xcode10
     env: CREATE_RELEASE="true"
     script: sh deploy.sh
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
