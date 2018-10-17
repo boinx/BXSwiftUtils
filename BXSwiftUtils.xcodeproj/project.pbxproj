@@ -47,6 +47,7 @@
 		4875F27B20529A19009985EC /* Collection+SafeAccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F2542051EF7F009985EC /* Collection+SafeAccessTests.swift */; };
 		487A39CD2069174E007BEC66 /* TypedKVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39CC2069174E007BEC66 /* TypedKVO.swift */; };
 		487A39CE2069174E007BEC66 /* TypedKVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39CC2069174E007BEC66 /* TypedKVO.swift */; };
+		487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39CF20691E05007BEC66 /* NSArrayController+UIKit.swift */; };
 		487A39D120691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39CF20691E05007BEC66 /* NSArrayController+UIKit.swift */; };
 		487A39D220693A25007BEC66 /* KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39C920690635007BEC66 /* KVO.swift */; };
 		487A39D320693A25007BEC66 /* KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A39C920690635007BEC66 /* KVO.swift */; };
@@ -823,6 +824,7 @@
 				D03F13B820F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				D0EA52DA20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				48A971DA2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */,
+				487A39D020691E06007BEC66 /* NSArrayController+UIKit.swift in Sources */,
 				4875F2512051EEF5009985EC /* Collection+SafeAccess.swift in Sources */,
 				D0859FD12158F7DD00F624C7 /* URL+Contents.swift in Sources */,
 				4875F2262051E9D0009985EC /* Array+Concatenation.swift in Sources */,
