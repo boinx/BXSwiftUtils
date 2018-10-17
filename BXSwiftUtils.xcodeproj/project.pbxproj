@@ -325,13 +325,6 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
-		481A25BB2175D33400FB8E9A /* Core Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Core Animation";
-			sourceTree = "<group>";
-		};
 		4853E3882056BDB500938B82 /* Threading */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,7 +358,6 @@
 		4875F2092051E70E009985EC /* BXSwiftUtils */ = {
 			isa = PBXGroup;
 			children = (
-				481A25BB2175D33400FB8E9A /* Core Animation */,
 				48A971DF2159022D00215F9F /* Enums */,
 				D056D43A2052968A00849EF2 /* Logging */,
 				D056D43220527B7500849EF2 /* Threading */,
