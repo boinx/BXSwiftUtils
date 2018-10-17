@@ -3,6 +3,12 @@ os: osx
 xcode_project: BXSwiftUtils.xcodeproj
 before_install:
 - gem install xcpretty
+env:
+  global:
+    # GH_TOKEN
+    - secure: Chw5iyaWS4vid3Eoam8ouuhmZ+Gb65FxyJZsHH0wXfgXTR8T3CCx0lJa2JPFjFw8gY+pkvhyVzMGqqDGyiPK80La2Ah5wHWDurvdM9oLVT1OhloQPGKRZIwn35xVVhkQnYz+vs4pPb4/quVAtfMStCUZ4aKbXmrFh5sKQtvXzK3wwYvfWOnbxy9TJk0LYm+EHHktp541TNC2/BBNG7glQp5tzGX/nFxdE58bOWRZzF6ZDILd/hzDMCw8kyUC8305c+WqivpWK+n8yC4rT+pGvJt2RstcjcS8I2kb4ZNSBoiVT8ZWXFMP/dwSXDPMXdi8OJNfd3MGPC5SXeY1rpTNidbzwkhnlQLOqcUVVUeQtZfhfukjw2EFj0b9c4kKfE7zQxUHShcC6/iNCz5MplgoCXUZjrCI1Wacr7GUqRh+SZl6dE/oua8FcwihIWRrJdKIn6s0nu18RipkPsI3U1h74792kS1CmaN3oigSj5hJbrg2ygziWf3Zlb8CcpLhqZWJscIPo+MU1/lGOysKJ4ZI6pKRBZdKeu0OYjdx9GGU4ZtAuwR4+3QXtYD4C+KY4DdoKg8Hi/4CRcjyiAafD6yxBUoOGhj2Kgm+9eNnl2zYdPtUC57bHyHb0uMY73QulxJqFYxozYzu1euk9xzsZxvcs676Vph2iUNMFE4HSbz2LY8=
+# Don't build tags as the build script itself creates new tags...
+if: tag IS blank
 matrix:
   include:
   - osx_image: xcode9.2
@@ -17,9 +23,21 @@ matrix:
     env: SCHEME="BXSwiftUtils-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode10
     env: SCHEME="BXSwiftUtils-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
+  - osx_image: xcode10
+    env: CREATE_RELEASE="true"
+    script: sh deploy.sh
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
 notifications:
   slack:
     template:
     - "%{repository_slug}@%{branch} (<%{compare_url}|%{commit}>) by %{author} %{result} in %{duration}"
     secure: UovCzpghaeeBGXjTjvZGMr0jWpxwdOaT6tkGlzdOjwaMK8yS8EId7pP3/voe5FFt60t9QJtXi53dy//jccfCOKGDqmAyn71QnSG3Pw5wuBdNwTS+6EMWFJeJzcp/5mvbdxzfTUnmgdJYAUdcfQqcSdccQe/lPr9kvxO5nDuXGI+Tboofb2/DazktmRrbM8Dlq61q2jYrZ4KQihtBLlcl3+XZsWL2+Qfs4arG5S7DZjhrDWpTUYw8FPvumsIZ8j4PuvfKDEqB8J139bRMuj+NbLO+7Ki2Wucg96XPPf7co4qsLM8FMUN5GG3DReIKqR4+K8BQadpp8hJXtNqfRSG8miqMMe7hONwLXcVGHALCUHEy19JhWLeHYdpMMoVTnFG9qG4X39GDdCpPphCRCRT0HqJyljpIj1PSXPHc2W1Zy6mQa9C6bJ2zN9CGBmG6Pf5/glbtx7ahmUQcnFMgnysnupffa01akDjOvDs742lyxfKdAHasvY27TtOwh6yjUa5HrSuYXo5XZ3oYslpUAAeWEOpykNhgmRnUU5tkLMH8/R3CGMA8hyTPnbLXFElmycSiu8pChXFY8B7EbjqnbGGir3ebsNyUtByEUwKgbMRz6EYJZoMVCVRcY5pd93Kyqe4nYJSohrrabhwVoa1GoEJHtKeypC9e0UIgAYtkHEg6Rlc=
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: ezqVw0RZCz55IKJNs3mQboM2r1WbiyJnXI1gCMsMOicvp++NXR1X7eJVdJG/uho+/Pb1fQMPjyQeLUoAvVZste1LovnfJy+0PYup2fvQHGPtzntpaVUBSmPEvTRsOVbWdMkHnxztTdJZYoUMfQHtdm1R3rFSen41FNplc3INAeNtYVeGXVXDpRJ7lwOov+G1SgmMlYns10eT2S+6Iw/F9BK8eQMwShtM8JedI+Hy9e5UQ9O3qk36g2neYDTLR8fKVp8Gq7rUta5qP/j1ZcC9BZHawzsivaAfWio3PpV4UZXr7I+w1JQp9PQdbNJ4VZqYNBgwgRSF5eLHD6WV9oxhFMkZ0evh/90quFN+FTzXz16u2aSOJ/E83aqoaFVTy4ZNFppt4MmDlWLGW1AZDJyJt4a4wX7If06UPlQ1G3mR6kJxwgFW/wRxAKeSF1xiAeizA/FYnNiOfuq942LB+1BOTokE+50EFME9nvxYQzr66Z3v+G9SLFeDxTtEYsmjqOAJSKLf4wKG11cpYNzY+E0eRuxZGq278ukbYLkH2d8IEKKqRmTaan/ZhNAZUsS9go1hBlBJMiLgTCbCKuzb3GiqaQRQ71j8/sK2anPCpogJVidgv2gpHXg1E5tlXNevUJNlmBPtWReRRaNTLbEgNIayLwF2wh8IPgle3PxrtGoMPPA=
+  file: Artifacts/*
+  file_glob: true
+  on:
+    condition: $CREATE_RELEASE = true

@@ -9,11 +9,45 @@
 
 import Foundation
 
-// Importing AppKit is needed for the NSIsControllerMarker() function. On iOS BXSwiftUtils provides its own
-// implementation of this function.
+// Importing AppKit is needed for the NSIsControllerMarker() function. For iOS, provide our own implementation of this function.
 
 #if os(macOS)
+
 import AppKit
+
+#elseif os(iOS)
+
+public let NSNoSelectionMarker = "NSNoSelectionMarker" as AnyObject
+public let NSMultipleValuesMarker = "NSMultipleValuesMarker" as AnyObject
+public let NSNotApplicableMarker = "NSNotApplicableMarker" as AnyObject
+
+public func NSIsControllerMarker(_ value:Any?) -> Bool
+{
+    let object = value as AnyObject
+
+    return    object === NSNoSelectionMarker ||
+            object === NSMultipleValuesMarker ||
+            object === NSNotApplicableMarker
+}
+
+public func NSIsMultipleValuesMarker(_ value:Any?) -> Bool
+{
+    let object = value as AnyObject
+    return    object === NSMultipleValuesMarker
+}
+
+public func NSIsNoSelectionMarker(_ value:Any?) -> Bool
+{
+    let object = value as AnyObject
+    return    object === NSNoSelectionMarker
+}
+
+public func NSIsNotApplicableMarker(_ value:Any?) -> Bool
+{
+    let object = value as AnyObject
+    return    object === NSNotApplicableMarker
+}
+
 #endif
 
 
