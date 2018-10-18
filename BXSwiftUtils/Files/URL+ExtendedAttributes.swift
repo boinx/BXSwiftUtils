@@ -17,53 +17,22 @@ import Darwin
 public extension URL
 {
 
-//    public func setExtendedAttribute<T>(value:T, forName name: String) throws
-//	{
-//		var tmp = value
-//		let data = Data(buffer:UnsafeBufferPointer(start:&tmp,count:1))
-//		try self.setExtendedAttribute(data:data,forName:name)
-//	}
-//
-//    public func extendedAttribute<T>(type:T.Type, forName name: String) throws -> T
-//    {
-//    	let data = try self.extendedAttribute(forName:name)
-//		let value:T = data.withUnsafeBytes { $0.pointee }
-//		return value
-//    }
+	/// Set extended attribute
 
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-    func setExtendedAttribute(string: String, forName name: String) throws
+    func setExtendedAttribute<T>(_ value: T, forName name: String) throws
 	{
-		if let data = string.data(using:.utf8)
-		{
-			try self.setExtendedAttribute(data:data,forName:name)
-		}
-	}
-
-    func extendedAttributeString(forName name: String) throws -> String?
-    {
-    	let data = try self.extendedAttribute(forName:name)
-    	return String(data:data,encoding:.utf8)
-    }
-	
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-    func setExtendedAttribute(int: Int, forName name: String) throws
-	{
-		var tmp = int
+		var tmp = value
 		let data = Data(buffer:UnsafeBufferPointer(start:&tmp,count:1))
-		try self.setExtendedAttribute(data:data,forName:name)
+		try self.setExtendedAttribute(data,forName:name)
 	}
 
-    func extendedAttributeInt(forName name: String) throws -> Int
+	
+ 	/// Get extended attribute
+
+	func extendedAttribute<T>(forName name: String) throws -> T
     {
     	let data = try self.extendedAttribute(forName:name)
-		let value:Int = data.withUnsafeBytes { $0.pointee }
+		let value:T = data.withUnsafeBytes { $0.pointee }
 		return value
     }
 	
@@ -73,7 +42,7 @@ public extension URL
 
     /// Set extended attribute
 	
-    public func setExtendedAttribute(data: Data, forName name: String) throws
+    public func setExtendedAttribute(_ data: Data, forName name: String) throws
     {
         try self.withUnsafeFileSystemRepresentation
         {
@@ -87,6 +56,10 @@ public extension URL
             guard result >= 0 else { throw URL.posixError(errno) }
         }
     }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 	/// Get extended attribute
 	
@@ -120,6 +93,28 @@ public extension URL
         return data
     }
 
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Checks if an extended attribute is present
+	
+    public func hasExtendedAttribute(forName name: String) -> Bool
+    {
+        let result = self.withUnsafeFileSystemRepresentation
+        {
+        	fileSystemPath -> Bool in
+            let length = getxattr(fileSystemPath,name,nil,0,0,0)
+            return length >= 0
+        }
+		
+        return result
+    }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
     /// Remove extended attribute
 	
     public func removeExtendedAttribute(forName name: String) throws
@@ -130,6 +125,10 @@ public extension URL
             guard result >= 0 else { throw URL.posixError(errno) }
         }
     }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
     /// Get list of all extended attributes
 	
