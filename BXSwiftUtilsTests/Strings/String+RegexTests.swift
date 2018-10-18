@@ -12,14 +12,14 @@ import BXSwiftUtils
 class String_RegexTests: XCTestCase
 {
 
-     func testPositive()
+	func testPositive()
     {
     	let str = "Bla Laber ABC Schwafel Sülz"
     	let matches = str.regexMatches(for:"ABC")
         XCTAssertEqual(matches,["ABC"])
     }
 	
-   func testNegative()
+	func testNegative()
     {
     	let str = "Bla Laber ABC Schwafel Sülz"
     	let matches = str.regexMatches(for:"XYZ")
