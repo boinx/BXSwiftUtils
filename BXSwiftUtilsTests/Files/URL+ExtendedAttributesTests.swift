@@ -9,35 +9,43 @@
 import XCTest
 import BXSwiftUtils
 
-class URL_ExtendedAttributesTests: XCTestCase
+class URL_ExtendedAttributesTests : XCTestCase
 {
+	private var url = URL(fileURLWithPath:"/")
+	private let key = "com.boinx.foo"
 
-    private var testURL : URL
-    {
+
+	// Creates a temp file
+	
+	override open func setUp()
+	{
 		let path = NSTemporaryDirectory()
-		return URL(fileURLWithPath:path).appendingPathComponent("test")
-    }
-
-
-	func testExtendedAttributeExists()
-    {
-		let url = self.testURL
+		self.url = URL(fileURLWithPath:path).appendingPathComponent("tmp")
 		try! "This is a test".write(to:url, atomically:true, encoding:.utf8)
-		
+	}
+	
+	// Deletes the temp file
+	
+	override open func tearDown()
+	{
+		try! FileManager.default.removeItem(at:url)
+	}
+
+
+	// Test that an attribute for an unknown key doesn't exist
+	
+	func testExists()
+    {
 		let exists = url.hasExtendedAttribute(forName:"com.boinx.unknown")
 		XCTAssertEqual(exists,false)
-
-		try! FileManager.default.removeItem(at:url)
     }
+
+
+	// Test String attribute
 	
-	
-	func testExtendedAttributeString()
+	func testStringAttribute()
     {
-		let url = self.testURL
-		let key = "com.boinx.foo"
 		let value1:String = "bar"
-		
-		try! "This is a test".write(to:url, atomically:true, encoding:.utf8)
 		
 		try! url.setExtendedAttribute(value1, forName:key)
 
@@ -48,20 +56,17 @@ class URL_ExtendedAttributesTests: XCTestCase
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
+		
 		let exists2 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists2,false)
-
-		try! FileManager.default.removeItem(at:url)
     }
+
+
+	// Test Int attribute
 	
-	
-	func testExtendedAttributeInt()
+	func testIntAttribute()
     {
-		let url = self.testURL
-		let key = "com.boinx.foo"
 		let value1:Int = 42
-		
-		try! "This is a test".write(to:url, atomically:true, encoding:.utf8)
 		
 		try! url.setExtendedAttribute(value1, forName:key)
 
@@ -72,20 +77,17 @@ class URL_ExtendedAttributesTests: XCTestCase
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
+		
 		let exists2 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists2,false)
-
-		try! FileManager.default.removeItem(at:url)
     }
+
+
+	// Test Bool attribute
 	
-	
-	func testExtendedAttributeBool()
+	func testBoolAttribute()
     {
-		let url = self.testURL
-		let key = "com.boinx.foo"
 		let value1:Bool = true
-		
-		try! "This is a test".write(to:url, atomically:true, encoding:.utf8)
 		
 		try! url.setExtendedAttribute(value1, forName:key)
 
@@ -96,10 +98,31 @@ class URL_ExtendedAttributesTests: XCTestCase
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
+
 		let exists2 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists2,false)
+    }
 
-		try! FileManager.default.removeItem(at:url)
+
+	// Test Data attribute
+	
+	func testDataAttribute()
+    {
+		let bytes:[UInt8] = [0x18,0x03,0x19,0x69]
+		let value1 = Data(bytes:bytes)
+		
+		try! url.setExtendedAttribute(value1, forName:key)
+
+		let exists1 = url.hasExtendedAttribute(forName:key)
+		XCTAssertEqual(exists1,true)
+
+		let value2:Data = try! url.extendedAttribute(forName:key)
+		XCTAssertEqual(value1,value2)
+		
+		try! url.removeExtendedAttribute(forName:key)
+
+		let exists2 = url.hasExtendedAttribute(forName:key)
+		XCTAssertEqual(exists2,false)
     }
 
 }
