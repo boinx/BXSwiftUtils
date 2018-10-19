@@ -23,7 +23,7 @@ public extension Data
 	/// for this maximum number.
 	///
 	/// - parameter data: The data to be xored onto self
-	/// - parameter maximumRepeatCount: The maximum repetion of data, or unlimited for 0
+	/// - parameter maximumRepeatCount: The maximum repetition of data (pass 0 for unlimited)
 
     public mutating func xor(with data: Data, maximumRepeatCount: Int = 0)
     {
@@ -67,22 +67,7 @@ public extension Data
 		return copy
 	}
 
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	/// Calculates the checksum of the bytes contained in self
-	///
-	/// Please note that the checksum is masked with 0xFF, so it will always be in the range 0...255
-	
-    public var checksum : Int
-    {
-        return self
-        	.map { Int($0) }
-        	.reduce(0,+)
-        	& 0xff
-    }
-	
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------
