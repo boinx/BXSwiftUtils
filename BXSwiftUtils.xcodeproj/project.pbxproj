@@ -150,8 +150,8 @@
 		D06CC9282178D209009C2991 /* Data+MutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9262178D209009C2991 /* Data+MutationTests.swift */; };
 		D06CC92B2178EADA009C2991 /* Data+Checksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC92A2178EADA009C2991 /* Data+Checksum.swift */; };
 		D06CC92C2178EADA009C2991 /* Data+Checksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC92A2178EADA009C2991 /* Data+Checksum.swift */; };
-		D06CC9392179DDE9009C2991 /* Data+Wrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9382179DDE9009C2991 /* Data+Wrapping.swift */; };
-		D06CC93A2179DDE9009C2991 /* Data+Wrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9382179DDE9009C2991 /* Data+Wrapping.swift */; };
+		D06CC9392179DDE9009C2991 /* Data+TypeCasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9382179DDE9009C2991 /* Data+TypeCasting.swift */; };
+		D06CC93A2179DDE9009C2991 /* Data+TypeCasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9382179DDE9009C2991 /* Data+TypeCasting.swift */; };
 		D06F462D209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
 		D0859FD12158F7DD00F624C7 /* URL+Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD02158F7DD00F624C7 /* URL+Contents.swift */; };
@@ -278,7 +278,7 @@
 		D06CC9222178C5F9009C2991 /* Data+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mutation.swift"; sourceTree = "<group>"; };
 		D06CC9262178D209009C2991 /* Data+MutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+MutationTests.swift"; sourceTree = "<group>"; };
 		D06CC92A2178EADA009C2991 /* Data+Checksum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Checksum.swift"; sourceTree = "<group>"; };
-		D06CC9382179DDE9009C2991 /* Data+Wrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Wrapping.swift"; sourceTree = "<group>"; };
+		D06CC9382179DDE9009C2991 /* Data+TypeCasting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+TypeCasting.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
 		D0859FD02158F7DD00F624C7 /* URL+Contents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Contents.swift"; sourceTree = "<group>"; };
 		D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributes.swift"; sourceTree = "<group>"; };
@@ -647,7 +647,7 @@
 			children = (
 				D06CC92A2178EADA009C2991 /* Data+Checksum.swift */,
 				D06CC9222178C5F9009C2991 /* Data+Mutation.swift */,
-				D06CC9382179DDE9009C2991 /* Data+Wrapping.swift */,
+				D06CC9382179DDE9009C2991 /* Data+TypeCasting.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -942,7 +942,7 @@
 				48B6191E215E35DB00E6E037 /* OptionalType.swift in Sources */,
 				D056D43E205296A500849EF2 /* BXLogger.swift in Sources */,
 				48DA81D0206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
-				D06CC9392179DDE9009C2991 /* Data+Wrapping.swift in Sources */,
+				D06CC9392179DDE9009C2991 /* Data+TypeCasting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,7 +1037,7 @@
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
-				D06CC93A2179DDE9009C2991 /* Data+Wrapping.swift in Sources */,
+				D06CC93A2179DDE9009C2991 /* Data+TypeCasting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

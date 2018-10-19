@@ -1,6 +1,6 @@
 //**********************************************************************************************************************
 //
-//  Data+Wrapping.swift
+//  Data+TypeCasting.swift
 //  Adds methods to convert between Array and Data
 //  Copyright ©2018 Peter Baumgartner. All rights reserved.
 //
@@ -19,7 +19,7 @@ public extension Data
 	/// Wraps an Array in a Data object WITHOUT copying the underlying memory
 	/// - parameter array: An array of values of type T
 	
-	init<T>(wrapping array: inout [T])
+	init<T>(usingMemoryOf array: inout [T])
     {
 		let ptr = UnsafeMutableRawPointer(&array)
 		let count = array.count * MemoryLayout<T>.stride
@@ -28,9 +28,9 @@ public extension Data
 
 
 	/// Converts a Data object to an Array WITHOUT copying the underlying memory
-	/// - parameter elementType: The type of the array elements
+	/// - parameter type: The type of the array elements
 
-    func asArray<T>(elementType: T.Type) -> [T]
+    func asArray<T>(ofType type: T.Type) -> [T]
     {
     	let count = self.count / MemoryLayout<T>.stride
 		
