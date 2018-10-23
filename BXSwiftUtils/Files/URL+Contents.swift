@@ -1,8 +1,8 @@
 //**********************************************************************************************************************
 //
 //  URL+Contents.swift
-//	Adds convenience methods to URL
-//  Copyright ©2016-2018 Peter Baumgartner. All rights reserved.
+//	Convenience methods to query the contents of folder or files
+//  Copyright ©2018 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
