@@ -56,6 +56,7 @@ public extension URL
 		handle.seek(toFileOffset: offset)
 		handle.write(data)
 		handle.synchronizeFile()
+		handle.closeFile()
 		
 		// Return the number of bytes that were written
 		
