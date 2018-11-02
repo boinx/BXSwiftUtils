@@ -26,7 +26,7 @@ public extension CGPath
         {
             let start = CGPoint(x: bounds.minX, y: bounds.maxY - radius)
             path.move(to: start)
-            path.addArc(tangent1End: start, tangent2End: CGPoint(x: bounds.minX + radius, y: bounds.maxY), radius: radius)
+            path.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.maxY), tangent2End: CGPoint(x: bounds.minX + radius, y: bounds.maxY), radius: 5.0)
         }
         else
         {
@@ -37,7 +37,7 @@ public extension CGPath
         {
             let start = CGPoint(x: bounds.maxX - radius, y: bounds.maxY)
             path.addLine(to: start)
-            path.addArc(tangent1End: start, tangent2End: CGPoint(x: bounds.maxX, y: bounds.maxY - radius), radius: radius)
+            path.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.maxY), tangent2End: CGPoint(x: bounds.maxX, y: bounds.maxY - radius), radius: radius)
         }
         else
         {
@@ -48,7 +48,7 @@ public extension CGPath
         {
             let start = CGPoint(x: bounds.maxX, y: bounds.minY + radius)
             path.addLine(to: start)
-            path.addArc(tangent1End: start, tangent2End: CGPoint(x: bounds.maxX - radius, y: bounds.minY), radius: radius)
+            path.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.minY), tangent2End: CGPoint(x: bounds.maxX - radius, y: bounds.minY), radius: radius)
         }
         else
         {
@@ -59,7 +59,7 @@ public extension CGPath
         {
             let start = CGPoint(x: bounds.minX + radius, y: bounds.minY)
             path.addLine(to: start)
-            path.addArc(tangent1End: start, tangent2End: CGPoint(x: bounds.minX, y: bounds.minY + radius), radius: radius)
+            path.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.minY), tangent2End: CGPoint(x: bounds.minX, y: bounds.minY + radius), radius: radius)
         }
         else
         {
