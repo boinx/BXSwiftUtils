@@ -1,0 +1,20 @@
+// Platforms
+
+SUPPORTED_PLATFORMS = macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator
+
+// Language version
+
+SWIFT_VERSION = 4.2
+
+// Deployment target
+
+IPHONEOS_DEPLOYMENT_TARGET = 11.0
+MACOSX_DEPLOYMENT_TARGET = 10.10
+TVOS_DEPLOYMENT_TARGET = 11.0
+WATCHOS_DEPLOYMENT_TARGET = 5.0
+
+// Compiler & Linker options
+
+COPY_PHASE_STRIP = NO
+LD_DYLIB_INSTALL_NAME = @rpath
+CLANG_ENABLE_MODULES = YES

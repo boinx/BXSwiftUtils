@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4875F25E205299A6009985EC"
                BuildableName = "BXSwiftUtils.framework"
-               BlueprintName = "BXSwiftUtils-iOS"
+               BlueprintName = "BXSwiftUtils"
                ReferencedContainer = "container:BXSwiftUtils.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4875F25E205299A6009985EC"
             BuildableName = "BXSwiftUtils.framework"
-            BlueprintName = "BXSwiftUtils-iOS"
+            BlueprintName = "BXSwiftUtils"
             ReferencedContainer = "container:BXSwiftUtils.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4875F25E205299A6009985EC"
             BuildableName = "BXSwiftUtils.framework"
-            BlueprintName = "BXSwiftUtils-iOS"
+            BlueprintName = "BXSwiftUtils"
             ReferencedContainer = "container:BXSwiftUtils.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4875F25E205299A6009985EC"
             BuildableName = "BXSwiftUtils.framework"
-            BlueprintName = "BXSwiftUtils-iOS"
+            BlueprintName = "BXSwiftUtils"
             ReferencedContainer = "container:BXSwiftUtils.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

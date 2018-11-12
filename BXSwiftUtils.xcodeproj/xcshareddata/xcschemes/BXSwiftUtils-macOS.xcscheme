@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4875F20F2051E70E009985EC"
-               BuildableName = "BXSwiftUtilsTests-macOS.xctest"
-               BlueprintName = "BXSwiftUtilsTests-macOS"
+               BuildableName = "BXSwiftUtilsTests.xctest"
+               BlueprintName = "BXSwiftUtilsTests"
                ReferencedContainer = "container:BXSwiftUtils.xcodeproj">
             </BuildableReference>
          </TestableReference>
