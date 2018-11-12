@@ -71,6 +71,7 @@
 		D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */; };
 		D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
+		D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
 		D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
@@ -110,7 +111,7 @@
 		487107EE20A9B8E000120024 /* BXAtomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXAtomic.swift; sourceTree = "<group>"; };
 		4875F20A2051E70E009985EC /* BXSwiftUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXSwiftUtils.h; sourceTree = "<group>"; };
 		4875F20B2051E70E009985EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4875F2102051E70E009985EC /* BXSwiftUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BXSwiftUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4875F2102051E70E009985EC /* BXSwiftUtils-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXSwiftUtils-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4875F2172051E70E009985EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4875F2232051E7F4009985EC /* STYLEGUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = STYLEGUIDE.md; sourceTree = "<group>"; };
 		4875F2252051E9D0009985EC /* Array+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Concatenation.swift"; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,13 +241,14 @@
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
 				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
 				4875F2082051E70E009985EC /* Products */,
+				D05245CD2199A83900F1A9B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		4875F2082051E70E009985EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4875F2102051E70E009985EC /* BXSwiftUtilsTests.xctest */,
+				4875F2102051E70E009985EC /* BXSwiftUtils-Tests.xctest */,
 				4875F25F205299A6009985EC /* BXSwiftUtils.framework */,
 			);
 			name = Products;
@@ -481,6 +484,13 @@
 			path = "Date & Time";
 			sourceTree = "<group>";
 		};
+		D05245CD2199A83900F1A9B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D056D43220527B7500849EF2 /* Threading */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,9 +564,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4875F20F2051E70E009985EC /* BXSwiftUtilsTests */ = {
+		4875F20F2051E70E009985EC /* BXSwiftUtils-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4875F21E2051E70E009985EC /* Build configuration list for PBXNativeTarget "BXSwiftUtilsTests" */;
+			buildConfigurationList = 4875F21E2051E70E009985EC /* Build configuration list for PBXNativeTarget "BXSwiftUtils-Tests" */;
 			buildPhases = (
 				4875F20C2051E70E009985EC /* Sources */,
 				4875F20D2051E70E009985EC /* Frameworks */,
@@ -566,9 +576,9 @@
 			);
 			dependencies = (
 			);
-			name = BXSwiftUtilsTests;
+			name = "BXSwiftUtils-Tests";
 			productName = BXSwiftUtilsTests;
-			productReference = 4875F2102051E70E009985EC /* BXSwiftUtilsTests.xctest */;
+			productReference = 4875F2102051E70E009985EC /* BXSwiftUtils-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		4875F25E205299A6009985EC /* BXSwiftUtils */ = {
@@ -625,7 +635,7 @@
 			projectRoot = "";
 			targets = (
 				4875F25E205299A6009985EC /* BXSwiftUtils */,
-				4875F20F2051E70E009985EC /* BXSwiftUtilsTests */,
+				4875F20F2051E70E009985EC /* BXSwiftUtils-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -889,10 +899,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BXSwiftUtilsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtilsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -905,9 +914,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BXSwiftUtilsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtilsTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -981,7 +989,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4875F21E2051E70E009985EC /* Build configuration list for PBXNativeTarget "BXSwiftUtilsTests" */ = {
+		4875F21E2051E70E009985EC /* Build configuration list for PBXNativeTarget "BXSwiftUtils-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4875F21F2051E70E009985EC /* Debug */,
