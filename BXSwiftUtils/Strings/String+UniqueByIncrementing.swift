@@ -75,7 +75,7 @@ extension String
                 
                 return composedString
             })
-            .first(where: { !rejector($0)})!
+            .first(where: { !rejector($0) })!
     }
     
     /**
@@ -118,15 +118,18 @@ extension String
     }
 }
 
+
+// The Objective C Methods are prefixed with objc_ to avoid an infitite recursion when calling the equally named swift
+// method. Although this can be prevented by correctly converting all parameter types, it's super easy to miss...
 extension NSString
 {
-    @objc public func uniqueStringByIncrementing(rejectIf rejector: (_ suggestion: NSString) -> Bool, appendAnnotation: NSString? = nil, separator: NSString = " ") -> NSString
+    @objc public func objc_uniqueStringByIncrementing(rejectIf rejector: (_ suggestion: NSString) -> Bool, appendAnnotation: NSString? = nil, separator: NSString = " ") -> NSString
     {
-        return (self as String).uniqueStringByIncrementing(rejectIf: rejector, appendAnnotation: appendAnnotation, separator: separator) as NSString
+        return (self as String).uniqueStringByIncrementing(rejectIf: { rejector($0 as NSString) }, appendAnnotation: appendAnnotation as String?, separator: separator as String) as NSString
     }
     
-    @objc public func uniqueFilenameByIncrementing(rejectIf rejector: (_ suggestion: NSString) -> Bool, appendAnnotation: NSString? = nil, separator: NSString = " ") -> NSString
+    @objc public func objc_uniqueFilenameByIncrementing(rejectIf rejector: (_ suggestion: NSString) -> Bool, appendAnnotation: NSString? = nil, separator: NSString = " ") -> NSString
     {
-        return (self as String).uniqueFilenameByIncrementing(rejectIf: rejector, appendAnnotation: appendAnnotation, separator: separator) as NSString
+        return (self as String).uniqueFilenameByIncrementing(rejectIf: { rejector($0 as NSString) }, appendAnnotation: appendAnnotation as String?, separator: separator as String) as NSString
     }
 }
