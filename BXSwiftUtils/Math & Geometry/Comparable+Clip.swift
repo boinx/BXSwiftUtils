@@ -10,24 +10,63 @@ import Foundation
 
 extension Comparable
 {
-	/// Returns `self` clipped to the closed interval `[minValue, maxValue]`.
-	///
-	/// - Parameters:
-	///   - minValue: The minimum allowed value. Will clip `self` if smaller.
-	///   - maxValue: The maximum allowed value. Will clip `self` if greater.
-	/// - Returns: `self` if `self` is within the interval `[minValue, maxValue]`, `minValue` or `maxValue` otherwise.
-	public func clipped<T>(minValue: T, maxValue: T) -> T where T : Comparable
+	/**
+	 Clips a value into the closed range `[min, max]` without modifying the original value.
+	
+	 - Parameter minValue: The minimum allowed value.
+	 - Parameter maxValue: The maximum allowed value.
+	 - Returns: A new value that lies within the closed range `[min, max]`.
+	 */
+	public func clipped(min minValue: Self, max maxValue: Self) -> Self
 	{
-		return min(maxValue, max(minValue, self as! T))
+		var copy = self
+		copy.clip(min: minValue, max: maxValue)
+		return copy
 	}
 	
-	/// Clips to the closed interval `[minValue, maxValue]`.
-	///
-	/// - Parameters:
-	///   - minValue: The minimum allowed value. Will clip `self` if smaller.
-	///   - maxValue: The maximum allowed value. Will clip `self` if greater.
-	public mutating func clip<T>(minValue: T, maxValue: T) where T : Comparable
+	/**
+	 Clips a value into the closed range `[min, max]` by modifying the original value.
+	
+	 - Parameter minValue: The minimum allowed value.
+	 - Parameter maxValue: The maximum allowed value.
+	 */
+	public mutating func clip(min minValue: Self, max maxValue: Self)
 	{
-		self = min(maxValue, max(minValue, self as! T)) as! Self
+		if minValue > maxValue
+		{
+			NSException.raise(.invalidArgumentException, format: "Can't clip value \(self) with maxValue \(maxValue) being larger than minValue \(minValue)", arguments: getVaList([]))
+		}
+		
+		if self < minValue
+		{
+			self = minValue
+		}
+		else if self > maxValue
+		{
+			self = maxValue
+		}
+	}
+	
+	/**
+	 Clips a value into the given closed range without modifying the original value.
+	
+	 - Parameter range: Closed range that conveys the minimum and maximum allowed value.
+	 - Returns: New value that lies within the closed range `range`.
+	 */
+	public func clipped(to range: ClosedRange<Self>) -> Self
+	{
+		var copy = self
+		copy.clip(min: range.lowerBound, max: range.upperBound)
+		return copy
+	}
+	
+	/**
+	 Clips a value into the given closed range by modifying the original value.
+	
+	 - Parameter range: Closed range that conveys the minimum and maximum allowed value.
+	 */
+	public mutating func clip(to range: ClosedRange<Self>)
+	{
+		self.clip(min: range.lowerBound, max: range.upperBound)
 	}
 }
