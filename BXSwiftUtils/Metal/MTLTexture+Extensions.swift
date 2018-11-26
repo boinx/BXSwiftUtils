@@ -9,6 +9,7 @@
 
 import Metal
 import CoreGraphics
+import CoreVideo
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -27,9 +28,9 @@ public extension MTLTexture
 		
 		let w = self.width
 		let h = self.height
-		let rowBytes = ((w * 4 + 15) / 16) * 16
+		let rowBytes = self.bufferBytesPerRow //((w * 4 + 15) / 16) * 16
 		let size = rowBytes * h
-		var buffer = [UInt8](repeating:1,count:size)
+		var buffer = [UInt8](repeating:0,count:size)
 		
 		// Copy pixels from GPU texture to CPU buffer
 		
@@ -54,6 +55,65 @@ public extension MTLTexture
 			decode: nil,
 			shouldInterpolate: false,
 			intent: .defaultIntent)
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Creates a CVPixelBuffer from a Metal texture
+	
+	public func createPixelBuffer(with pixelFormat:OSType = kCVPixelFormatType_32ARGB) -> CVPixelBuffer?
+	{
+		// Allocate a new buffer
+		
+		let width = self.width
+		let height = self.height
+		let rowbytes = self.bufferBytesPerRow
+		let size = rowbytes * height
+		
+		guard let buffer = malloc(size) else
+		{
+			log.error {"MTLTexture.\(#function) ERROR out of memory"}
+    		return nil
+  		}
+		
+		// Free the buffer again once the CVPixelBuffer is deallocated
+		
+		let releaseCallback:CVPixelBufferReleaseBytesCallback =
+		{
+			_, ptr in
+    		guard let ptr = ptr else { return }
+    		free(UnsafeMutableRawPointer(mutating:ptr))
+		}
+		
+		// Copy pixels from GPU texture to the buffer
+		
+		let region = MTLRegionMake2D(0,0,width,height)
+		self.getBytes(buffer, bytesPerRow:rowbytes, from:region, mipmapLevel:0)
+
+		// Wrap the buffer in a CVPixelBuffer
+		
+		var pixelbuffer:CVPixelBuffer? = nil
+
+		let err = CVPixelBufferCreateWithBytes(
+			kCFAllocatorDefault,
+			width,
+			height,
+			pixelFormat,
+			buffer,
+			rowbytes,
+			releaseCallback,
+			nil,
+			nil,
+			&pixelbuffer)
+		
+		if err != noErr
+		{
+			log.error {"MTLTexture.\(#function) ERROR \(err) trying to create CVPixelBuffer"}
+		}
+
+		return pixelbuffer
 	}
 }
 
