@@ -115,6 +115,35 @@ public extension MTLTexture
 
 		return pixelbuffer
 	}
+
+
+	/// Copies a Metal texture to a CVPixelBuffer
+
+	public func copy(to pixelBuffer:CVPixelBuffer)
+	{
+		// Check that the texture and the pixelBuffer match in size
+		
+		let srcWidth = self.width
+		let srcHeight = self.height
+		let srcRowbytes = self.bufferBytesPerRow
+		
+		let dstWidth = CVPixelBufferGetWidth(pixelBuffer)
+		let dstHeight = CVPixelBufferGetHeight(pixelBuffer)
+		let dstRowbytes = CVPixelBufferGetBytesPerRow(pixelBuffer)
+
+		guard srcWidth == dstWidth else { return }
+		guard srcHeight == dstHeight else { return }
+//		guard srcRowbytes == srcRowbytes || srcRowbytes == 0 else { return }
+
+		// Copy pixels from GPU texture to the buffer
+		
+		CVPixelBufferLockBaseAddress(pixelBuffer,[])
+		defer { CVPixelBufferUnlockBaseAddress(pixelBuffer,[]) }
+		
+		guard let buffer = CVPixelBufferGetBaseAddress(pixelBuffer) else { return }
+		let region = MTLRegionMake2D(0,0,srcWidth,srcHeight)
+		self.getBytes(buffer, bytesPerRow:dstRowbytes, from:region, mipmapLevel:0)
+	}
 }
 
 
