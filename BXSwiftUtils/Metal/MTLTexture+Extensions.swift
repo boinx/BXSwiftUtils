@@ -38,11 +38,16 @@ public extension MTLTexture
 	
 	public func createImage(with colorSpaceName: CFString, bitmapInfo: CGBitmapInfo) -> CGImage?
 	{
-		// Allocate memory
+		// Get dimensions
 		
 		let w = self.width
 		let h = self.height
 		let rowBytes = self.recommendedRowBytes
+
+		guard w > 0 && h > 0 && rowBytes > 0 else { return nil }
+		
+		// Allocate memory
+		
 		let size = rowBytes * h
 		var buffer = [UInt8](repeating:0,count:size)
 		
