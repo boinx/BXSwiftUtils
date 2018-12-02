@@ -20,6 +20,20 @@ import CoreVideo
 public extension MTLTexture
 {
 
+	/// Returns the number of bytes per row in this MTLTexture. If this info is not available from the
+	/// MTLTexture, a recommended value will be calculated.
+	
+	public var recommendedRowBytes:Int
+	{
+		let width = self.width
+		let rowBytes = self.bufferBytesPerRow
+		return rowBytes > 0 ? rowBytes : ((width * 4 + 15) / 16) * 16
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Creates a CGImage from a Metal texture.
 	
 	public func createImage(with colorSpaceName: CFString, bitmapInfo: CGBitmapInfo) -> CGImage?
@@ -28,7 +42,7 @@ public extension MTLTexture
 		
 		let w = self.width
 		let h = self.height
-		let rowBytes = self.bufferBytesPerRow //((w * 4 + 15) / 16) * 16
+		let rowBytes = self.recommendedRowBytes
 		let size = rowBytes * h
 		var buffer = [UInt8](repeating:0,count:size)
 		
@@ -69,8 +83,8 @@ public extension MTLTexture
 		
 		let width = self.width
 		let height = self.height
-		let rowbytes = self.bufferBytesPerRow
-		let size = rowbytes * height
+		let rowBytes = self.recommendedRowBytes
+		let size = rowBytes * height
 		
 		guard let buffer = malloc(size) else
 		{
@@ -90,7 +104,7 @@ public extension MTLTexture
 		// Copy pixels from GPU texture to the buffer
 		
 		let region = MTLRegionMake2D(0,0,width,height)
-		self.getBytes(buffer, bytesPerRow:rowbytes, from:region, mipmapLevel:0)
+		self.getBytes(buffer, bytesPerRow:rowBytes, from:region, mipmapLevel:0)
 
 		// Wrap the buffer in a CVPixelBuffer
 		
@@ -102,7 +116,7 @@ public extension MTLTexture
 			height,
 			pixelFormat,
 			buffer,
-			rowbytes,
+			rowBytes,
 			releaseCallback,
 			nil,
 			nil,
@@ -125,7 +139,7 @@ public extension MTLTexture
 		
 		let srcWidth = self.width
 		let srcHeight = self.height
-		let srcRowbytes = self.bufferBytesPerRow
+		let srcRowbytes = self.recommendedRowBytes
 		
 		let dstWidth = CVPixelBufferGetWidth(pixelBuffer)
 		let dstHeight = CVPixelBufferGetHeight(pixelBuffer)
