@@ -26,8 +26,15 @@ public extension MTLTexture
 	public var recommendedRowBytes:Int
 	{
 		let width = self.width
-		let rowBytes = self.bufferBytesPerRow
-		return rowBytes > 0 ? rowBytes : ((width * 4 + 15) / 16) * 16
+		var rowBytes = ((width * 4 + 15) / 16) * 16
+		
+		if #available(macOS 10.12,*)
+		{
+			let rb = self.bufferBytesPerRow
+			if rb > 0 { rowBytes = rb }
+		}
+		
+		return rowBytes
 	}
 	
 	
@@ -46,7 +53,7 @@ public extension MTLTexture
 
 		guard w > 0 && h > 0 && rowBytes > 0 else { return nil }
 		
-		// Allocate memory
+		// Allocate buffer
 		
 		let size = rowBytes * h
 		var buffer = [UInt8](repeating:0,count:size)
