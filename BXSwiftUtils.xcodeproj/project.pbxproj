@@ -61,6 +61,8 @@
 		48FF9BC820E116B100024C10 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF9BC620E116B100024C10 /* Weak.swift */; };
 		48FF9BCA20E1174C00024C10 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF9BC920E1174C00024C10 /* Weak.swift */; };
 		95CBED9321A5B4D100344220 /* Comparable+Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBED9221A5B4D100344220 /* Comparable+Clip.swift */; };
+		95F2DBA821B7DD9000865AE4 /* Bool+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */; };
+		95F2DBAB21B7E3FE00865AE4 /* Bool+OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */; };
 		D0149008213D566500A38870 /* KVO+propagateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0149006213D566500A38870 /* KVO+propagateChanges.swift */; };
 		D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234E9205BF938003D6CCB /* URL+Info.swift */; };
 		D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234ED205BFC9F003D6CCB /* String+Localized.swift */; };
@@ -157,6 +159,8 @@
 		48FF9BC620E116B100024C10 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		48FF9BC920E1174C00024C10 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		95CBED9221A5B4D100344220 /* Comparable+Clip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clip.swift"; sourceTree = "<group>"; };
+		95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Operators.swift"; sourceTree = "<group>"; };
+		95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+OperatorsTests.swift"; sourceTree = "<group>"; };
 		D0149006213D566500A38870 /* KVO+propagateChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KVO+propagateChanges.swift"; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
 		D03234ED205BFC9F003D6CCB /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
@@ -404,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				48D9E36021A6B75E0057B930 /* Comparable+ClipTests.swift */,
+				95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */,
 			);
 			path = "Math & Geometry";
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				481A25BC2175D36000FB8E9A /* CGPath+RoundedRect.swift */,
 				481A25BF2175D38700FB8E9A /* CACornerMask+Convenience.swift */,
 				95CBED9221A5B4D100344220 /* Comparable+Clip.swift */,
+				95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */,
 			);
 			path = "Math & Geometry";
 			sourceTree = "<group>";
@@ -722,6 +728,7 @@
 				48AD6CA02147FD6400225D9C /* String+UniqueByIncrementingTests.swift in Sources */,
 				481BE6D62098368E00F12EDF /* Sequence+CompactMap.swift in Sources */,
 				D08F44E32170A4850060FBAE /* URL+ExtendedAttributesTests.swift in Sources */,
+				95F2DBAB21B7E3FE00865AE4 /* Bool+OperatorsTests.swift in Sources */,
 				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
 				48A971E52159122800215F9F /* Enum+Comparable.swift in Sources */,
 				48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
@@ -738,6 +745,7 @@
 				4875F27820529A06009985EC /* DispatchQueue+Throttle.swift in Sources */,
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
+				95F2DBA821B7DD9000865AE4 /* Bool+Operators.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
