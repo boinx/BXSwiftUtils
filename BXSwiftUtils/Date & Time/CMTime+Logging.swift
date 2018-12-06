@@ -13,7 +13,7 @@ import CoreMedia
 //----------------------------------------------------------------------------------------------------------------------
 
 
-extension CMTime
+extension CMTime : CustomDebugStringConvertible
 {
 
 	/// Returns a string that is suitable for logging
