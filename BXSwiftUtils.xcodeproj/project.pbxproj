@@ -86,6 +86,7 @@
 		D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */; };
 		D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDB2158FBF100F624C7 /* CGSize+String.swift */; };
 		D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */; };
+		D086A25E21B92F4600ACF9CA /* CMTime+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086A25D21B92F4500ACF9CA /* CMTime+Logging.swift */; };
 		D0891244215A762200403100 /* CGPoint+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891243215A762200403100 /* CGPoint+String.swift */; };
 		D089124B215B723C00403100 /* CGRect+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089124A215B723C00403100 /* CGRect+String.swift */; };
 		D08F44E121708CD90060FBAE /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08F44DF21708CD90060FBAE /* String+Regex.swift */; };
@@ -186,6 +187,7 @@
 		D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributes.swift"; sourceTree = "<group>"; };
 		D0859FDB2158FBF100F624C7 /* CGSize+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+String.swift"; sourceTree = "<group>"; };
 		D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+FMExtensions.swift"; sourceTree = "<group>"; };
+		D086A25D21B92F4500ACF9CA /* CMTime+Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Logging.swift"; sourceTree = "<group>"; };
 		D0891243215A762200403100 /* CGPoint+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+String.swift"; sourceTree = "<group>"; };
 		D089124A215B723C00403100 /* CGRect+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+String.swift"; sourceTree = "<group>"; };
 		D08F44DF21708CD90060FBAE /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				D032350C205C362A003D6CCB /* Date+Components.swift */,
+				D086A25D21B92F4500ACF9CA /* CMTime+Logging.swift */,
 			);
 			path = "Date & Time";
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				4875F27820529A06009985EC /* DispatchQueue+Throttle.swift in Sources */,
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
+				D086A25E21B92F4600ACF9CA /* CMTime+Logging.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
