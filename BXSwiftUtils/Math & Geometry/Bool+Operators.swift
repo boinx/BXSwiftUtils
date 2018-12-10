@@ -10,9 +10,11 @@ import Foundation
 
 infix operator ||= : AssignmentPrecedence
 infix operator &&= : AssignmentPrecedence
+infix operator ^^ : LogicalDisjunctionPrecedence
 
 extension Bool
 {
+	/// OR and assign
 	public static func ||= (lhs: inout Bool, rhs: @autoclosure () throws -> Bool) rethrows
 	{
 		if (!lhs)
@@ -21,11 +23,18 @@ extension Bool
 		}
 	}
 	
+	// AND and assign
 	public static func &&= (lhs: inout Bool, rhs: @autoclosure () throws -> Bool) rethrows
 	{
 		if (lhs)
 		{
 			lhs = try rhs()
 		}
+	}
+	
+	// XOR
+	public static func ^^ (lhs: Bool, rhs: Bool) -> Bool
+	{
+		return (lhs && !rhs) || (!lhs && rhs)
 	}
 }
