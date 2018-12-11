@@ -46,4 +46,50 @@ class Bool_OperatorsTests : XCTestCase
 		boolValue &&= false
 		XCTAssertFalse(boolValue) 	// 1 0 | 0
 	}
+	
+	func testXOR()
+	{
+		var boolValue: Bool = false
+		
+		boolValue = false ^^ false
+		XCTAssertFalse(boolValue) 	// 0 0 | 0
+		
+		boolValue = false ^^ true
+		XCTAssertTrue(boolValue) 	// 0 1 | 1
+		
+		boolValue = true ^^ false
+		XCTAssertTrue(boolValue) 	// 1 0 | 1
+		
+		boolValue = true ^^ true
+		XCTAssertFalse(boolValue) 	// 1 1 | 0
+	}
+	
+	func testXORPrecedenceLeftToRight() // same as right to left
+	{
+		var boolValue: Bool = false
+		
+		boolValue = false ^^ false ^^ true
+		XCTAssertTrue(boolValue)
+		
+		boolValue = false ^^ false ^^ false
+		XCTAssertFalse(boolValue)
+		
+		boolValue = false ^^ true ^^ true
+		XCTAssertFalse(boolValue)
+		
+		boolValue = false ^^ true ^^ false
+		XCTAssertTrue(boolValue)
+		
+		boolValue = true ^^ false ^^ true
+		XCTAssertFalse(boolValue)
+		
+		boolValue = true ^^ false ^^ false
+		XCTAssertTrue(boolValue)
+		
+		boolValue = true ^^ true ^^ false
+		XCTAssertFalse(boolValue)
+		
+		boolValue = true ^^ true ^^ true
+		XCTAssertTrue(boolValue)
+	}
 }
