@@ -284,7 +284,7 @@
 				D032350F205C362F003D6CCB /* Date & Time */,
 				D0323501205C2923003D6CCB /* Math & Geometry */,
 				4875F2242051E9B7009985EC /* Collections */,
-				D0323505205C2C3E003D6CCB /* Metal & Graphics */,
+				D0323505205C2C3E003D6CCB /* Graphics */,
 				48E449CE205BBE55008CF3D5 /* Locale */,
 			);
 			path = BXSwiftUtils;
@@ -492,7 +492,7 @@
 			path = "Math & Geometry";
 			sourceTree = "<group>";
 		};
-		D0323505205C2C3E003D6CCB /* Metal & Graphics */ = {
+		D0323505205C2C3E003D6CCB /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
 				D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */,
@@ -501,7 +501,7 @@
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
 				D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */,
 			);
-			path = "Metal & Graphics";
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 		D032350F205C362F003D6CCB /* Date & Time */ = {
