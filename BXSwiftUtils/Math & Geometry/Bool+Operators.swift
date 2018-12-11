@@ -35,6 +35,6 @@ extension Bool
 	// XOR
 	public static func ^^ (lhs: Bool, rhs: Bool) -> Bool
 	{
-		return (lhs && !rhs) || (!lhs && rhs)
+		return lhs != rhs
 	}
 }
