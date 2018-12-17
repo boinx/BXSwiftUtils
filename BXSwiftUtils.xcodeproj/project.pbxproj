@@ -77,6 +77,7 @@
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
 		D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
 		D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0721C6687100FAF3CC /* String+Paths.swift */; };
+		D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */; };
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
 		D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
@@ -182,6 +183,7 @@
 		D056D43C205296A500849EF2 /* BXLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXLogger.swift; sourceTree = "<group>"; };
 		D056D43F205296F100849EF2 /* Synchronized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronized.swift; sourceTree = "<group>"; };
 		D05D0C0721C6687100FAF3CC /* String+Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Paths.swift"; sourceTree = "<group>"; };
+		D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Resolving.swift"; sourceTree = "<group>"; };
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
 		D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
 		D06CC91E2178B089009C2991 /* String+RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegexTests.swift"; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 			children = (
 				D03234E9205BF938003D6CCB /* URL+Info.swift */,
 				D0859FD02158F7DD00F624C7 /* URL+Contents.swift */,
+				D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */,
 				D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */,
 			);
 			path = Files;
@@ -803,6 +806,7 @@
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
 				D0C2294021BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift in Sources */,
 				489E56AB2052CC770071BBF1 /* BXLogger.swift in Sources */,
+				D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */,
 				D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */,
 				D086A26021B95CD000ACF9CA /* CMTime+Logging.swift in Sources */,
 				485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
