@@ -60,7 +60,7 @@ extension BXSignpostMixin
 	/// - parameter name: The name of the calling class
 	/// - parameter function: the name of the calling function
 	
-	public func endSignpost(_ identifier:Any?,in name:StaticString,_ function:String = #function)
+	public func endSignpost(with identifier:Any?,in name:StaticString,_ function:String = #function)
 	{
 		if #available(iOS 12.0,*)
 		{
