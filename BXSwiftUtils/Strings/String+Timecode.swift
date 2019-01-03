@@ -1,0 +1,87 @@
+//**********************************************************************************************************************
+//
+//  String+Timecode.swift
+//	Extension for displaying and parsing time codes
+//  Copyright ©2018 Peter Baumgartner. All rights reserved.
+//
+//**********************************************************************************************************************
+
+
+import Foundation
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+extension Double
+{
+	/// Converts the number of seconds into a timecode string of format "HH:MM:SS.ff"
+	
+	public func timecodeString(fps: Int = 1000) -> String
+	{
+		var value = self
+		let ff = Int(value.truncatingRemainder(dividingBy:1.0) * Double(fps) + 0.5)
+		let SS = Int(value.truncatingRemainder(dividingBy:60.0))
+		
+		value -= Double(SS) + Double(ff) / Double(fps)
+		value /= 60.0
+		let MM = Int(value.truncatingRemainder(dividingBy:60.0))
+		
+		value -= Double(MM)
+		value /= 60.0
+		let HH = Int(value)
+		
+		return NSString(format:"%i:%02i:%02i.%02i",HH,MM,SS,ff) as String
+	}
+
+
+	/// Converts the number of seconds into a timecode string of format "HH:MM:SS"
+	
+	public func shortTimecodeString() -> String
+	{
+		var value = floor(self)
+		let SS = Int(value.truncatingRemainder(dividingBy:60.0))
+		
+		value -= Double(SS)
+		value /= 60.0
+		let MM = Int(value.truncatingRemainder(dividingBy:60.0))
+		
+		value -= Double(MM)
+		value /= 60.0
+		let HH = Int(value)
+		
+		return NSString(format:"%i:%02i:%02i",HH,MM,SS) as String
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+extension String
+{
+	/// Converts a timecode string of format "HH:MM:SS.sss" to the time in seconds (as a Double)
+	
+	public func timecodeValueInSeconds() -> Double
+	{
+		var value = 0.0
+		var factor = 1.0
+		let components = self.components(separatedBy:":").reversed()
+
+		for component in components
+		{
+			if let v = Double(component)
+			{
+				value += factor * v
+			}
+			
+			factor *= 60.0
+		}
+		
+		return value
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+

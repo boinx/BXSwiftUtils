@@ -87,6 +87,8 @@
 		D06CC92B2178EADA009C2991 /* Data+Checksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC92A2178EADA009C2991 /* Data+Checksum.swift */; };
 		D06CC93A2179DDE9009C2991 /* Data+TypeCasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9382179DDE9009C2991 /* Data+TypeCasting.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
+		D07D760321DDF136008A6E32 /* Double+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07D760221DDF136008A6E32 /* Double+Localized.swift */; };
+		D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07D760421DDF71D008A6E32 /* String+Timecode.swift */; };
 		D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD02158F7DD00F624C7 /* URL+Contents.swift */; };
 		D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */; };
 		D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0859FDB2158FBF100F624C7 /* CGSize+String.swift */; };
@@ -196,6 +198,8 @@
 		D06CC92A2178EADA009C2991 /* Data+Checksum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Checksum.swift"; sourceTree = "<group>"; };
 		D06CC9382179DDE9009C2991 /* Data+TypeCasting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+TypeCasting.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
+		D07D760221DDF136008A6E32 /* Double+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Localized.swift"; sourceTree = "<group>"; };
+		D07D760421DDF71D008A6E32 /* String+Timecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Timecode.swift"; sourceTree = "<group>"; };
 		D0859FD02158F7DD00F624C7 /* URL+Contents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Contents.swift"; sourceTree = "<group>"; };
 		D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributes.swift"; sourceTree = "<group>"; };
 		D0859FDB2158FBF100F624C7 /* CGSize+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+String.swift"; sourceTree = "<group>"; };
@@ -480,6 +484,8 @@
 			isa = PBXGroup;
 			children = (
 				D03234ED205BFC9F003D6CCB /* String+Localized.swift */,
+				D07D760221DDF136008A6E32 /* Double+Localized.swift */,
+				D07D760421DDF71D008A6E32 /* String+Timecode.swift */,
 				48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */,
 				D046DF87216BAB59004331C3 /* String+DataDetection.swift */,
 				D08F44DF21708CD90060FBAE /* String+Regex.swift */,
@@ -798,6 +804,7 @@
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
 				D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
+				D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */,
 				48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				D089124B215B723C00403100 /* CGRect+String.swift in Sources */,
@@ -820,6 +827,7 @@
 				D0B38D7821CE6F180068148D /* Array+Groups.swift in Sources */,
 				D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */,
 				D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */,
+				D07D760321DDF136008A6E32 /* Double+Localized.swift in Sources */,
 				D086A26021B95CD000ACF9CA /* CMTime+Logging.swift in Sources */,
 				485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
