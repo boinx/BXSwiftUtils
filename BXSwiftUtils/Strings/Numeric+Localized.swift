@@ -17,8 +17,8 @@ import CoreGraphics
 extension NumberFormatter
 {
 	/// Returns a NumberFormatter for Int numbers
-	/// Parameter numberOfDigits: The number of leading digits (filled with 0)
-	/// Returns: The localized string for the number
+	/// - Parameter numberOfDigits: The number of leading digits (filled with 0)
+	/// - Returns: The localized string for the number
 	
 	public static func forInteger(numberOfDigits: Int = 0) -> NumberFormatter
 	{
@@ -29,9 +29,9 @@ extension NumberFormatter
     }
 
 	/// Returns a NumberFormatter for Double values
-	/// Parameter format: The format string specifying how the number is displayed
-	/// Parameter numberOfDigits: The number of digits after the decimal point
-	/// Returns: The NumberFormatter
+	/// - Parameter format: The format string specifying how the number is displayed
+	/// - Parameter numberOfDigits: The number of digits after the decimal point
+	/// - Returns: The NumberFormatter
 	
 	public static func forFloatingPoint(with format: String, numberOfDigits: Int) -> NumberFormatter
 	{
@@ -53,8 +53,8 @@ extension NumberFormatter
 extension Int
 {
 	/// Returns a localized string for an Int value
-	/// Parameter numberOfDigits: The number of digits after the decimal point
-	/// Returns: The localized string for the value
+	/// - Parameter numberOfDigits: The number of digits after the decimal point
+	/// - Returns: The localized string for the value
 	
     public func localized(numberOfDigits: Int = 0) -> String
 	{
@@ -70,9 +70,9 @@ extension Int
 extension Double
 {
 	/// Returns a localized string for the Double value
-	/// Parameter format: The format string specifying how the number is displayed
-	/// Parameter numberOfDigits: The number of digits after the decimal point
-	/// Returns: The localized string for the number
+	/// - Parameter format: The format string specifying how the number is displayed
+	/// - Parameter numberOfDigits: The number of digits after the decimal point
+	/// - Returns: The localized string for the number
 	
     public func localized(with format: String = "#.#", numberOfDigits: Int = 1) -> String
 	{
@@ -88,9 +88,9 @@ extension Double
 extension Float
 {
 	/// Returns a localized string for the Double value
-	/// Parameter format: The format string specifying how the number is displayed
-	/// Parameter numberOfDigits: The number of digits after the decimal point
-	/// Returns: The localized string for the number
+	/// - Parameter format: The format string specifying how the number is displayed
+	/// - Parameter numberOfDigits: The number of digits after the decimal point
+	/// - Returns: The localized string for the number
 	
     public func localized(with format: String = "#.#", numberOfDigits: Int = 1) -> String
 	{
@@ -106,9 +106,9 @@ extension Float
 extension CGFloat
 {
 	/// Returns a localized string for the Double value
-	/// Parameter format: The format string specifying how the number is displayed
-	/// Parameter numberOfDigits: The number of digits after the decimal point
-	/// Returns: The localized string for the number
+	/// - Parameter format: The format string specifying how the number is displayed
+	/// - Parameter numberOfDigits: The number of digits after the decimal point
+	/// - Returns: The localized string for the number
 	
     public func localized(with format: String = "#.#", numberOfDigits: Int = 1) -> String
 	{
