@@ -123,24 +123,33 @@ extension CGFloat
 extension String
 {
 	/// Converts a (possibly localized) string to an Int value (using the supplied NumberFormatter)
-	
-    public func intValue(with formatter: NumberFormatter?) -> Int
+	/// - Parameter formatter: An optional NumberFormatter that gets the first try to extract the value
+	/// - Parameter defaultValue: If value extraction fails then this default value will be returned
+	/// - Returns: The extracted number value
+
+    public func intValue(with formatter: NumberFormatter?, defaultValue: Int = 0) -> Int
 	{
-		return formatter?.number(from:self)?.intValue ?? Int(self) ?? Int(0)
+		return formatter?.number(from:self)?.intValue ?? Int(self) ?? defaultValue
     }
 
  	/// Converts a (possibly localized) string to a Double value (using the supplied NumberFormatter)
-	
-	public func doubleValue(with formatter: NumberFormatter?) -> Double
+	/// - Parameter formatter: An optional NumberFormatter that gets the first try to extract the value
+	/// - Parameter defaultValue: If value extraction fails then this default value will be returned
+	/// - Returns: The extracted number value
+
+	public func doubleValue(with formatter: NumberFormatter?, defaultValue: Double = 0.0) -> Double
 	{
-		return formatter?.number(from:self)?.doubleValue ?? Double(self) ?? Double(0.0)
+		return formatter?.number(from:self)?.doubleValue ?? Double(self) ?? defaultValue
     }
 	
  	/// Converts a (possibly localized) string to a Float value (using the supplied NumberFormatter)
-	
-    public func floatValue(with formatter: NumberFormatter?) -> Float
+	/// - Parameter formatter: An optional NumberFormatter that gets the first try to extract the value
+	/// - Parameter defaultValue: If value extraction fails then this default value will be returned
+	/// - Returns: The extracted number value
+
+    public func floatValue(with formatter: NumberFormatter?, defaultValue: Float = 0.0) -> Float
 	{
-		return formatter?.number(from:self)?.floatValue ?? Float(self) ?? Float(0.0)
+		return formatter?.number(from:self)?.floatValue ?? Float(self) ?? defaultValue
     }
 }
 
