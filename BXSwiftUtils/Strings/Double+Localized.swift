@@ -14,17 +14,14 @@ import CoreGraphics
 //----------------------------------------------------------------------------------------------------------------------
 
 
-protocol NumberFormatting { }
-
-extension NumberFormatting
+extension NumberFormatter
 {
-	/// Returns a localized string for the Double value
-	///
+	/// Returns a NumberFormatter for Double values
 	/// Parameter format: The format string specifying how the number is displayed
 	/// Parameter numberOfDigits: The number of digits after the decimal point
-	/// Returns: The localized string for the number
+	/// Returns: The NumberFormatter
 	
-	public func numberFormatter(with format: String, numberOfDigits: Int) -> NumberFormatter
+	public static func forFloatingPoint(with format: String, numberOfDigits: Int) -> NumberFormatter
 	{
 		let formatter = NumberFormatter()
 		
@@ -41,18 +38,17 @@ extension NumberFormatting
 //----------------------------------------------------------------------------------------------------------------------
 
 
-extension Double : NumberFormatting
+extension Double
 {
 	/// Returns a localized string for the Double value
-	///
 	/// Parameter format: The format string specifying how the number is displayed
 	/// Parameter numberOfDigits: The number of digits after the decimal point
 	/// Returns: The localized string for the number
 	
     public func localized(with format: String = "#.#", numberOfDigits: Int = 1) -> String
 	{
-		let formatter = self.numberFormatter(with:format, numberOfDigits:numberOfDigits)
-		return formatter.string(from:NSNumber(value:self)) ?? "×"
+		let formatter = NumberFormatter.forFloatingPoint(with:format, numberOfDigits:numberOfDigits)
+		return formatter.string(from:NSNumber(value:self)) ?? "\(self)"
     }
 }
 
@@ -60,18 +56,17 @@ extension Double : NumberFormatting
 //----------------------------------------------------------------------------------------------------------------------
 
 
-extension Float : NumberFormatting
+extension Float
 {
 	/// Returns a localized string for the Double value
-	///
 	/// Parameter format: The format string specifying how the number is displayed
 	/// Parameter numberOfDigits: The number of digits after the decimal point
 	/// Returns: The localized string for the number
 	
     public func localized(with format: String = "#.#", numberOfDigits: Int = 1) -> String
 	{
-		let formatter = self.numberFormatter(with:format, numberOfDigits:numberOfDigits)
-		return formatter.string(from:NSNumber(value:self)) ?? "×"
+		let formatter = NumberFormatter.forFloatingPoint(with:format, numberOfDigits:numberOfDigits)
+		return formatter.string(from:NSNumber(value:self)) ?? "\(self)"
     }
 }
 
@@ -79,10 +74,9 @@ extension Float : NumberFormatting
 //----------------------------------------------------------------------------------------------------------------------
 
 
-extension CGFloat : NumberFormatting
+extension CGFloat
 {
 	/// Returns a localized string for the Double value
-	///
 	/// Parameter format: The format string specifying how the number is displayed
 	/// Parameter numberOfDigits: The number of digits after the decimal point
 	/// Returns: The localized string for the number
