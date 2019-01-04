@@ -31,7 +31,8 @@ extension Double
 		value /= 60.0
 		let HH = Int(value)
 		
-		return NSString(format:"%i:%02i:%02i.%02i",HH,MM,SS,ff) as String
+		let format = fps >= 100 ? "%i:%02i:%02i.%03i" : "%i:%02i:%02i.%02i"
+		return NSString(format:format as NSString,HH,MM,SS,ff) as String
 	}
 
 
