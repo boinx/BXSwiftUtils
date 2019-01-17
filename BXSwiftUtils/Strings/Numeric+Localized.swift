@@ -128,7 +128,7 @@ extension String
 {
 	
 	/// Strips all non-numeric characters from a String
-	/// - Parameter formatter: An optional NumberFormatter that contains localized chararcters for decimalSeparator and groupingSeparator
+	/// - Parameter formatter: An optional NumberFormatter that contains localized characters for decimalSeparator and groupingSeparator
 	/// - Returns: A string that contains only numeric characters and is thus easy to parse
 
 	public func strippingNonNumericCharacters(with formatter: NumberFormatter? = nil) -> String
@@ -207,6 +207,7 @@ extension String
 
 		return Double(string) ?? defaultValue
     }
+	
 	
  	/// Converts a (possibly localized) string to a Float value (using the supplied NumberFormatter)
 	/// - Parameter formatter: An optional NumberFormatter that gets the first try to extract the value
