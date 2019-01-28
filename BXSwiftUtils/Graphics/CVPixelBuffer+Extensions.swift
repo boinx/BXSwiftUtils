@@ -92,7 +92,7 @@ public extension CVPixelBuffer
 
 
 	/// Returns a CGImage for a CVPixelBuffer
-	
+	@available(OSX 10.11, *)
 	public var CGImage : CGImage?
 	{
     	var image:CGImage? = nil
