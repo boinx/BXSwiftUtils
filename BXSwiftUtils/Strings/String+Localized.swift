@@ -35,12 +35,26 @@ public extension String
 		let defaultValue = value ?? "<< \(defaultName) >>"
 		let bundle = bundle ?? Bundle.main
 		
-        return NSLocalizedString(
+		var str = NSLocalizedString(
 			self,
 			tableName: tableName,
 			bundle: bundle,
 			value: defaultValue,
 			comment: comment)
+		
+		// Fallback: If the string could not be found in the specified table, then try again with "tableName-custom"
+		
+		if str == defaultValue, let tableName = tableName
+		{
+			str = NSLocalizedString(
+				self,
+				tableName: tableName+"-custom",
+				bundle: bundle,
+				value: defaultValue,
+				comment: comment)
+		}
+		
+		return str
     }
 
 }
