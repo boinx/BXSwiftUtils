@@ -65,13 +65,15 @@ public extension URL
 		
 		// On macOS we can convert to a bookmark and then resolve that
 		
-		if let bookmarkRef = CFURLCreateBookmarkDataFromAliasRecord(kCFAllocatorDefault,aliasData as CFData)
+		if let bookmarkRef = CFURLCreateBookmarkDataFromAliasRecord(kCFAllocatorDefault,aliasData as CFData)	// returns a "Unmanaged<CFData>!"
 		{
 			let bookmarkData = bookmarkRef.takeRetainedValue() as Data
-			defer { bookmarkRef?.release() }
+			defer { bookmarkRef.release() }
 			var isStale = false
 			return try URL(resolvingBookmarkData:bookmarkData, options:[.withoutUI,.withoutMounting], relativeTo:nil, bookmarkDataIsStale:&isStale)
 		}
+		
+		return nil
 		
 		#endif
 	}
