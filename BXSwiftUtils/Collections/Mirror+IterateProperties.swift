@@ -34,7 +34,7 @@ public extension Mirror
 
     public static func iterateProperties<T>(
     	of target: Any,
-        with type: T.Type = T.self,
+        type: T.Type = T.self,
         recursive: Bool = false,
         perform closure: (T)->Void)
     {
