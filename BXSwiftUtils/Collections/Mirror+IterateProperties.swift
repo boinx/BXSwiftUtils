@@ -47,6 +47,16 @@ public extension Mirror
 				closure(property)
         	}
 
+			if let array = child.value as? [T]
+			{
+				array.forEach { closure($0) }
+			}
+			
+			if let dictionary = child.value as? [AnyHashable:T]
+			{
+				dictionary.values.forEach { closure($0) }
+			}
+
             if recursive
             {
                 Mirror.iterateProperties(of:child.value, recursive:true, perform:closure)
