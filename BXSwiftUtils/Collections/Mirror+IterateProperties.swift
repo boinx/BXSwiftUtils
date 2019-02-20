@@ -38,9 +38,7 @@ public extension Mirror
         recursive: Bool = false,
         perform closure: (T)->Void)
     {
-        let mirror = Mirror(reflecting: target)
-
-        for child in mirror.children
+        for child in self.children(of:target)
         {
 			if let array = child.value as? [T]
 			{
@@ -60,6 +58,20 @@ public extension Mirror
                 Mirror.iterateProperties(of:child.value, recursive:true, perform:closure)
             }
         }
+    }
+	
+    public static func children(of target: Any) -> [Mirror.Child]
+    {
+    	var mirror:Mirror? = Mirror(reflecting: target)
+		var children:[Mirror.Child] = []
+		
+    	while mirror != nil
+    	{
+    		mirror?.children.forEach { children.append($0) }
+			mirror = mirror?.superclassMirror
+    	}
+		
+		return children
     }
 }
 
