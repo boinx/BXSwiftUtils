@@ -44,7 +44,8 @@ extension NotificationCenter
 	/// - parameter block: The block to be called when the notification fires
 	/// - returns: A wrapper that automatically removes the observer once the wrapper is deallocated
 
-    public func addAutoRemovingObserver(forName name: NSNotification.Name?, object: Any?, queue: OperationQueue?, using block: @escaping (Notification)->Void) -> AutoRemovingWrapper
+    @objc(addAutoRemovingObserverForName:object:queue:usingBlock:)
+    public func addAutoRemovingObserver(forName name: NSNotification.Name?, object: Any?, queue: OperationQueue?, using block: @escaping (Notification)->Void) -> AnyObject
     {
      	let token = self.addObserver(forName:name, object:object, queue:queue, using:block)
      	return AutoRemovingWrapper(token)
