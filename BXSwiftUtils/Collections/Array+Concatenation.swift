@@ -38,11 +38,14 @@ extension Array where Element: Any
      Convenient syntax around `Array.append(contentsOf:)` that allows appending an array to an array.
       */
 	
-     public static func +=(lhs: inout [Element], rhs: [Element])
-    {
+	#if compiler(<5)
+	
+	public static func +=(lhs: inout [Element], rhs: [Element])
+	{
         lhs.append(contentsOf:rhs)
-     }
+	}
 
+	#endif
 
     /**
      Returns a new array that has `rhs` appended to the end of the `lhs` array.
