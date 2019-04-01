@@ -97,7 +97,7 @@ public extension CVPixelBuffer
 	var CGImage : CGImage?
 	{
     	var image:CGImage? = nil
-		VTCreateCGImageFromCVPixelBuffer(self,nil,&image)
+		VTCreateCGImageFromCVPixelBuffer(self,options:nil,imageOut:&image)
 		return image
 	}
 }
