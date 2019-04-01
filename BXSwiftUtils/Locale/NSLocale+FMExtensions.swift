@@ -17,7 +17,7 @@ public extension NSLocale
 {
 	/// Returns the language code ("en","de",etc) of the preferred language the user has selected
 	
-	public static var preferredUserLanguage : String
+	static var preferredUserLanguage : String
 	{
 		var languageCode = "en"
 		

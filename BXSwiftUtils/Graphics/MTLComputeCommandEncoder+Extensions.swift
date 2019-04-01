@@ -22,7 +22,7 @@ public extension MTLComputeCommandEncoder
 	/// Helper method that dispatches compute threads to the GPU. Depending on the OS version and the capabilties
 	/// of the hardware, the optimum API calls are chosen.
 	
-	public func dispatchThreads(for pipeline: MTLComputePipelineState,_ texture: MTLTexture)
+	func dispatchThreads(for pipeline: MTLComputePipelineState,_ texture: MTLTexture)
 	{
 		// If OS and hardware supports it, then call the more modern (and more efficient) dispatchThreads() API
 		

@@ -30,7 +30,7 @@ public extension String
 	
 	*/
 	
-    public func localized(from tableName: String?=nil, tableSuffix: String?="-custom", bundle: Bundle?=nil, comment: String="", value: String?=nil) -> String
+    func localized(from tableName: String?=nil, tableSuffix: String?="-custom", bundle: Bundle?=nil, comment: String="", value: String?=nil) -> String
 	{
 		let defaultName = self.uppercased()
 		let defaultValue = value ?? "<< \(defaultName) >>"

@@ -10,7 +10,7 @@ import QuartzCore.CoreAnimation
 
 public extension CACornerMask
 {
-    public static let allCorners: CACornerMask = [
+    static let allCorners: CACornerMask = [
         .layerMaxXMaxYCorner,
         .layerMaxXMinYCorner,
         .layerMinXMaxYCorner,
@@ -18,33 +18,33 @@ public extension CACornerMask
     ]
     
     #if os(macOS)
-    public static let bottomCorners: CACornerMask = [
+    static let bottomCorners: CACornerMask = [
         .layerMaxXMinYCorner,
         .layerMinXMinYCorner
     ]
     
-    public static let topCorners: CACornerMask = [
+    static let topCorners: CACornerMask = [
         .layerMinXMaxYCorner,
         .layerMaxXMaxYCorner
     ]
     #elseif os(iOS)
-    public static let bottomCorners: CACornerMask = [
+    static let bottomCorners: CACornerMask = [
         .layerMaxXMaxYCorner,
         .layerMinXMaxYCorner
     ]
     
-    public static let topCorners: CACornerMask = [
+    static let topCorners: CACornerMask = [
         .layerMinXMinYCorner,
         .layerMaxXMinYCorner
     ]
     #endif
     
-    public static let leftCorners: CACornerMask = [
+    static let leftCorners: CACornerMask = [
         .layerMinXMinYCorner,
         .layerMinXMaxYCorner
     ]
     
-    public static let rightCorners: CACornerMask = [
+    static let rightCorners: CACornerMask = [
         .layerMaxXMinYCorner,
         .layerMaxXMaxYCorner
     ]

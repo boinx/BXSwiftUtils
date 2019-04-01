@@ -20,7 +20,7 @@ public extension Data
 	///
 	/// Please note that the checksum is masked with 0xFF, so it will always be in the range 0...255
 	
-    public var checksum : Int
+    var checksum : Int
     {
         return self
         	.map { Int($0) }

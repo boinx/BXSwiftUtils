@@ -16,7 +16,7 @@ public protocol ComparableEnum: Comparable {}
 */
 public extension ComparableEnum where Self: RawRepresentable, Self.RawValue == Int
 {
-    public static func <(lhs: Self, rhs: Self) -> Bool
+    static func <(lhs: Self, rhs: Self) -> Bool
     {
         return lhs.rawValue < rhs.rawValue
     }
@@ -33,7 +33,7 @@ public extension ComparableEnum where Self: RawRepresentable, Self.RawValue == I
  */
 public extension ComparableEnum where Self: RawRepresentable, Self.RawValue == String, Self: CaseIterable
 {
-    public static func <(lhs: Self, rhs: Self) -> Bool
+	static func <(lhs: Self, rhs: Self) -> Bool
     {
         let allCases = self.allCases
         return allCases.firstIndex(of: lhs)! < allCases.firstIndex(of: rhs)!

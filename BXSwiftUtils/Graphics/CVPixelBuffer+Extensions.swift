@@ -22,7 +22,7 @@ public extension CVPixelBuffer
 	///  - parameter size: The new size of the resulting CVPixelBuffer
 	///  - returns: A new CVPixelBuffer with the scaled image
 	
-	public func resized(to size:CGSize) -> CVPixelBuffer?
+	func resized(to size:CGSize) -> CVPixelBuffer?
 	{
 		// Lock the CVPixelBuffer (self)
 		
@@ -92,8 +92,9 @@ public extension CVPixelBuffer
 
 
 	/// Returns a CGImage for a CVPixelBuffer
+	
 	@available(OSX 10.11, *)
-	public var CGImage : CGImage?
+	var CGImage : CGImage?
 	{
     	var image:CGImage? = nil
 		VTCreateCGImageFromCVPixelBuffer(self,nil,&image)

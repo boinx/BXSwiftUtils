@@ -23,7 +23,7 @@ public extension MTLTexture
 	/// Returns the number of bytes per row in this MTLTexture. If this info is not available from the
 	/// MTLTexture, a recommended value will be calculated.
 	
-	public var recommendedRowBytes:Int
+	var recommendedRowBytes:Int
 	{
 		let width = self.width
 		var rowBytes = ((width * 4 + 15) / 16) * 16
@@ -43,7 +43,7 @@ public extension MTLTexture
 
 	/// Creates a CGImage from a Metal texture.
 	
-	public func createImage(with colorSpaceName: CFString, bitmapInfo: CGBitmapInfo) -> CGImage?
+	func createImage(with colorSpaceName: CFString, bitmapInfo: CGBitmapInfo) -> CGImage?
 	{
 		// Get dimensions
 		
@@ -89,7 +89,7 @@ public extension MTLTexture
 
 	/// Creates a CVPixelBuffer from a Metal texture
 	
-	public func createPixelBuffer(with pixelFormat:OSType = kCVPixelFormatType_32ARGB) -> CVPixelBuffer?
+	func createPixelBuffer(with pixelFormat:OSType = kCVPixelFormatType_32ARGB) -> CVPixelBuffer?
 	{
 		// Allocate a new buffer
 		
@@ -145,7 +145,7 @@ public extension MTLTexture
 
 	/// Copies a Metal texture to a CVPixelBuffer
 
-	public func copy(to pixelBuffer:CVPixelBuffer)
+	func copy(to pixelBuffer:CVPixelBuffer)
 	{
 		// Check that the texture and the pixelBuffer match in size
 		

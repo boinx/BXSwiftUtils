@@ -23,7 +23,7 @@ public extension URL
 	/// - parameter aliasData: Data containing an AliasRecord
 	/// - returns: The URL that aliasData was pointing to
 
-	public static func resolving(aliasData: Data) throws -> URL?
+	static func resolving(aliasData: Data) throws -> URL?
 	{
 		#if os (iOS)
 

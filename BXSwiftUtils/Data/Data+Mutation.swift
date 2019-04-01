@@ -25,7 +25,7 @@ public extension Data
 	/// - parameter data: The data to be xored onto self
 	/// - parameter maximumRepeatCount: The maximum repetition of data (pass 0 for unlimited)
 
-    public mutating func xor(with data: Data, maximumRepeatCount: Int = 0)
+    mutating func xor(with data: Data, maximumRepeatCount: Int = 0)
     {
     	let n1 = self.count
     	let n2 = data.count
@@ -54,7 +54,7 @@ public extension Data
 	/// Returns an inverted copy of self, i.e. where the bits are inverted with the NOT operator.
 	/// - returns: A copy of the Data with inverted bits
 
-    public func inverted() -> Data
+    func inverted() -> Data
     {
    		let n = self.count
     	var copy = self

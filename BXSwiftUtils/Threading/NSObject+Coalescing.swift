@@ -28,7 +28,7 @@ public extension NSObject
 	
 	*/
 	
-	public func performCoalesced(_ selector: Selector, argument: AnyObject?=nil, delay: TimeInterval=0.0)
+	func performCoalesced(_ selector: Selector, argument: AnyObject?=nil, delay: TimeInterval=0.0)
 	{
 		NSObject.cancelPreviousPerformRequests(withTarget:self, selector:selector, object:argument)
         #if swift(>=4.2)
@@ -54,7 +54,7 @@ public extension NSObject
 	
 	*/
 	
-	public func cancelDelayedPerform(_ selector: Selector, argument: AnyObject?=nil)
+	func cancelDelayedPerform(_ selector: Selector, argument: AnyObject?=nil)
 	{
 		NSObject.cancelPreviousPerformRequests(withTarget:self, selector:selector, object:argument)
 	}
@@ -62,7 +62,7 @@ public extension NSObject
 
 	/// Cancel all outstanding perform requests for the receiving object.
 	
-	public func cancelAllDelayedPerforms()
+	func cancelAllDelayedPerforms()
 	{
 		NSObject.cancelPreviousPerformRequests(withTarget:self)
 		RunLoop.current.cancelPerformSelectors(withTarget:self)

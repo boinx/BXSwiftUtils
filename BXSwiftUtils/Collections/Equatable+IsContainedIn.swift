@@ -28,14 +28,14 @@ public extension Equatable
      - parameter collection: The collection of possible values that should be checked.
      - returns: `true` if the value is contained in the collection, `false` otherwise.
      */
-    public func isContained<C>(in collection: C) -> Bool where C: Collection, C.Element == Self
+    func isContained<C>(in collection: C) -> Bool where C: Collection, C.Element == Self
     {
         return collection.contains(self)
     }
     
     
     /// Implementation of `~==` operator that forwards call to `isContained(in:)`.
-    public static func ~== <C>(lhs: Self, rhs: C) -> Bool where C: Collection, C.Element == Self
+    static func ~== <C>(lhs: Self, rhs: C) -> Bool where C: Collection, C.Element == Self
     {
         return lhs.isContained(in: rhs)
     }

@@ -23,7 +23,7 @@ public extension String
 	/// - parameter options: The options inluence the behavior of the NSRegularExpression
 	/// - returns: An array of strings matching the regex pattern
 	
-	public func regexMatches(for pattern: String, options: NSRegularExpression.Options = []) -> [String]
+	func regexMatches(for pattern: String, options: NSRegularExpression.Options = []) -> [String]
 	{
  		if let regex = try? NSRegularExpression(pattern:pattern, options:options)
         {
@@ -42,7 +42,7 @@ public extension String
 	
 	/// Returns true if a string has at least one match for the supplied regex pattern
 	
-	public static func ~= (_ string: String, _ pattern: String) -> Bool
+	static func ~= (_ string: String, _ pattern: String) -> Bool
 	{
 		return !string.regexMatches(for:pattern).isEmpty
 	}

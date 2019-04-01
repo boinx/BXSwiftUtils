@@ -18,7 +18,7 @@ public extension CGPath
      - parameter corners: The corner mask containing the corners to be rounded. If empty, no corners will be rounded.
      - parameter radius: The radius to be applied to the rounded corners.
      */
-    public static func roundedRect(inBounds bounds: CGRect, corners: CACornerMask, radius: CGFloat) -> CGPath
+    static func roundedRect(inBounds bounds: CGRect, corners: CACornerMask, radius: CGFloat) -> CGPath
     {
         let path = CGMutablePath()
         

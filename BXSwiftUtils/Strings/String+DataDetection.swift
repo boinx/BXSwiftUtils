@@ -20,7 +20,7 @@ public extension String
 	/// Parses the text and returns an array of all URLs contained in this string
 	/// - returns: An array of URLs
 	
-	public var URLs : [URL]
+	var URLs : [URL]
 	{
 		var urls:[URL] = []
 		

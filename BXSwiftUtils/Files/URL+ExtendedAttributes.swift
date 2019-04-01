@@ -42,7 +42,7 @@ public extension URL
 
     /// Set extended attribute
 	
-    public func setExtendedAttribute(_ data: Data, forName name: String) throws
+    func setExtendedAttribute(_ data: Data, forName name: String) throws
     {
         try self.withUnsafeFileSystemRepresentation
         {
@@ -63,7 +63,7 @@ public extension URL
 
 	/// Get extended attribute
 	
-    public func extendedAttribute(forName name: String) throws -> Data
+    func extendedAttribute(forName name: String) throws -> Data
     {
         let data = try self.withUnsafeFileSystemRepresentation
         {
@@ -99,7 +99,7 @@ public extension URL
 
 	/// Checks if an extended attribute is present
 	
-    public func hasExtendedAttribute(forName name: String) -> Bool
+    func hasExtendedAttribute(forName name: String) -> Bool
     {
         let result = self.withUnsafeFileSystemRepresentation
         {
@@ -117,7 +117,7 @@ public extension URL
 
     /// Remove extended attribute
 	
-    public func removeExtendedAttribute(forName name: String) throws
+    func removeExtendedAttribute(forName name: String) throws
     {
 
         try self.withUnsafeFileSystemRepresentation { fileSystemPath in
@@ -132,7 +132,7 @@ public extension URL
 
     /// Get list of all extended attributes
 	
-    public func listExtendedAttributes() throws -> [String]
+    func listExtendedAttributes() throws -> [String]
     {
         let list = try self.withUnsafeFileSystemRepresentation
         {

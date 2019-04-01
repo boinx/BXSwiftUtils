@@ -36,27 +36,27 @@ public protocol DisplayableEnum : CaseIterable,Equatable
 
 public extension DisplayableEnum
 {
-	public static var count: Int
+	static var count: Int
 	{
 		return self.allCases.count
 	}
 
-	public static func value(at index: Int) -> Self
+	static func value(at index: Int) -> Self
 	{
 		return Array(self.allCases)[index]
 	}
 
-	public static func index(of value: Self) -> Int
+	static func index(of value: Self) -> Int
 	{
 		return Array(self.allCases).firstIndex(of:value)!
 	}
 
-	public static func localizedName(at index: Int) -> String
+	static func localizedName(at index: Int) -> String
 	{
 		return self.value(at: index).localizedName
 	}
 	
-	public var localizedName:String
+	var localizedName:String
 	{
 		return "\(self)"
 	}

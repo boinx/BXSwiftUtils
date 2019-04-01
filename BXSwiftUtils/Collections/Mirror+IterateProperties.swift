@@ -32,7 +32,7 @@ public extension Mirror
 	/// - parameter recursive: If true descend recursively into the object graph
 	/// - parameter closure: The closure to be called for each property that qualifies
 
-    public static func iterateProperties<T>(
+    static func iterateProperties<T>(
     	of target: Any,
         type: T.Type = T.self,
         recursive: Bool = false,
@@ -60,7 +60,7 @@ public extension Mirror
         }
     }
 	
-    public static func children(of target: Any) -> [Mirror.Child]
+    static func children(of target: Any) -> [Mirror.Child]
     {
     	var mirror:Mirror? = Mirror(reflecting: target)
 		var children:[Mirror.Child] = []

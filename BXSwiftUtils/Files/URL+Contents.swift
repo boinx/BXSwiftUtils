@@ -20,7 +20,7 @@ public extension URL
 	/// Performs a shallow scan of the directory pointed to by a folder URL and returns the resulting child URLs.
 	/// - returns: An array of URLs for all direct children
 	
-	public func shallowContentsOfDirectory() throws -> [URL]
+	func shallowContentsOfDirectory() throws -> [URL]
 	{
 		let paths = try FileManager.default.contentsOfDirectory(atPath:self.path)
 		let urls:[URL] = paths.map { self.appendingPathComponent($0) }
@@ -39,7 +39,7 @@ public extension URL
 	/// - parameter transformDataHandler: This block receives the original Data from the file and modifies it as needed
 	/// - returns: The number of bytes that were written back to the file
 
-	@discardableResult public func updateFileContents(offset: UInt64, length: Int, using transformDataHandler: (inout Data)->() ) throws -> Int
+	@discardableResult func updateFileContents(offset: UInt64, length: Int, using transformDataHandler: (inout Data)->() ) throws -> Int
 	{
 		// Open the file for reading & writing
 		
