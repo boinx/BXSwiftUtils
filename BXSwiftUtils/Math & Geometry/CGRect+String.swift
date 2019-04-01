@@ -23,7 +23,7 @@ extension CGRect
 	public var string:String
 	{
         #if os(iOS)
-		return NSStringFromCGRect(self)
+		return NSCoder.string(for:self) //NSStringFromCGRect(self)
         #else
 		return NSStringFromRect(self)
         #endif
@@ -34,7 +34,7 @@ extension CGRect
 	public init(with string:String)
 	{
         #if os(iOS)
-		let tmp = CGRectFromString(string)
+		let tmp = NSCoder.cgRect(for:string) //CGRectFromString(string)
         #else
 		let tmp = NSRectFromString(string)
         #endif

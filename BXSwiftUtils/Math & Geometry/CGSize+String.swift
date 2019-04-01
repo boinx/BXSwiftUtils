@@ -23,7 +23,7 @@ extension CGSize
 	public var string:String
 	{
         #if os(iOS)
-		return NSStringFromCGSize(self)
+		return NSCoder.string(for:self) //NSStringFromCGSize(self)
         #else
 		return NSStringFromSize(self)
         #endif
@@ -34,7 +34,7 @@ extension CGSize
 	public init(with string:String)
 	{
         #if os(iOS)
-		let tmp = CGSizeFromString(string)
+		let tmp = NSCoder.cgSize(for:string) //CGSizeFromString(string)
         #else
 		let tmp = NSSizeFromString(string)
         #endif

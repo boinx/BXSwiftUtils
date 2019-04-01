@@ -23,7 +23,7 @@ extension CGPoint
 	public var string:String
 	{
         #if os(iOS)
-		return NSStringFromCGPoint(self)
+		return NSCoder.string(for:self) //NSStringFromCGPoint(self)
         #else
 		return NSStringFromPoint(self)
         #endif
@@ -34,7 +34,7 @@ extension CGPoint
 	public init(with string:String)
 	{
         #if os(iOS)
-		let tmp = CGPointFromString(string)
+		let tmp = NSCoder.cgPoint(for:string) //CGPointFromString(string)
         #else
 		let tmp = NSPointFromString(string)
         #endif
