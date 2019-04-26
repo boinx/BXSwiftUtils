@@ -38,7 +38,8 @@ extension Array where Element: Any
      Convenient syntax around `Array.append(contentsOf:)` that allows appending an array to an array.
       */
 	
-	#if compiler(<5)
+	#if !compiler(>=5)
+	// Note: The `not >=` is necessary because the Swift-4-compiler don't understand `<`
 	
 	public static func +=(lhs: inout [Element], rhs: [Element])
 	{
