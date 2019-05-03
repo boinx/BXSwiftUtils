@@ -91,6 +91,9 @@ public extension CVPixelBuffer
 	}
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Returns a CGImage for a CVPixelBuffer
 	
 	@available(OSX 10.11, *)
@@ -100,6 +103,111 @@ public extension CVPixelBuffer
 		VTCreateCGImageFromCVPixelBuffer(self,options:nil,imageOut:&image)
 		return image
 	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Creates a deep copy a CVPixelBuffer
+	
+    func copy() -> CVPixelBuffer?
+    {
+    	guard CFGetTypeID(self) == CVPixelBufferGetTypeID() else { return nil }
+
+		// Create a copy of the CVPixelBuffer
+		
+		let attributes:[CFString:Any] =
+		[
+			kCVPixelBufferIOSurfaceCoreAnimationCompatibilityKey: true,
+			kCVPixelBufferMetalCompatibilityKey: true
+		]
+		
+		var copy:CVPixelBuffer? = nil
+
+		CVPixelBufferCreate(
+			nil,
+			CVPixelBufferGetWidth(self),
+			CVPixelBufferGetHeight(self),
+			CVPixelBufferGetPixelFormatType(self),
+			attributes as CFDictionary,
+			&copy)
+		
+		if let copy = copy
+		{
+			// Lock buffers while we are copying the pixel data
+			
+			CVPixelBufferLockBaseAddress(self,.readOnly)
+			CVPixelBufferLockBaseAddress(copy,[])
+			
+			defer
+			{
+				CVPixelBufferUnlockBaseAddress(copy,[])
+				CVPixelBufferUnlockBaseAddress(self,.readOnly)
+			}
+			
+			// Copy planar image data
+			
+			if CVPixelBufferIsPlanar(self)
+			{
+				for planeIndex in 0 ..< CVPixelBufferGetPlaneCount(self)
+				{
+					var srcBuffer = self.vImageBuffer(forPlane:planeIndex)
+					var dstBuffer = copy.vImageBuffer(forPlane:planeIndex)
+					let error = vImageCopyBuffer(&srcBuffer, &dstBuffer, 1, vImage_Flags(kvImageNoFlags))
+					
+					if error != kvImageNoError
+					{
+						NSLog("CVPixelBuffer.copy() - Error \(error) from vImageCopyBuffer")
+					}
+				}
+			}
+			
+			// Copy interleaved image data
+			
+			else
+			{
+				var srcBuffer = self.vImageBuffer()
+				var dstBuffer = copy.vImageBuffer()
+				let error = vImageCopyBuffer(&srcBuffer, &dstBuffer, 4, vImage_Flags(kvImageNoFlags))
+				
+				if error != kvImageNoError
+				{
+					NSLog("CVPixelBuffer.copy() - Error \(error) from vImageCopyBuffer")
+				}
+			}
+		}
+		
+		return copy
+    }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Returns a vImage_Buffer struct for an interleaved CVPixelBuffer
+	
+    func vImageBuffer() -> vImage_Buffer
+    {
+		let ptr = CVPixelBufferGetBaseAddress(self)
+		let width = vImagePixelCount(CVPixelBufferGetWidth(self))
+		let height = vImagePixelCount(CVPixelBufferGetHeight(self))
+		let rowBytes = CVPixelBufferGetBytesPerRow(self)
+		
+		return vImage_Buffer(data:ptr, height:height, width:width, rowBytes:rowBytes)
+    }
+
+
+	/// Returns a vImage_Buffer struct for an planar CVPixelBuffer
+	
+    func vImageBuffer(forPlane plane:Int) -> vImage_Buffer
+    {
+		let ptr = CVPixelBufferGetBaseAddressOfPlane(self,plane)
+		let width = vImagePixelCount(CVPixelBufferGetWidthOfPlane(self,plane))
+		let height = vImagePixelCount(CVPixelBufferGetHeightOfPlane(self,plane))
+		let rowBytes = CVPixelBufferGetBytesPerRowOfPlane(self,plane)
+		
+		return vImage_Buffer(data:ptr, height:height, width:width, rowBytes:rowBytes)
+    }
 }
 
 
