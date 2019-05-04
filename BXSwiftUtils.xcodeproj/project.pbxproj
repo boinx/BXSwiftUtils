@@ -64,6 +64,7 @@
 		95F2DBA821B7DD9000865AE4 /* Bool+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */; };
 		95F2DBAB21B7E3FE00865AE4 /* Bool+OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */; };
 		D0149008213D566500A38870 /* KVO+propagateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0149006213D566500A38870 /* KVO+propagateChanges.swift */; };
+		D0157ED0227DB41F00E34D65 /* Bundle+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0157ECF227DB41F00E34D65 /* Bundle+Localizations.swift */; };
 		D02C351B21E38D5100D8463F /* Numeric+LocalizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */; };
 		D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234E9205BF938003D6CCB /* URL+Info.swift */; };
 		D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03234ED205BFC9F003D6CCB /* String+Localized.swift */; };
@@ -174,6 +175,7 @@
 		95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Operators.swift"; sourceTree = "<group>"; };
 		95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+OperatorsTests.swift"; sourceTree = "<group>"; };
 		D0149006213D566500A38870 /* KVO+propagateChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KVO+propagateChanges.swift"; sourceTree = "<group>"; };
+		D0157ECF227DB41F00E34D65 /* Bundle+Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localizations.swift"; sourceTree = "<group>"; };
 		D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+LocalizedTests.swift"; sourceTree = "<group>"; };
 		D03234E9205BF938003D6CCB /* URL+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Info.swift"; sourceTree = "<group>"; };
 		D03234ED205BFC9F003D6CCB /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 		48E449CE205BBE55008CF3D5 /* Locale */ = {
 			isa = PBXGroup;
 			children = (
+				D0157ECF227DB41F00E34D65 /* Bundle+Localizations.swift */,
 				D0859FDE2158FC7400F624C7 /* NSLocale+FMExtensions.swift */,
 			);
 			path = Locale;
@@ -780,6 +783,7 @@
 			files = (
 				D034B97A221C1F5900E94722 /* Mirror+IterateProperties.swift in Sources */,
 				D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */,
+				D0157ED0227DB41F00E34D65 /* Bundle+Localizations.swift in Sources */,
 				D0323508205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */,
 				4875F27820529A06009985EC /* DispatchQueue+Throttle.swift in Sources */,
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
