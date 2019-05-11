@@ -21,9 +21,12 @@ public struct BXKeychain
         
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
-        
-        print("Loaded keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
-        
+		
+        if status != noErr
+        {
+        	print("Loaded keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
+        }
+		
         return item as? Data
     }
     
@@ -45,7 +48,10 @@ public struct BXKeychain
             actionPerformed = "Added"
         }
         
-        print("\(actionPerformed) keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
+        if status != noErr
+        {
+        	print("\(actionPerformed) keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
+		}
     }
     
     public static func deleteData(forKey identifier: String)
@@ -55,7 +61,10 @@ public struct BXKeychain
         
         let status = SecItemDelete(query as CFDictionary)
         
-        print("Deleted keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
+        if status != noErr
+        {
+        	print("Deleted keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
+		}
     }
     
     private static func stringForStatus(_ status: OSStatus) -> String
