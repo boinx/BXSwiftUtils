@@ -12,7 +12,7 @@ import Security
 
 public struct BXKeychain
 {
-    static func data(forKey identifier: String) -> Data?
+    public static func data(forKey identifier: String) -> Data?
     {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                     kSecMatchLimit as String: kSecMatchLimitOne,
@@ -27,7 +27,7 @@ public struct BXKeychain
         return item as? Data
     }
     
-    static func set(_ data: Data, forKey identifier: String)
+    public static func set(_ data: Data, forKey identifier: String)
     {
         let updateQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                           kSecAttrAccount as String: identifier]
@@ -48,7 +48,7 @@ public struct BXKeychain
         print("\(actionPerformed) keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
     }
     
-    static func deleteData(forKey identifier: String)
+    public static func deleteData(forKey identifier: String)
     {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                     kSecAttrAccount as String: identifier]
@@ -58,7 +58,7 @@ public struct BXKeychain
         print("Deleted keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
     }
     
-    static private func stringForStatus(_ status: OSStatus) -> String
+    private static func stringForStatus(_ status: OSStatus) -> String
     {
         var statusString: String = "\(status)"
         
