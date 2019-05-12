@@ -20,13 +20,7 @@ public struct BXKeychain
                                     kSecReturnData as String: true]
         
         var item: CFTypeRef?
-        let status = SecItemCopyMatching(query as CFDictionary, &item)
-		
-        if status != noErr
-        {
-        	print("Loaded keychain data for identifier \(identifier) with result: \(self.stringForStatus(status))")
-        }
-		
+        let _ = SecItemCopyMatching(query as CFDictionary, &item)
         return item as? Data
     }
     
