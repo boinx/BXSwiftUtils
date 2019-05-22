@@ -34,8 +34,8 @@ public class BXServerDefaults
 	///
 	/// Example Code:
 	///
-	///	    let remoteURL = URL(string:"https://www.boinx.com/fotomagico/inapp/ipad/com.boinx.FotoMagico6.iOS.plist")!
-	///	    let localURL = Bundle.main.url(forResource:"com.boinx.FotoMagico6.iOS.plist", withExtension:nil)
+	///	    let remoteURL = URL(string:"https://version.boinx.com/com.boinx.FotoMagico6.iOS.xml")!
+	///	    let localURL = Bundle.main.url(forResource:"com.boinx.FotoMagico6.iOS.xml", withExtension:nil)
 	///	    BXServerDefaults.shared.load(from:remoteURL, localFallbackURL:localURL, copyToUserDefaults:true)
 	///
 	/// - parameter remoteURL: The URL of the plist file that is hosted on the server
@@ -73,32 +73,16 @@ public class BXServerDefaults
 				
 				if let networkError = networkError
 				{
-					if fallbackPlist != nil
-					{
-						completionHandler?(fallbackPlist,nil)
-						return
-					}
-					else
-					{
-						completionHandler?(nil,networkError)
-						return
-					}
+					self.execute(completionHandler, with: fallbackPlist, networkError)
+					return
 				}
 				
 				// If the resource at the remote URL doesn't exist, then return the fallbackPlist instead
 				
-				if let response = response as? HTTPURLResponse, response.statusCode == 404
+				if let response = response as? HTTPURLResponse, response.statusCode != 200
 				{
-					if fallbackPlist != nil
-					{
-						completionHandler?(fallbackPlist,nil)
-						return
-					}
-					else
-					{
-						completionHandler?(nil, BXServerDefaults.Error.notAvailable)
-						return
-					}
+					self.execute(completionHandler, with: fallbackPlist, BXServerDefaults.Error.notAvailable)
+					return
 				}
 				
 				// If we received some data then convert it to a Dictionary and (optionally) copy it to local UserDefaults
@@ -129,14 +113,8 @@ public class BXServerDefaults
 				
 				// Okay, we didn't get anything from the server, so simply return the fallbackPlist
 				
-				if fallbackPlist != nil
-				{
-					completionHandler?(fallbackPlist,nil)
-				}
-				else
-				{
-					completionHandler?(nil, BXServerDefaults.Error.notAvailable)
-				}
+				self.execute(completionHandler, with: fallbackPlist, BXServerDefaults.Error.notAvailable)
+				return
 			}
 		}
 		
@@ -144,6 +122,21 @@ public class BXServerDefaults
 	}
 
 
+	/// Helper function that calls the completionHandler with the fallbackPlist (if available) or an error otherwise
+	
+	private func execute(_ completionHandler: ((Any?,Swift.Error?)->Void)?, with fallbackPlist: Any?, _ error: Swift.Error?)
+	{
+		if fallbackPlist != nil
+		{
+			completionHandler?(fallbackPlist, nil)
+		}
+		else
+		{
+			completionHandler?(nil, error)
+		}
+	}
+	
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
