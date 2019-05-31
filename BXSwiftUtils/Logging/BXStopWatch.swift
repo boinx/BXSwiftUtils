@@ -41,14 +41,14 @@ public struct BXStopWatch
 
 	// MARK: -
 	
-	/// Creates as BXStopWatch instance
+	/// Creates as BXStopWatch instance and records the startTime
 	
     public init()
     {
 		self.startTime = CFAbsoluteTimeGetCurrent()
     }
 
-	// Stops the timer and calls the loggingHandler
+	// Records the stopTime and calls the loggingHandler
 	
 	public mutating func stop(with loggingHandler: (BXStopWatch)->Void)
 	{
