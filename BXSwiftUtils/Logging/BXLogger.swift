@@ -2,7 +2,7 @@
 //
 //  BXLogger.swift
 //	High level logging functions
-//  Copyright ©2017 Peter Baumgartner. All rights reserved.
+//  Copyright ©2017-2019 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -15,12 +15,10 @@ import Foundation
 
 public struct BXLogger
 {
-    /**
-     Initializes a new BXLogger instance without any destinations.
-     
-     Initializer has to be made explicitly public s.t. instances can be created by consuming modules.
-     */
-    
+	/// Initializes a new BXLogger instance without any destinations.
+	///
+    /// Initializer has to be made explicitly public s.t. instances can be created by consuming modules.
+	
     public init() {}
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -53,10 +51,8 @@ public struct BXLogger
 
 	// MARK: -
 
-	/**
-     A Destination is simply a closure that takes a Level and a String as an argument and does whatever it
-     deems appropriate with this info, e.g. send it to the console.
-	*/
+   	/// A Destination is simply a closure that takes a Level and a String as an argument and does whatever it
+    /// deems appropriate with this info, e.g. send it to the console.
 	
 	public typealias Destination = (Level, String) -> ()
 
@@ -66,12 +62,10 @@ public struct BXLogger
 	internal var destinations: [Destination] = []
 
 
-	/**
-     Adds a new destination to a BXLogger. Since a destination is simply a closure tthat takes a String as
-     a parameter there are various things that can be achieved that way. One example would be to call NSLog()
-     with this string. Another would be to send the string to another BXLogger instance to achieve complex
-     filtering through a graph of BXLogger objects.
-	*/
+    /// Adds a new destination to a BXLogger. Since a destination is simply a closure tthat takes a String as
+    /// a parameter there are various things that can be achieved that way. One example would be to call NSLog()
+    /// with this string. Another would be to send the string to another BXLogger instance to achieve complex
+ 	/// filtering through a graph of BXLogger objects.
 	
 	public mutating func addDestination(_ destination: @escaping Destination)
 	{
@@ -84,28 +78,24 @@ public struct BXLogger
 
 	// MARK: -
 
-    /**
-     A Message is a closure that returns a string. The reason we do not use a String parameter directly, is
-     that string generation may be expensive. By supplying a closure instead, that will only be executed if
-     the level is right, we avoid costly CPU time if logging is disabled at the current level.
-     */
+    /// A Message is a closure that returns a string. The reason we do not use a String parameter directly, is
+    /// that string generation may be expensive. By supplying a closure instead, that will only be executed if
+    /// the level is right, we avoid costly CPU time if logging is disabled at the current level.
 	
 	public typealias Message = () -> String
 	
 	
-	/**
-     This is the central logging method. It takes a closure that returns a string. For performance optimization
-     reasons, this closure will only be executed, if we are below the maximum allowed level. That way expensive
-     string creation is suppressed, if logging is not needed at runtime.
-     
-     - parameter level: Determines whether the message will be logged.
-     - parameter force: If set to true, the message will be logged regardless of the level
-     - parameter showLocation: If set to true, the code location will prefix the message
-     - parameter file: The filename of the logging location
-     - parameter function: The function name of the logging location
-     - parameter line: The line number of the logging location
-     - parameter message: This closure builds and returns the message string that is to be logged.
-     */
+    /// This is the central logging method. It takes a closure that returns a string. For performance optimization
+    /// reasons, this closure will only be executed, if we are below the maximum allowed level. That way expensive
+    /// string creation is suppressed, if logging is not needed at runtime.
+    ///
+    /// - parameter level: Determines whether the message will be logged.
+    /// - parameter force: If set to true, the message will be logged regardless of the level
+    /// - parameter showLocation: If set to true, the code location will prefix the message
+    /// - parameter file: The filename of the logging location
+    /// - parameter function: The function name of the logging location
+    /// - parameter line: The line number of the logging location
+    /// - parameter message: This closure builds and returns the message string that is to be logged.
 	
 	public func print(	level: Level,
 						force: Bool = false,
@@ -132,14 +122,11 @@ public struct BXLogger
 	}
 	
 	
-	/**
-     Convenience method for logging with error level.
-     
-     ## Example
-     
-         log.error {"An unknown error has occured"}
-     
-	*/
+    /// Convenience method for logging with error level.
+    ///
+    /// ## Example
+	///
+    ///     log.error {"An unknown error has occured"}
 	
 	public func error(	showLocation: Bool = false,
 						file: String = #file,
@@ -156,14 +143,11 @@ public struct BXLogger
 	}
 	
 
-	/**
-     Convenience method for logging with warning level.
-     
-     ## Example
-     
-         log.warning {"Be careful!"}
-     
-	*/
+    /// Convenience method for logging with warning level.
+   	///
+    /// ## Example
+    ///
+    ///    log.warning {"Be careful!"}
 
 	public func warning(showLocation: Bool = false,
 						file: String = #file,
@@ -180,15 +164,12 @@ public struct BXLogger
 	}
 	
 
-	/**
-	 Convenience method for logging with debug level.
-     
-     ## Example
-     
-        log.debug(showLocation:true) {"Step 3"}
-     
-	*/
-
+	/// Convenience method for logging with debug level.
+    ///
+    /// ## Example
+    ///
+    ///    log.debug(showLocation:true) {"Step 3"}
+	
 	public func debug(	showLocation: Bool = false,
 						file: String = #file,
 						function: String = #function,
@@ -203,14 +184,12 @@ public struct BXLogger
 						message: message)
 	}
 	
-	/**
-	 Convenience method for logging with verbose level.
-     
-     ## Example
-     
-         log.verbose {"Something really chatty!"}
-     
-	*/
+	
+	/// Convenience method for logging with verbose level.
+    ///
+    /// ## Example
+    ///
+    ///     log.verbose {"Something really chatty!"}
 
 	public func verbose(showLocation: Bool = false,
 						file: String = #file,
