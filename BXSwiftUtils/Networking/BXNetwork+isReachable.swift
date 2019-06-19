@@ -1,7 +1,7 @@
 //**********************************************************************************************************************
 //
-//  NSUIApplication+isConnectedToInternet.swift
-//  A class that loads server hosted defaults and copies them to NSUserDefaults
+//  BXNetwork+isReachable.swift
+//  A helper class that provides networking utils
 //  Copyright ©2019 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
@@ -9,24 +9,16 @@
 
 import SystemConfiguration
 
-#if os(iOS)
-import UIKit
-typealias NSUIApplication  = UIApplication
-#else
-import AppKit
-typealias NSUIApplication  = NSApplication
-#endif
-
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
-public extension NSUIApplication
+public struct BXNetwork
 {
 
 	/// Returns true if this device is currently connect to the internet, false if offline
 	
-    class var isConnectedToInternet : Bool
+    public static var isReachable : Bool
     {
         var zeroAddress = sockaddr_in(sin_len:0, sin_family:0, sin_port:0, sin_addr:in_addr(s_addr:0), sin_zero:(0,0,0,0,0,0,0,0))
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue:zeroAddress))
