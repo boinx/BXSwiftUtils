@@ -105,6 +105,7 @@
 		D08CEB482272DB9600F88170 /* BXMainThreadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */; };
 		D08F44E121708CD90060FBAE /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08F44DF21708CD90060FBAE /* String+Regex.swift */; };
 		D08F44E32170A4850060FBAE /* URL+ExtendedAttributesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08F44E22170A4850060FBAE /* URL+ExtendedAttributesTests.swift */; };
+		D08FAA7F22BA17A4001D05D2 /* NSUIApplication+isConnectedToInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FAA7E22BA17A4001D05D2 /* NSUIApplication+isConnectedToInternet.swift */; };
 		D0B38D7821CE6F180068148D /* Array+Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B38D7721CE6F180068148D /* Array+Groups.swift */; };
 		D0C2294021BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
@@ -223,6 +224,7 @@
 		D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMainThreadDelegate.swift; sourceTree = "<group>"; };
 		D08F44DF21708CD90060FBAE /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		D08F44E22170A4850060FBAE /* URL+ExtendedAttributesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ExtendedAttributesTests.swift"; sourceTree = "<group>"; };
+		D08FAA7E22BA17A4001D05D2 /* NSUIApplication+isConnectedToInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIApplication+isConnectedToInternet.swift"; sourceTree = "<group>"; };
 		D0B38D7721CE6F180068148D /* Array+Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Groups.swift"; sourceTree = "<group>"; };
 		D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				D059DE5222945E420007CD5A /* BXServerDefaults.swift */,
+				D08FAA7E22BA17A4001D05D2 /* NSUIApplication+isConnectedToInternet.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
 				481A25BE2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */,
+				D08FAA7F22BA17A4001D05D2 /* NSUIApplication+isConnectedToInternet.swift in Sources */,
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
