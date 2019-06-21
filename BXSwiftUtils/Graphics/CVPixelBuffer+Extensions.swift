@@ -108,6 +108,7 @@ public extension CVPixelBuffer
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	
 	/// Creates a deep copy a CVPixelBuffer
 	
     func copy() -> CVPixelBuffer?
@@ -116,12 +117,19 @@ public extension CVPixelBuffer
 
 		// Create a copy of the CVPixelBuffer
 		
+		#if !(targetEnvironment(simulator)) // Not sure why this is necessary to make unit test work?
 		let attributes:[CFString:Any] =
 		[
 			kCVPixelBufferIOSurfaceCoreAnimationCompatibilityKey: true,
 			kCVPixelBufferMetalCompatibilityKey: true
 		]
-		
+		#else
+		let attributes:[CFString:Any] =
+		[
+			kCVPixelBufferMetalCompatibilityKey: true
+		]
+		#endif
+
 		var copy:CVPixelBuffer? = nil
 
 		CVPixelBufferCreate(
@@ -180,7 +188,8 @@ public extension CVPixelBuffer
 		return copy
     }
 
-
+	
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
