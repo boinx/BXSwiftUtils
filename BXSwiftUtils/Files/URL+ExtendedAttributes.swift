@@ -21,19 +21,23 @@ public extension URL
 
     func setExtendedAttribute<T>(_ value: T, forName name: String) throws
 	{
-		var tmp = value
-		let data = Data(buffer:UnsafeBufferPointer(start:&tmp,count:1))
+		let data = try PropertyListSerialization.data(fromPropertyList:value,format:.binary,options:0)
 		try self.setExtendedAttribute(data,forName:name)
 	}
 
 	
  	/// Get extended attribute
 
-	func extendedAttribute<T>(forName name: String) throws -> T
+	func extendedAttribute<T>(forName name: String) -> T?
     {
-    	let data = try self.extendedAttribute(forName:name)
-		let value:T = data.withUnsafeBytes { $0.pointee }
-		return value
+    	if let data = self.extendedAttribute(forName:name),
+    	   let any = try? PropertyListSerialization.propertyList(from:data, format:nil),
+    	   let value = any as? T
+    	{
+			return value
+		}
+		
+		return nil 
     }
 	
 
@@ -63,9 +67,9 @@ public extension URL
 
 	/// Get extended attribute
 	
-    func extendedAttribute(forName name: String) throws -> Data
+    func extendedAttribute(forName name: String) -> Data?
     {
-        let data = try self.withUnsafeFileSystemRepresentation
+        let data = try? self.withUnsafeFileSystemRepresentation
         {
         	fileSystemPath -> Data in
 

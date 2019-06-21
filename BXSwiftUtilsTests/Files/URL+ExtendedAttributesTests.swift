@@ -52,7 +52,26 @@ class URL_ExtendedAttributesTests : XCTestCase
 		let exists1 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists1,true)
 
-		let value2:String = try! url.extendedAttribute(forName:key)
+		let value2:String = url.extendedAttribute(forName:key)!
+		XCTAssertEqual(value1,value2)
+		
+		try! url.removeExtendedAttribute(forName:key)
+		
+		let exists2 = url.hasExtendedAttribute(forName:key)
+		XCTAssertEqual(exists2,false)
+    }
+
+
+	func testLongStringAttribute()
+    {
+		let value1:String = "This is a really long string that will not into a 16 byte buffer - so this is the real test!!!"
+		
+		try! url.setExtendedAttribute(value1, forName:key)
+
+		let exists1 = url.hasExtendedAttribute(forName:key)
+		XCTAssertEqual(exists1,true)
+
+		let value2:String = url.extendedAttribute(forName:key)!
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
@@ -73,7 +92,7 @@ class URL_ExtendedAttributesTests : XCTestCase
 		let exists1 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists1,true)
 
-		let value2:Int = try! url.extendedAttribute(forName:key)
+		let value2:Int = url.extendedAttribute(forName:key)!
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
@@ -94,7 +113,7 @@ class URL_ExtendedAttributesTests : XCTestCase
 		let exists1 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists1,true)
 
-		let value2:Bool = try! url.extendedAttribute(forName:key)
+		let value2:Bool = url.extendedAttribute(forName:key)!
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
@@ -116,7 +135,7 @@ class URL_ExtendedAttributesTests : XCTestCase
 		let exists1 = url.hasExtendedAttribute(forName:key)
 		XCTAssertEqual(exists1,true)
 
-		let value2:Data = try! url.extendedAttribute(forName:key)
+		let value2:Data = url.extendedAttribute(forName:key)!
 		XCTAssertEqual(value1,value2)
 		
 		try! url.removeExtendedAttribute(forName:key)
