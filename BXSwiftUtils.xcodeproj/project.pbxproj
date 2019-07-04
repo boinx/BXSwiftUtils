@@ -76,6 +76,7 @@
 		D0323508205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */; };
 		D032350E205C362A003D6CCB /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032350C205C362A003D6CCB /* Date+Components.swift */; };
 		D034B97A221C1F5900E94722 /* Mirror+IterateProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034B979221C1F5900E94722 /* Mirror+IterateProperties.swift */; };
+		D03E9FC222CE1A93009BCC37 /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E9FC122CE1A93009BCC37 /* UndoManager+Disabling.swift */; };
 		D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */; };
 		D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
@@ -85,7 +86,7 @@
 		D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */; };
 		D05D0C0E21CD17AD00FAF3CC /* BXSignpostMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */; };
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
-		D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */; };
+		D0693F8B20AC1C4500B5893C /* UndoManager+AutomaticName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */; };
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
 		D06CC9232178C5F9009C2991 /* Data+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9222178C5F9009C2991 /* Data+Mutation.swift */; };
 		D06CC9272178D209009C2991 /* Data+MutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9262178D209009C2991 /* Data+MutationTests.swift */; };
@@ -190,6 +191,7 @@
 		D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		D032350C205C362A003D6CCB /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Components.swift"; sourceTree = "<group>"; };
 		D034B979221C1F5900E94722 /* Mirror+IterateProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mirror+IterateProperties.swift"; sourceTree = "<group>"; };
+		D03E9FC122CE1A93009BCC37 /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
 		D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTLComputeCommandEncoder+Extensions.swift"; sourceTree = "<group>"; };
 		D046DF84216B7ED0004331C3 /* Optional+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+If.swift"; sourceTree = "<group>"; };
 		D046DF87216BAB59004331C3 /* String+DataDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataDetection.swift"; sourceTree = "<group>"; };
@@ -204,7 +206,7 @@
 		D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Resolving.swift"; sourceTree = "<group>"; };
 		D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXSignpostMixin.swift; sourceTree = "<group>"; };
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
-		D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+Disabling.swift"; sourceTree = "<group>"; };
+		D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+AutomaticName.swift"; sourceTree = "<group>"; };
 		D06CC91E2178B089009C2991 /* String+RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegexTests.swift"; sourceTree = "<group>"; };
 		D06CC9222178C5F9009C2991 /* Data+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mutation.swift"; sourceTree = "<group>"; };
 		D06CC9262178D209009C2991 /* Data+MutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+MutationTests.swift"; sourceTree = "<group>"; };
@@ -599,7 +601,8 @@
 		D0693F8820AC1C2700B5893C /* Undo */ = {
 			isa = PBXGroup;
 			children = (
-				D0693F8920AC1C4500B5893C /* UndoManager+Disabling.swift */,
+				D03E9FC122CE1A93009BCC37 /* UndoManager+Disabling.swift */,
+				D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */,
 			);
 			path = Undo;
 			sourceTree = "<group>";
@@ -854,7 +857,7 @@
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
-				D0693F8B20AC1C4500B5893C /* UndoManager+Disabling.swift in Sources */,
+				D0693F8B20AC1C4500B5893C /* UndoManager+AutomaticName.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				D0891244215A762200403100 /* CGPoint+String.swift in Sources */,
 				D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */,
@@ -871,6 +874,7 @@
 				485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
 				481A25BE2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */,
+				D03E9FC222CE1A93009BCC37 /* UndoManager+Disabling.swift in Sources */,
 				D08FAA7F22BA17A4001D05D2 /* BXNetwork+isReachable.swift in Sources */,
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
