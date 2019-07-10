@@ -113,6 +113,7 @@
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
 		D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */; };
 		D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
+		D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */; };
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +234,7 @@
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
 		D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableEnum.swift; sourceTree = "<group>"; };
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
+		D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Assign.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -351,6 +353,7 @@
 				D0B38D7721CE6F180068148D /* Array+Groups.swift */,
 				4875F2502051EEF5009985EC /* Collection+SafeAccess.swift */,
 				48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */,
+				D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */,
 				D06F462C209073D0000986B8 /* Collection+Codable.swift */,
 				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
@@ -814,6 +817,7 @@
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
 				95F2DBA821B7DD9000865AE4 /* Bool+Operators.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
+				D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */,
 				D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */,
