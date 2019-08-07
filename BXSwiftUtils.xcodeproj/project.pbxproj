@@ -116,6 +116,7 @@
 		D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
 		D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */; };
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
+		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -238,6 +239,7 @@
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
 		D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Assign.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
+		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +519,7 @@
 				48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */,
 				D046DF87216BAB59004331C3 /* String+DataDetection.swift */,
 				D08F44DF21708CD90060FBAE /* String+Regex.swift */,
+				D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */,
 				D05D0C0721C6687100FAF3CC /* String+Paths.swift */,
 				48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */,
 			);
@@ -811,6 +814,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D034B97A221C1F5900E94722 /* Mirror+IterateProperties.swift in Sources */,
+				D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */,
 				D08AC6402285AFF700DFBD66 /* BXKeychain.swift in Sources */,
 				D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */,
 				D0157ED0227DB41F00E34D65 /* Bundle+Localizations.swift in Sources */,
