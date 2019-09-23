@@ -14,6 +14,7 @@ import os.signpost
 
 
 /// OSLog for signpost measuring
+
 @available(OSX 10.12, *)
 let signpostlog:OSLog =
 {
@@ -34,9 +35,6 @@ public protocol BXSignpostMixin : class
 extension BXSignpostMixin
 {
 
-	public static func createSignpostLog(withName name:String)
-	{
-	}
 	/// Begins a signpost for measuring the execution time of a function
 	/// - parameter name: The name of the calling class
 	/// - parameter function: the name of the calling function
@@ -68,6 +66,7 @@ extension BXSignpostMixin
 			os_signpost(.end, log:signpostlog, name:name, signpostID:signpostID, "%@.end",function)
 		}
 	}
+	
 }
 
 
