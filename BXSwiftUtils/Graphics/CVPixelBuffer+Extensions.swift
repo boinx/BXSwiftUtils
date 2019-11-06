@@ -117,7 +117,7 @@ public extension CVPixelBuffer
 
 		// Create a copy of the CVPixelBuffer
 		
-		#if !(targetEnvironment(simulator)) // Not sure why this is necessary to make unit test work?
+		#if !(targetEnvironment(simulator))
 		let attributes:[CFString:Any] =
 		[
 			kCVPixelBufferIOSurfaceCoreAnimationCompatibilityKey: true,
@@ -133,7 +133,7 @@ public extension CVPixelBuffer
 		var copy:CVPixelBuffer? = nil
 
 		CVPixelBufferCreate(
-			nil,
+			kCFAllocatorDefault,
 			CVPixelBufferGetWidth(self),
 			CVPixelBufferGetHeight(self),
 			CVPixelBufferGetPixelFormatType(self),
@@ -142,6 +142,8 @@ public extension CVPixelBuffer
 		
 		if let copy = copy
 		{
+			CVBufferPropagateAttachments(self as CVBuffer, copy as CVBuffer)
+			
 			// Lock buffers while we are copying the pixel data
 			
 			CVPixelBufferLockBaseAddress(self,.readOnly)
