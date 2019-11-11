@@ -69,7 +69,12 @@ extension KeyedDecodingContainer
 
 extension NSAttributedString
 {
-	/// Returns an array of all font names that are used in the archivedData created from an NSAttributedString
+	/// Returns an array of all font names that are used in the archivedData created from an NSAttributedString.
+	///
+	/// Simply unarchiving an NSAttributedString and then enumerating its font attribute doesn't work, because
+	/// at this point the OS has already replaced missing fonts with a default font, and all information which
+	/// fonts are missing has been lost. For this reason this custom function parses the archivedData and extracts
+	/// the relevant information.
 	
 	public class func usedFontNames(inArchivedData data:Data) -> [String]
 	{
