@@ -228,3 +228,43 @@ extension NSAttributedString
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+extension NSAttributedString
+{
+	/// Returns an array of all font names that are used in the RTFD data.
+	///
+	/// Simply creating an NSAttributedString and then enumerating its font attribute doesn't work, because
+	/// at this point the OS has already replaced missing fonts with a default font, and all information which
+	/// fonts are missing has been lost. For this reason this custom function parses the RTFD data and extracts
+	/// the relevant information.
+	
+	public class func usedFontNames(inRTFData data:Data) -> [String]
+	{
+		// {\fonttbl\f0\fnil\fcharset0 LithosPro-Regular;}
+
+		var strings:[String] = []
+		
+		guard let string = String(bytes:data, encoding:.ascii) else { return strings }
+		guard let regex = try? NSRegularExpression(pattern:"fonttbl.* +(.*);",options:[]) else { return strings }
+		let matches = regex.matches(in:string, options:[], range:NSMakeRange(0,string.count))
+		
+		for match in matches
+		{
+			if match.numberOfRanges >= 2
+			{
+				let range = match.range(at:1)
+
+				if range.location != NSNotFound, let r = Range(range,in:string)
+				{
+					let str = String(string[r])
+					strings += str
+				}
+			}
+		}
+		
+		return strings
+	}
+}
+
+	
+//----------------------------------------------------------------------------------------------------------------------
