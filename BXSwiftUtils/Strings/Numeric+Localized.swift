@@ -139,7 +139,8 @@ extension String
 		var allowedChars = CharacterSet.decimalDigits
 		allowedChars.insert(charactersIn:decimalSeparator)
 		allowedChars.insert(charactersIn:groupingSeparator)
-		
+		allowedChars.insert(charactersIn:"+-")
+
 		let illegalChars = allowedChars.inverted
 
 		return self.components(separatedBy:illegalChars).joined(separator:"")
