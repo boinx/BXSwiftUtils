@@ -13,12 +13,8 @@ import Foundation
 //----------------------------------------------------------------------------------------------------------------------
 
 
-public class BXServerDefaults
+open class BXServerDefaults
 {
-	/// Shared singlton instance of this class
-	
-	public static let shared = BXServerDefaults()
-	
 	/// Custom errors
 	
 	public enum Error : Swift.Error
@@ -43,7 +39,7 @@ public class BXServerDefaults
 	/// - parameter copyToUserDefaults: Set to true if the contents of the plist should be copied to the local NSUserDefaults
 	/// - parameter completionHandler: An optional completion handler that returns the resulting plist
 
-	public func load(from remoteURL:URL, localFallbackURL:URL? = nil, copyToUserDefaults:Bool = true, completionHandler:((Any?,Swift.Error?)->Void)? = nil)
+	public static func load(from remoteURL:URL, localFallbackURL:URL? = nil, copyToUserDefaults:Bool = true, completionHandler:((Any?,Swift.Error?)->Void)? = nil)
 	{
 		// If we were given a localFallbackURL, then first load its contents into the fallbackPlist
 		
@@ -124,7 +120,7 @@ public class BXServerDefaults
 
 	/// Helper function that calls the completionHandler with the fallbackPlist (if available) or an error otherwise
 	
-	private func execute(_ completionHandler: ((Any?,Swift.Error?)->Void)?, with fallbackPlist: Any?, _ error: Swift.Error?)
+	private static func execute(_ completionHandler: ((Any?,Swift.Error?)->Void)?, with fallbackPlist: Any?, _ error: Swift.Error?)
 	{
 		if fallbackPlist != nil
 		{
