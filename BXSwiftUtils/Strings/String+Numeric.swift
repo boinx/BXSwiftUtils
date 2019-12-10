@@ -24,7 +24,7 @@ public extension String
 
 	func strippingNonNumericCharacters() -> String
 	{
-		let numbericCharacters = Set("0123456789.,")
+		let numbericCharacters = Set("0123456789.,+-")
 		return self.filter { numbericCharacters.contains($0) }
 	}
 	
