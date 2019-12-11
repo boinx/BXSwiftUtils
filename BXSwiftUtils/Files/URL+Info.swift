@@ -326,11 +326,11 @@ extension URL
 {
 	/// Updates the modification date of the file to now
 	
-	public func touch()
+	public func touch() throws
 	{
 		let now = Date()
 		let attributes:[FileAttributeKey:Any] = [.modificationDate:now]
-		try? FileManager.default.setAttributes(attributes, ofItemAtPath:self.path)
+		try FileManager.default.setAttributes(attributes, ofItemAtPath:self.path)
 	}
 }
 
