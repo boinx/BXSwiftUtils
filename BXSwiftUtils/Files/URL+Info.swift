@@ -319,3 +319,21 @@ extension URL
 
 //----------------------------------------------------------------------------------------------------------------------
 
+
+// MARK: -
+
+extension URL
+{
+	/// Updates the modification date of the file to now
+	
+	public func touch()
+	{
+		let now = Date()
+		let attributes:[FileAttributeKey:Any] = [.modificationDate:now]
+		try? FileManager.default.setAttributes(attributes, ofItemAtPath:self.path)
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
