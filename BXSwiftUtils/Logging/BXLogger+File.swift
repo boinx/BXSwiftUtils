@@ -94,9 +94,9 @@ extension BXLogger
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	/// Sends the logfile to the specified email address
+	/// Loads the logfile and calls the sendHandler that can do whatever it wants with it
 	
-	public static func sendLogFile(at fileURL:URL, subject:String, to emailAddress:String) throws
+	public static func sendLogFile(sendHandler:(URL,Data,String)->Void) throws
 	{
 		if #available(iOS 13,*)
 		{
@@ -107,18 +107,11 @@ extension BXLogger
 			self.logFile.handle?.synchronizeFile()
 		}
 		
-		if fileURL.exists, let body = try? String(contentsOf:fileURL, encoding:.utf8)
+		if let url = self.logFile.url, url.exists,
+		   let data = try? Data(contentsOf:url),
+		   let string = try? String(contentsOf:url,encoding:.utf8)
 		{
-			let mailto = String(format:"mailto:%@?Subject=\"%@\"&body=\"%@\"", emailAddress, subject, body)
-			
-			if let mailtoURL = URL(string:mailto)
-			{
-				#if os(iOS)
-				UIApplication.shared.open(mailtoURL, options:[:], completionHandler:nil)
-				#elseif os(macOS)
-				NSWorkspace.shared.open(url:mailtoURL)
-				#endif
-			}
+			sendHandler(url,data,string)
 		}
 	}
 }
