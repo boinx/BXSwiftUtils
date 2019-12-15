@@ -69,7 +69,13 @@ extension BXLogger
 	
 	public static func fileDestination(level:Level, message:String)
 	{
-		if let data = message.data(using:.utf8)
+		// NSLog automatically appends a return, but for the fileDestination we need to do this manually
+		
+		let line = message + "\n"
+		
+		// Append the line to the end of the logfile
+		
+		if let data = line.data(using:.utf8)
 		{
 			self.logFile.handle?.write(data)
 		}
