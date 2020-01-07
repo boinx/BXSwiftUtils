@@ -98,7 +98,7 @@ extension BXLogger
 	
 	public static func sendLogFile(sendHandler:(URL,Data,String)->Void) throws
 	{
-		if #available(iOS 13,*)
+		if #available(iOS 13, macOS 15, *)
 		{
 			try self.logFile.handle?.synchronize()
 		}
