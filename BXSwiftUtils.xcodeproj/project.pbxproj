@@ -113,6 +113,7 @@
 		D0B6AF6423D3034900EDDB74 /* BXSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */; };
 		D0B6AF6523D3034900EDDB74 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */; };
 		D0B6AF6723D30ACF00EDDB74 /* LocalizableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6623D30ACF00EDDB74 /* LocalizableIntEnum.swift */; };
+		D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */; };
 		D0C2294021BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
@@ -240,6 +241,7 @@
 		D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXSelectionController.swift; sourceTree = "<group>"; };
 		D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
 		D0B6AF6623D30ACF00EDDB74 /* LocalizableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableIntEnum.swift; sourceTree = "<group>"; };
+		D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXSelectionController+Combine.swift"; sourceTree = "<group>"; };
 		D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
@@ -375,8 +377,9 @@
 				48FF9BC620E116B100024C10 /* Weak.swift */,
 				48A971D92158F75800215F9F /* Equatable+IsContainedIn.swift */,
 				D034B979221C1F5900E94722 /* Mirror+IterateProperties.swift */,
-				D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */,
 				D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */,
+				D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */,
+				D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */,
 				48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
+				D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */,
 				D089124B215B723C00403100 /* CGRect+String.swift in Sources */,
 				48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */,
 				D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */,

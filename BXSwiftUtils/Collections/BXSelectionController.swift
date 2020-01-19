@@ -274,6 +274,7 @@ open class BXSelectionController : NSObject
 		{
 			self.willChangeValue(forKey:key)
 			self.didChangeValue(forKey:key)
+			self.publishObjectWillChange()
 		}
 	}
 	

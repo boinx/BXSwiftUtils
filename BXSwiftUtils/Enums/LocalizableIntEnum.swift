@@ -24,7 +24,7 @@ public extension LocalizableIntEnum
 {
 	var intValue:Int { self.rawValue }
 	
-	var localizedName:String { "<<MISSING LOCALIZED NAME>>" }
+	var localizedName:String { "<<NOT LOCALIZED>>" }
 }
 
 
