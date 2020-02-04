@@ -19,10 +19,24 @@ extension UndoManager
 	
     public func registerUndoWithAutomaticName<TargetType>(target:TargetType, actionName:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
-		self.setActionName(actionName)
+		if _enableAutomaticUndoNames
+		{
+			self.setActionName(actionName)
+		}
+		
 		return self.registerUndo(withTarget:target, handler:handler)
 	}
+	
+	/// Set to true to enable automatically setting undo names when registering undo actions
+	
+	public static var enableAutomaticUndoNames: Bool
+	{
+		set { _enableAutomaticUndoNames = newValue }
+		get { _enableAutomaticUndoNames }
+	}
 }
+
+private var _enableAutomaticUndoNames = false
 
 
 //----------------------------------------------------------------------------------------------------------------------
