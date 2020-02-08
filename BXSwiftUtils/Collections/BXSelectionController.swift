@@ -381,6 +381,13 @@ open class BXSelectionController : NSObject
 			{
 				values.insert(value)
 			}
+			else if let valueArray = object.value(forKeyPath:keyPath) as? [T]
+			{
+				for value in valueArray
+				{
+					values.insert(value)
+				}
+			}
 		}
 		
 		return values
