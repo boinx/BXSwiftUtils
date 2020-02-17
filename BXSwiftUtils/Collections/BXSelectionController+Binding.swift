@@ -18,6 +18,33 @@ import SwiftUI
 extension BXSelectionController
 {
 
+	/// Creates a generic SwiftUI binding to a property of type T on a class C. The selected objects in
+	/// this controller must of class C for this to work correctly.
+	///
+	/// - parameter keyPath: A keypath for a writable property of type T on class C
+	/// - returns: A Binding to a Set of values of type T.
+
+	@available(macOS 10.15.2, iOS 13.2, *)
+	
+	public func binding<C,T:Hashable>(forKeyPath keyPath:ReferenceWritableKeyPath<C,T>) -> Binding<Set<T>>
+	{
+		return Binding<Set<T>>(
+		
+			get:
+			{
+				self.values(forKeyPath:keyPath)
+			},
+			
+			set:
+			{
+				self.setValues($0, forKeyPath:keyPath)
+			})
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Returns a Set of values. If the controller selection is empty, the returned Set will also be empty.
 	/// If the property values for the selected objects are unique, the Set will contain a single value.
 	/// In case of multiple (non-unique) values, the Set will contain more than one value.
@@ -25,7 +52,7 @@ extension BXSelectionController
 	/// - parameter keyPath: The keyPath for a property of type T on a class C
 	/// - returns: A set of values of type T.
 	
-	public func values<C,T:Equatable>(forKeyPath keyPath:KeyPath<C,T>) -> Set<T>
+	public func values<C,T:Hashable>(forKeyPath keyPath:KeyPath<C,T>) -> Set<T>
 	{
 		var values = Set<T>()
 		
@@ -52,6 +79,25 @@ extension BXSelectionController
 	}
 
 
+	/// Returns a value if this value is unique across the selected objects, or nil if not. In case of an empty
+	/// selection nil will also be returned.
+	///
+	/// - parameter keyPath: The keyPath for a property of type T on a class C
+	/// - returns: A set of values of type T.
+
+	public func uniqueValue<C,T:Hashable>(forKeyPath keyPath:KeyPath<C,T>) -> T?
+	{
+		let values:Set<T> = self.values(forKeyPath:keyPath)
+		
+		if values.count == 1
+		{
+			return values.first
+		}
+		
+		return nil
+	}
+	
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -60,10 +106,21 @@ extension BXSelectionController
 	/// - parameter values: A Set of values of type T - please note that only the first value in this Set will be used!
 	/// - parameter keyPath: A keypath for a writable property of type T on class C
 	
-	public func setValues<C,T:Equatable>(_ values:Set<T>, forKeyPath keyPath:ReferenceWritableKeyPath<C,T>)
+	public func setValues<C,T:Hashable>(_ values:Set<T>, forKeyPath keyPath:ReferenceWritableKeyPath<C,T>)
 	{
 		guard let value = values.first else { return }
 		
+		self.setValue(value, forKeyPath:keyPath)
+	}
+
+
+	/// Sets the new value on all objects that are selected in this controller.
+	///
+	/// - parameter value: A value of type T
+	/// - parameter keyPath: A keypath for a writable property of type T on class C
+
+	public func setValue<C,T:Hashable>(_ value:T, forKeyPath keyPath:ReferenceWritableKeyPath<C,T>)
+	{
 		for object in self.selectedObjects
 		{
 			if let object = object as? C
@@ -79,53 +136,6 @@ extension BXSelectionController
 			}
 		}
 	}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	/// Creates a generic SwiftUI binding to a property of type T on a class C. The selected objects in
-	/// this controller must of class C for this to work correctly.
-	/// 
-	/// - parameter keyPath: A keypath for a writable property of type T on class C
-	/// - returns: A Binding to a Set of values of type T.
-
-	@available(macOS 10.15.2, iOS 13.2, *)
-	
-	public func binding<C,T:Equatable>(forKeyPath keyPath:ReferenceWritableKeyPath<C,T>) -> Binding<Set<T>>
-	{
-		return Binding<Set<T>>(
-		
-			get:
-			{
-				self.values(forKeyPath:keyPath)
-			},
-			
-			set:
-			{
-				self.setValues($0, forKeyPath:keyPath)
-			})
-	}
-	
-	
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	// This dynamic lookup adds support for directly accessing properties of C without manually implementing
-	// glue code accessors like we had to do in the past. Wonderful magic!
-	
-//	public subscript<C,T:Equatable>(dynamicMember keyPath:ReferenceWritableKeyPath<C,T>) -> Set<T>
-//	{
-//		set
-//		{
-//			self.setValues(newValue, forKeyPath:keyPath)
-//		}
-//
-//		get
-//		{
-//			return self.values(forKeyPath:keyPath)
-//		}
-//	}
 
 
 //----------------------------------------------------------------------------------------------------------------------
