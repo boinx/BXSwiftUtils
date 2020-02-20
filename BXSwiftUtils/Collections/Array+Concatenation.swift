@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 /**
  These extensions ease concatenation opertaions of an array and a single element.
  See the individual operators for more information.
