@@ -19,7 +19,7 @@ extension BXSelectionController
 {
 
 	/// Creates a generic SwiftUI binding to a property of type T on a class C. The selected objects in
-	/// this controller must of class C for this to work correctly.
+	/// this controller must be of class C for this to work correctly.
 	///
 	/// - parameter keyPath: A keypath for a writable property of type T on class C
 	/// - returns: A Binding to a Set of values of type T.
@@ -41,7 +41,31 @@ extension BXSelectionController
 			})
 	}
 	
+
+	/// Creates a generic SwiftUI binding to a property of type T? on a class C. The selected objects in
+	/// this controller must be of class C for this to work correctly.
+	///
+	/// - parameter keyPath: A keypath for a writable property of type T? on class C
+	/// - returns: A Binding to a Set of values of type T.
+
+	@available(macOS 10.15.2, iOS 13.2, *)
 	
+	public func binding<C,T:Hashable>(forKeyPath keyPath:ReferenceWritableKeyPath<C,T?>) -> Binding<Set<T>>
+	{
+		return Binding<Set<T>>(
+		
+			get:
+			{
+				Set( self.values(forKeyPath:keyPath).compactMap { $0 } )
+			},
+			
+			set:
+			{
+				self.setValues($0, forKeyPath:keyPath)
+			})
+	}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
