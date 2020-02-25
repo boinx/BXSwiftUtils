@@ -66,6 +66,35 @@ extension BXSelectionController
 	}
 
 
+	/// Returns a specialized binding that converts a property of type Int to a Set<Double>
+	///
+	/// This binding can be used by sliders when referencing Int properties.
+	///
+	/// - parameter keyPath: A keypath for a writable property of type Int on class C
+	/// - returns: A Binding to a Set of Double values
+
+	@available(macOS 10.15.2, iOS 13.2, *)
+	
+	public func doubleBinding<C>(forKeyPath keyPath:ReferenceWritableKeyPath<C,Int>) -> Binding<Set<Double>>
+	{
+		return Binding<Set<Double>>(
+		
+			get:
+			{
+				let intValues = self.values(forKeyPath:keyPath)
+				return Set( intValues.map { Double($0) } )
+			},
+			
+			set:
+			{
+				doubleValues in
+				let intValues = Set( doubleValues.map { Int($0) } )
+				return self.setValues(intValues, forKeyPath:keyPath)
+			})
+	}
+
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -121,7 +150,7 @@ extension BXSelectionController
 		return nil
 	}
 	
-	
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
