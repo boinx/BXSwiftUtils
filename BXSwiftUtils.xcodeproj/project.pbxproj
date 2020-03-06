@@ -116,6 +116,7 @@
 		D0B6AF6523D3034900EDDB74 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */; };
 		D0B6AF6723D30ACF00EDDB74 /* LocalizableIntEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6623D30ACF00EDDB74 /* LocalizableIntEnum.swift */; };
 		D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */; };
+		D0B78BDD2412930D004179A5 /* CGSize+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B78BDC2412930D004179A5 /* CGSize+Init.swift */; };
 		D0C2294021BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
@@ -246,6 +247,7 @@
 		D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
 		D0B6AF6623D30ACF00EDDB74 /* LocalizableIntEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableIntEnum.swift; sourceTree = "<group>"; };
 		D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXSelectionController+Combine.swift"; sourceTree = "<group>"; };
+		D0B78BDC2412930D004179A5 /* CGSize+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Init.swift"; sourceTree = "<group>"; };
 		D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				D03234FB205C2919003D6CCB /* CGRect+Accessors.swift */,
 				D0891243215A762200403100 /* CGPoint+String.swift */,
 				D0859FDB2158FBF100F624C7 /* CGSize+String.swift */,
+				D0B78BDC2412930D004179A5 /* CGSize+Init.swift */,
 				D089124A215B723C00403100 /* CGRect+String.swift */,
 				481A25BC2175D36000FB8E9A /* CGPath+RoundedRect.swift */,
 				481A25BF2175D38700FB8E9A /* CACornerMask+Convenience.swift */,
@@ -893,6 +896,7 @@
 				D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */,
 				D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
+				D0B78BDD2412930D004179A5 /* CGSize+Init.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */,
 				D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */,
