@@ -185,16 +185,16 @@ extension DispatchQueue
 
 		if semaphore.wait(timeout:.now()) == .success
 		{
-			DispatchQueue.cancelCoalescedWork(withIdentifier: identifier)	// Cancel previous final execution
+			DispatchQueue.cancelCoalescedWork(withIdentifier:identifier)	// Cancel previous final execution
 			
 			self.async														// Instead schedule "immediate" execution
 			{
 				block()
-				
-				DispatchQueue.main.asyncAfter(deadline:.now() + delay)		// Reducing memory pressure doesn't
-				{															// work reliably without this delay
-					semaphore.signal()
-				}
+			}
+			
+			self.asyncAfter(deadline:.now() + delay)						// Reducing memory pressure doesn't
+			{																// work reliably without this delay
+				semaphore.signal()
 			}
 		}
 		
