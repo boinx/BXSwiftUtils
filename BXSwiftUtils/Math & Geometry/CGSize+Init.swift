@@ -56,3 +56,17 @@ public extension CGPoint
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+public extension CGRect
+{
+	init(center:CGPoint, size:CGSize)
+	{
+		let w = size.width
+		let h = size.height
+		self.init(x:center.x-0.5*w, y:center.y-0.5*h, width:w, height:h)
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
