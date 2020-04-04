@@ -1,7 +1,7 @@
 //**********************************************************************************************************************
 //
 //  DispatchQueue+Throttle.swift
-//  Adds coalecing and throttling to GCD queues
+//  Adds coalescing and throttling to GCD queues
 //  Copyright ©2018 Peter Baumgartner & Stefan Fochler. All rights reserved.
 //
 //**********************************************************************************************************************
@@ -15,12 +15,11 @@ extension DispatchQueue
 {
     // Scheduled worker blocks, grouped by identifier string
     
-    private static var coalescedWork: [String: (index: Int, item: DispatchWorkItem)] = [:]
-    private static var workItemIndex = BXAtomic<Int>(0)
+    private static var coalescedWork:[String:DispatchWorkItem] = [:]
     
     // Last time a worker block was executed for a given identifier string
     
-    private static var throttledWork: [String:WorkStatus] = [:]
+    private static var throttledWork:[String:WorkStatus] = [:]
 
     private enum WorkStatus
     {
@@ -55,26 +54,20 @@ extension DispatchQueue
     
     public func debounce(_ identifier:String, interval:CFTimeInterval = 0.0, block: @escaping ()->Void)
     {
-        let index = DispatchQueue.workItemIndex.increment()
-        
         let newItem = DispatchWorkItem()
         {
             block()
             
             DispatchQueue.lock.write()
             {
-                if let storedIndex = DispatchQueue.coalescedWork[identifier]?.index, storedIndex == index
-                {
-                    DispatchQueue.coalescedWork[identifier] = nil
-                }
+				DispatchQueue.coalescedWork[identifier] = nil
             }
          }
         
         DispatchQueue.lock.write()
         {
-            let oldItem = DispatchQueue.coalescedWork[identifier]?.item
-            oldItem?.cancel()
-            DispatchQueue.coalescedWork[identifier] = (index:index, item:newItem)
+            DispatchQueue.coalescedWork[identifier]?.cancel()
+			DispatchQueue.coalescedWork[identifier] = newItem
         }
         
         self.asyncAfter(deadline:.now()+interval, execute:newItem)
@@ -223,9 +216,8 @@ extension DispatchQueue
     {
         DispatchQueue.lock.write()
         {
-            let work = self.coalescedWork[identifier]
-            work?.item.cancel()
-            self.coalescedWork[identifier] = nil
+            self.coalescedWork[identifier]?.cancel()
+			self.coalescedWork[identifier] = nil
         }
     }
     
@@ -238,15 +230,15 @@ extension DispatchQueue
     {
         DispatchQueue.lock.write()
         {
-            for (identifier, work) in self.coalescedWork
+            for (identifier, item) in self.coalescedWork
             {
                 if identifier.hasPrefix(prefix)
                 {
-                    work.item.cancel()
+                    item.cancel()
                     self.coalescedWork[identifier] = nil
                 }
             }
-        }
+		}
     }
 
     /// Cancels all scheduled coalesced work that was scheduled with the coalesce(_:interval:block:) method.
@@ -255,9 +247,9 @@ extension DispatchQueue
     {
         DispatchQueue.lock.write()
         {
-            for work in self.coalescedWork.values
+            for item in self.coalescedWork.values
             {
-                work.item.cancel()
+                item.cancel()
             }
             
             self.coalescedWork = [:]
