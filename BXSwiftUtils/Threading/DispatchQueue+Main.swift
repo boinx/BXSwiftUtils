@@ -11,24 +11,19 @@ import Foundation
 
 extension DispatchQueue
 {
-    /**
-     Dispatches `block` for async execution or executes it directly if already on the correct queue.
- 
-     This function may only be called on the main queue. Using any other queue will result in an assertion being
-     triggered during debug builds or incorrect operation in release builds.
-     
-     ## Example
-     
-         DispatchQueue.main.asyncIfNeeded
-         {
-            /*
-             This code will run on the main queue.
-             It will be ran synchronously if the caller was already on
-             the main queue, or scheduled asynchrounsly otherise.
-             */
-         }
-    
-     */
+	/// Dispatches `block` for async execution or executes it directly if already on the correct queue.
+	///
+	/// This function may only be called on the main queue. Using any other queue will result in an assertion being
+	/// triggered during debug builds or incorrect operation in release builds.
+	///
+	/// ## Example
+	///
+	///		DispatchQueue.main.asyncIfNeeded
+	///		{
+	///		    // This code will run on the main queue.
+	///		    // It will be ran synchronously if the caller was already
+	///		    // on the main queue, or scheduled asynchrounsly otherise.
+	///		}
 	
     public func asyncIfNeeded(_ block: @escaping () -> Void)
     {
@@ -43,6 +38,12 @@ extension DispatchQueue
             self.async(execute: block)
         }
     }
+
+
+	/// Dispatches `block` for synchronous execution or executes it directly if already on the correct queue.
+	///
+	/// This function may only be called on the main queue. Using any other queue will result in an assertion being
+	/// triggered during debug builds or incorrect operation in release builds.
 
     public func syncIfNeeded(_ block: @escaping () -> Void)
     {
