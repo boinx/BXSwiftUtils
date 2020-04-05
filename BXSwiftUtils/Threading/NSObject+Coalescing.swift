@@ -15,18 +15,14 @@ import Foundation
 
 public extension NSObject
 {
-	/**
-
-	Performs a method call after the specified delay. If multiple requests are queued up, the method will be
-	called only once after the delay has elapsed. Please note that both the method selector and the argument
-	need to be the same for coalescing to take effect.
-	
-	- parameter selector: The single argument method to be called
-	- parameter argument: The object argument to this method
-	- parameter delay: This method will only be called after this optional delay has elapsed. If the delay is
-	0.0 it will be called during the next runloop cycle.
-	
-	*/
+	/// Performs a method call after the specified delay. If multiple requests are queued up, the method will be
+	/// called only once after the delay has elapsed. Please note that both the method selector and the argument
+	/// need to be the same for coalescing to take effect.
+	///
+	/// - parameter selector: The single argument method to be called
+	/// - parameter argument: The object argument to this method
+	/// - parameter delay: This method will only be called after this optional delay has elapsed. If the delay is
+	/// 0.0 it will be called during the next runloop cycle.
 	
 	func performCoalesced(_ selector: Selector, argument: AnyObject?=nil, delay: TimeInterval=0.0)
 	{
@@ -40,19 +36,12 @@ public extension NSObject
 	}
 
 
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	/**
-	
-	Cancel a specific outstanding perform request for the specified method and argument. Please note that the
-	combination of selector and argument is important here. Using the same selector with a different argument
-	will not cancel anything.
-	
-	- parameter selector: The method to be canceled
-	- parameter argument: The object argument to this method
-	
-	*/
+	/// Cancel a specific outstanding perform request for the specified method and argument. Please note that the
+	/// combination of selector and argument is important here. Using the same selector with a different argument
+	/// will not cancel anything.
+	///
+	/// - parameter selector: The method to be canceled
+	/// - parameter argument: The object argument to this method
 	
 	func cancelDelayedPerform(_ selector: Selector, argument: AnyObject?=nil)
 	{
