@@ -56,10 +56,39 @@ public extension NSObject
 		NSObject.cancelPreviousPerformRequests(withTarget:self)
 		RunLoop.current.cancelPerformSelectors(withTarget:self)
 	}
+}
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
+public extension NSObject
+{
+	/// Executes the supplied closure on the main thread. Please note that this doesn't use DispatchQueue.main.async - which in some cases
+	/// bhaves slightly differently. This method gets through if DispatchQueue fails due to the main RunLoop being blocked at the moment.
+
+	func performOnMainThread(_ action:@escaping ()->Void)
+	{
+		let wrapper = ActionWrapper(action)
+		wrapper.performSelector(onMainThread: #selector(ActionWrapper.run), with:nil, waitUntilDone:false, modes:[RunLoop.Mode.common.rawValue])
+	}
 }
 
+
+public class ActionWrapper : NSObject
+{
+	private var action:()->Void
+	
+	public init(_ action:@escaping ()->Void)
+	{
+		self.action = action
+	}
+	
+	@objc func run()
+	{
+		self.action()
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
