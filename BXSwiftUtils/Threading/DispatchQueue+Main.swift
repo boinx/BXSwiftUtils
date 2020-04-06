@@ -61,7 +61,7 @@ extension DispatchQueue
     
     
     /// If the main RunLoop is not in the default mode or is block in another way, scheduled blocks may not be executed until the runloop returns
-    /// to run in the default mode. THis could be the case while inside a modal window or when using controls like sliders. In this case calling
+    /// to run in the default mode. This could be the case while inside a modal window or when using controls like sliders. In this case calling
     /// executeScheduledBlocks() is a workaround to make sure that blocks that have already been enqueued will be executed immediately.
     
 	public func executeScheduledBlocks()
