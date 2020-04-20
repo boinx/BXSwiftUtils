@@ -116,8 +116,10 @@ open class BXSelectionController : NSObject
 	
 	private var propertiesObserverInfo: [PropertyObserverInfo] = []
 
-	/// A Notification that gets sent whenever the selection changes.
+	/// A notification that gets sent whenever the selection changes.
 	
+	public static let selectionDidChangeNotification = NSNotification.Name("BXSelectionController.selectionDidChange")
+
 	public static let objectDidChangeNotification = NSNotification.Name("BXSelectionController.objectDidChange")
 
 	/// When you set an UndoManager on this controller, then any changes to the selection will be undoable
@@ -439,6 +441,7 @@ open class BXSelectionController : NSObject
 		
 		// Send notification for selection change
 		
+		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
 		NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:object)
 
 		// Publish common values to the UI
@@ -489,6 +492,7 @@ open class BXSelectionController : NSObject
 			
 			// Send notification for selection change
 		
+			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
 			NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:object)
 
 			// Publish common values to the UI
@@ -559,6 +563,8 @@ open class BXSelectionController : NSObject
 		
 		// Send notifications for all changes
 		
+		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
+
 		Set(
 			oldSelection.values.compactMap { $0.object } +
 			newSelection.values.compactMap { $0.object }
