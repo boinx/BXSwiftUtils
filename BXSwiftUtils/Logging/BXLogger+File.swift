@@ -71,7 +71,8 @@ extension BXLogger
 	{
 		// NSLog automatically appends a return, but for the fileDestination we need to do this manually
 		
-		let line = message + "\n"
+		let timestamp = Date()
+		let line = "\(timestamp):    \(message) \n"
 		
 		// Append the line to the end of the logfile
 		
