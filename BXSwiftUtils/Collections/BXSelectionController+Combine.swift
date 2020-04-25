@@ -37,6 +37,19 @@ public extension BXSelectionController
 			self.objectWillChange.send()
 		}
 	}
+
+
+	#if canImport(Combine)
+	
+	/// A Combine publisher that broadcasts selection changes
+	
+	@available(macOS 10.15.2, iOS 13.2, *)
+	var selectionDidChangePublisher:NotificationCenter.Publisher
+	{
+		NotificationCenter.default.publisher(for: Self.selectionDidChangeNotification, object:self)
+	}
+	
+	#endif
 }
 
 
