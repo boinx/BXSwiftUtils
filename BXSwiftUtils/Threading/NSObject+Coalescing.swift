@@ -69,8 +69,15 @@ public extension NSObject
 
 	func performOnMainThread(_ action:@escaping ()->Void)
 	{
-		let wrapper = ActionWrapper(action)
-		wrapper.performSelector(onMainThread: #selector(ActionWrapper.run), with:nil, waitUntilDone:false, modes:[RunLoop.Mode.common.rawValue])
+		if Thread.isMainThread
+		{
+			action()
+		}
+		else
+		{
+			let wrapper = ActionWrapper(action)
+			wrapper.performSelector(onMainThread: #selector(ActionWrapper.run), with:nil, waitUntilDone:false, modes:[RunLoop.Mode.common.rawValue])
+		}
 	}
 }
 
