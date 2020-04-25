@@ -9,8 +9,30 @@
 import Foundation
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
+
 extension DispatchQueue
 {
+	
+	/// Dispatches `block` for async execution on the main queue.
+	///
+	/// Use this variany of async if timely execution is not guarranteed due to the main queue being blocked or otherwise overwhelmed.
+	/// This function may only be called on the main queue. Using any other queue will result in an assertion being triggered during
+	/// debug builds or incorrect operation in release builds.
+
+	public func asyncASAP(_ block: @escaping ()->Void)
+	{
+		assert(self === DispatchQueue.main, "\(#function) is only available for the main queue.")
+
+		// Use NSObject.performSelector to make sure that execution is guarranteed during the next
+		// runloop cycle, even if the main queue is currently overwhelmed.
+		
+		let wrapper = ActionWrapper(block)
+		wrapper.performSelector(onMainThread: #selector(ActionWrapper.run), with:nil, waitUntilDone:false, modes:[RunLoop.Mode.common.rawValue])
+	}
+	
+	
 	/// Dispatches `block` for async execution or executes it directly if already on the correct queue.
 	///
 	/// This function may only be called on the main queue. Using any other queue will result in an assertion being
@@ -25,7 +47,7 @@ extension DispatchQueue
 	///		    // on the main queue, or scheduled asynchrounsly otherise.
 	///		}
 	
-    public func asyncIfNeeded(_ block: @escaping () -> Void)
+    public func asyncIfNeeded(_ block: @escaping ()->Void)
     {
         assert(self === DispatchQueue.main, "\(#function) is only available for the main queue.")
         
@@ -35,7 +57,8 @@ extension DispatchQueue
         }
         else
         {
-            self.async(execute: block)
+//          self.async(execute: block)
+            self.asyncASAP(block)
         }
     }
 
@@ -45,7 +68,7 @@ extension DispatchQueue
 	/// This function may only be called on the main queue. Using any other queue will result in an assertion being
 	/// triggered during debug builds or incorrect operation in release builds.
 
-    public func syncIfNeeded(_ block: @escaping () -> Void)
+    public func syncIfNeeded(_ block: @escaping ()->Void)
     {
         assert(self === DispatchQueue.main, "\(#function) is only available for the main queue.")
 		
@@ -73,3 +96,27 @@ extension DispatchQueue
 	}
 
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/// Helper class that wraps an async action block for later execution. This wrapped is needed by asyncReliably()
+
+public class ActionWrapper : NSObject
+{
+	private var action:()->Void
+	
+	public init(_ action: @escaping ()->Void)
+	{
+		self.action = action
+	}
+	
+	@objc func run()
+	{
+		self.action()
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
