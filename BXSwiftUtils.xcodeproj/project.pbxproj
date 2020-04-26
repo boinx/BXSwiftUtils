@@ -126,6 +126,7 @@
 		D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */; };
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
+		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -258,6 +259,7 @@
 		D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Assign.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
+		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -621,6 +623,7 @@
 				D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */,
 				D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */,
 				D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */,
+				D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				D06CC9232178C5F9009C2991 /* Data+Mutation.swift in Sources */,
 				D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */,
 				48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */,
+				D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */,
 				D059DE5322945E420007CD5A /* BXServerDefaults.swift in Sources */,
 				487107F020A9B8E000120024 /* BXAtomic.swift in Sources */,
 				48A971E22159024100215F9F /* Enum+Comparable.swift in Sources */,
