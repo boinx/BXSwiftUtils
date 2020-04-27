@@ -44,7 +44,7 @@ public extension BXSelectionController
 	/// A Combine publisher that broadcasts selection changes
 	
 	@available(macOS 10.15.2, iOS 13.2, *)
-	var selectionDidChangePublisher:NotificationCenter.Publisher
+	var selectionDidChange : NotificationCenter.Publisher
 	{
 		NotificationCenter.default.publisher(for: Self.selectionDidChangeNotification, object:self)
 	}
