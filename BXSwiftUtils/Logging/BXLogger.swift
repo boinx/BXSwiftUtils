@@ -120,8 +120,8 @@ public struct BXLogger
 			}
 		}
 	}
-	
-	
+
+
     /// Convenience method for logging with error level.
     ///
     /// ## Example
@@ -228,6 +228,17 @@ public let consoleDestination: BXLogger.Destination =
 {
     (level: BXLogger.Level, string: String) -> () in
     
+	// If enough time elapsed since last log then automatically insert a blank line
+	
+	BXLogger.recordTimestamp()
+	
+	if BXLogger.shouldInsertBlankLine
+    {
+		Swift.print("\n")
+	}
+    
+    // Depending on log level, prefix message with easy to see icons
+    
 	if level == .error
 	{
 		NSLog(" 🛑 "+string)
@@ -239,6 +250,34 @@ public let consoleDestination: BXLogger.Destination =
 	else
 	{
 		NSLog("    "+string)
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+extension BXLogger
+{
+	/// The time that has to elapsed before a blank line is automatically inserted into the log
+	
+	static var autoBlankLineDelay:CFAbsoluteTime = 2.0
+	
+	/// Returns true if a blank line should be inserted into the log
+	
+	static var shouldInsertBlankLine = false
+	
+	/// The last timestamp of a log message
+	
+	private static var lastTimestamp:CFAbsoluteTime = 0.0
+
+	/// This function should be called once when sending a message to the default (console) destination
+	
+	static func recordTimestamp()
+	{
+		let now = CFAbsoluteTimeGetCurrent()
+		Self.shouldInsertBlankLine = now >= Self.lastTimestamp + Self.autoBlankLineDelay
+		Self.lastTimestamp = now
 	}
 }
 

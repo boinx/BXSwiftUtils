@@ -69,6 +69,16 @@ extension BXLogger
 	
 	public static func fileDestination(level:Level, message:String)
 	{
+		// If enough time elapsed since the last log message then automatically insert a blank line
+		
+		if BXLogger.shouldInsertBlankLine
+		{
+			if let data = "\n".data(using:.utf8)
+			{
+				self.logFile.handle?.write(data)
+			}
+		}
+		
 		// NSLog automatically appends a return, but for the fileDestination we need to do this manually
 		
 		let timestamp = Date()
