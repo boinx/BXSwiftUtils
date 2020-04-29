@@ -127,6 +127,7 @@
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
+		D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -260,6 +261,7 @@
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
+		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +612,7 @@
 				485E0CEF20B580CD001F2247 /* DispatchQueue+Main.swift */,
 				D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */,
 				D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */,
+				D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */,
 			);
 			path = Threading;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */,
 				D034B97A221C1F5900E94722 /* Mirror+IterateProperties.swift in Sources */,
 				D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */,
 				D08AC6402285AFF700DFBD66 /* BXKeychain.swift in Sources */,
