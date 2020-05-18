@@ -122,6 +122,36 @@ public extension CGRect
 		return rect
 	}
 	
+	/// Similar to insetBy(dx:,dy:) except that it doesn't produce bogus Inf or NaN values if the insets are too large for the CGRect
+	
+	func safeInsetBy(dx:CGFloat, dy:CGFloat) -> CGRect
+	{
+		var rect = self
+		
+		if rect.width > 2*dx
+		{
+			rect.origin.x += dx
+			rect.size.width -= 2*dx
+		}
+		else
+		{
+			rect.origin.x += self.midX
+			rect.size.width = 0.0
+		}
+		
+		if rect.height > 2*dy
+		{
+			rect.origin.y += dy
+			rect.size.height -= 2*dy
+		}
+		else
+		{
+			rect.origin.y += self.midY
+			rect.size.height = 0.0
+		}
+		
+		return rect
+	}
 }
 
 
