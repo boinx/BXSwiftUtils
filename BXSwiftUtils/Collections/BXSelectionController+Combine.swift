@@ -11,7 +11,6 @@ import Foundation
 
 #if canImport(Combine)
 import Combine
-#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -38,9 +37,6 @@ public extension BXSelectionController
 		}
 	}
 
-
-	#if canImport(Combine)
-	
 	/// A Combine publisher that broadcasts selection changes
 	
 	@available(macOS 10.15.2, iOS 13.2, *)
@@ -49,11 +45,21 @@ public extension BXSelectionController
 		NotificationCenter.default.publisher(for: Self.selectionDidChangeNotification, object:self)
 	}
 	
-	#endif
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
+#else
 
+public extension BXSelectionController
+{
+	func publishObjectWillChange()
+	{
+		// empty function needed for compiling on macOS 10.13
+	}
+	
+}
+
+#endif
 

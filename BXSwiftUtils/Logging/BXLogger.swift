@@ -276,8 +276,8 @@ extension BXLogger
 	static func recordTimestamp()
 	{
 		let now = CFAbsoluteTimeGetCurrent()
-		Self.shouldInsertBlankLine = now >= Self.lastTimestamp + Self.autoBlankLineDelay
-		Self.lastTimestamp = now
+		BXLogger.shouldInsertBlankLine = now >= BXLogger.lastTimestamp + BXLogger.autoBlankLineDelay
+		BXLogger.lastTimestamp = now
 	}
 }
 

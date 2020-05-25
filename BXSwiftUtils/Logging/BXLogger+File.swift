@@ -109,15 +109,22 @@ extension BXLogger
 	
 	public static func sendLogFile(sendHandler:(URL,Data,String)->Void) throws
 	{
-        if #available(iOS 13, macOS 10.15, *)
-		{
-			try self.logFile.handle?.synchronize()
-		}
-		else
-		{
-			self.logFile.handle?.synchronizeFile()
-		}
+		#if canImport(Combine)	// Ugly hack: compile time check for 10.15 SDK to make it build on macOS 10.13
+
+			if #available(iOS 13, macOS 10.15, *)
+			{
+				try self.logFile.handle?.synchronize()
+			}
+			else
+			{
+				self.logFile.handle?.synchronizeFile()
+			}
 		
+		#else
+			// code for macOS 10.13 SDK builds:
+			self.logFile.handle?.synchronizeFile()
+		#endif
+
 		if let url = self.logFile.url, url.exists,
 		   let data = try? Data(contentsOf:url),
 		   let string = try? String(contentsOf:url,encoding:.utf8)

@@ -32,7 +32,7 @@ extension UndoManager
 	public static var enableAutomaticUndoNames: Bool
 	{
 		set { _enableAutomaticUndoNames = newValue }
-		get { _enableAutomaticUndoNames }
+		get { return _enableAutomaticUndoNames }
 	}
 }
 

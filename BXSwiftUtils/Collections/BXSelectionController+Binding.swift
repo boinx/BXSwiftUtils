@@ -9,7 +9,6 @@
 
 #if canImport(SwiftUI)
 import SwiftUI
-#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -195,3 +194,5 @@ extension BXSelectionController
 
 
 }
+
+#endif

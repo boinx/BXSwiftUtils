@@ -40,14 +40,14 @@ public extension LocalizableIntEnum
 	
 	var intValue:Int
 	{
-		self.rawValue
+		return self.rawValue
 	}
 	
 	// Default string if localization was not provided
 	
 	var localizedName:String
 	{
-		"<<NOT LOCALIZED>>"
+		return "<<NOT LOCALIZED>>"
 	}
 }
 
