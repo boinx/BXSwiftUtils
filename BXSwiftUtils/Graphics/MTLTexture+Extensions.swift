@@ -151,7 +151,7 @@ public extension MTLTexture
 		
 		let srcWidth = self.width
 		let srcHeight = self.height
-		let srcRowbytes = self.recommendedRowBytes
+//		let srcRowbytes = self.recommendedRowBytes
 		
 		let dstWidth = CVPixelBufferGetWidth(pixelBuffer)
 		let dstHeight = CVPixelBufferGetHeight(pixelBuffer)
