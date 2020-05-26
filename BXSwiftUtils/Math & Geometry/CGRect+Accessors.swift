@@ -135,7 +135,7 @@ public extension CGRect
 		}
 		else
 		{
-			rect.origin.x += self.midX
+			rect.origin.x = self.midX
 			rect.size.width = 0.0
 		}
 		
@@ -146,7 +146,7 @@ public extension CGRect
 		}
 		else
 		{
-			rect.origin.y += self.midY
+			rect.origin.y = self.midY
 			rect.size.height = 0.0
 		}
 		
