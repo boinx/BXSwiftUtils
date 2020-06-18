@@ -23,4 +23,14 @@ public extension CMSampleBuffer
     var sampleRate: Float64? {
         return self.basicDescription?.pointee.mSampleRate
     }
+    
+    var sampleCount: CMItemCount {
+        return CMSampleBufferGetNumSamples(self)
+    }
+    
+    var dataLength: Int {
+        guard let blockBuffer = CMSampleBufferGetDataBuffer(self) else { return 0 }
+        return CMBlockBufferGetDataLength(blockBuffer)
+    }
+    
 }
