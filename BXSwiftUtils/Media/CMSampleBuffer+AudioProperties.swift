@@ -11,12 +11,12 @@ import CoreMedia
 
 public extension CMSampleBuffer
 {
-    var formatDescription: CMFormatDescription? {
+    var formatDesc: CMFormatDescription? {
         return CMSampleBufferGetFormatDescription(self)
     }
     
     var basicDescription: UnsafePointer<AudioStreamBasicDescription>? {
-        guard let formatDesc = self.formatDescription else { return nil }
+        guard let formatDesc = self.formatDesc else { return nil }
         return CMAudioFormatDescriptionGetStreamBasicDescription(formatDesc)
     }
         
