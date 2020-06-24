@@ -10,6 +10,8 @@ import Foundation
 
 // Source: https://www.onswiftwings.com/posts/atomic-property-wrapper/
 
+#if swift(>=5.0)
+
 @propertyWrapper
 public struct Atomic<Value> {
 
@@ -37,3 +39,6 @@ public struct Atomic<Value> {
         value = newValue
     }
 }
+
+#endif
+
