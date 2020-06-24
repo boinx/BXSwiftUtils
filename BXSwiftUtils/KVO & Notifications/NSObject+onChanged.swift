@@ -39,6 +39,7 @@ extension NSObjectProtocol where Self:NSObject
 	public func onChanged<Value>(_ keypath:KeyPath<Self,Value>, options:NSKeyValueObservingOptions = .new, handler: @escaping ((Value)->Void)) -> AnyCancellable?
 	{
 		return self.publisher(for:keypath, options:options)
+			.print("RECEIVED KVO")
 			.sink(receiveValue:handler)
 	}
 
@@ -61,6 +62,7 @@ extension NSObjectProtocol where Self:NSObject
 	public func onChanged<Value>(_ keypath:KeyPath<Self,Value?>, options:NSKeyValueObservingOptions = .new, handler: @escaping ((Value?)->Void)) -> AnyCancellable?
 	{
 		return self.publisher(for:keypath, options:options)
+			.print("RECEIVED KVO")
 			.sink(receiveValue:handler)
 	}
 
@@ -73,8 +75,11 @@ extension NSObjectProtocol where Self:NSObject
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value>, options:NSKeyValueObservingOptions = .new, throttle interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value)->Void)) -> AnyCancellable?
 	{
 		return self.publisher(for:keypath, options:options)
-			.removeDuplicates { $0 == $1 }
+			.print("RECEIVED KVO")
 			.throttle(for:interval, scheduler:DispatchQueue.main, latest:true)
+			.print("throttle")
+			.removeDuplicates { $0 == $1 }
+			.print("removeDuplicates")
 			.sink(receiveValue:handler)
 	}
 
@@ -84,8 +89,11 @@ extension NSObjectProtocol where Self:NSObject
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value?>, options:NSKeyValueObservingOptions = .new, throttle interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value?)->Void)) -> AnyCancellable?
 	{
 		return self.publisher(for:keypath, options:options)
-			.removeDuplicates { $0 == $1 }
+			.print("RECEIVED KVO")
 			.throttle(for:interval, scheduler:DispatchQueue.main, latest:true)
+			.print("throttle")
+			.removeDuplicates { $0 == $1 }
+			.print("removeDuplicates")
 			.sink(receiveValue:handler)
 	}
 
@@ -98,8 +106,11 @@ extension NSObjectProtocol where Self:NSObject
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value>, options:NSKeyValueObservingOptions = .new, debounce interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value)->Void)) -> AnyCancellable?
 	{
 		return self.publisher(for:keypath, options:options)
-			.removeDuplicates { $0 == $1 }
+			.print("RECEIVED KVO")
 			.debounce(for:interval, scheduler:DispatchQueue.main)
+			.print("debounce")
+			.removeDuplicates { $0 == $1 }
+			.print("removeDuplicates")
 			.sink(receiveValue:handler)
 	}
 
@@ -109,8 +120,11 @@ extension NSObjectProtocol where Self:NSObject
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value?>, options:NSKeyValueObservingOptions = .new, debounce interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value?)->Void)) -> AnyCancellable?
 	{
 		return self.publisher(for:keypath, options:options)
-			.removeDuplicates { $0 == $1 }
+			.print("RECEIVED KVO")
 			.debounce(for:interval, scheduler:DispatchQueue.main)
+			.print("debounce")
+			.removeDuplicates { $0 == $1 }
+			.print("removeDuplicates")
 			.sink(receiveValue:handler)
 	}
 
