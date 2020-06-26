@@ -29,7 +29,7 @@ public extension BXSelectionController
 	// This function calls send on the objectWillChange publisher so that SwiftUI can rebuild its views.
 	// On older system this function does nothing.
 	
-	func publishObjectWillChange()
+	@objc open func publishObjectWillChange()
 	{
 		if #available(macOS 10.15.2, iOS 13.2, *)
 		{
@@ -54,7 +54,7 @@ public extension BXSelectionController
 
 public extension BXSelectionController
 {
-	func publishObjectWillChange()
+	@objc open func publishObjectWillChange()
 	{
 		// empty function needed for compiling on macOS 10.13
 	}
