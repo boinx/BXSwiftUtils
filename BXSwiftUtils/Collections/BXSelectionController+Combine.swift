@@ -29,11 +29,14 @@ public extension BXSelectionController
 	// This function calls send on the objectWillChange publisher so that SwiftUI can rebuild its views.
 	// On older system this function does nothing.
 	
-	@objc open func publishObjectWillChange()
+	func publishObjectWillChange()
 	{
 		if #available(macOS 10.15.2, iOS 13.2, *)
 		{
-			self.objectWillChange.send()
+			if shouldPublishObjectWillChange
+			{
+				self.objectWillChange.send()
+			}
 		}
 	}
 

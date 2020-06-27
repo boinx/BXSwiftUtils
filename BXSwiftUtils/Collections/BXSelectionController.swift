@@ -122,6 +122,10 @@ open class BXSelectionController : NSObject
 
 	public static let objectDidChangeNotification = NSNotification.Name("BXSelectionController.objectDidChange")
 
+	/// Set to false if you do not want the objectWillChange Combine publisher to fire when the selection or any property values change
+	
+	public var shouldPublishObjectWillChange = true
+
 	/// When you set an UndoManager on this controller, then any changes to the selection will be undoable
 
 	public var undoManager:UndoManager? = nil
