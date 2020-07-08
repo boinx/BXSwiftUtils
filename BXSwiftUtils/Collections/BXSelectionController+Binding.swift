@@ -177,7 +177,7 @@ extension BXSelectionController
 		{
 			if let object = object as? C
 			{
-				if let types = object[keyPath:keyPath] as? [T]
+				if let _ = object[keyPath:keyPath] as? [T]
 				{
 					#warning("TODO: implement")
 				}
