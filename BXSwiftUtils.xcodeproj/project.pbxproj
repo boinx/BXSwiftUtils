@@ -128,6 +128,7 @@
 		D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */; };
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
+		D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */; };
 		F66019A3249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
@@ -268,6 +269,7 @@
 		D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Assign.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
+		D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 		F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wrapper+Atomic.swift"; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */,
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
 				D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */,
+				D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				D0B6AF6723D30ACF00EDDB74 /* LocalizableIntEnum.swift in Sources */,
 				D07F995023FEDBDC003BEA9D /* Dictionary+Concatenation.swift in Sources */,
 				D08F44E121708CD90060FBAE /* String+Regex.swift in Sources */,
+				D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */,
 				48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
 				D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
