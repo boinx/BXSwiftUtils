@@ -125,6 +125,7 @@
 		D0D6B6412473F6E900EC4E5B /* NSObject+onChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */; };
 		D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */; };
 		D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
+		D0E6B50A24DDB5D100369C24 /* Array+HeterogenousDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */; };
 		D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */; };
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */; };
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
@@ -266,6 +267,7 @@
 		D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+onChanged.swift"; sourceTree = "<group>"; };
 		D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableEnum.swift; sourceTree = "<group>"; };
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
+		D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HeterogenousDecoding.swift"; sourceTree = "<group>"; };
 		D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Assign.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Extensions.swift"; sourceTree = "<group>"; };
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */,
 				D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */,
 				D06F462C209073D0000986B8 /* Collection+Codable.swift */,
+				D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */,
 				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				D0A740AD22E880CF00145203 /* Collection+Union.swift */,
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
@@ -901,6 +904,7 @@
 				D03F13B920F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift in Sources */,
 				D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */,
 				48FF9BC820E116B100024C10 /* Weak.swift in Sources */,
+				D0E6B50A24DDB5D100369C24 /* Array+HeterogenousDecoding.swift in Sources */,
 				D00AEFAD23A3FD7E0020AE51 /* BXLogger+File.swift in Sources */,
 				48A971DB2158F75800215F9F /* Equatable+IsContainedIn.swift in Sources */,
 				D0C117C3247EDB7B00F5CE66 /* Array+DoubleLinkedList.swift in Sources */,
