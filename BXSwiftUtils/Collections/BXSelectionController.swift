@@ -512,6 +512,24 @@ open class BXSelectionController : NSObject
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	/// Toggles the selected state of the specified object
+	
+	open func toggleSelectedObject(_ object:NSObject, registerUndo:Bool = true)
+	{
+		if self.isSelected(object)
+		{
+			self.removeSelectedObject(object, registerUndo:registerUndo)
+		}
+		else
+		{
+			self.addSelectedObject(object, registerUndo:registerUndo)
+		}
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Replaces the current selection with a new one
 	
 	open func setSelectedObjects(_ objects: [NSObject], registerUndo:Bool = true)
