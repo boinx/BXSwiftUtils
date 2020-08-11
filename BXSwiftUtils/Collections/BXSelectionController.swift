@@ -410,8 +410,6 @@ open class BXSelectionController : NSObject
 	
 	open func addSelectedObject(_ object:NSObject, registerUndo:Bool = true)
 	{
-//print("\(debugName).addSelectedObject")
-
 		// Bail out if the object is not selectable
 		
 		guard let id = (object as? BXSelectable)?.id else { return }
@@ -469,8 +467,6 @@ open class BXSelectionController : NSObject
 	
 	open func removeSelectedObject(_ object:NSObject, registerUndo:Bool = true)
 	{
-//print("\(debugName).removeSelectedObject")
-
 		guard let id = (object as? BXSelectable)?.id else { return }
 
 		if let wrappedObject = selection[id]
