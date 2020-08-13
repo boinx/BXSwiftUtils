@@ -221,6 +221,24 @@ extension URL
 			return nil
 		}
 	}
+ 
+ 	/// Returns the fileSize in bytes
+	
+	public var fileSize: Int?
+	{
+		do
+		{
+			let key = URLResourceKey.fileSizeKey
+			let values = try self.resourceValues(forKeys: [key])
+			let fileSize = values.fileSize
+			return fileSize
+		}
+		catch // let error
+		{
+			return nil
+		}
+	}
+
 
 	/// Returns the creation date of a file URL
 	
