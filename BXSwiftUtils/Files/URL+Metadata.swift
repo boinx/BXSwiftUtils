@@ -330,6 +330,15 @@ public extension URL
 			channels = spotlight[kMDItemAudioChannelCount] as? Int
 		}
 
+		// File size
+		
+		var size:Int? = nil
+		
+		if size == nil
+		{
+			size = spotlight[kMDItemFSSize] as? Int
+		}
+	
 		// Build metadata dictionary
 		
 		var metadata:[CFString:Any] = [:]
@@ -348,11 +357,156 @@ public extension URL
 		metadata[kMDItemAudioChannelCount] = channels
 		metadata[kMDItemAudioBitRate] = bitrate
 		metadata[kMDItemAudioSampleRate] = samplerate
+		metadata[kMDItemFSSize] = size
 		return metadata
 	}
 }
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
+
+// MARK: -
+
+public extension URL
+{
+	/// Returns metadata for an audio file
+	
+	var videoMetadata:[CFString:Any]
+	{
+		// First gather all metadata we can find
+		
+		let keys:[CFString] =
+		[
+			kMDItemDurationSeconds,
+			kMDItemFSSize,
+			kMDItemKind,
+			kMDItemCodecs,
+		]
+		
+		let spotlight = self.spotlightMetadata(for:keys)
+		let asset = AVURLAsset(url:self)
+		let videoTrack = asset.tracks(withMediaType:.video).first
+		
+		// Extract info
+		
+		var duration:Double? = nil
+		var width:Int? = nil
+		var height:Int? = nil
+		var fps:Double? = nil
+		var kind:String? = nil
+		var videoCodec:AVFoundation.AVVideoCodecType? = nil
+		var audioCodec:AudioFormatID? = nil
+		var codecs:[String]? = nil
+		var size:Int? = nil
+		
+		if duration == nil
+		{
+			duration = CMTimeGetSeconds(asset.duration)
+		}
+		
+		if duration == nil
+		{
+			duration = spotlight[kMDItemDurationSeconds] as? Double
+		}
+
+		if let videoTrack = videoTrack
+		{
+			let size = videoTrack.naturalSize
+			width = Int(size.width)
+			height = Int(size.height)
+			fps = Double(videoTrack.nominalFrameRate)
+		}
+		
+		if kind == nil
+		{
+			kind = spotlight[kMDItemKind] as? String
+		}
+	
+		if videoCodec == nil
+		{
+			if let formatDescriptions = videoTrack?.formatDescriptions as? [CMFormatDescription],
+			   let formatDescription = formatDescriptions.first,
+			   let name = CMFormatDescriptionGetExtension(formatDescription, extensionKey:kCMFormatDescriptionExtension_FormatName) as? String
+			{
+				let code = name.replacingOccurrences(of:"\'", with:"")	// IMPORTANT: we get "'avc1'" so we need to strip the single quotes!
+				videoCodec = AVFoundation.AVVideoCodecType(rawValue:code)
+			}
+		}
+		
+		if audioCodec == nil
+		{
+			if let audioTrack = asset.tracks(withMediaType:.audio).first,
+			   let formatDescriptions = audioTrack.formatDescriptions as? [CMFormatDescription],
+			   let formatDescription = formatDescriptions.first
+			{
+				audioCodec = CMFormatDescriptionGetMediaSubType(formatDescription)
+			}
+		}
+		
+		if codecs == nil
+		{
+			codecs = spotlight[kMDItemCodecs] as? [String]
+		}
+
+		if codecs == nil
+		{
+			var formatNameVideo = ""
+			var formatNameAudio = ""
+			
+			if let formatDescriptions = videoTrack?.formatDescriptions as? [CMFormatDescription],
+			   let formatDescription = formatDescriptions.first,
+			   let name = CMFormatDescriptionGetExtension(formatDescription,extensionKey:kCMFormatDescriptionExtension_FormatName) as? String
+			{
+				formatNameVideo = name
+			}
+
+			if let audioTrack = asset.tracks(withMediaType:.audio).first,
+			   let formatDescriptions = audioTrack.formatDescriptions as? [CMFormatDescription],
+			   let formatDescription = formatDescriptions.first,
+			   let name = CMFormatDescriptionGetExtension(formatDescription,extensionKey:kCMFormatDescriptionExtension_FormatName) as? String
+			{
+				formatNameAudio = name
+//				let code = CMFormatDescriptionGetMediaSubType(formatDescription)
+//
+//				switch code
+//				{
+//					case kAudioFormatMPEG4AAC: formatNameAudio = "AAC"
+//					case kAudioFormatLinearPCM: formatNameAudio = "Linear PCM"
+//					case kAudioFormatAppleLossless: formatNameAudio = "Apple Lossless"
+//					case kAudioFormatAC3: formatNameAudio = "AC-3"
+//					case kAudioFormatMPEGLayer1: formatNameAudio = "MPEG-1"
+//					case kAudioFormatMPEGLayer2: formatNameAudio = "MPEG-2"
+//					case kAudioFormatMPEGLayer3: formatNameAudio = "MPEG-3"
+//					default: break
+//				}
+			}
+
+			codecs = [formatNameVideo,formatNameAudio]
+		}
+
+		if size == nil
+		{
+			size = spotlight[kMDItemFSSize] as? Int
+		}
+	
+		// Build metadata dictionary
+		
+		var metadata:[CFString:Any] = [:]
+		metadata[kMDItemPixelWidth] = width
+		metadata[kMDItemPixelHeight] = height
+		metadata[kMDItemDurationSeconds] = duration
+		metadata[kMDItemFSSize] = size
+		metadata[kMDItemKind] = kind
+		metadata[kMDItemCodecs] = codecs
+		metadata[kMDItemFSSize] = size
+		metadata["fps" as CFString] = fps
+		metadata["videoCodec" as CFString] = videoCodec
+		metadata["audioCodec" as CFString] = audioCodec
+		return metadata
+	}
+}
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
