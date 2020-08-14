@@ -50,6 +50,22 @@ public extension URL
 
 public extension URL
 {
+
+	/// Returns metadata for an audio file
+	
+	var imageMetadata:[CFString:Any]
+	{
+		guard let source = CGImageSourceCreateWithURL(self as CFURL,nil) else { return [:] }
+		guard let properties = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
+		
+		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize])
+
+		var metadata = properties as? [CFString:Any] ?? [:]
+		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
+		return metadata
+	}
+
+
 	/// Returns metadata for an audio file
 	
 	var audioMetadata:[CFString:Any]
@@ -360,16 +376,11 @@ public extension URL
 		metadata[kMDItemFSSize] = size
 		return metadata
 	}
-}
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
-// MARK: -
-
-public extension URL
-{
 	/// Returns metadata for an audio file
 	
 	var videoMetadata:[CFString:Any]
@@ -506,6 +517,7 @@ public extension URL
 		return metadata
 	}
 }
+	
 	
 //----------------------------------------------------------------------------------------------------------------------
 
