@@ -42,6 +42,14 @@ extension Array where Element: Any
         lhs.append(contentsOf:rhs)
 	}
 	
+	/// Convenient syntax around `Array.append(contentsOf:)` that allows appending an optional array to an array.
+	
+	public static func +=(lhs: inout [Element], rhs: [Element]?)
+	{
+		guard let rhs = rhs else { return }
+        lhs.append(contentsOf:rhs)
+	}
+	
 	#endif
 
 
