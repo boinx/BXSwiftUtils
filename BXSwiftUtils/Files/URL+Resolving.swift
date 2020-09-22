@@ -23,7 +23,7 @@ public extension URL
 	/// - parameter aliasData: Data containing an AliasRecord
 	/// - returns: The URL that aliasData was pointing to
 
-	static func resolving(aliasData: Data) throws -> URL?
+	static func resolving(aliasData:Data) throws -> URL?
 	{
 		#if os (iOS)
 
@@ -45,7 +45,7 @@ public extension URL
 		// Make sure that the OS recognizes it as an alias file
 
 		var attrs:[UInt8] = [0x61,0x6C,0x69,0x73,0x4D,0x41,0x43,0x53,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-		let attrData = Data(buffer:UnsafeBufferPointer(start:&attrs,count:attrs.count))
+		let attrData = Data(buffer:UnsafeBufferPointer(start:&attrs, count:attrs.count))
 
 		_ = tmpURL.withUnsafeFileSystemRepresentation
 		{
@@ -53,13 +53,13 @@ public extension URL
 
 			attrData.withUnsafeBytes
 			{
-				setxattr(path,"com.apple.FinderInfo",$0,attrData.count,0,0)
+				setxattr(path,"com.apple.FinderInfo", $0, attrData.count, 0,0)
 			}
 		}
 
 		// Then resolve the aliasFile (on disk) to a URL
 
-		return try URL(resolvingAliasFileAt:tmpURL,options:[.withoutUI,.withoutMounting])
+		return try URL(resolvingAliasFileAt:tmpURL, options:[.withoutUI,.withoutMounting])
 		
 		#else
 		
