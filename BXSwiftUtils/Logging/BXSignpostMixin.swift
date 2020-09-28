@@ -26,7 +26,7 @@ let signpostlog:OSLog =
 //----------------------------------------------------------------------------------------------------------------------
 
 
-public protocol BXSignpostMixin : class
+public protocol BXSignpostMixin
 {
 
 }
