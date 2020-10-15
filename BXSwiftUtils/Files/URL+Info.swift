@@ -278,8 +278,9 @@ extension URL
 	
 	public var volumeSupportsHardlinking: Bool
 	{
+		guard let volumeURL = self.volumeURL else { return false }
 		let key = URLResourceKey.volumeSupportsHardLinksKey
-		let values = try? self.resourceValues(forKeys: [key])
+		let values = try? volumeURL.resourceValues(forKeys: [key])
 		return values?.volumeSupportsHardLinks ?? false
 	}
 
@@ -287,8 +288,9 @@ extension URL
 	
 	public var volumeIsReadOnly: Bool
 	{
+		guard let volumeURL = self.volumeURL else { return false }
 		let key = URLResourceKey.volumeIsReadOnlyKey
-		let values = try? self.resourceValues(forKeys: [key])
+		let values = try? volumeURL.resourceValues(forKeys: [key])
 		return values?.volumeIsReadOnly ?? false
 	}
 
@@ -296,18 +298,64 @@ extension URL
 	
 	public var volumeURL: URL?
 	{
+		var value:URL? = nil
+		var url = self
 		let key = URLResourceKey.volumeURLKey
-		let values = try? self.resourceValues(forKeys: [key])
-		return values?.volume
+
+		repeat
+		{
+			let values = try? url.resourceValues(forKeys: [key])
+			value = values?.volume
+			url = url.deletingLastPathComponent()
+		}
+		while value == nil && url.path.count > 1
+		
+		return value
 	}
 
 	/// Return the UUID of the volume
 	
 	public var volumeUUID: String?
 	{
+		guard let volumeURL = self.volumeURL else { return nil }
 		let key = URLResourceKey.volumeUUIDStringKey
-		let values = try? self.resourceValues(forKeys: [key])
+		let values = try? volumeURL.resourceValues(forKeys: [key])
 		return values?.volumeUUIDString
+	}
+
+	/// Return the free space on the volume
+	
+	public var volumeAvailableCapacity: Int?
+	{
+		guard let volumeURL = self.volumeURL else { return nil }
+		let key = URLResourceKey.volumeAvailableCapacityKey
+		let values = try? volumeURL.resourceValues(forKeys: [key])
+		return values?.volumeAvailableCapacity
+	}
+
+	/// Return the free space on the volume
+	
+	@available (macOS 10.13, *)
+	public var volumeAvailableCapacityForImportantUsage: Int?
+	{
+		guard let volumeURL = self.volumeURL else { return nil }
+		let key = URLResourceKey.volumeAvailableCapacityForImportantUsageKey
+		let values = try? volumeURL.resourceValues(forKeys: [key])
+
+		guard let bytes = values?.volumeAvailableCapacityForImportantUsage else { return nil }
+		return Int(bytes)
+	}
+
+	/// Return the free space on the volume
+	
+	@available (macOS 10.13, *)
+	public var volumeAvailableCapacityForOpportunisticUsage: Int?
+	{
+		guard let volumeURL = self.volumeURL else { return nil }
+		let key = URLResourceKey.volumeAvailableCapacityForOpportunisticUsageKey
+		let values = try? volumeURL.resourceValues(forKeys: [key])
+		guard let bytes = values?.volumeAvailableCapacityForOpportunisticUsage else { return nil }
+		return Int(bytes)
 	}
 	
 }
