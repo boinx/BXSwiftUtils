@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%d time(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@TIMES@</string>
+		<key>TIMES</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 fois</string>
+			<key>one</key>
+			<string>une fois</string>
+			<key>other</key>
+			<string>%d fois</string>
+		</dict>
+	</dict>
+	<key>%d file(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@FILES@</string>
+		<key>FILES</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 fichiers
+Translation results
+0 fichiers</string>
+			<key>one</key>
+			<string>1 fichier</string>
+			<key>other</key>
+			<string>%d fichiers</string>
+		</dict>
+	</dict>
+	<key>%d item(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@ITEMS@</string>
+		<key>ITEMS</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0  éléments</string>
+			<key>one</key>
+			<string>1  élément</string>
+			<key>other</key>
+			<string>%d  éléments</string>
+		</dict>
+	</dict>
+	<key>%d object(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@OBJECTS@</string>
+		<key>OBJECTS</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 objets</string>
+			<key>one</key>
+			<string>1 objet</string>
+			<key>other</key>
+			<string>%d objets</string>
+		</dict>
+	</dict>
+	<key>%d image(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@IMAGES@</string>
+		<key>IMAGES</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 images</string>
+			<key>one</key>
+			<string>1 image</string>
+			<key>other</key>
+			<string>%d images</string>
+		</dict>
+	</dict>
+	<key>%d video(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VIDEOS@</string>
+		<key>VIDEOS</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 vidéos</string>
+			<key>one</key>
+			<string>1 vidéo</string>
+			<key>other</key>
+			<string>%d vidéos</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
