@@ -1,6 +1,6 @@
 //**********************************************************************************************************************
 //
-//  MTKTextureLoader+Extensions.swift
+//  MTKTextureLoader+New.swift
 //	Adds convenience methods
 //  Copyright ©2018 Peter Baumgartner. All rights reserved.
 //
