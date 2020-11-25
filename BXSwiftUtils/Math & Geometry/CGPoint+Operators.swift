@@ -28,6 +28,11 @@ extension CGPoint
 		return CGPoint(x:l.x-r.x,y:l.y-r.y)
 	}
 
+	public static func * (l: CGPoint, r: CGPoint) -> CGFloat
+	{
+		return l.x*r.x + l.y*r.y
+	}
+
 	public static func * (l: CGPoint, r: CGFloat) -> CGPoint
 	{
 		return CGPoint(x:l.x*r,y:l.y*r)
