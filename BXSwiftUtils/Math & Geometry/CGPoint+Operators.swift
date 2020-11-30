@@ -127,6 +127,16 @@ extension CGPoint
 	{
 		return CGPoint( x: -self.y, y: self.x ).normalized
 	}
+
+	/// Rotates a point around the origin by the specified angle (in radians)
+	
+	public func rotate(by radians:CGFloat) -> CGPoint
+	{
+		var p = self
+		p.x = cos(radians)*self.x - sin(radians)*self.y
+		p.y = sin(radians)*self.x + cos(radians)*self.y
+		return p
+	}
 }
 
 
