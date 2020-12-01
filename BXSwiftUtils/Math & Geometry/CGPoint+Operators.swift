@@ -95,7 +95,8 @@ extension CGPoint
 	
 	public var normalized:CGPoint
 	{
-		return self / self.length
+		let len = self.length
+		return len>0 ? self/len : self
 	}
 	
 	/// Returns the mid point between to points
