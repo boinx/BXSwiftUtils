@@ -142,6 +142,7 @@
 		F66019A4249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
 		F66019A7249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A6249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift */; };
 		F66019A8249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A6249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift */; };
+		F6BB6AA92578F50A00BB836F /* Dictionary+DeepMerge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB6AA82578F50A00BB836F /* Dictionary+DeepMerge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -290,6 +291,7 @@
 		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 		F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wrapper+Atomic.swift"; sourceTree = "<group>"; };
 		F66019A6249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+AudioProperties.swift"; sourceTree = "<group>"; };
+		F6BB6AA82578F50A00BB836F /* Dictionary+DeepMerge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+DeepMerge.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 			children = (
 				D07F994F23FEDBDC003BEA9D /* Dictionary+Concatenation.swift */,
 				D00507ED25190383004843E9 /* Dictionary+BXValidPlist.swift */,
+				F6BB6AA82578F50A00BB836F /* Dictionary+DeepMerge.swift */,
 				4875F2252051E9D0009985EC /* Array+Concatenation.swift */,
 				D013E7A124252B2900207D48 /* Set+Concatenation.swift */,
 				484D0652205927EC003C6CA3 /* Array+AllEqual.swift */,
@@ -986,6 +989,7 @@
 				D0693F8B20AC1C4500B5893C /* UndoManager+AutomaticName.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				D0891244215A762200403100 /* CGPoint+String.swift in Sources */,
+				F6BB6AA92578F50A00BB836F /* Dictionary+DeepMerge.swift in Sources */,
 				D0859FDD2158FBF100F624C7 /* CGSize+String.swift in Sources */,
 				484D0654205927F0003C6CA3 /* Array+AllEqual.swift in Sources */,
 				489E56AC2052CC7A0071BBF1 /* BXLogger+Domains.swift in Sources */,
