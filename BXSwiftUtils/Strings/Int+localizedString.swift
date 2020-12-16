@@ -55,4 +55,5 @@ public extension Bundle
 	static let BXSwiftUtils = Bundle(identifier:"com.boinx.BXSwiftUtils")
 }
 
+
 //----------------------------------------------------------------------------------------------------------------------
