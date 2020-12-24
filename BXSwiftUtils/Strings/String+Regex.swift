@@ -47,6 +47,14 @@ public extension String
 		return !string.regexMatches(for:pattern).isEmpty
 	}
 	
+	
+	/// Returns a version of the string that has all HTML tags stripped away
+	
+	func strippingHTMLTags() -> String
+	{
+		self.replacingOccurrences(of:"<[^>]+>", with:"", options:.regularExpression, range:nil)
+	}
+	
 }
 
 
