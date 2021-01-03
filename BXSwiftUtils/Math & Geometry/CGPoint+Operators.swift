@@ -14,12 +14,6 @@ import CoreGraphics
 //----------------------------------------------------------------------------------------------------------------------
 
 
-public typealias CGVector = CGPoint
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
 /// This extension adds some vector math operators to CGPoint/NSPoint
 
 extension CGPoint

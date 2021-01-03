@@ -7,6 +7,8 @@
 //**********************************************************************************************************************
 
 
+#if os(macOS)
+
 import Foundation
 import AVFoundation
 import CoreSpotlight
@@ -51,7 +53,7 @@ public extension URL
 public extension URL
 {
 
-	/// Returns metadata for an audio file
+	/// Returns metadata for an image file
 	
 	var imageMetadata:[CFString:Any]
 	{
@@ -556,3 +558,6 @@ public extension URL
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+#endif
