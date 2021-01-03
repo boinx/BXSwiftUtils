@@ -313,13 +313,15 @@ public extension URL
 			timeSignature = spotlight[kMDItemTimeSignature] as? String
 		}
 		
-		#warning("TODO: implement")
-//	if (timeSignature == nil)
-//	{
-//		NSString* tmp = [[comment lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""];
-//		NSString* match = [tmp substringMatchedByPattern:@"meter:[234567]/[468]"];
-//		if (match) timeSignature = [match substringFromIndex:6];
-//	}
+		if timeSignature == nil
+		{
+			let tmp = (comment ?? "").lowercased().replacingOccurrences(of:" ", with:"")
+			let matches = tmp.regexMatches(for:"meter:[234567]/[468]")
+			if let match = matches.first
+			{
+				timeSignature = match.replacingOccurrences(of:"meter:", with:"")
+			}
+		}
 
 		// Bitrate
 		
