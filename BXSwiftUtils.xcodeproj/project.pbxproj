@@ -86,7 +86,6 @@
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
 		D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */; };
 		D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
-		D059DE5322945E420007CD5A /* BXServerDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D059DE5222945E420007CD5A /* BXServerDefaults.swift */; };
 		D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0721C6687100FAF3CC /* String+Paths.swift */; };
 		D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */; };
 		D05D0C0E21CD17AD00FAF3CC /* BXSignpostMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */; };
@@ -235,7 +234,6 @@
 		D056D43B205296A500849EF2 /* BXLogger+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXLogger+Domains.swift"; sourceTree = "<group>"; };
 		D056D43C205296A500849EF2 /* BXLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXLogger.swift; sourceTree = "<group>"; };
 		D056D43F205296F100849EF2 /* Synchronized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronized.swift; sourceTree = "<group>"; };
-		D059DE5222945E420007CD5A /* BXServerDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXServerDefaults.swift; sourceTree = "<group>"; };
 		D05D0C0721C6687100FAF3CC /* String+Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Paths.swift"; sourceTree = "<group>"; };
 		D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Resolving.swift"; sourceTree = "<group>"; };
 		D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXSignpostMixin.swift; sourceTree = "<group>"; };
@@ -677,7 +675,6 @@
 		D059DE5122945D680007CD5A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				D059DE5222945E420007CD5A /* BXServerDefaults.swift */,
 				D08FAA7E22BA17A4001D05D2 /* BXNetwork+isReachable.swift */,
 			);
 			path = Networking;
@@ -947,7 +944,6 @@
 				D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+New.swift in Sources */,
 				48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */,
 				D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */,
-				D059DE5322945E420007CD5A /* BXServerDefaults.swift in Sources */,
 				487107F020A9B8E000120024 /* BXAtomic.swift in Sources */,
 				48A971E22159024100215F9F /* Enum+Comparable.swift in Sources */,
 				D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */,
