@@ -36,7 +36,7 @@ public extension String
 		let defaultValue = value ?? "<< \(defaultName) >>"
 		let bundle = bundle ?? Bundle.main
 		
-		// If tableName and tableSuffix are both speficied then look there first to save time
+		// If tableName and tableSuffix are both specified then look there first to save time
 		
 		var str = defaultValue
 		
@@ -50,7 +50,7 @@ public extension String
 				comment: comment)
 		}
 
-		// If the string was not found, then just in tableName as fallback
+		// If the string was not found, then just look in tableName (without suffix) as fallback
 		
 		if str == defaultValue
 		{
