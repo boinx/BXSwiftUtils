@@ -2,7 +2,7 @@
 //
 //  String+Numeric.swift
 //	Helper function for numeric parsing
-//  Copyright ©2019 Peter Baumgartner. All rights reserved.
+//  Copyright ©2019-2021 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -24,23 +24,29 @@ public extension String
 
 	func strippingNonNumericCharacters() -> String
 	{
-		let numbericCharacters = Set("0123456789.,+-")
-		return self.filter { numbericCharacters.contains($0) }
+		let numericCharacters = Set("0123456789.,+-")
+		return self.filter { numericCharacters.contains($0) }
 	}
 	
 	var intValue : Int?
 	{
-		return Int(self.strippingNonNumericCharacters())
+		let str = self.strippingNonNumericCharacters()
+		let formatter = NumberFormatter.forInteger()
+		return formatter.number(from:str)?.intValue ?? Int(str)
 	}
 	
 	var floatValue : Float?
 	{
-		return Float(self.strippingNonNumericCharacters())
+		let str = self.strippingNonNumericCharacters()
+		let formatter = NumberFormatter.forFloatingPoint(numberOfDigits:6)
+		return formatter.number(from:str)?.floatValue ?? Float(str)
 	}
 
 	var doubleValue : Double?
 	{
-		return Double(self.strippingNonNumericCharacters())
+		let str = self.strippingNonNumericCharacters()
+		let formatter = NumberFormatter.forFloatingPoint(numberOfDigits:6)
+		return formatter.number(from:str)?.doubleValue ?? Double(str)
 	}
 }
 
