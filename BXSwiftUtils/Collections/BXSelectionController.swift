@@ -47,7 +47,7 @@ open class BXSelectionController : NSObject
 
 	/// ObjectWrapper holds a weak reference to an object and manages the property observers
 	
-	private class ObjectWrapper
+	open class ObjectWrapper
 	{
 		/// The object is stored in a weak ref so we do not retain it just because it was selected
 		
@@ -69,6 +69,8 @@ open class BXSelectionController : NSObject
 		func addObservers(with controller:BXSelectionController)
 		{
 			guard let object = object else { return }
+
+			self.observers += controller.subscribeToObjectWillChange(for:object)
 			
 			for info in controller.propertiesObserverInfo
 			{
@@ -233,6 +235,19 @@ open class BXSelectionController : NSObject
 	}
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Subscribes to objectWillChange publishers of selected objects
+	
+	open func subscribeToObjectWillChange(for object:AnyObject) -> Any?
+	{
+		// To be overridden by subclasses
+		
+		return nil
+	}
+	
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
