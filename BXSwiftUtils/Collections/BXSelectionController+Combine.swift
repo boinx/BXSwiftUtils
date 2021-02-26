@@ -24,6 +24,9 @@ import Combine
 }
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
+
 public extension BXSelectionController
 {
 	// This function calls send on the objectWillChange publisher so that SwiftUI can rebuild its views.
@@ -42,16 +45,15 @@ public extension BXSelectionController
 
 	/// A Combine publisher that broadcasts selection changes
 	
-	@available(macOS 10.15.2, iOS 13.2, *)
-	var selectionDidChange : NotificationCenter.Publisher
+	@available(macOS 10.15.2, iOS 13.2, *) var selectionDidChange : NotificationCenter.Publisher
 	{
 		NotificationCenter.default.publisher(for: Self.selectionDidChangeNotification, object:self)
 	}
-	
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
 
 #else
 
@@ -61,8 +63,9 @@ public extension BXSelectionController
 	{
 		// empty function needed for compiling on macOS 10.13
 	}
-	
 }
 
 #endif
 
+
+//----------------------------------------------------------------------------------------------------------------------
