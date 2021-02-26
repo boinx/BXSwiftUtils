@@ -153,6 +153,41 @@ extension BXSelectionController
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	/// Returns true if the selection contains a specified value at a given property keypath.
+	///
+	/// - parameter value: The value to search ofr
+	/// - parameter keyPath: The keyPath for a property of type T on a class C
+	/// - returns: True if the specified value has been found at the keyPath
+	
+	public func contains<C,T:Hashable>(value:T, forKeyPath keyPath:KeyPath<C,T>) -> Bool
+	{
+		for object in self.selectedObjects
+		{
+			if let object = object as? C
+			{
+				let v = object[keyPath:keyPath]
+				
+//				if let values = v as? [T]
+//				{
+//					for v in values
+//					{
+//						if v == value { return true }
+//					}
+//				}
+//				else
+//				{
+					if v == value { return true }
+//				}
+			}
+		}
+		
+		return false
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Sets the new value on all objects that are selected in this controller.
 	///
 	/// - parameter values: A Set of values of type T - please note that only the first value in this Set will be used!
