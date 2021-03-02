@@ -596,7 +596,7 @@ open class BXSelectionController : NSObject
 		
 		// Send notifications for all changes
 		
-		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
+		NotificationCenter.default.post(name:Self.selectionDidChangeNotification, object:self)
 
 		Set(
 			oldSelection.values.compactMap { $0.object } +
@@ -604,7 +604,7 @@ open class BXSelectionController : NSObject
 		)
 		.forEach
 		{
-			NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:$0)
+			NotificationCenter.default.post(name:Self.objectDidChangeNotification, object:$0)
 		}
 
 		// Publish common values to the UI
