@@ -170,6 +170,27 @@ public extension MTLTexture
 		let region = MTLRegionMake2D(0,0,srcWidth,srcHeight)
 		self.getBytes(buffer, bytesPerRow:dstRowbytes, from:region, mipmapLevel:0)
 	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+	
+	/// If the specified texture doesn't match the allowed pixel formats (alpha position), then this function returns a new texture with swizzled channels
+	/// so that the byte order matches what is required for use in subsequent processing steps.
+	
+	@available (macOS 10.15,*) func fixPixelFormatIfNeeded(for srcImage:CGImage, allowedAlphaInfo:[CGImageAlphaInfo] = [.premultipliedLast,.last,.noneSkipLast]) -> MTLTexture
+	{
+		let alphaInfo = srcImage.bitmapInfo.intersection(.alphaInfoMask)
+		let allowedRawValues = allowedAlphaInfo.map { $0.rawValue }
+
+		if !alphaInfo.rawValue.isContained(in:allowedRawValues)
+		{
+			let swizzle = MTLTextureSwizzleChannels(red:.green, green:.red, blue:.alpha, alpha:.blue)
+			return self.makeTextureView(pixelFormat:.bgra8Unorm, textureType:.type2D, levels:0..<1, slices:0..<1, swizzle:swizzle) ?? self
+		}
+		
+		return self
+	}
 }
 
 
