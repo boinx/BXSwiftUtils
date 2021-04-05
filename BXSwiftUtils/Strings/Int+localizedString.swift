@@ -44,6 +44,48 @@ public extension Int
 		let format = "%d video(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
 		return String(format:format,self)
 	}
+
+	var localizedSecondsString : String
+	{
+		let format = "%d second(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedMinutesString : String
+	{
+		let format = "%d minute(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedHoursString : String
+	{
+		let format = "%d hour(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedDaysString : String
+	{
+		let format = "%d day(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedWeeksString : String
+	{
+		let format = "%d weeks(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedMonthsString : String
+	{
+		let format = "%d month(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedYearsString : String
+	{
+		let format = "%d year(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
 }
 
 
