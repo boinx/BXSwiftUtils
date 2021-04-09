@@ -33,4 +33,23 @@ public extension CMSampleBuffer
         return CMBlockBufferGetDataLength(blockBuffer)
     }
     
+    var presentationTimeStamp: CMTime {
+        return CMSampleBufferGetPresentationTimeStamp(self)
+    }
+    
+}
+
+public extension CMSampleBuffer {
+    func logAll() {
+        print("\n**************************")
+        print("\tLogging :\(self).")
+        print("\n")
+        print("\tformatDesc:\(String(describing: self.formatDesc))")
+        print("\tbasicDescription:\(String(describing: self.basicDescription))")
+        print("\tsampleRate:\(String(describing: self.sampleRate))")
+        print("\tsampleCount:\(self.sampleCount)")
+        print("\tdataLength:\(self.dataLength)")
+        print("\tpresentationTimeStamp:\(self.presentationTimeStamp)")
+        print("\n**************************\n")
+    }
 }
