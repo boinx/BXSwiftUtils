@@ -86,6 +86,12 @@ public extension Int
 		let format = "%d year(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
 		return String(format:format,self)
 	}
+
+	var localizedLicensesString : String
+	{
+		let format = "%d license(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
 }
 
 

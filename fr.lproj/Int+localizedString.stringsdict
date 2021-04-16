@@ -246,5 +246,24 @@ Translation results
 		</dict>
 	</dict>
 
+	<key>%d license(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@LICENSE@</string>
+		<key>LICENSE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 licenses</string>
+			<key>one</key>
+			<string>1 license</string>
+			<key>other</key>
+			<string>%d licenses</string>
+		</dict>
+	</dict>
+
 </dict>
 </plist>
