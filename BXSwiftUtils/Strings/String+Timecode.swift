@@ -20,10 +20,10 @@ extension Double
 	public func timecodeString(fps: Int = 1000) -> String
 	{
 		var value = self
-		let ff = Int(value.truncatingRemainder(dividingBy:1.0) * Double(fps) + 0.5)
+		let ff = Int(value.truncatingRemainder(dividingBy:1.0) * Double(fps))
 		let SS = Int(value.truncatingRemainder(dividingBy:60.0))
 		
-		value -= Double(SS) + Double(ff) / Double(fps)
+		value -= Double(SS)
 		value /= 60.0
 		let MM = Int(value.truncatingRemainder(dividingBy:60.0))
 		
@@ -31,7 +31,7 @@ extension Double
 		value /= 60.0
 		let HH = Int(value)
 		
-		let format = fps >= 100 ? "%i:%02i:%02i.%03i" : "%i:%02i:%02i.%02i"
+		let format = fps > 100 ? "%i:%02i:%02i.%03i" : "%i:%02i:%02i.%02i"
 		return NSString(format:format as NSString,HH,MM,SS,ff) as String
 	}
 
