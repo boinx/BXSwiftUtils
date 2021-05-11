@@ -120,11 +120,23 @@ extension DispatchQueue
   
         guard shouldDispatch else { return }
         
-        self.async
+        if Thread.isMainThread
         {
-            let executionTime = CFAbsoluteTimeGetCurrent()
-            DispatchQueue.lock.write() { DispatchQueue.throttledWork[identifier] = .executed(executionTime) }
-            block()
+			self.asyncASAP
+			{
+				let executionTime = CFAbsoluteTimeGetCurrent()
+				DispatchQueue.lock.write() { DispatchQueue.throttledWork[identifier] = .executed(executionTime) }
+				block()
+			}
+        }
+        else
+        {
+			self.async
+			{
+				let executionTime = CFAbsoluteTimeGetCurrent()
+				DispatchQueue.lock.write() { DispatchQueue.throttledWork[identifier] = .executed(executionTime) }
+				block()
+			}
         }
     }
 
