@@ -130,6 +130,7 @@
 		D0C7FDBE264CF0DF00235995 /* String+Obfuscate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */; };
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
 		D0CA564A256CEA1700D2C09D /* MTKTextureLoader+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */; };
+		D0CD307B2652978D0042046D /* Thread+stackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD307A2652978D0042046D /* Thread+stackTrace.swift */; };
 		D0D6B6412473F6E900EC4E5B /* NSObject+onChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */; };
 		D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */; };
 		D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
@@ -283,6 +284,7 @@
 		D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Obfuscate.swift"; sourceTree = "<group>"; };
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
 		D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Draw.swift"; sourceTree = "<group>"; };
+		D0CD307A2652978D0042046D /* Thread+stackTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+stackTrace.swift"; sourceTree = "<group>"; };
 		D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+onChanged.swift"; sourceTree = "<group>"; };
 		D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableEnum.swift; sourceTree = "<group>"; };
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 				D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */,
 				D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */,
 				D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */,
+				D0CD307A2652978D0042046D /* Thread+stackTrace.swift */,
 			);
 			path = Threading;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				481A25BE2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */,
 				D03E9FC222CE1A93009BCC37 /* UndoManager+Disabling.swift in Sources */,
 				D08FAA7F22BA17A4001D05D2 /* BXNetwork+isReachable.swift in Sources */,
+				D0CD307B2652978D0042046D /* Thread+stackTrace.swift in Sources */,
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
