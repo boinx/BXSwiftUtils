@@ -152,6 +152,17 @@ public extension CGRect
 		
 		return rect
 	}
+	
+	/// Return false if any of the CGRect values contain invalid values like NaN or Inf
+	
+	var isValid:Bool
+	{
+		if self.origin.x.isInfinite || self.origin.x.isNaN || self.origin.x.isSignalingNaN { return false }
+		if self.origin.y.isInfinite || self.origin.y.isNaN || self.origin.y.isSignalingNaN { return false }
+		if self.size.width.isInfinite || self.size.width.isNaN || self.size.width.isSignalingNaN { return false }
+		if self.size.height.isInfinite || self.size.height.isNaN || self.size.height.isSignalingNaN { return false }
+		return true
+	}
 }
 
 

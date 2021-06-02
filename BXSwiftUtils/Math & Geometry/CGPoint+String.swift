@@ -41,6 +41,15 @@ extension CGPoint
 		
 		self.init(x:tmp.x,y:tmp.y)
 	}
+	
+	/// Return false if any of the CGRect values contain invalid values like NaN or Inf
+	
+	var isValid:Bool
+	{
+		if self.x.isInfinite || self.x.isNaN || self.x.isSignalingNaN { return false }
+		if self.y.isInfinite || self.y.isNaN || self.y.isSignalingNaN { return false }
+		return true
+	}
 }
 
 	
