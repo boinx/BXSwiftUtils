@@ -376,7 +376,7 @@
 				48A971DF2159022D00215F9F /* Enums */,
 				D056D43A2052968A00849EF2 /* Logging */,
 				D056D43220527B7500849EF2 /* Threading */,
-				48DA8195206A509A009D1E6C /* Exceptions */,
+				48DA8195206A509A009D1E6C /* Errors & Exceptions */,
 				487A39C820690628007BEC66 /* KVO & Notifications */,
 				48B61915215E2C2300E6E037 /* Memory Management */,
 				D059DE5122945D680007CD5A /* Networking */,
@@ -540,13 +540,13 @@
 			path = "Math & Geometry";
 			sourceTree = "<group>";
 		};
-		48DA8195206A509A009D1E6C /* Exceptions */ = {
+		48DA8195206A509A009D1E6C /* Errors & Exceptions */ = {
 			isa = PBXGroup;
 			children = (
 				48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */,
 				48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */,
 			);
-			path = Exceptions;
+			path = "Errors & Exceptions";
 			sourceTree = "<group>";
 		};
 		48DA819C206A5239009D1E6C /* Exceptions */ = {
