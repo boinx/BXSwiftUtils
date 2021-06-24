@@ -85,6 +85,7 @@
 		D046B13924ED87FD00F2554A /* Array+Exclude.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046B13824ED87FD00F2554A /* Array+Exclude.swift */; };
 		D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
+		D04BEB7A2683AA3800ABCF04 /* BXLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */; };
 		D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */; };
 		D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
 		D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0721C6687100FAF3CC /* String+Paths.swift */; };
@@ -234,6 +235,7 @@
 		D046B13824ED87FD00F2554A /* Array+Exclude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Exclude.swift"; sourceTree = "<group>"; };
 		D046DF84216B7ED0004331C3 /* Optional+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+If.swift"; sourceTree = "<group>"; };
 		D046DF87216BAB59004331C3 /* String+DataDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataDetection.swift"; sourceTree = "<group>"; };
+		D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLocalizedError.swift; sourceTree = "<group>"; };
 		D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXSelectionController+Binding.swift"; sourceTree = "<group>"; };
 		D0542502219978E200BE2A42 /* BXSwiftUtils.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXSwiftUtils.xcconfig; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Throttle.swift"; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 		48DA8195206A509A009D1E6C /* Errors & Exceptions */ = {
 			isa = PBXGroup;
 			children = (
+				D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */,
 				48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */,
 				48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */,
 			);
@@ -935,6 +938,7 @@
 				D0157ED0227DB41F00E34D65 /* Bundle+Localizations.swift in Sources */,
 				D0323508205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift in Sources */,
 				4875F27820529A06009985EC /* DispatchQueue+Throttle.swift in Sources */,
+				D04BEB7A2683AA3800ABCF04 /* BXLocalizedError.swift in Sources */,
 				4875F277205299FB009985EC /* Collection+SafeAccess.swift in Sources */,
 				D03234FA205C1CDB003D6CCB /* NSObject+Coalescing.swift in Sources */,
 				D0C7FDBE264CF0DF00235995 /* String+Obfuscate.swift in Sources */,
