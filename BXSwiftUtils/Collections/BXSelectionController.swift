@@ -443,7 +443,7 @@ open class BXSelectionController : NSObject
 
 		(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
 		{
-			[weak self] in self?.removeSelectedObject($0, registerUndo:$1)
+			[weak self] in self?.removeSelectedObject($0, registerUndo:$1, objectIsAlive:false)
 		}
 
 		// Register an undo action
@@ -480,7 +480,7 @@ open class BXSelectionController : NSObject
 
 	/// Removes an object from the selection
 	
-	open func removeSelectedObject(_ object:NSObject, registerUndo:Bool = true)
+	open func removeSelectedObject(_ object:NSObject, registerUndo:Bool = true, objectIsAlive:Bool = true)
 	{
 		guard let id = (object as? BXSelectable)?.id else { return }
 
@@ -508,8 +508,12 @@ open class BXSelectionController : NSObject
 			// Send notification for selection change
 		
 			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
-			NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:object)
-
+			
+			if objectIsAlive
+			{
+				NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:object)
+			}
+			
 			// Publish common values to the UI
 		
 			self.publish()
