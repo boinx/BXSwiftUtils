@@ -19,10 +19,10 @@ public extension Data
 	/// Wraps a value of type T in Data object WITHOUT copying the underlying memory
 	/// - parameter value: The value or object to be wrapped
 
-	init<T>(usingMemoryOf value: inout T)
-	{
-        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
-    }
+//	init<T>(usingMemoryOf value: inout T)
+//	{
+//        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
+//    }
 
 
 	/// Converts a Data object to a value WITHOUT copying the underlying memory
@@ -37,12 +37,12 @@ public extension Data
 	/// Wraps an Array in a Data object WITHOUT copying the underlying memory
 	/// - parameter array: An array of values of type T
 	
-	init<T>(usingMemoryOf array: inout [T])
-    {
-		let ptr = UnsafeMutableRawPointer(&array)
-		let count = array.count * MemoryLayout<T>.stride
-        self.init(bytesNoCopy:ptr, count:count, deallocator:.none)
-    }
+//	init<T>(usingMemoryOf array: inout [T])
+//    {
+//		let ptr = UnsafeMutableRawPointer(&array)
+//		let count = array.count * MemoryLayout<T>.stride
+//        self.init(bytesNoCopy:ptr, count:count, deallocator:.none)
+//    }
 
 
 	/// Converts a Data object to an Array WITHOUT copying the underlying memory
