@@ -29,8 +29,8 @@ extension URL
 			let parts = component.components(separatedBy: "=")
 			if parts.count == 2
 			{
-				guard let key = (parts[0] as NSString).removingPercentEncoding as? String else { continue }
-				guard let value = (parts[1] as NSString).removingPercentEncoding as? String else { continue }
+				guard let key = (parts[0] as NSString).removingPercentEncoding else { continue }
+				guard let value = (parts[1] as NSString).removingPercentEncoding else { continue }
 				
 				result[key] = value
 			}
