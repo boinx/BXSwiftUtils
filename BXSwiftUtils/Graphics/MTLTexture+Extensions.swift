@@ -187,8 +187,44 @@ public extension MTLTexture
 
 		if !alphaInfo.rawValue.isContained(in:allowedRawValues)
 		{
-			let swizzle = MTLTextureSwizzleChannels(red:.green, green:.red, blue:.alpha, alpha:.blue)
-			return self.makeTextureView(pixelFormat:.bgra8Unorm, textureType:.type2D, levels:0..<1, slices:0..<1, swizzle:swizzle) ?? self
+			// Nvidia GPUs crash with the following exception:
+			// *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[NVMTLTexture newTextureViewWithPixelFormat:textureType:levels:slices:swizzle:]: unrecognized selector sent to instance 0x7fc43d678cc0'
+			// That is why we try to guard the call with a responds(to:selector)
+			
+			let selector = NSSelectorFromString("newTextureViewWithPixelFormat:textureType:levels:slices:swizzle:")
+
+			if self.responds(to:selector)
+			{
+				let swizzle = MTLTextureSwizzleChannels(red:.green, green:.red, blue:.alpha, alpha:.blue)
+				return self.makeTextureView(pixelFormat:.bgra8Unorm, textureType:.type2D, levels:0..<1, slices:0..<1, swizzle:swizzle) ?? self
+			}
+		}
+		
+		#endif
+		
+		return self
+	}
+
+
+	/// Byte-order for video textures is broken on macOS with Intel processors, so swizzle the texture channels in this case. Note that Nvidia GPU crash when trying this, so skip on Nvidia
+	
+	@available (macOS 10.15, iOS 13, *) func swizzleIfNeeded() -> MTLTexture
+	{
+		#if os(macOS)
+		
+		if self.usage.contains(.pixelFormatView)
+		{
+			// Nvidia GPUs crash with the following exception:
+			// *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[NVMTLTexture newTextureViewWithPixelFormat:textureType:levels:slices:swizzle:]: unrecognized selector sent to instance 0x7fc43d678cc0'
+			// That is why we try to guard the call with a responds(to:selector)
+			
+			let selector = NSSelectorFromString("newTextureViewWithPixelFormat:textureType:levels:slices:swizzle:")
+
+			if self.responds(to:selector)
+			{
+				let swizzle = MTLTextureSwizzleChannels(red:.green, green:.red, blue:.alpha, alpha:.blue)
+				return self.makeTextureView(pixelFormat:.bgra8Unorm, textureType:.type2D, levels:0..<1, slices:0..<1, swizzle:swizzle) ?? self
+			}
 		}
 		
 		#endif
