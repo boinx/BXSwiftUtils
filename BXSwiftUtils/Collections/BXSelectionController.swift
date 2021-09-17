@@ -132,6 +132,10 @@ open class BXSelectionController : NSObject
 
 	public var undoManager:UndoManager? = nil
 	
+	/// Set this to nil if no notifications should be sent
+	
+	public var notificationCenter:NotificationCenter? = NotificationCenter.default
+	
 	/// The debugName is only used for identifying different instances of this class during debugging or logging
 	
 	public var debugName: String = ""
@@ -458,8 +462,8 @@ open class BXSelectionController : NSObject
 		
 		// Send notification for selection change
 		
-		NotificationCenter.default.post(name:Self.selectionDidChangeNotification, object:self)
-		NotificationCenter.default.post(name:Self.objectDidChangeNotification, object:object)
+		notificationCenter?.post(name:Self.selectionDidChangeNotification, object:self)
+		notificationCenter?.post(name:Self.objectDidChangeNotification, object:object)
 
 		// Publish common values to the UI
 		
@@ -507,11 +511,11 @@ open class BXSelectionController : NSObject
 			
 			// Send notification for selection change
 		
-			NotificationCenter.default.post(name:Self.selectionDidChangeNotification, object:self)
+			notificationCenter?.post(name:Self.selectionDidChangeNotification, object:self)
 			
 			if objectIsAlive
 			{
-				NotificationCenter.default.post(name:Self.objectDidChangeNotification, object:object)
+				notificationCenter?.post(name:Self.objectDidChangeNotification, object:object)
 			}
 			
 			// Publish common values to the UI
@@ -600,7 +604,7 @@ open class BXSelectionController : NSObject
 		
 		// Send notifications for all changes
 		
-		NotificationCenter.default.post(name:Self.selectionDidChangeNotification, object:self)
+		notificationCenter?.post(name:Self.selectionDidChangeNotification, object:self)
 
 		Set(
 			oldSelection.values.compactMap { $0.object } +
@@ -608,7 +612,7 @@ open class BXSelectionController : NSObject
 		)
 		.forEach
 		{
-			NotificationCenter.default.post(name:Self.objectDidChangeNotification, object:$0)
+			notificationCenter?.post(name:Self.objectDidChangeNotification, object:$0)
 		}
 
 		// Publish common values to the UI
