@@ -458,8 +458,8 @@ open class BXSelectionController : NSObject
 		
 		// Send notification for selection change
 		
-		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
-		NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:object)
+		NotificationCenter.default.post(name:Self.selectionDidChangeNotification, object:self)
+		NotificationCenter.default.post(name:Self.objectDidChangeNotification, object:object)
 
 		// Publish common values to the UI
 		
@@ -507,11 +507,11 @@ open class BXSelectionController : NSObject
 			
 			// Send notification for selection change
 		
-			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:self)
+			NotificationCenter.default.post(name:Self.selectionDidChangeNotification, object:self)
 			
 			if objectIsAlive
 			{
-				NotificationCenter.default.post(name:type(of:self).objectDidChangeNotification, object:object)
+				NotificationCenter.default.post(name:Self.objectDidChangeNotification, object:object)
 			}
 			
 			// Publish common values to the UI
