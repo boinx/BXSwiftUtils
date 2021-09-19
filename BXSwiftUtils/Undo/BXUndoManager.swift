@@ -24,10 +24,26 @@ open class BXUndoManager : UndoManager
 	
 	public struct Step
 	{
+		/// A unique identifier for this step is needed for SwiftUI based user interfaces
+		
 		public let id = Self.nextID
+		private static var nextID:Int { _id += 1; return _id }
+		private static var _id = 0
+		
+		/// A string that describes this step
+		
 		public var message:String = ""
+		
+		/// If set thsi step represents a sub-group, which can itself contain other steps
+		
 		public var group:Group? = nil
+		
+		/// A stacktrace can be attached to a step for debugging purposes
+		
 		public var stackTrace:[String]? = nil
+		
+		/// The kind describes the type of step that was logged
+		
 		public var kind:Kind = .hidden
 		
 		public enum Kind
@@ -39,17 +55,13 @@ open class BXUndoManager : UndoManager
 			case warning
 			case error
 		}
-		
-		var description:String { self.message }
-		
-		private static var _id = 0
-		
-		private static var nextID:Int
-		{
-			_id += 1
-			return _id
-		}
 	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	// MARK: -
 	
 	/// A Group bundles Steps
 
@@ -71,20 +83,20 @@ open class BXUndoManager : UndoManager
 	
 	/// Set to false to disabled debug logging. Use when performance is critical.
 	
-	public var enableDebugLogging = true
+	public var enableLogging = true
 	
 	/// A list of all recorded Steps
 	
-	public private(set) var debugLog:[Step] = []
+	public private(set) var stepLog:[Step] = []
 	{
 		willSet { self.publishObjectWillChange() }
 	}
 	
 	/// Logs an undo related Step
 	
-	public func logDebugStep(_ message:String, group:Group? = nil, stackTrace:[String]? = nil, kind:Step.Kind = .hidden)
+	public func logStep(_ message:String, group:Group? = nil, stackTrace:[String]? = nil, kind:Step.Kind = .hidden)
 	{
-		if enableDebugLogging
+		if enableLogging
 		{
 			let step = Step(
 				message:message,
@@ -98,22 +110,22 @@ open class BXUndoManager : UndoManager
 			}
 			else
 			{
-				self.debugLog += step
+				self.stepLog += step
 			}
 		}
 	}
 	
 	/// The stack of open groups
 	
-	private var debugGroups:[Group] = []
+	private var groups:[Group] = []
 	
 	/// The current group is at the top of the stack
 	
-	private var currentGroup:Group? { debugGroups.last }
+	private var currentGroup:Group? { groups.last }
 
-	fileprivate var _debugLogDescription:String
+	fileprivate var _stepLogDescription:String
 	{
-		self.description(for:debugLog)
+		self.description(for:stepLog)
 	}
 	
 	private func description(for steps:[Step], indent:String = "") -> String
@@ -137,10 +149,10 @@ open class BXUndoManager : UndoManager
 	
 	/// Prints the current log to the console output
 	
-	fileprivate func _printDebugLog()
+	fileprivate func _printStepLog()
 	{
 		Swift.print("\nUNDO LOG\n")
-		Swift.print(_debugLogDescription)
+		Swift.print(_stepLogDescription)
 	}
 	
 	
@@ -191,7 +203,7 @@ open class BXUndoManager : UndoManager
 	{
 		willSet
 		{
-			self.logDebugStep("groupsByEvent = \(newValue)")
+			self.logStep("groupsByEvent = \(newValue)")
 		}
 	}
 
@@ -199,19 +211,19 @@ open class BXUndoManager : UndoManager
 	{
 		willSet
 		{
-			self.logDebugStep("levelsOfUndo = \(newValue)")
+			self.logStep("levelsOfUndo = \(newValue)")
 		}
 	}
 
 	override open func disableUndoRegistration()
     {
-		self.logDebugStep(#function)
+		self.logStep(#function)
 		super.disableUndoRegistration()
     }
         
     override open func enableUndoRegistration()
     {
-		self.logDebugStep(#function)
+		self.logStep(#function)
 		super.enableUndoRegistration()
     }
     
@@ -219,10 +231,10 @@ open class BXUndoManager : UndoManager
 	{
 		let group = Group()
 		group.isOpen = true
-		self.logDebugStep("Group", group:group, kind:.group)
-		self.debugGroups += group
+		self.logStep("Group", group:group, kind:.group)
+		self.groups += group
 
-		self.logDebugStep(#function)
+		self.logStep(#function)
 		super.beginUndoGrouping()
 	}
 
@@ -232,25 +244,25 @@ open class BXUndoManager : UndoManager
 		
 		if name.count == 0
 		{
-			self.logDebugStep("⚠️ No undo name set for current group", kind:.warning)
+			self.logStep("⚠️ No undo name set for current group", kind:.warning)
 		}
 		
 		super.endUndoGrouping()
-		self.logDebugStep(#function)
+		self.logStep(#function)
 
 		self.currentGroup?.isOpen = false
-		self.debugGroups.removeLast()
+		self.groups.removeLast()
 	}
 		
      override open func setActionIsDiscardable(_ discardable:Bool)
      {
-		self.logDebugStep("setActionIsDiscardable(\(discardable))")
+		self.logStep("setActionIsDiscardable(\(discardable))")
 		super.setActionIsDiscardable(discardable)
      }
           
 	override open func setActionName(_ actionName:String)
 	{
-		self.logDebugStep("actionName = \"\(actionName)\"", kind:.name)
+		self.logStep("actionName = \"\(actionName)\"", kind:.name)
 		super.setActionName(actionName)
 	}
 	
@@ -258,7 +270,7 @@ open class BXUndoManager : UndoManager
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
 		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
-		self.logDebugStep(#function, stackTrace:stacktrace, kind:kind)
+		self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		super.registerUndo(withTarget:target, selector:selector, object:object)
 	}
 	
@@ -266,7 +278,7 @@ open class BXUndoManager : UndoManager
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
 		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
-		self.logDebugStep(#function, stackTrace:stacktrace, kind:kind)
+		self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		return super.prepare(withInvocationTarget:target)
 	}
 	
@@ -277,38 +289,38 @@ open class BXUndoManager : UndoManager
     {
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3)) // skip the first 3 internal function that are of no interest
 		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
-		self.logDebugStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
+		self.logStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
 		return self.registerUndo(withTarget:target, handler:handler)
 	}
 	
 	override open func undo()
 	{
-		self.logDebugStep(#function, kind:.action)
+		self.logStep(#function, kind:.action)
 		super.undo()
 	}
 	
 	override open func redo()
 	{
-		self.logDebugStep(#function, kind:.action)
+		self.logStep(#function, kind:.action)
 		super.redo()
 	}
 	
 
 	override open func undoNestedGroup()
 	{
-		self.logDebugStep(#function, kind:.hidden)
+		self.logStep(#function, kind:.hidden)
 		super.undoNestedGroup()
 	}
 		
 	override open func removeAllActions()
 	{
-		self.logDebugStep(#function, kind:.action)
+		self.logStep(#function, kind:.action)
 		super.removeAllActions()
 	}
 
 	override open func removeAllActions(withTarget target:Any)
 	{
-		self.logDebugStep("removeAllActions(withTarget:\(target))", kind:.action)
+		self.logStep("removeAllActions(withTarget:\(target))", kind:.action)
 		super.removeAllActions(withTarget:target)
 	}
 }
@@ -319,66 +331,46 @@ open class BXUndoManager : UndoManager
 
 // MARK: - Custom API
 
-// The following mechanism exposed custom API to UndoManager, i.e. no need to cast to BXUndoManager at the call site
+// The following mechanism exposes custom API to UndoManager, i.e. no need to cast to BXUndoManager at the call site
 
 public extension UndoManager
 {
 	/// Casts self to BXUndoManager so that calling custom API is possible without having to cast to BXUndoManager at the call site
-	
-	func executeCustomAPI(_ closure:(BXUndoManager)->Void)
+
+	var bxUndoManager:BXUndoManager?
 	{
 		guard let undoManager = self as? BXUndoManager else
 		{
 			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
-			return
+			return nil
 		}
 		
-		closure(undoManager)
+		return undoManager
 	}
-	
-	// Expose the following functions to UndoManager
-	
+
 	func beginLongLivedUndoGrouping()
 	{
-		self.executeCustomAPI()
-		{
-			$0._beginLongLivedUndoGrouping()
-		}
+		bxUndoManager?._beginLongLivedUndoGrouping()
 	}
 
 	func endLongLivedUndoGrouping()
 	{
-		self.executeCustomAPI()
-		{
-			$0._endLongLivedUndoGrouping()
-		}
+		bxUndoManager?._endLongLivedUndoGrouping()
 	}
 	
 	func registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
-		self.executeCustomAPI()
-		{
-			$0._registerUndoOperation(withTarget:target, callingFunction:callingFunction, handler:handler)
-		}
+		bxUndoManager?._registerUndoOperation(withTarget:target, callingFunction:callingFunction, handler:handler)
 	}
 	
-	var debugLogDescription:String
+	var stepLogDescription:String
 	{
-		guard let undoManager = self as? BXUndoManager else
-		{
-			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
-			return ""
-		}
-		
-		return undoManager._debugLogDescription
+		return bxUndoManager?._stepLogDescription ?? ""
 	}
 	
-	func printDebugLog()
+	func printStepLog()
 	{
-		self.executeCustomAPI()
-		{
-			$0._printDebugLog()
-		}
+		bxUndoManager?._printStepLog()
 	}
 }
 
