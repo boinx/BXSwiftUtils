@@ -16,58 +16,128 @@ import Foundation
 open class BXUndoManager : UndoManager
 {
 
-	// MARK: - Logging
-	
 	/// A Step records info about a single undo step
 	
 	public struct Step
 	{
-		var level:Int = 0
-		var message:String = ""
-		var stackTrace:[String]? = nil
-		var kind:Kind = .regular
+		public let id = Self.nextID
+		public var message:String = ""
+		public var group:Group? = nil
+		public var stackTrace:[String]? = nil
+		public var kind:Kind = .hidden
 		
 		public enum Kind
 		{
-			case regular
-			case unrecorded
+			case group
+			case hidden
+			case action
+			case name
 			case warning
 			case error
 		}
+		
+		var description:String { self.message }
+		
+		private static var _id = 0
+		
+		private static var nextID:Int
+		{
+			_id += 1
+			return _id
+		}
 	}
 	
-	/// A list of all recorded Steps
-	
-	public private(set) var debugLog:[Step] = []
+	/// A Group bundles Steps
 
+	public class Group
+	{
+		public var isOpen:Bool = false
+		public var steps:[Step] = []
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	// MARK: - Logging
+	
 	/// Set to false to disabled debug logging. Use when performance is critical.
 	
 	public var enableDebugLogging = true
 	
+	/// A list of all recorded Steps
+	
+	public private(set) var debugLog:[Step] = []
+	{
+		willSet { self.publish() }
+	}
+	
+	/// Can be overriden by subclass if Combine/SwiftUI functionality is desired
+	
+	open func publish()
+	{
+		// To be overridden by subclass
+	}
+	
 	/// Logs an undo related Step
 	
-	public func logDebugStep(_ message:String, stackTrace:[String]? = nil, kind:Step.Kind = .regular)
+	public func logDebugStep(_ message:String, group:Group? = nil, stackTrace:[String]? = nil, kind:Step.Kind = .hidden)
 	{
 		if enableDebugLogging
 		{
-			self.debugLog += Step(
-				level:groupingLevel,
+			let step = Step(
 				message:message,
+				group:group,
 				stackTrace:stackTrace,
 				kind:kind)
+			
+			if let group = self.currentGroup
+			{
+				group.steps += step
+				self.publish()
+			}
+			else
+			{
+				self.debugLog += step
+			}
 		}
 	}
 	
-	var _debugLogDescription:String
+	/// The stack of open groups
+	
+	private var debugGroups:[Group] = []
+	
+	/// The current group is at the top of the stack
+	
+	private var currentGroup:Group? { debugGroups.last }
+
+	fileprivate var _debugLogDescription:String
 	{
-		return self.debugLog
-			.map { String(repeating:"    ", count:$0.level) + $0.message }
-			.joined(separator:"\n")
+		self.description(for:debugLog)
+	}
+	
+	private func description(for steps:[Step], indent:String = "") -> String
+	{
+		var description = ""
+		
+		for step in steps
+		{
+			if let group = step.group
+			{
+				description += self.description(for:group.steps, indent:indent+"   ")
+			}
+			else
+			{
+				description += "\(indent)\(step.message)"
+			}
+		}
+
+		return description
 	}
 	
 	/// Prints the current log to the console output
 	
-	public func _printDebugLog()
+	fileprivate func _printDebugLog()
 	{
 		
 		Swift.print("\n\n")
@@ -78,14 +148,6 @@ open class BXUndoManager : UndoManager
 //----------------------------------------------------------------------------------------------------------------------
 
 
-//	/// A Group includes all Steps between a beginUndoGrouping and endUndoGrouping call
-//
-//	public class Group
-//	{
-//		var isOpen:Bool = false
-//		var steps:[Step] = []
-//	}
-//
 //	public private(set) var undoStack:[Group] = []
 //	public private(set) var redoStack:[Group] = []
 //	public private(set) var currentGroup:Group? = nil
@@ -164,6 +226,11 @@ open class BXUndoManager : UndoManager
     
 	override open func beginUndoGrouping()
 	{
+		let group = Group()
+		group.isOpen = true
+		self.logDebugStep("Group", group:group, kind:.group)
+		self.debugGroups += group
+
 		self.logDebugStep(#function)
 		super.beginUndoGrouping()
 	}
@@ -179,6 +246,9 @@ open class BXUndoManager : UndoManager
 		
 		super.endUndoGrouping()
 		self.logDebugStep(#function)
+
+		self.currentGroup?.isOpen = false
+		self.debugGroups.removeLast()
 	}
 		
      override open func setActionIsDiscardable(_ discardable:Bool)
@@ -189,14 +259,14 @@ open class BXUndoManager : UndoManager
           
 	override open func setActionName(_ actionName:String)
 	{
-		self.logDebugStep("actionName = \"\(actionName)\"")
+		self.logDebugStep("actionName = \"\(actionName)\"", kind:.name)
 		super.setActionName(actionName)
 	}
 	
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		let kind:Step.Kind = isUndoRegistrationEnabled ? .regular : .unrecorded
+		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logDebugStep(#function, stackTrace:stacktrace, kind:kind)
 		super.registerUndo(withTarget:target, selector:selector, object:object)
 	}
@@ -204,7 +274,7 @@ open class BXUndoManager : UndoManager
 	override open func prepare(withInvocationTarget target:Any) -> Any
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		let kind:Step.Kind = isUndoRegistrationEnabled ? .regular : .unrecorded
+		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logDebugStep(#function, stackTrace:stacktrace, kind:kind)
 		return super.prepare(withInvocationTarget:target)
 	}
@@ -215,39 +285,39 @@ open class BXUndoManager : UndoManager
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3)) // skip the first 3 internal function that are of no interest
-		let kind:Step.Kind = isUndoRegistrationEnabled ? .regular : .unrecorded
+		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logDebugStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
 		return self.registerUndo(withTarget:target, handler:handler)
 	}
 	
 	override open func undo()
 	{
-		self.logDebugStep(#function)
+		self.logDebugStep(#function, kind:.action)
 		super.undo()
 	}
 	
 	override open func redo()
 	{
-		self.logDebugStep(#function)
+		self.logDebugStep(#function, kind:.action)
 		super.redo()
 	}
 	
 
 	override open func undoNestedGroup()
 	{
-		self.logDebugStep(#function)
+		self.logDebugStep(#function, kind:.hidden)
 		super.undoNestedGroup()
 	}
 		
 	override open func removeAllActions()
 	{
-		self.logDebugStep(#function)
+		self.logDebugStep(#function, kind:.action)
 		super.removeAllActions()
 	}
 
 	override open func removeAllActions(withTarget target:Any)
 	{
-		self.logDebugStep("removeAllActions(withTarget:\(target))")
+		self.logDebugStep("removeAllActions(withTarget:\(target))", kind:.action)
 		super.removeAllActions(withTarget:target)
 	}
 }
