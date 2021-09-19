@@ -86,6 +86,7 @@
 		D046DF85216B7ED0004331C3 /* Optional+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF84216B7ED0004331C3 /* Optional+If.swift */; };
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
 		D04BEB7A2683AA3800ABCF04 /* BXLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */; };
+		D04D7D7726F71DC800116F17 /* BXUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D7D7626F71DC800116F17 /* BXUndoManager.swift */; };
 		D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */; };
 		D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
 		D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0721C6687100FAF3CC /* String+Paths.swift */; };
@@ -237,6 +238,7 @@
 		D046DF84216B7ED0004331C3 /* Optional+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+If.swift"; sourceTree = "<group>"; };
 		D046DF87216BAB59004331C3 /* String+DataDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataDetection.swift"; sourceTree = "<group>"; };
 		D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLocalizedError.swift; sourceTree = "<group>"; };
+		D04D7D7626F71DC800116F17 /* BXUndoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXUndoManager.swift; sourceTree = "<group>"; };
 		D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXSelectionController+Binding.swift"; sourceTree = "<group>"; };
 		D0542502219978E200BE2A42 /* BXSwiftUtils.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXSwiftUtils.xcconfig; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Throttle.swift"; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 		D0693F8820AC1C2700B5893C /* Undo */ = {
 			isa = PBXGroup;
 			children = (
+				D04D7D7626F71DC800116F17 /* BXUndoManager.swift */,
 				D03E9FC122CE1A93009BCC37 /* UndoManager+Disabling.swift */,
 				D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */,
 			);
@@ -949,6 +952,7 @@
 				95F2DBA821B7DD9000865AE4 /* Bool+Operators.swift in Sources */,
 				4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */,
 				D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */,
+				D04D7D7726F71DC800116F17 /* BXUndoManager.swift in Sources */,
 				D0CA564A256CEA1700D2C09D /* MTKTextureLoader+Draw.swift in Sources */,
 				D0B6AF6523D3034900EDDB74 /* NSArrayController+UIKit.swift in Sources */,
 				D0859FE02158FC7400F624C7 /* NSLocale+FMExtensions.swift in Sources */,
