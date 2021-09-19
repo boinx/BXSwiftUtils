@@ -63,7 +63,7 @@ open class BXUndoManager : UndoManager
 
 	// MARK: -
 	
-	/// A Group bundles Steps
+	/// A Group constains a list of Steps
 
 	public class Group
 	{
@@ -75,6 +75,14 @@ open class BXUndoManager : UndoManager
 		}
 	}
 	
+	/// The stack of open groups
+	
+	private var groups:[Group] = []
+	
+	/// The current group is at the top of the stack
+	
+	private var currentGroup:Group? { groups.last }
+
 	
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -87,7 +95,7 @@ open class BXUndoManager : UndoManager
 	
 	/// A list of all recorded Steps
 	
-	public private(set) var stepLog:[Step] = []
+	public private(set) var log:[Step] = []
 	{
 		willSet { self.publishObjectWillChange() }
 	}
@@ -110,23 +118,31 @@ open class BXUndoManager : UndoManager
 			}
 			else
 			{
-				self.stepLog += step
+				self.log += step
 			}
 		}
 	}
 	
-	/// The stack of open groups
-	
-	private var groups:[Group] = []
-	
-	/// The current group is at the top of the stack
-	
-	private var currentGroup:Group? { groups.last }
 
-	fileprivate var _stepLogDescription:String
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Prints the current log to the console output
+	
+	fileprivate func _printLog()
 	{
-		self.description(for:stepLog)
+		Swift.print("\nUNDO LOG\n")
+		Swift.print(_logDescription)
 	}
+	
+	/// Returns the current log as a String, e.g. for logigng to the Console
+	
+	fileprivate var _logDescription:String
+	{
+		self.description(for:self.log)
+	}
+	
+	/// Creates a descriptive String for a list of Steps
 	
 	private func description(for steps:[Step], indent:String = "") -> String
 	{
@@ -146,16 +162,8 @@ open class BXUndoManager : UndoManager
 
 		return description
 	}
-	
-	/// Prints the current log to the console output
-	
-	fileprivate func _printStepLog()
-	{
-		Swift.print("\nUNDO LOG\n")
-		Swift.print(_stepLogDescription)
-	}
-	
-	
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -247,8 +255,8 @@ open class BXUndoManager : UndoManager
 			self.logStep("⚠️ No undo name set for current group", kind:.warning)
 		}
 		
-		super.endUndoGrouping()
 		self.logStep(#function)
+		super.endUndoGrouping()
 
 		self.currentGroup?.isOpen = false
 		self.groups.removeLast()
@@ -295,13 +303,33 @@ open class BXUndoManager : UndoManager
 	
 	override open func undo()
 	{
-		self.logStep(#function, kind:.action)
+		let level = self.groupingLevel
+		
+		if level == 0
+		{
+			self.logStep(#function, kind:.action)
+		}
+		else
+		{
+			self.logStep("\(#function) called with groupingLevel \(level)", kind:.error)
+		}
+		
 		super.undo()
 	}
 	
 	override open func redo()
 	{
-		self.logStep(#function, kind:.action)
+		let level = self.groupingLevel
+		
+		if level == 0
+		{
+			self.logStep(#function, kind:.action)
+		}
+		else
+		{
+			self.logStep("\(#function) called with groupingLevel \(level)", kind:.error)
+		}
+		
 		super.redo()
 	}
 	
@@ -363,14 +391,14 @@ public extension UndoManager
 		bxUndoManager?._registerUndoOperation(withTarget:target, callingFunction:callingFunction, handler:handler)
 	}
 	
-	var stepLogDescription:String
+	var logDescription:String
 	{
-		return bxUndoManager?._stepLogDescription ?? ""
+		return bxUndoManager?._logDescription ?? ""
 	}
 	
-	func printStepLog()
+	func printLog()
 	{
-		bxUndoManager?._printStepLog()
+		bxUndoManager?._printLog()
 	}
 }
 
