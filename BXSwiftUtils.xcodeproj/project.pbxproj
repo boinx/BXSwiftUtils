@@ -93,7 +93,6 @@
 		D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */; };
 		D05D0C0E21CD17AD00FAF3CC /* BXSignpostMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */; };
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
-		D0693F8B20AC1C4500B5893C /* UndoManager+AutomaticName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */; };
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
 		D06CC9232178C5F9009C2991 /* Data+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9222178C5F9009C2991 /* Data+Mutation.swift */; };
 		D06CC9272178D209009C2991 /* Data+MutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9262178D209009C2991 /* Data+MutationTests.swift */; };
@@ -250,7 +249,6 @@
 		D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Resolving.swift"; sourceTree = "<group>"; };
 		D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXSignpostMixin.swift; sourceTree = "<group>"; };
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
-		D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UndoManager+AutomaticName.swift"; sourceTree = "<group>"; };
 		D06CC91E2178B089009C2991 /* String+RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegexTests.swift"; sourceTree = "<group>"; };
 		D06CC9222178C5F9009C2991 /* Data+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mutation.swift"; sourceTree = "<group>"; };
 		D06CC9262178D209009C2991 /* Data+MutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+MutationTests.swift"; sourceTree = "<group>"; };
@@ -711,7 +709,6 @@
 			children = (
 				D04D7D7626F71DC800116F17 /* BXUndoManager.swift */,
 				D03E9FC122CE1A93009BCC37 /* UndoManager+Disabling.swift */,
-				D0693F8920AC1C4500B5893C /* UndoManager+AutomaticName.swift */,
 			);
 			path = Undo;
 			sourceTree = "<group>";
@@ -1016,7 +1013,6 @@
 				D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */,
 				D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
-				D0693F8B20AC1C4500B5893C /* UndoManager+AutomaticName.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				D0891244215A762200403100 /* CGPoint+String.swift in Sources */,
 				F6BB6AA92578F50A00BB836F /* Dictionary+DeepMerge.swift in Sources */,
