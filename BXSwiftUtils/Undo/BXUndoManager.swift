@@ -8,6 +8,7 @@
 
 
 import Foundation
+import BXDiagnostics
 
 #if canImport(Combine)
 import Combine
@@ -19,6 +20,17 @@ import Combine
 
 open class BXUndoManager : UndoManager
 {
+	/// Various types of entries
+	
+	public enum Kind
+	{
+		case group
+		case hidden
+		case action
+		case name
+		case warning
+		case error
+	}
 
 	/// A Step records info about a single undo step
 	
@@ -45,16 +57,6 @@ open class BXUndoManager : UndoManager
 		/// The kind describes the type of step that was logged
 		
 		public var kind:Kind = .hidden
-		
-		public enum Kind
-		{
-			case group
-			case hidden
-			case action
-			case name
-			case warning
-			case error
-		}
 	}
 	
 	
@@ -67,22 +69,49 @@ open class BXUndoManager : UndoManager
 
 	public class Group
 	{
-		public var isOpen:Bool = false
 		public var name:String? = nil
+		{
+			willSet { self.publishObjectWillChange() }
+		}
+		
+		public var kind:Kind = .group
+		{
+			willSet { self.publishObjectWillChange() }
+		}
 		
 		public var steps:[Step] = []
 		{
 			willSet { self.publishObjectWillChange() }
 		}
+		
+		public var firstWarningStep:Step?
+		{
+			for step in steps
+			{
+				if step.kind == .warning { return step }
+			}
+			
+			return nil
+		}
+		
+		public var firstErrorStep:Step?
+		{
+			for step in steps
+			{
+				if step.kind == .error { return step }
+			}
+			
+			return nil
+		}
 	}
 	
 	/// The stack of open groups
 	
-	private var groups:[Group] = []
+	private var groupStack:[Group] = []
 	
 	/// The current group is at the top of the stack
 	
-	private var currentGroup:Group? { groups.last }
+	private var currentGroup:Group? { groupStack.last }
 
 	
 //----------------------------------------------------------------------------------------------------------------------
@@ -103,7 +132,7 @@ open class BXUndoManager : UndoManager
 	
 	/// Logs an undo related Step
 	
-	public func logStep(_ message:String, group:Group? = nil, stackTrace:[String]? = nil, kind:Step.Kind = .hidden)
+	public func logStep(_ message:String, group:Group? = nil, stackTrace:[String]? = nil, kind:Kind = .hidden)
 	{
 		if enableLogging
 		{
@@ -145,7 +174,7 @@ open class BXUndoManager : UndoManager
 	
 	/// Creates a descriptive String for a list of Steps
 	
-	private func description(for steps:[Step], indent:String = "") -> String
+	private func description(for steps:[Step], indent:String = "", includeStackTrace:Bool = false) -> String
 	{
 		var description = ""
 		
@@ -153,11 +182,19 @@ open class BXUndoManager : UndoManager
 		{
 			if let group = step.group
 			{
-				description += self.description(for:group.steps, indent:indent+"   ")
+				description += self.description(for:group.steps, indent:indent+"   ", includeStackTrace:group.name == nil)
 			}
 			else
 			{
 				description += "\(indent)\(step.message)\n"
+				
+				if let stackTrace = step.stackTrace, includeStackTrace
+				{
+					for line in stackTrace
+					{
+						description += "\(indent)    \(line)\n"
+					}
+				}
 			}
 		}
 
@@ -238,10 +275,14 @@ open class BXUndoManager : UndoManager
     
 	override open func beginUndoGrouping()
 	{
+		let name = "⚠️ No undo name"
+		
 		let group = Group()
-		group.isOpen = true
-		self.logStep("Group", group:group, kind:.group)
-		self.groups += group
+		group.name = name
+		group.kind = .warning
+		
+		self.logStep(name, group:group, kind:.group)
+		self.groupStack.append(group)
 
 		self.logStep(#function)
 		super.beginUndoGrouping()
@@ -251,17 +292,30 @@ open class BXUndoManager : UndoManager
 	{
 		let name = self.undoActionName
 		
-		if name.count == 0
-		{
-			self.logStep("⚠️ No undo name set for current group", kind:.warning)
-		}
-		
+		if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
 		self.logStep(#function)
 		super.endUndoGrouping()
 
-		self.currentGroup?.name = name.count>0 ? name : nil
-		self.currentGroup?.isOpen = false
-		self.groups.removeLast()
+		if let currentGroup = self.currentGroup
+		{
+			if let step = currentGroup.firstErrorStep
+			{
+				currentGroup.kind = step.kind
+				currentGroup.name = step.message
+			}
+			else if let step = currentGroup.firstWarningStep
+			{
+				currentGroup.kind = step.kind
+				currentGroup.name = step.message
+			}
+			else
+			{
+				currentGroup.kind = .group
+				currentGroup.name = name
+			}
+			
+			self.groupStack.removeLast()
+		}
 	}
 		
      override open func setActionIsDiscardable(_ discardable:Bool)
@@ -279,7 +333,7 @@ open class BXUndoManager : UndoManager
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
+		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		super.registerUndo(withTarget:target, selector:selector, object:object)
 	}
@@ -287,7 +341,7 @@ open class BXUndoManager : UndoManager
 	override open func prepare(withInvocationTarget target:Any) -> Any
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
+		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		return super.prepare(withInvocationTarget:target)
 	}
@@ -298,7 +352,7 @@ open class BXUndoManager : UndoManager
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3)) // skip the first 3 internal function that are of no interest
-		let kind:Step.Kind = isUndoRegistrationEnabled ? .action : .hidden
+		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
 		return self.registerUndo(withTarget:target, handler:handler)
 	}
@@ -310,13 +364,21 @@ open class BXUndoManager : UndoManager
 		if level == 0
 		{
 			self.logStep(#function, kind:.action)
+			super.undo()
 		}
-		else
+		else if let currentGroup = self.currentGroup
 		{
-			self.logStep("\(#function) called with groupingLevel \(level)", kind:.error)
+			let message = "🛑 \(#function) called with groupingLevel \(level)"
+			self.logStep(message, kind:.error)
+			currentGroup.kind = .error
+			currentGroup.name = message
+
+			let metadata = ["undoLog":self.logDescription]
+			BXDiagnostics.shared.reportEvent(name:"Undo Log", withProperties:metadata, severity:.critical)
+
+//			super.undo() // This would crash due to an exception
 		}
 		
-		super.undo()
 	}
 	
 	override open func redo()
@@ -326,13 +388,20 @@ open class BXUndoManager : UndoManager
 		if level == 0
 		{
 			self.logStep(#function, kind:.action)
+			super.redo()
 		}
-		else
+		else if let currentGroup = self.currentGroup
 		{
-			self.logStep("\(#function) called with groupingLevel \(level)", kind:.error)
+			let message = "🛑 \(#function) called with groupingLevel \(level)"
+			self.logStep(message, kind:.error)
+			currentGroup.kind = .error
+			currentGroup.name = message
+			
+			let metadata = ["undoLog":self.logDescription]
+			BXDiagnostics.shared.reportEvent(name:"Undo Log", withProperties:metadata, severity:.critical)
+
+//			super.redo() // This would crash due to an exception
 		}
-		
-		super.redo()
 	}
 	
 
