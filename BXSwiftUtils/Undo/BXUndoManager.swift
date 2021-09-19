@@ -9,6 +9,10 @@
 
 import Foundation
 
+#if canImport(Combine)
+import Combine
+#endif
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -52,7 +56,11 @@ open class BXUndoManager : UndoManager
 	public class Group
 	{
 		public var isOpen:Bool = false
+		
 		public var steps:[Step] = []
+		{
+			willSet { self.publishObjectWillChange() }
+		}
 	}
 	
 	
@@ -69,14 +77,7 @@ open class BXUndoManager : UndoManager
 	
 	public private(set) var debugLog:[Step] = []
 	{
-		willSet { self.publish() }
-	}
-	
-	/// Can be overriden by subclass if Combine/SwiftUI functionality is desired
-	
-	open func publish()
-	{
-		// To be overridden by subclass
+		willSet { self.publishObjectWillChange() }
 	}
 	
 	/// Logs an undo related Step
@@ -94,7 +95,6 @@ open class BXUndoManager : UndoManager
 			if let group = self.currentGroup
 			{
 				group.steps += step
-				self.publish()
 			}
 			else
 			{
@@ -387,6 +387,52 @@ public extension UndoManager
 		self.executeCustomAPI()
 		{
 			$0._printDebugLog()
+		}
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+// MARK: - Combine Compatibility
+
+// When running on moderns systems, provide compatibilty with SwiftUI
+
+@available(macOS 10.15, iOS 13, *) extension BXUndoManager : ObservableObject
+{
+
+}
+
+@available(macOS 10.15, iOS 13, *) extension BXUndoManager.Group : ObservableObject
+{
+
+}
+
+public extension BXUndoManager
+{
+	@objc func publishObjectWillChange()
+	{
+		if #available(macOS 10.15, iOS 13, *)
+		{
+			DispatchQueue.main.asyncIfNeeded
+			{
+				self.objectWillChange.send()
+			}
+		}
+	}
+}
+
+public extension BXUndoManager.Group
+{
+	@objc func publishObjectWillChange()
+	{
+		if #available(macOS 10.15, iOS 13, *)
+		{
+			DispatchQueue.main.asyncIfNeeded
+			{
+				self.objectWillChange.send()
+			}
 		}
 	}
 }
