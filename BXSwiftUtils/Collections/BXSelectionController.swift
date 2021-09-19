@@ -454,7 +454,7 @@ open class BXSelectionController : NSObject
 		
 		if registerUndo
 		{
-			self.undoManager?.registerUndoWithAutomaticName(target:self)
+			self.undoManager?.registerUndoOperation(withTarget:self)
 			{
 				target in target.removeSelectedObject(object)
 			}
@@ -503,7 +503,7 @@ open class BXSelectionController : NSObject
 			
 			if registerUndo
 			{
-				self.undoManager?.registerUndoWithAutomaticName(target:self)
+				self.undoManager?.registerUndoOperation(withTarget:self)
 				{
 					target in target.addSelectedObject(object)
 				}
@@ -596,7 +596,7 @@ open class BXSelectionController : NSObject
 	
 		if registerUndo
 		{
-			self.undoManager?.registerUndoWithAutomaticName(target:self)
+			self.undoManager?.registerUndoOperation(withTarget:self)
 			{
 				target in target.setSelectedObjects(oldSelectedObjects)
 			}
