@@ -128,7 +128,7 @@ open class BXUndoManager : UndoManager
 			}
 			else
 			{
-				description += "\(indent)\(step.message)"
+				description += "\(indent)\(step.message)\n"
 			}
 		}
 
@@ -139,18 +139,9 @@ open class BXUndoManager : UndoManager
 	
 	fileprivate func _printDebugLog()
 	{
-		
-		Swift.print("\n\n")
+		Swift.print("\nUNDO LOG\n")
 		Swift.print(_debugLogDescription)
 	}
-	
-	
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//	public private(set) var undoStack:[Group] = []
-//	public private(set) var redoStack:[Group] = []
-//	public private(set) var currentGroup:Group? = nil
 	
 	
 //----------------------------------------------------------------------------------------------------------------------
