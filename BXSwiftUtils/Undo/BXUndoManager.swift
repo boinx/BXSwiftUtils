@@ -22,9 +22,18 @@ open class BXUndoManager : UndoManager
 	
 	public struct Step
 	{
-		var indent:String = ""
+		var level:Int = 0
 		var message:String = ""
 		var stackTrace:[String]? = nil
+		var kind:Kind = .regular
+		
+		public enum Kind
+		{
+			case regular
+			case unrecorded
+			case warning
+			case error
+		}
 	}
 	
 	/// A list of all recorded Steps
@@ -37,25 +46,32 @@ open class BXUndoManager : UndoManager
 	
 	/// Logs an undo related Step
 	
-	public func logDebugStep(_ message:String, stackTrace:[String]? = nil)
+	public func logDebugStep(_ message:String, stackTrace:[String]? = nil, kind:Step.Kind = .regular)
 	{
-		guard enableDebugLogging else { return }
-		
-		let level = self.groupingLevel
-		let indent = String(repeating:"    ", count:level)
-		self.debugLog += Step(indent:indent, message:message, stackTrace:stackTrace)
+		if enableDebugLogging
+		{
+			self.debugLog += Step(
+				level:groupingLevel,
+				message:message,
+				stackTrace:stackTrace,
+				kind:kind)
+		}
+	}
+	
+	var _debugLogDescription:String
+	{
+		return self.debugLog
+			.map { String(repeating:"    ", count:$0.level) + $0.message }
+			.joined(separator:"\n")
 	}
 	
 	/// Prints the current log to the console output
 	
 	public func _printDebugLog()
 	{
-		let log = self.debugLog
-			.map { "\($0.indent)\($0.message)" }
-			.joined(separator:"\n")
 		
 		Swift.print("\n\n")
-		Swift.print(log)
+		Swift.print(_debugLogDescription)
 	}
 	
 	
@@ -158,7 +174,7 @@ open class BXUndoManager : UndoManager
 		
 		if name.count == 0
 		{
-			self.logDebugStep("⚠️ No undo name set for current group")
+			self.logDebugStep("⚠️ No undo name set for current group", kind:.warning)
 		}
 		
 		super.endUndoGrouping()
@@ -180,14 +196,16 @@ open class BXUndoManager : UndoManager
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		self.logDebugStep(#function, stackTrace:stacktrace)
+		let kind:Step.Kind = isUndoRegistrationEnabled ? .regular : .unrecorded
+		self.logDebugStep(#function, stackTrace:stacktrace, kind:kind)
 		super.registerUndo(withTarget:target, selector:selector, object:object)
 	}
 	
 	override open func prepare(withInvocationTarget target:Any) -> Any
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		self.logDebugStep(#function, stackTrace:stacktrace)
+		let kind:Step.Kind = isUndoRegistrationEnabled ? .regular : .unrecorded
+		self.logDebugStep(#function, stackTrace:stacktrace, kind:kind)
 		return super.prepare(withInvocationTarget:target)
 	}
 	
@@ -197,7 +215,8 @@ open class BXUndoManager : UndoManager
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3)) // skip the first 3 internal function that are of no interest
-		self.logDebugStep("registerUndoOperation() in from \(callingFunction)", stackTrace:stacktrace)
+		let kind:Step.Kind = isUndoRegistrationEnabled ? .regular : .unrecorded
+		self.logDebugStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
 		return self.registerUndo(withTarget:target, handler:handler)
 	}
 	
@@ -247,14 +266,13 @@ public extension UndoManager
 	
 	func executeCustomAPI(_ closure:(BXUndoManager)->Void)
 	{
-		if let undoManager = self as? BXUndoManager
-		{
-			closure(undoManager)
-		}
-		else
+		guard let undoManager = self as? BXUndoManager else
 		{
 			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
+			return
 		}
+		
+		closure(undoManager)
 	}
 	
 	// Expose the following functions to UndoManager
@@ -283,6 +301,17 @@ public extension UndoManager
 		}
 	}
 	
+	var debugLogDescription:String
+	{
+		guard let undoManager = self as? BXUndoManager else
+		{
+			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
+			return ""
+		}
+		
+		return undoManager._debugLogDescription
+	}
+	
 	func printDebugLog()
 	{
 		self.executeCustomAPI()
@@ -290,8 +319,6 @@ public extension UndoManager
 			$0._printDebugLog()
 		}
 	}
-
-
 }
 
 
