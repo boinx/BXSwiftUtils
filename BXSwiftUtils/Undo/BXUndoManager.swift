@@ -68,6 +68,7 @@ open class BXUndoManager : UndoManager
 	public class Group
 	{
 		public var isOpen:Bool = false
+		public var name:String? = nil
 		
 		public var steps:[Step] = []
 		{
@@ -258,6 +259,7 @@ open class BXUndoManager : UndoManager
 		self.logStep(#function)
 		super.endUndoGrouping()
 
+		self.currentGroup?.name = name.count>0 ? name : nil
 		self.currentGroup?.isOpen = false
 		self.groups.removeLast()
 	}
