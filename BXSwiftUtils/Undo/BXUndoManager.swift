@@ -433,7 +433,7 @@ public extension UndoManager
 	{
 		guard let undoManager = self as? BXUndoManager else
 		{
-			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
+//			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
 			return nil
 		}
 		
@@ -442,17 +442,40 @@ public extension UndoManager
 
 	func beginLongLivedUndoGrouping()
 	{
-		bxUndoManager?._beginLongLivedUndoGrouping()
+		if let undoManager = bxUndoManager
+		{
+			undoManager._beginLongLivedUndoGrouping()
+		}
+		else
+		{
+			self.groupsByEvent = false
+			self.beginUndoGrouping()
+		}
 	}
 
 	func endLongLivedUndoGrouping()
 	{
-		bxUndoManager?._endLongLivedUndoGrouping()
+		if let undoManager = bxUndoManager
+		{
+			undoManager._beginLongLivedUndoGrouping()
+		}
+		else
+		{
+			self.endUndoGrouping()
+			self.groupsByEvent = true
+		}
 	}
 	
 	func registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
-		bxUndoManager?._registerUndoOperation(withTarget:target, callingFunction:callingFunction, handler:handler)
+		if let undoManager = bxUndoManager
+		{
+			undoManager._registerUndoOperation(withTarget:target, callingFunction:callingFunction, handler:handler)
+		}
+		else
+		{
+			self.registerUndo(withTarget:target, handler:handler)
+		}
 	}
 	
 	var logDescription:String
