@@ -8,7 +8,6 @@
 
 
 import Foundation
-import BXDiagnostics
 
 #if canImport(Combine)
 import Combine
@@ -373,9 +372,6 @@ open class BXUndoManager : UndoManager
 			currentGroup.kind = .error
 			currentGroup.name = message
 
-			let metadata = ["undoLog":self.logDescription]
-			BXDiagnostics.shared.reportEvent(name:"Undo Log", withProperties:metadata, severity:.critical)
-
 //			super.undo() // This would crash due to an exception
 		}
 		
@@ -396,9 +392,6 @@ open class BXUndoManager : UndoManager
 			self.logStep(message, kind:.error)
 			currentGroup.kind = .error
 			currentGroup.name = message
-			
-			let metadata = ["undoLog":self.logDescription]
-			BXDiagnostics.shared.reportEvent(name:"Undo Log", withProperties:metadata, severity:.critical)
 
 //			super.redo() // This would crash due to an exception
 		}
