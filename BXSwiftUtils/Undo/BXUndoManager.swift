@@ -37,9 +37,7 @@ open class BXUndoManager : UndoManager
 	{
 		/// A unique identifier for this step is needed for SwiftUI based user interfaces
 		
-		public let id = Self.nextID
-		private static var nextID:Int { _id += 1; return _id }
-		private static var _id = 0
+		public let id = Int.nextID
 		
 		/// A string that describes this step
 		
@@ -168,12 +166,12 @@ open class BXUndoManager : UndoManager
 	
 	fileprivate var _logDescription:String
 	{
-		self.description(for:self.log)
+		self._description(for:self.log)
 	}
 	
 	/// Creates a descriptive String for a list of Steps
 	
-	private func description(for steps:[Step], indent:String = "", includeStackTrace:Bool = false) -> String
+	private func _description(for steps:[Step], indent:String = "", includeStackTrace:Bool = false) -> String
 	{
 		var description = ""
 		
@@ -181,7 +179,7 @@ open class BXUndoManager : UndoManager
 		{
 			if let group = step.group
 			{
-				description += self.description(for:group.steps, indent:indent+"   ", includeStackTrace:group.name == nil)
+				description += self._description(for:group.steps, indent:indent+"   ", includeStackTrace:group.name == nil)
 			}
 			else
 			{
@@ -242,22 +240,16 @@ open class BXUndoManager : UndoManager
 	// MARK: - Actions
 	
 	
-	// Override all functions an properties of UndoManager to log each step
+	// Override all functions and properties of UndoManager to log each step
 	
 	override open var groupsByEvent:Bool
 	{
-		willSet
-		{
-			self.logStep("groupsByEvent = \(newValue)")
-		}
+		willSet { self.logStep("groupsByEvent = \(newValue)") }
 	}
 
 	override open var levelsOfUndo:Int
 	{
-		willSet
-		{
-			self.logStep("levelsOfUndo = \(newValue)")
-		}
+		willSet { self.logStep("levelsOfUndo = \(newValue)") }
 	}
 
 	override open func disableUndoRegistration()
@@ -272,6 +264,40 @@ open class BXUndoManager : UndoManager
 		super.enableUndoRegistration()
     }
     
+     override open func setActionIsDiscardable(_ discardable:Bool)
+     {
+		self.logStep("setActionIsDiscardable(\(discardable))")
+		super.setActionIsDiscardable(discardable)
+     }
+          
+	override open func setActionName(_ actionName:String)
+	{
+		self.logStep("actionName = \"\(actionName)\"", kind:.name)
+		super.setActionName(actionName)
+	}
+	
+	override open func undoNestedGroup()
+	{
+		self.logStep(#function, kind:.hidden)
+		super.undoNestedGroup()
+	}
+		
+	override open func removeAllActions()
+	{
+		self.logStep(#function, kind:.action)
+		super.removeAllActions()
+	}
+
+	override open func removeAllActions(withTarget target:Any)
+	{
+		self.logStep("removeAllActions(withTarget:\(target))", kind:.action)
+		super.removeAllActions(withTarget:target)
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	override open func beginUndoGrouping()
 	{
 		let name = "⚠️ No undo name"
@@ -321,18 +347,15 @@ open class BXUndoManager : UndoManager
 		}
 	}
 		
-     override open func setActionIsDiscardable(_ discardable:Bool)
-     {
-		self.logStep("setActionIsDiscardable(\(discardable))")
-		super.setActionIsDiscardable(discardable)
-     }
-          
-	override open func setActionName(_ actionName:String)
-	{
-		self.logStep("actionName = \"\(actionName)\"", kind:.name)
-		super.setActionName(actionName)
+		// Pop the group off the stack
+		
+		self.groupStack.removeLast()
 	}
-	
+		
+		
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
@@ -378,7 +401,6 @@ open class BXUndoManager : UndoManager
 
 //			super.undo() // This would crash due to an exception
 		}
-		
 	}
 	
 	override open func redo()
@@ -401,24 +423,6 @@ open class BXUndoManager : UndoManager
 		}
 	}
 	
-
-	override open func undoNestedGroup()
-	{
-		self.logStep(#function, kind:.hidden)
-		super.undoNestedGroup()
-	}
-		
-	override open func removeAllActions()
-	{
-		self.logStep(#function, kind:.action)
-		super.removeAllActions()
-	}
-
-	override open func removeAllActions(withTarget target:Any)
-	{
-		self.logStep("removeAllActions(withTarget:\(target))", kind:.action)
-		super.removeAllActions(withTarget:target)
-	}
 }
 
 
@@ -435,13 +439,17 @@ public extension UndoManager
 
 	var bxUndoManager:BXUndoManager?
 	{
-		guard let undoManager = self as? BXUndoManager else
-		{
-//			assertionFailure("Expected BXUndoManager but found instance of class \(self) instead!")
-			return nil
-		}
-		
-		return undoManager
+		self as? BXUndoManager
+	}
+	
+	var logDescription:String
+	{
+		bxUndoManager?._logDescription ?? ""
+	}
+	
+	func printLog()
+	{
+		bxUndoManager?._printLog()
 	}
 
 	func beginLongLivedUndoGrouping()
@@ -480,16 +488,6 @@ public extension UndoManager
 		{
 			self.registerUndo(withTarget:target, handler:handler)
 		}
-	}
-	
-	var logDescription:String
-	{
-		return bxUndoManager?._logDescription ?? ""
-	}
-	
-	func printLog()
-	{
-		bxUndoManager?._printLog()
 	}
 }
 
@@ -542,3 +540,19 @@ public extension BXUndoManager.Group
 
 //----------------------------------------------------------------------------------------------------------------------
 
+
+/// Helper to create lightweight, consectutive ID numbers
+
+fileprivate extension Int
+{
+	static var nextID:Self
+	{
+		_id += 1
+		return _id
+	}
+	
+	static var _id = 0
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
