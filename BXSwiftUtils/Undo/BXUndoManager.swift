@@ -283,16 +283,20 @@ open class BXUndoManager : UndoManager
 		self.logStep(name, group:group, kind:.group)
 		self.groupStack.append(group)
 
-		self.logStep(#function)
+		let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+		self.logStep(#function, stackTrace:stackTrace)
+		
 		super.beginUndoGrouping()
 	}
 
 	override open func endUndoGrouping()
 	{
 		let name = self.undoActionName
-		
 		if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
-		self.logStep(#function)
+
+		let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+		self.logStep(#function, stackTrace:stackTrace)
+
 		super.endUndoGrouping()
 
 		if let currentGroup = self.currentGroup
