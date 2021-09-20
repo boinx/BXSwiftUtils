@@ -137,16 +137,23 @@ open class BXUndoManager : UndoManager
 	{
 		if enableLogging
 		{
+			// Create new Step struct
+			
 			let step = Step(
 				message:message,
 				group:group,
 				stackTrace:stackTrace,
 				kind:kind)
 			
+			// If we have an open group, then append to the group
+			
 			if let group = self.currentGroup
 			{
 				group.steps += step
 			}
+			
+			// Otherwise append to top-level steps
+			
 			else
 			{
 				self.log += step
@@ -238,7 +245,8 @@ open class BXUndoManager : UndoManager
 		}
 	}
 	
-	/// Ends a long-lived undo group. Please note that this function has no effects, if no long-lived undo group has been started.
+	/// Ends a long-lived undo group. If you called beginLongLivedUndoGrouping() in mouseDown() you should balance with endLongLivedUndoGrouping()
+	/// in mouseUp().
 	
 	fileprivate func _endLongLivedUndoGrouping()
 	{
@@ -322,27 +330,44 @@ open class BXUndoManager : UndoManager
 		let group = Group()
 		group.name = name
 		group.kind = .warning
+
+		// Push the group onto the stack
 		
 		self.logStep(name, group:group, kind:.group)
 		self.groupStack.append(group)
 
+		// Log the beginUndoGrouping()
+		
 		let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
 		self.logStep(#function, stackTrace:stackTrace)
+		
+		// Finally call super
 		
 		super.beginUndoGrouping()
 	}
 
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	override open func endUndoGrouping()
 	{
+		// Log the endUndoGrouping()
+		
 		let name = self.undoActionName
 		if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
-
 		let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
 		self.logStep(#function, stackTrace:stackTrace)
 
+		// Call super to actually close a group
+		
 		super.endUndoGrouping()
 
-		if let currentGroup = self.currentGroup
+		// Update the preliminary name of a group. It might have been "No undo name" when the group was started,
+		// but multiple actionNames might have been set in the meantime, so find the correct name and set it on
+		// the group.
+		
+		if let currentGroup = self.currentGroup, !self.isUndoing && !self.isRedoing
 		{
 			if let step = currentGroup.firstErrorStep
 			{
@@ -375,40 +400,67 @@ open class BXUndoManager : UndoManager
 
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
+		// Log the step (with stacktrace)
+		
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
 		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logStep(#function, stackTrace:stacktrace, kind:kind)
+		
+		// Call super to actually record
+		
 		super.registerUndo(withTarget:target, selector:selector, object:object)
 	}
 	
+	
 	override open func prepare(withInvocationTarget target:Any) -> Any
 	{
+		// Log the step (with stacktrace)
+		
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
 		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logStep(#function, stackTrace:stacktrace, kind:kind)
+
+		// Call super to actually record
+		
 		return super.prepare(withInvocationTarget:target)
 	}
 	
 	// Unfortunately we cannot override the registerUndo(…) function as it is not defined in the base class,
-	// but in an extension, so provide a new function with different name instead.
+	// but in an extension, so provide a new function with different name instead. Note the word "Operation"
+	// appended to the function name.
 	
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
+		// Log the step (with stacktrace)
+		
 		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3)) // skip the first 3 internal function that are of no interest
 		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 		self.logStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
+
+		// Call "super" to actually record
+		
 		return self.registerUndo(withTarget:target, handler:handler)
 	}
 	
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	override open func undo()
 	{
 		let level = self.groupingLevel
+		
+		// If we are at top level, log step and call super to actually undo
 		
 		if level == 0
 		{
 			self.logStep(#function, kind:.action)
 			super.undo()
 		}
+		
+		// If we still have an open group this is an inconstistent state. Log an error and
+		// DO NOT call super, as this would lead to a crash due to unhandled exception.
+		
 		else if let currentGroup = self.currentGroup
 		{
 			let message = "🛑 \(#function) called with groupingLevel \(level)"
@@ -420,15 +472,25 @@ open class BXUndoManager : UndoManager
 		}
 	}
 	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	override open func redo()
 	{
 		let level = self.groupingLevel
+		
+		// If we are at top level, log step and call super to actually redo
 		
 		if level == 0
 		{
 			self.logStep(#function, kind:.action)
 			super.redo()
 		}
+
+		// If we still have an open group this is an inconstistent state. Log an error and
+		// DO NOT call super, as this would lead to a crash due to unhandled exception.
+		
 		else if let currentGroup = self.currentGroup
 		{
 			let message = "🛑 \(#function) called with groupingLevel \(level)"
