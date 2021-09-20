@@ -120,6 +120,10 @@ open class BXUndoManager : UndoManager
 	
 	public var enableLogging = true
 	
+	/// If you want to limit the memory footprint of the log, set this property to the meximum number of top-level steps that are kept in the log
+	
+	public var maxTopLevelSteps:Int? = nil
+	
 	/// A list of all recorded Steps
 	
 	public private(set) var log:[Step] = []
@@ -146,6 +150,19 @@ open class BXUndoManager : UndoManager
 			else
 			{
 				self.log += step
+				
+				// Optionally, limit the size of the top-level log by purging the oldest entries
+				
+				if let n1 = self.maxTopLevelSteps
+				{
+					let n2 = self.log.count
+					
+					if n2 > n1
+					{
+						let n3 = n2-n1
+						self.log.removeFirst(n3)
+					}
+				}
 			}
 		}
 	}
