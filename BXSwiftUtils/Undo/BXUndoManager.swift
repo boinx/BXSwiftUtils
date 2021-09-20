@@ -464,11 +464,15 @@ open class BXUndoManager : UndoManager
 
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
-		// Log the step (with stacktrace)
+		// Log the step. Since registering an undo action can internally open a new undo group,
+		// defer logging this step until after the group was opened.
 		
-		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
-		self.logStep(#function, stackTrace:stacktrace, kind:kind)
+		defer
+		{
+			let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
+			self.logStep(#function, stackTrace:stacktrace, kind:kind)
+		}
 		
 		// Call super to actually record
 		
@@ -478,12 +482,16 @@ open class BXUndoManager : UndoManager
 	
 	override open func prepare(withInvocationTarget target:Any) -> Any
 	{
-		// Log the step (with stacktrace)
+		// Log the step. Since registering an undo action can internally open a new undo group,
+		// defer logging this step until after the group was opened.
 		
-		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
-		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
-		self.logStep(#function, stackTrace:stacktrace, kind:kind)
-
+		defer
+		{
+			let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
+			self.logStep(#function, stackTrace:stacktrace, kind:kind)
+		}
+		
 		// Call super to actually record
 		
 		return super.prepare(withInvocationTarget:target)
@@ -495,12 +503,16 @@ open class BXUndoManager : UndoManager
 	
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
-		// Log the step (with stacktrace)
+		// Log the step. Since registering an undo action can internally open a new undo group,
+		// defer logging this step until after the group was opened.
 		
-		let stacktrace = Array(Thread.callStackSymbols.dropFirst(3)) // skip the first 3 internal function that are of no interest
-		let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
-		self.logStep("registerUndoOperation() in \(callingFunction)", stackTrace:stacktrace, kind:kind)
-
+		defer
+		{
+			let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
+			self.logStep(#function, stackTrace:stacktrace, kind:kind)
+		}
+		
 		// Call "super" to actually record
 		
 		return self.registerUndo(withTarget:target, handler:handler)
