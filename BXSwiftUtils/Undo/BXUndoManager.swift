@@ -29,6 +29,7 @@ open class BXUndoManager : UndoManager
 		case name
 		case warning
 		case error
+		case marker
 	}
 
 	/// A Step records info about a single undo step
@@ -108,7 +109,7 @@ open class BXUndoManager : UndoManager
 	
 	/// The current group is at the top of the stack
 	
-	private var currentGroup:Group? { groupStack.last }
+	public var currentGroup:Group? { groupStack.last }
 
 	
 //----------------------------------------------------------------------------------------------------------------------
@@ -175,6 +176,42 @@ open class BXUndoManager : UndoManager
 	}
 	
 
+	/// Resets this UndoManager to an safe state, which can be useful after reaching a corrupted invalid state that would lead to potential crashes if you continued.
+	
+	open func reset()
+	{
+		self.addMarker()
+		self.logStep(#function, kind:.action)
+
+		while self.groupingLevel > 0
+		{
+			self.endUndoGrouping()
+		}
+		
+		self.removeAllActions()
+		
+		_didOpenLongLivedUndoGroup = false
+		self.groupStack = []
+	}
+
+
+	/// Appends a marker to the log
+	
+	open func addMarker()
+	{
+		self.logStep("", kind:.marker)
+	}
+	
+	
+	/// Clear the undo log
+	
+	open func clearLog()
+	{
+		self.log = []
+	}
+
+
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -528,6 +565,7 @@ open class BXUndoManager : UndoManager
 //			super.redo() // This would crash due to an exception
 		}
 	}
+	
 	
 }
 
