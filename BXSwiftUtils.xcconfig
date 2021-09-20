@@ -4,7 +4,7 @@ SUPPORTED_PLATFORMS = macosx iphoneos iphonesimulator appletvos appletvsimulator
 
 // Language version
 
-SWIFT_VERSION = 4.2
+SWIFT_VERSION = 5.3
 
 // Deployment target
 
