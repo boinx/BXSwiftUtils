@@ -335,11 +335,31 @@ open class BXUndoManager : UndoManager
 
 	override open func beginUndoGrouping()
 	{
-		let name = "⚠️ No undo name"
+		// Create a new group with an appropriate initial name and kind
+		
+		var kind:Kind = .warning
+		var name = "⚠️ No undo name"
+		
+		if self.isUndoing
+		{
+			kind = .group
+			name = self.undoActionName
+		}
+		else if self.isRedoing
+		{
+			kind = .group
+			name = self.redoActionName
+		}
+
+		if name.isEmpty
+		{
+			kind = .warning
+			name = "⚠️ No undo name"
+		}
 		
 		let group = Group()
+		group.kind = kind
 		group.name = name
-		group.kind = .warning
 
 		// Push the group onto the stack
 		
@@ -394,10 +414,7 @@ open class BXUndoManager : UndoManager
 				currentGroup.kind = .group
 				currentGroup.name = name
 			}
-			
-			self.groupStack.removeLast()
 		}
-	}
 		
 		// Pop the group off the stack
 		
