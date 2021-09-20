@@ -243,6 +243,11 @@ open class BXUndoManager : UndoManager
 			self.groupsByEvent = false
 			self.beginUndoGrouping()
 		}
+		else
+		{
+			let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+			self.logStep("🛑 beginLongLivedUndoGrouping(): group already open", stackTrace:stackTrace, kind:.error)
+		}
 	}
 	
 	/// Ends a long-lived undo group. If you called beginLongLivedUndoGrouping() in mouseDown() you should balance with endLongLivedUndoGrouping()
@@ -255,6 +260,11 @@ open class BXUndoManager : UndoManager
 			self._didOpenLongLivedUndoGroup = false
 			self.endUndoGrouping()
 			self.groupsByEvent = true
+		}
+		else
+		{
+			let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+			self.logStep("🛑 endLongLivedUndoGrouping(): no group open", stackTrace:stackTrace, kind:.error)
 		}
 	}
 
