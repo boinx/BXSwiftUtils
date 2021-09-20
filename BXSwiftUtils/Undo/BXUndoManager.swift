@@ -469,7 +469,7 @@ public extension UndoManager
 	{
 		if let undoManager = bxUndoManager
 		{
-			undoManager._beginLongLivedUndoGrouping()
+			undoManager._endLongLivedUndoGrouping()
 		}
 		else
 		{
