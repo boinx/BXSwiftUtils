@@ -282,7 +282,7 @@ open class BXUndoManager : UndoManager
 		}
 		else
 		{
-			let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let stackTrace = Thread.callStackSymbols
 			self.logStep("🛑 beginLongLivedUndoGrouping(): group already open", stackTrace:stackTrace, kind:.error)
 		}
 	}
@@ -300,7 +300,7 @@ open class BXUndoManager : UndoManager
 		}
 		else
 		{
-			let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let stackTrace = Thread.callStackSymbols
 			self.logStep("🛑 endLongLivedUndoGrouping(): no group open", stackTrace:stackTrace, kind:.error)
 		}
 	}
@@ -405,7 +405,7 @@ open class BXUndoManager : UndoManager
 
 		// Log the beginUndoGrouping()
 		
-		let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+		let stackTrace = Thread.callStackSymbols
 		self.logStep(#function, stackTrace:stackTrace)
 		
 		// Finally call super
@@ -424,7 +424,7 @@ open class BXUndoManager : UndoManager
 		
 		let name = self.undoActionName
 		if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
-		let stackTrace = Array(Thread.callStackSymbols.dropFirst(3))
+		let stackTrace = Thread.callStackSymbols
 		self.logStep(#function, stackTrace:stackTrace)
 
 		// Call super to actually close a group
@@ -471,7 +471,7 @@ open class BXUndoManager : UndoManager
 		
 		defer
 		{
-			let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let stacktrace = Thread.callStackSymbols
 			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 			self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		}
@@ -489,7 +489,7 @@ open class BXUndoManager : UndoManager
 		
 		defer
 		{
-			let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let stacktrace = Thread.callStackSymbols
 			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 			self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		}
@@ -510,7 +510,7 @@ open class BXUndoManager : UndoManager
 		
 		defer
 		{
-			let stacktrace = Array(Thread.callStackSymbols.dropFirst(3))
+			let stacktrace = Thread.callStackSymbols
 			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
 			self.logStep(#function, stackTrace:stacktrace, kind:kind)
 		}
