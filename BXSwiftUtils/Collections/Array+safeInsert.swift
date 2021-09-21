@@ -15,7 +15,13 @@ import Foundation
 
 extension Array
 {
-
+	/// This function is just like the regular insert(_,at:) function, except that it clips the specified index to the valid range before inserting, so that crashes
+	/// due to index out-of bounds problems are avoided.
+	///
+	/// - parameter element: The element to be inserted
+	/// - parameter index: The position where it should be inserted
+	/// - parameter clipIndexToValidRange: When true an invalid index will be clipped to the valid range. When false an invalid index leads to the element not being inserted at all.
+	
 	public mutating func safeInsert(element:Element, at index:Int, clipIndexToValidRange:Bool = true)
 	{
 		var i = index
