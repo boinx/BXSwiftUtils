@@ -21,7 +21,7 @@ open class BXUndoManager : UndoManager
 {
 	/// Various types of entries
 	
-	public enum Kind
+	public enum Kind : Int, Codable
 	{
 		case group
 		case hidden
@@ -34,11 +34,11 @@ open class BXUndoManager : UndoManager
 
 	/// A Step records info about a single undo step
 	
-	public struct Step
+	public struct Step : Codable
 	{
 		/// A unique identifier for this step is needed for SwiftUI based user interfaces
 		
-		public let id = Int.nextID
+		public private(set) var id = Int.nextID
 		
 		/// A string that describes this step
 		
@@ -65,7 +65,7 @@ open class BXUndoManager : UndoManager
 	
 	/// A Group constains a list of Steps
 
-	public class Group
+	public final class Group : Codable
 	{
 		public var name:String? = nil
 		{
@@ -719,3 +719,33 @@ fileprivate extension Int
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+// MARK: - Codable Support
+
+public extension BXUndoManager
+{
+	/// Saves the current log to the specified URL in JSON format
+	
+	func saveLog(to url:URL) throws
+	{
+		let data = try JSONEncoder().encode(self.log)
+		guard let string = String(data:data, encoding:.utf8) else { return }
+		try string.write(to:url, atomically:true, encoding:.utf8)
+	}
+
+	/// Loads a log from a JSON file at the specified URL
+	
+	func loadLog(from url:URL) throws
+	{
+		let string = try String(contentsOf:url, encoding:.utf8)
+		guard let data = string.data(using:.utf8) else { return }
+		let log = try JSONDecoder().decode(Array<Step>.self, from:data)
+		self.log = log
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
