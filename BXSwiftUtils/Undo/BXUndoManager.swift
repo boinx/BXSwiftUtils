@@ -657,6 +657,34 @@ public extension UndoManager
 			self.registerUndo(withTarget:target, handler:handler)
 		}
 	}
+
+	/// Closes the top level undo group
+	
+//	func endAllUndoGrouping()
+//	{
+//		while self.groupingLevel > 0
+//		{
+//			self.endUndoGrouping()
+//		}
+//	}
+	
+	/// Opens a local undo group, executes the supplied closure, and closes the group again. This makes sure that the NSUndoManager doesn't
+	/// unexpectedly call beginUndoGrouping, which is then not balanced with a endUndoGrouping - a situation that causes serious trouble down
+	/// the road.
+	
+	func withLocalUndoGroup(_ closure:()->Void)
+	{
+		let originalState = self.groupsByEvent
+		
+		self.groupsByEvent = false 			// Without this the following beginUndoGrouping() might be called twice!
+		self.beginUndoGrouping()			// Open local group
+		
+		closure()
+		
+		self.endUndoGrouping()				// Close local group
+		self.groupsByEvent = originalState	// Restore original state
+	}
+	
 }
 
 
