@@ -274,16 +274,21 @@ open class BXUndoManager : UndoManager
 	
 	fileprivate func _beginLongLivedUndoGrouping()
 	{
-		if !_didOpenLongLivedUndoGroup
+		if self.groupingLevel > 0
+		{
+			let stackTrace = Thread.callStackSymbols
+			self.logStep("🛑 beginLongLivedUndoGrouping() only allowed at top-level", stackTrace:stackTrace, kind:.error)
+		}
+		else if _didOpenLongLivedUndoGroup
+		{
+			let stackTrace = Thread.callStackSymbols
+			self.logStep("🛑 beginLongLivedUndoGrouping() group already open", stackTrace:stackTrace, kind:.error)
+		}
+		else
 		{
 			self._didOpenLongLivedUndoGroup = true
 			self.groupsByEvent = false
 			self.beginUndoGrouping()
-		}
-		else
-		{
-			let stackTrace = Thread.callStackSymbols
-			self.logStep("🛑 beginLongLivedUndoGrouping(): group already open", stackTrace:stackTrace, kind:.error)
 		}
 	}
 	
@@ -298,11 +303,11 @@ open class BXUndoManager : UndoManager
 			self.endUndoGrouping()
 			self.groupsByEvent = true
 		}
-		else
-		{
-			let stackTrace = Thread.callStackSymbols
-			self.logStep("🛑 endLongLivedUndoGrouping(): no group open", stackTrace:stackTrace, kind:.error)
-		}
+//		else
+//		{
+//			let stackTrace = Thread.callStackSymbols
+//			self.logStep("🛑 endLongLivedUndoGrouping(): no group open", stackTrace:stackTrace, kind:.error)
+//		}
 	}
 
 
