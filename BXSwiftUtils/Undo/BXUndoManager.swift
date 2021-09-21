@@ -410,6 +410,7 @@ open class BXUndoManager : UndoManager
 		
 		// Finally call super
 		
+		self.publishObjectWillChange()
 		super.beginUndoGrouping()
 	}
 
@@ -428,6 +429,7 @@ open class BXUndoManager : UndoManager
 
 		// Call super to actually close a group
 		
+		self.publishObjectWillChange()
 		super.endUndoGrouping()
 
 		// Update the preliminary name of a group. It might have been "No undo name" when the group was started,
