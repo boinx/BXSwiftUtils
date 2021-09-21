@@ -349,8 +349,8 @@ open class BXUndoManager : UndoManager
           
 	override open func setActionName(_ actionName:String)
 	{
-		self.logStep("actionName = \"\(actionName)\"", kind:.name)
 		super.setActionName(actionName)
+		self.logStep("actionName = \"\(actionName)\"", kind:.name) // Since super.setActionName can lazily start a new undo grou if necessary, log this step afterwards to get correct order
 	}
 	
 	override open func undoNestedGroup()
