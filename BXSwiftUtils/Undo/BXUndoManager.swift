@@ -725,21 +725,19 @@ fileprivate extension Int
 
 public extension BXUndoManager
 {
-	/// Saves the current log to the specified URL in JSON format
+	/// Saves the current log to the specified URL
 	
 	func saveLog(to url:URL) throws
 	{
 		let data = try JSONEncoder().encode(self.log)
-		guard let string = String(data:data, encoding:.utf8) else { return }
-		try string.write(to:url, atomically:true, encoding:.utf8)
+		try data.write(to:url)
 	}
 
-	/// Loads a log from a JSON file at the specified URL
+	/// Loads a log file at the specified URL
 	
 	func loadLog(from url:URL) throws
 	{
-		let string = try String(contentsOf:url, encoding:.utf8)
-		guard let data = string.data(using:.utf8) else { return }
+		let data = try Data(contentsOf:url)
 		let log = try JSONDecoder().decode(Array<Step>.self, from:data)
 		self.log = log
 	}
