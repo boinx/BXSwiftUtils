@@ -634,6 +634,11 @@ public extension UndoManager
 		}
 	}
 	
+	var isLongLivedUndoGroupOpen : Bool
+	{
+		bxUndoManager?._didOpenLongLivedUndoGroup ?? false
+	}
+	
 	func registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
 		if let undoManager = bxUndoManager
