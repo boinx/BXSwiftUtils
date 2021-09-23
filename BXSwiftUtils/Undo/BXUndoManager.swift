@@ -471,37 +471,35 @@ open class BXUndoManager : UndoManager
 
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
-		// Log the step. Since registering an undo action can internally open a new undo group,
-		// defer logging this step until after the group was opened.
-		
-		defer
-		{
-			let stacktrace = Thread.callStackSymbols
-			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
-			self.logStep(#function, stackTrace:stacktrace, kind:kind)
-		}
-		
 		// Call super to actually record
 		
 		super.registerUndo(withTarget:target, selector:selector, object:object)
+		
+		// Log the step. Since registering an undo action can internally open a new undo group,
+		// log this step after the group was opened.
+
+		if isUndoRegistrationEnabled
+		{
+			self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+		}
 	}
 	
 	
 	override open func prepare(withInvocationTarget target:Any) -> Any
 	{
-		// Log the step. Since registering an undo action can internally open a new undo group,
-		// defer logging this step until after the group was opened.
-		
-		defer
-		{
-			let stacktrace = Thread.callStackSymbols
-			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
-			self.logStep(#function, stackTrace:stacktrace, kind:kind)
-		}
-		
 		// Call super to actually record
 		
-		return super.prepare(withInvocationTarget:target)
+		let proxy = super.prepare(withInvocationTarget:target)
+
+		// Log the step. Since registering an undo action can internally open a new undo group,
+		// log this step after the group was opened.
+		
+		if isUndoRegistrationEnabled
+		{
+			self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+		}
+		
+		return proxy
 	}
 	
 	// Unfortunately we cannot override the registerUndo(…) function as it is not defined in the base class,
@@ -510,19 +508,17 @@ open class BXUndoManager : UndoManager
 	
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
-		// Log the step. Since registering an undo action can internally open a new undo group,
-		// defer logging this step until after the group was opened.
-		
-		defer
-		{
-			let stacktrace = Thread.callStackSymbols
-			let kind:Kind = isUndoRegistrationEnabled ? .action : .hidden
-			self.logStep(#function, stackTrace:stacktrace, kind:kind)
-		}
-		
 		// Call "super" to actually record
 		
-		return self.registerUndo(withTarget:target, handler:handler)
+		self.registerUndo(withTarget:target, handler:handler)
+
+		// Log the step. Since registering an undo action can internally open a new undo group,
+		// log this step after the group was opened.
+		
+		if isUndoRegistrationEnabled
+		{
+			self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+		}
 	}
 	
 
