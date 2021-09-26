@@ -66,13 +66,13 @@ extension UndoManager
 		
 		defer
 		{
-			self.setActionIsDiscardable(true)
 			self.endUndoGrouping()
 		}
 		
 		// Now execute the closure, which we assume will register some undoable actions -
 		// and hopefully also set a name to make debugging easier
 		
+		self.setActionIsDiscardable(true)
 		try closure()
 	}
 
