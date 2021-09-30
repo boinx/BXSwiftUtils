@@ -22,7 +22,7 @@ extension Array
 	/// - parameter index: The position where it should be inserted
 	/// - parameter clipIndexToValidRange: When true an invalid index will be clipped to the valid range. When false an invalid index leads to the element not being inserted at all.
 	
-	public mutating func safeInsert(_ element:Element, at index:Int, clipIndexToValidRange:Bool = true)
+	@discardableResult public mutating func safeInsert(_ element:Element, at index:Int, clipIndexToValidRange:Bool = true) -> Int
 	{
 		var i = index
 		let n = self.count
@@ -36,6 +36,8 @@ extension Array
 		{
 			self.insert(element, at:i)
 		}
+		
+		return i
 	}
 }
 
