@@ -382,6 +382,16 @@ public extension URL
 	}
 
 
+	/// Returns the duration of an audio file
+	
+	var audioDuration:Double
+	{
+		let asset = AVURLAsset(url:self)
+		guard let track = asset.tracks(withMediaType:AVMediaType.audio).first else { return 0.0 }
+		return CMTimeGetSeconds(CMTimeRangeGetEnd(track.timeRange))
+	}
+	
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
