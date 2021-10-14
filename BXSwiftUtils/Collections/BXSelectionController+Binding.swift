@@ -55,7 +55,8 @@ extension BXSelectionController
 		
 			get:
 			{
-				Set( self.values(forKeyPath:keyPath).compactMap { $0 } )
+				self.values(forKeyPath:keyPath)
+//				Set( self.values(forKeyPath:keyPath).compactMap { $0 } )
 			},
 			
 			set:
@@ -131,13 +132,55 @@ extension BXSelectionController
 	}
 
 
+	/// Returns a Set of values. If the controller selection is empty, the returned Set will also be empty.
+	/// If the property values for the selected objects are unique, the Set will contain a single value.
+	/// In case of multiple (non-unique) values, the Set will contain more than one value.
+	///
+	/// - parameter keyPath: The keyPath for a property of type T on a class C
+	/// - returns: A set of values of type T.
+	
+	public func values<C,T:Hashable>(forKeyPath keyPath:KeyPath<C,T?>) -> Set<T>
+	{
+		var values = Set<T>()
+		
+		for object in self.selectedObjects
+		{
+			if let object = object as? C, let v = object[keyPath:keyPath]
+			{
+				values.insert(v)
+			}
+		}
+		
+		return values
+	}
+
+
 	/// Returns a value if this value is unique across the selected objects, or nil if not. In case of an empty
 	/// selection nil will also be returned.
 	///
 	/// - parameter keyPath: The keyPath for a property of type T on a class C
-	/// - returns: A set of values of type T.
+	/// - returns: An optional of type T.
 
 	public func uniqueValue<C,T:Hashable>(forKeyPath keyPath:KeyPath<C,T>) -> T?
+	{
+		let values:Set<T> = self.values(forKeyPath:keyPath)
+		
+		if values.count == 1
+		{
+			return values.first
+		}
+		
+		return nil
+	}
+	
+
+	/// Returns a value if this value is unique across the selected objects, or nil if not. In case of an empty
+	/// selection nil will also be returned.
+	///
+	/// - parameter keyPath: The keyPath for a property of type T on a class C
+	/// - returns: An optional of type T.
+
+	public func uniqueValue<C,T:Hashable>(forKeyPath keyPath:KeyPath<C,T?>) -> T?
 	{
 		let values:Set<T> = self.values(forKeyPath:keyPath)
 		
