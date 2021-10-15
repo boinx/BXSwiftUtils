@@ -120,9 +120,8 @@ extension BXSelectionController
 						values.insert(value)
 					}
 				}
-				else
+				else if let value = object[keyPath:keyPath] as? T
 				{
-					let value = object[keyPath:keyPath]
 					values.insert(value)
 				}
 			}
