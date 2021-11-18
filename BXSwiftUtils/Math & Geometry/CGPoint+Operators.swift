@@ -147,6 +147,17 @@ extension CGPoint
 		let vy = b.y * dotab / dotbb
 		return CGPoint(vx,vy)
 	}
+	
+	/// Returns the distance of point p from vector ab
+	
+	public static func distance(of p:CGPoint, from a:CGPoint,_ b:CGPoint) -> CGFloat
+	{
+		let AB = b-a
+		let AP = p-a
+		let AP2 = AP.projected(onto:AB)
+		
+		return (AP-AP2).length
+	}
 }
 
 
