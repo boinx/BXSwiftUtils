@@ -113,11 +113,11 @@ extension FixedWidthInteger
 
 // MARK: -
 
-extension float2
+extension SIMD2 where Scalar == Float
 {
-    public static func random(in range: Range<Float>) -> float2
+    public static func random(in range: Range<Float>) -> SIMD2<Float>
     {
-		var value = float2(0.0,0.0)
+		var value = SIMD2<Float>(0.0,0.0)
 		value.x = Float.random(in:range)
 		value.y = Float.random(in:range)
     	return value
@@ -125,11 +125,11 @@ extension float2
 }
 
 
-extension float3
+extension SIMD3 where Scalar == Float
 {
-    public static func random(in range: Range<Float>) -> float3
+    public static func random(in range: Range<Float>) -> SIMD3<Float>
     {
-		var value = float3(0.0,0.0,0.0)
+		var value = SIMD3<Float>(0.0,0.0,0.0)
 		value.x = Float.random(in:range)
 		value.y = Float.random(in:range)
 		value.z = Float.random(in:range)
@@ -138,11 +138,11 @@ extension float3
 }
 
 
-extension float4
+extension SIMD4 where Scalar == Float
 {
-    public static func random(in range: Range<Float>) -> float4
+    public static func random(in range: Range<Float>) -> SIMD4<Float>
     {
-		var value = float4(0.0,0.0,0.0,0.0)
+		var value = SIMD4<Float>(0.0,0.0,0.0,0.0)
 		value.x = Float.random(in:range)
 		value.y = Float.random(in:range)
 		value.z = Float.random(in:range)
@@ -157,11 +157,11 @@ extension float4
 
 // MARK: -
 
-extension double2
+extension SIMD2 where Scalar == Double
 {
-    public static func random(in range: Range<Double>) -> double2
+    public static func random(in range: Range<Double>) -> SIMD2<Double>
     {
-		var value = double2(0.0,0.0)
+		var value = SIMD2<Double>(0.0,0.0)
 		value.x = Double.random(in:range)
 		value.y = Double.random(in:range)
     	return value
@@ -169,11 +169,11 @@ extension double2
 }
 
 
-extension double3
+extension SIMD3 where Scalar == Double
 {
-    public static func random(in range: Range<Double>) -> double3
+    public static func random(in range: Range<Double>) -> SIMD3<Double>
     {
-		var value = double3(0.0,0.0,0.0)
+		var value = SIMD3<Double>(0.0,0.0,0.0)
 		value.x = Double.random(in:range)
 		value.y = Double.random(in:range)
 		value.z = Double.random(in:range)
@@ -182,11 +182,11 @@ extension double3
 }
 
 
-extension double4
+extension SIMD4 where Scalar == Double
 {
-    public static func random(in range: Range<Double>) -> double4
+    public static func random(in range: Range<Double>) ->  SIMD4<Double>
     {
-		var value = double4(0.0,0.0,0.0,0.0)
+		var value = SIMD4<Double>(0.0,0.0,0.0,0.0)
 		value.x = Double.random(in:range)
 		value.y = Double.random(in:range)
 		value.z = Double.random(in:range)
