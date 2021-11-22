@@ -19,7 +19,7 @@ import AppKit
 
 /// This protocol provides a way to uniquely identify objects
 
-public protocol BXSelectable : class
+public protocol BXSelectable : AnyObject
 {
 	typealias ID = String
 

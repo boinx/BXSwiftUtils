@@ -7,7 +7,7 @@
 //**********************************************************************************************************************
 
 
-public protocol BXDoubleLinkedListElement : class
+public protocol BXDoubleLinkedListElement : AnyObject
 {
 	/// Reference to the preceeding element in the list. Returns nil if self is the first element in the list.
 	

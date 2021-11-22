@@ -16,7 +16,7 @@ import Foundation
 /// Any delegate protocol that conforms to this protocol gets the mixin capabilty to automatically dispatch
 /// to the main thread (e.g. for UI work)
 
-public protocol BXMainThreadDelegate : class
+public protocol BXMainThreadDelegate : AnyObject
 {
 
 }

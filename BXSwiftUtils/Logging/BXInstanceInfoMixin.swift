@@ -7,7 +7,7 @@
 //**********************************************************************************************************************
 
 
-public protocol BXInstanceInfoMixin : class
+public protocol BXInstanceInfoMixin : AnyObject
 {
 	/// Returns the class name for this object
 	
