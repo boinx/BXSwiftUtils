@@ -55,20 +55,22 @@ extension DispatchQueue
     
     public func debounce(_ identifier:String, interval:CFTimeInterval = 0.0, block: @escaping ()->Void)
     {
+		let id = identifier.replacingOccurrences(of:".", with:"-")
+		
         let newItem = DispatchWorkItem()
         {
             block()
             
             DispatchQueue.lock.write()
             {
-				DispatchQueue.coalescedWork[identifier] = nil
+				DispatchQueue.coalescedWork[id] = nil
             }
          }
         
         DispatchQueue.lock.write()
         {
-            DispatchQueue.coalescedWork[identifier]?.cancel()
-			DispatchQueue.coalescedWork[identifier] = newItem
+            DispatchQueue.coalescedWork[id]?.cancel()
+			DispatchQueue.coalescedWork[id] = newItem
         }
         
         self.asyncAfter(deadline:.now()+interval, execute:newItem)
