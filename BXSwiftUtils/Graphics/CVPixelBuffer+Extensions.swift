@@ -219,6 +219,76 @@ public extension CVPixelBuffer
 		
 		return vImage_Buffer(data:ptr, height:height, width:width, rowBytes:rowBytes)
     }
+    
+    
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Returns a description string for debugging purposes
+	
+    var debugDescription:String
+    {
+		CVPixelBufferLockBaseAddress(self,.readOnly)
+		defer { CVPixelBufferUnlockBaseAddress(self,.readOnly) }
+
+		let w = CVPixelBufferGetWidth(self)
+		let h = CVPixelBufferGetHeight(self)
+		let rowBytes = CVPixelBufferGetBytesPerRow(self)
+		let size = CVPixelBufferGetDataSize(self)
+		let isPlanar = CVPixelBufferIsPlanar(self)
+		let planeCount = CVPixelBufferGetPlaneCount(self)
+		var description = "CVPixelBuffer  width=\(w)  height=\(h)"
+
+		if isPlanar
+		{
+			for i in 0 ..< planeCount
+			{
+				let address = CVPixelBufferGetBaseAddressOfPlane(self,i)?.debugDescription ?? "nil"
+				description += "  buffer\(i)=\(address)"
+			}
+			
+			description += "  size=\(size)"
+		}
+		else
+		{
+			let address = CVPixelBufferGetBaseAddress(self)?.debugDescription ?? "nil"
+			description += "  rowBytes=\(rowBytes)  address=\(address)  size=\(size)"
+		}
+
+		return description
+    }
+    
+    /// Checks if the backing buffer is allocated and the size is the expected one
+	
+    func confirmAllocatedSize(_ size:CGSize) -> Bool
+    {
+		CVPixelBufferLockBaseAddress(self,.readOnly)
+		defer { CVPixelBufferUnlockBaseAddress(self,.readOnly) }
+
+		if CVPixelBufferIsPlanar(self)
+		{
+			let planeCount = CVPixelBufferGetPlaneCount(self)
+
+			for i in 0 ..< planeCount
+			{
+				let address = CVPixelBufferGetBaseAddressOfPlane(self,i)
+				guard address != nil else { return false }
+			}
+
+			return true
+		}
+		else
+		{
+			let address = CVPixelBufferGetBaseAddress(self)
+			guard address != nil else { return false }
+		}
+		
+		let w = CVPixelBufferGetWidth(self)
+		let h = CVPixelBufferGetHeight(self)
+		guard Int(size.width) == w && Int(size.height) == h else { return false }
+		
+		return true
+    }
 }
 
 
