@@ -157,8 +157,11 @@ public extension MTLTexture
 		let dstHeight = CVPixelBufferGetHeight(pixelBuffer)
 		let dstRowbytes = CVPixelBufferGetBytesPerRow(pixelBuffer)
 
-		guard srcWidth == dstWidth else { return }
-		guard srcHeight == dstHeight else { return }
+		guard srcWidth == dstWidth && srcHeight == dstHeight else
+		{
+			log.error {"MTLTexture.\(#function) ERROR srcWidth=\(srcWidth) dstWidth=\(dstWidth) srcHeight=\(srcHeight) dstHeight=\(dstHeight)"}
+			return
+		}
 //		guard srcRowbytes == srcRowbytes || srcRowbytes == 0 else { return }
 
 		// Copy pixels from GPU texture to the buffer
@@ -166,7 +169,12 @@ public extension MTLTexture
 		CVPixelBufferLockBaseAddress(pixelBuffer,[])
 		defer { CVPixelBufferUnlockBaseAddress(pixelBuffer,[]) }
 		
-		guard let buffer = CVPixelBufferGetBaseAddress(pixelBuffer) else { return }
+		guard let buffer = CVPixelBufferGetBaseAddress(pixelBuffer) else
+		{
+			log.error {"MTLTexture.\(#function) ERROR pixelBuffer.baseAddress = nil"}
+			return
+		}
+		
 		let region = MTLRegionMake2D(0,0,srcWidth,srcHeight)
 		self.getBytes(buffer, bytesPerRow:dstRowbytes, from:region, mipmapLevel:0)
 	}
