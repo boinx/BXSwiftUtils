@@ -145,7 +145,7 @@ public extension MTLTexture
 
 	/// Copies a Metal texture to a CVPixelBuffer
 
-	func copy(to pixelBuffer:CVPixelBuffer)
+	func copy(to pixelBuffer:CVPixelBuffer, debug:Bool = false)
 	{
 		// Check that the texture and the pixelBuffer match in size
 		
@@ -162,7 +162,6 @@ public extension MTLTexture
 			log.error {"MTLTexture.\(#function) ERROR srcWidth=\(srcWidth) dstWidth=\(dstWidth) srcHeight=\(srcHeight) dstHeight=\(dstHeight)"}
 			return
 		}
-//		guard srcRowbytes == srcRowbytes || srcRowbytes == 0 else { return }
 
 		// Copy pixels from GPU texture to the buffer
 		
@@ -177,6 +176,21 @@ public extension MTLTexture
 		
 		let region = MTLRegionMake2D(0,0,srcWidth,srcHeight)
 		self.getBytes(buffer, bytesPerRow:dstRowbytes, from:region, mipmapLevel:0)
+		
+		if debug
+		{
+			#warning("TODO: remove this experiment later")
+			
+			let n = 16 * dstRowbytes/4
+			
+			for i in 0 ..< n
+			{
+				buffer.storeBytes(of:0,   toByteOffset:i*4,   as:UInt8.self)
+				buffer.storeBytes(of:0,   toByteOffset:i*4+1, as:UInt8.self)
+				buffer.storeBytes(of:255, toByteOffset:i*4+2, as:UInt8.self)
+				buffer.storeBytes(of:255, toByteOffset:i*4+3, as:UInt8.self)
+			}
+		}
 	}
 	
 	
