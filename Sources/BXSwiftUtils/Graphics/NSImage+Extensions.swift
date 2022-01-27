@@ -17,6 +17,21 @@ import AppKit
 
 public extension NSImage
 {
+	/// Returns a bitmap CGImage
+	
+	var CGImage:CGImage?
+	{
+		self.cgImage(forProposedRect:nil, context:nil, hints:nil)
+	}
+
+	/// Returns the icon for the app with the specified bundle identifier
+	
+	static func icon(for app:String) -> NSImage?
+	{
+		guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier:app) else { return nil }
+		return NSWorkspace.shared.icon(forFile:url.path)
+	}
+
 	/// Returns a new image with the specified alpha. Can be used to make an image more transparent.
 	
 	func withAlpha(_ alpha:CGFloat) -> NSImage
