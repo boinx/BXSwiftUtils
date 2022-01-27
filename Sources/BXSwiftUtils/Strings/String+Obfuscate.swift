@@ -7,6 +7,10 @@
 
 // swiftlint:disable identifier_name
 
+
+import Foundation
+
+
 // MARK: - a-z -
 public extension String {
     var a: String { return self + "a" }

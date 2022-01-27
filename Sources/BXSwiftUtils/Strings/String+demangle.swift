@@ -6,6 +6,12 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 
+import Darwin
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 typealias Swift_Demangle = @convention(c) (_ mangledName: UnsafePointer<UInt8>?,
                                            _ mangledNameLength: Int,
                                            _ outputBuffer: UnsafeMutablePointer<UInt8>?,
