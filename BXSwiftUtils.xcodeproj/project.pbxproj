@@ -123,6 +123,7 @@
 		D09FF4E925C97EFF00C58119 /* Host+macAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09FF4E825C97EFF00C58119 /* Host+macAddress.swift */; };
 		D0A4F1132552A43B00FAEBD8 /* Int+localizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4F1122552A43B00FAEBD8 /* Int+localizedString.swift */; };
 		D0A740AE22E880CF00145203 /* Collection+Union.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A740AD22E880CF00145203 /* Collection+Union.swift */; };
+		D0B125DD27A2F0D800B32D9A /* URL+Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B125DC27A2F0D800B32D9A /* URL+Bookmark.swift */; };
 		D0B38D7821CE6F180068148D /* Array+Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B38D7721CE6F180068148D /* Array+Groups.swift */; };
 		D0B6AF6423D3034900EDDB74 /* BXSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */; };
 		D0B6AF6523D3034900EDDB74 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */; };
@@ -283,6 +284,7 @@
 		D0A4F1122552A43B00FAEBD8 /* Int+localizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+localizedString.swift"; sourceTree = "<group>"; };
 		D0A740AD22E880CF00145203 /* Collection+Union.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Union.swift"; sourceTree = "<group>"; };
 		D0B125D627A29D7B00B32D9A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		D0B125DC27A2F0D800B32D9A /* URL+Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Bookmark.swift"; sourceTree = "<group>"; };
 		D0B38D7721CE6F180068148D /* Array+Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Groups.swift"; sourceTree = "<group>"; };
 		D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXSelectionController.swift; sourceTree = "<group>"; };
 		D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */,
 				D0859FD32158F7E200F624C7 /* URL+ExtendedAttributes.swift */,
 				D0E5EB9B24E690FA009E1385 /* URL+Metadata.swift */,
+				D0B125DC27A2F0D800B32D9A /* URL+Bookmark.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				D0C117C3247EDB7B00F5CE66 /* Array+DoubleLinkedList.swift in Sources */,
 				481A25C12175D38700FB8E9A /* CACornerMask+Convenience.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
+				D0B125DD27A2F0D800B32D9A /* URL+Bookmark.swift in Sources */,
 				D0177B1B26FA11660088BF48 /* String+demangle.swift in Sources */,
 				D0B6AF6423D3034900EDDB74 /* BXSelectionController.swift in Sources */,
 				D06CC92B2178EADA009C2991 /* Data+Checksum.swift in Sources */,
