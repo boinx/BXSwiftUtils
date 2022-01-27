@@ -204,8 +204,8 @@
 		48C3DF6720E10E2400359288 /* TypedKVO+propagateChangesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedKVO+propagateChangesTests.swift"; sourceTree = "<group>"; };
 		48D9E36021A6B75E0057B930 /* Comparable+ClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+ClipTests.swift"; sourceTree = "<group>"; };
 		48DA8192206A4E9C009D1E6C /* KVOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOTests.swift; sourceTree = "<group>"; };
-		48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSException+ToSwiftError.h"; sourceTree = "<group>"; };
-		48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSException+ToSwiftError.m"; sourceTree = "<group>"; };
+		48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSException+ToSwiftError.h"; path = "../../../C/NSException+ToSwiftError.h"; sourceTree = "<group>"; };
+		48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSException+ToSwiftError.m"; path = "../../../C/NSException+ToSwiftError.m"; sourceTree = "<group>"; };
 		48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSException+ToSwiftErrorTests.swift"; sourceTree = "<group>"; };
 		48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOTestsObjC.m; sourceTree = "<group>"; };
 		48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Pluck.swift"; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 			children = (
 				481A257D217493D400FB8E9A /* Config */,
 				4875F2092051E70E009985EC /* BXSwiftUtils */,
-				4875F2142051E70E009985EC /* BXSwiftUtilsTests */,
+				4875F2142051E70E009985EC /* Tests */,
 				4875F2082051E70E009985EC /* Products */,
 				D05245CD2199A83900F1A9B5 /* Frameworks */,
 			);
@@ -407,7 +407,7 @@
 			path = Sources/BXSwiftUtils;
 			sourceTree = "<group>";
 		};
-		4875F2142051E70E009985EC /* BXSwiftUtilsTests */ = {
+		4875F2142051E70E009985EC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48A971E32159121000215F9F /* Enums */,
@@ -423,7 +423,7 @@
 				4853E3882056BDB500938B82 /* Threading */,
 				4875F2172051E70E009985EC /* Info.plist */,
 			);
-			path = BXSwiftUtilsTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		4875F2242051E9B7009985EC /* Collections */ = {
