@@ -285,6 +285,7 @@
 		D0A740AD22E880CF00145203 /* Collection+Union.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Union.swift"; sourceTree = "<group>"; };
 		D0B125D627A29D7B00B32D9A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		D0B125DC27A2F0D800B32D9A /* URL+Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Bookmark.swift"; sourceTree = "<group>"; };
+		D0B125E027A2F1C000B32D9A /* URLSession+asyncAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+asyncAwait.swift"; sourceTree = "<group>"; };
 		D0B38D7721CE6F180068148D /* Array+Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Groups.swift"; sourceTree = "<group>"; };
 		D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXSelectionController.swift; sourceTree = "<group>"; };
 		D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
@@ -723,6 +724,7 @@
 				D08FAA7E22BA17A4001D05D2 /* BXNetwork+isReachable.swift */,
 				D09FF4E825C97EFF00C58119 /* Host+macAddress.swift */,
 				98B04DC3262458A00099ADE5 /* URL+QueryComponents.swift */,
+				D0B125E027A2F1C000B32D9A /* URLSession+asyncAwait.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
