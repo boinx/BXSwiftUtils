@@ -159,6 +159,23 @@ extension URL
 		}
 	}
 	
+	/// Checks if the URL is a directory with subfolders
+	
+	public var hasSubfolders: Bool
+	{
+		guard self.isDirectory else { return false }
+
+		let filenames = (try? FileManager.default.contentsOfDirectory(atPath:self.path)) ?? []
+		
+		for filename in filenames
+		{
+			let url = self.appendingPathComponent(filename)
+			if url.isDirectory { return true }
+		}
+		
+		return false
+	}
+	
 	/// Checks if the URL points to a package directory
 	
 	public var isPackage: Bool
@@ -182,6 +199,29 @@ extension URL
 		}
 	}
 	
+	/// Checks if the URL points to an invisible file system item
+
+	public var isHidden: Bool
+	{
+		do
+		{
+			let key = URLResourceKey.isHiddenKey
+			let values = try self.resourceValues(forKeys: [key])
+			if let isHidden = values.isHidden
+			{
+				return isHidden
+			}
+			else
+			{
+				return false
+			}
+		}
+		catch
+		{
+			return false
+		}
+	}
+
 	/// Checks if the URL points to a symlink
 
 	public var isSymbolicLink: Bool
