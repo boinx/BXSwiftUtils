@@ -282,6 +282,7 @@
 		D09FF4E825C97EFF00C58119 /* Host+macAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Host+macAddress.swift"; sourceTree = "<group>"; };
 		D0A4F1122552A43B00FAEBD8 /* Int+localizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+localizedString.swift"; sourceTree = "<group>"; };
 		D0A740AD22E880CF00145203 /* Collection+Union.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Union.swift"; sourceTree = "<group>"; };
+		D0B125D627A29D7B00B32D9A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		D0B38D7721CE6F180068148D /* Array+Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Groups.swift"; sourceTree = "<group>"; };
 		D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXSelectionController.swift; sourceTree = "<group>"; };
 		D0B6AF6323D3034900EDDB74 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 				D0542502219978E200BE2A42 /* BXSwiftUtils.xcconfig */,
 				4875F20A2051E70E009985EC /* BXSwiftUtils.h */,
 				4875F20B2051E70E009985EC /* Info.plist */,
+				D0B125D627A29D7B00B32D9A /* Package.swift */,
 				484133732052D0C500DDB1E2 /* README.md */,
 				4875F2232051E7F4009985EC /* STYLEGUIDE.md */,
 				4875F25820528D28009985EC /* LICENSE */,
