@@ -3,6 +3,8 @@
 
 Swift Extensions and Classes written by Boinx Software Ltd. & IMAGINE GbR
 
+This framework/package provides many useful classes, extensions, or utils that where written purely in Swift. Documentation is currently not available, so check the source code comments.
+
 Feel free to browse the [BXSwiftUtils](BXSwiftUtils) directory.
 Also, check our [Styleguide](STYLEGUIDE.md).
 
