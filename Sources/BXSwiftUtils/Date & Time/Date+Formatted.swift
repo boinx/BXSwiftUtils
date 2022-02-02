@@ -20,9 +20,23 @@ public extension String
 	var date:Date?
 	{
 		let formatter = DateFormatter()
+
 		formatter.dateFormat = "yyyy:MM:dd HH:mm:ss"
-		return formatter.date(from:self)
-	}
+		
+		if let date = formatter.date(from:self)
+		{
+			return date
+		}
+		
+		formatter.dateFormat = "yyyy-MM-dd HH:mm:ssz"
+		
+		if let date = formatter.date(from:self)
+		{
+			return date
+		}
+		
+		return nil
+ 	}
 	
 	/// Creates a nicely formatted String from a Date
 	
