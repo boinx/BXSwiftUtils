@@ -142,6 +142,7 @@
 		D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
 		D0E5EB9C24E690FA009E1385 /* URL+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5EB9B24E690FA009E1385 /* URL+Metadata.swift */; };
 		D0E6B50A24DDB5D100369C24 /* Array+HeterogenousDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */; };
+		D0E8881127AA8D6100310BB9 /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E8881027AA8D6100310BB9 /* Date+Formatted.swift */; };
 		D0E9E01E22D5EA5E00ADB450 /* Collection+Assign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */; };
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+New.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+New.swift */; };
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
@@ -303,6 +304,7 @@
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
 		D0E5EB9B24E690FA009E1385 /* URL+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Metadata.swift"; sourceTree = "<group>"; };
 		D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HeterogenousDecoding.swift"; sourceTree = "<group>"; };
+		D0E8881027AA8D6100310BB9 /* Date+Formatted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Assign.swift"; sourceTree = "<group>"; };
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+New.swift"; sourceTree = "<group>"; };
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
@@ -674,6 +676,7 @@
 			isa = PBXGroup;
 			children = (
 				D032350C205C362A003D6CCB /* Date+Components.swift */,
+				D0E8881027AA8D6100310BB9 /* Date+Formatted.swift */,
 				D086A25F21B95CD000ACF9CA /* CMTime+Logging.swift */,
 			);
 			path = "Date & Time";
@@ -1058,6 +1061,7 @@
 				D086A26021B95CD000ACF9CA /* CMTime+Logging.swift in Sources */,
 				485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */,
 				489E56AD2052CC800071BBF1 /* Synchronized.swift in Sources */,
+				D0E8881127AA8D6100310BB9 /* Date+Formatted.swift in Sources */,
 				D0E5EB9C24E690FA009E1385 /* URL+Metadata.swift in Sources */,
 				481A25BE2175D36000FB8E9A /* CGPath+RoundedRect.swift in Sources */,
 				D03E9FC222CE1A93009BCC37 /* UndoManager+Disabling.swift in Sources */,

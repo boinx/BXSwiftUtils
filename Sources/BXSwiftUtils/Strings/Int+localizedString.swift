@@ -104,6 +104,58 @@ public extension Int
 //----------------------------------------------------------------------------------------------------------------------
 
 
+public extension Int
+{
+	/// Creates a formatted file size description for the number of bytes
+	
+	var fileSizeDescription:String
+	{
+		let bytes = self
+		let kilobytes = Double(bytes) / 1000
+		let megabytes = kilobytes / 1000
+		let gigabytes = megabytes / 1000
+		let terabytes = gigabytes / 1000
+		
+		if bytes < 1000
+		{
+			return"\(bytes) bytes"
+		}
+		else if kilobytes < 1000
+		{
+			return "\(kilobytes.string(digits:1)) KB"
+		}
+		else if megabytes < 1000
+		{
+			return "\(megabytes.string(digits:1)) MB"
+		}
+		else if gigabytes < 1000
+		{
+			return "\(gigabytes.string(digits:1)) GB"
+		}
+
+		return "\(terabytes.string(digits:1)) TB"
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+public extension Double
+{
+	/// Formats a Double number with the specified precision
+	
+	func string(for format:String = "#.#", digits:Int = 1) -> String
+	{
+		let formatter = NumberFormatter.forFloatingPoint(with:format, numberOfDigits:digits)
+		return formatter.string(from:NSNumber(value:self)) ?? "0"
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 public extension Bundle
 {
 	#if SWIFT_PACKAGE
