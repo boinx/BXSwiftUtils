@@ -35,6 +35,13 @@ public extension String
 			return date
 		}
 		
+		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+		
+		if let date = formatter.date(from:self)
+		{
+			return date
+		}
+		
 		return nil
  	}
 	
