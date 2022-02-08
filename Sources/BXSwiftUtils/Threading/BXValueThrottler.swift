@@ -1,7 +1,7 @@
 //**********************************************************************************************************************
 //
 //  BXValueThrottler.swift
-//  Adds coalescing and throttling to GCD queues
+//  A helper class that throttles a stream of values to a specified maximum frequency
 //  Copyright ©2022 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
@@ -58,7 +58,9 @@ import Foundation
 	}
 	
 	
-	/// Sends a new value of type V
+	/// Sends a new value of type V. This may cause the onChanged closure to be callled - i.e. if it hasn't been
+	/// called recently (within the specified time interval). The last value to be sent before finishing will
+	/// always make it through the pipeline.
 	
 	public func send(_ value:V)
 	{
@@ -66,7 +68,7 @@ import Foundation
 	}
 	
 	
-	/// Completes the publisher and then cleans up
+	/// Completes the publisher and then cleans up. This causes the onEnded closure to be called.
 	
 	public func finish()
 	{
