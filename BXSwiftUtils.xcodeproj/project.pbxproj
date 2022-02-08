@@ -137,6 +137,7 @@
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
 		D0CA564A256CEA1700D2C09D /* MTKTextureLoader+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */; };
 		D0CD307B2652978D0042046D /* Thread+stackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD307A2652978D0042046D /* Thread+stackTrace.swift */; };
+		D0D0EE5727B242740050E20D /* BXValueThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0EE5627B242730050E20D /* BXValueThrottler.swift */; };
 		D0D6B6412473F6E900EC4E5B /* NSObject+onChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */; };
 		D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */; };
 		D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */; };
@@ -299,6 +300,7 @@
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
 		D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Draw.swift"; sourceTree = "<group>"; };
 		D0CD307A2652978D0042046D /* Thread+stackTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+stackTrace.swift"; sourceTree = "<group>"; };
+		D0D0EE5627B242730050E20D /* BXValueThrottler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXValueThrottler.swift; sourceTree = "<group>"; };
 		D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+onChanged.swift"; sourceTree = "<group>"; };
 		D0D9419A21A56B8800D6B43F /* DisplayableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableEnum.swift; sourceTree = "<group>"; };
 		D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Once.swift"; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 			children = (
 				487107EE20A9B8E000120024 /* BXAtomic.swift */,
 				4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */,
+				D0D0EE5627B242730050E20D /* BXValueThrottler.swift */,
 				D056D43F205296F100849EF2 /* Synchronized.swift */,
 				D056D42F205276ED00849EF2 /* NSObject+Coalescing.swift */,
 				D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */,
@@ -1004,6 +1007,7 @@
 				487107F020A9B8E000120024 /* BXAtomic.swift in Sources */,
 				48A971E22159024100215F9F /* Enum+Comparable.swift in Sources */,
 				D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */,
+				D0D0EE5727B242740050E20D /* BXValueThrottler.swift in Sources */,
 				D03234EF205BFC9F003D6CCB /* String+Localized.swift in Sources */,
 				95CBED9321A5B4D100344220 /* Comparable+Clip.swift in Sources */,
 				D013E7A224252B2900207D48 /* Set+Concatenation.swift in Sources */,
