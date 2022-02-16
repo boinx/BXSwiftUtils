@@ -10,6 +10,7 @@
 #if os(macOS)
 
 import AppKit
+import CoreImage
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -46,6 +47,39 @@ public extension NSImage
 		return newImage
 	}
 	
+	
+	/// Creates a new NSImage from a CIImage
+	
+	convenience init(with image:CIImage)
+	{
+		let rep = NSCIImageRep(ciImage:image)
+        self.init(size:rep.size)
+        self.addRepresentation(rep)
+	}
+	
+	
+	/// Generates a QR-Code image for the specified URL
+	
+	static func QRCode(for url:URL?) -> NSImage?
+	{
+		// Encode the URL
+		
+		guard let url = url else { return nil }
+		let string = url.absoluteString
+		let data = string.data(using:.utf8)
+		
+		// Create a CIImage
+		
+		guard let filter = CIFilter(name:"CIQRCodeGenerator") else { return nil }
+		filter.setValue(data, forKey:"inputMessage")
+		
+		let transform = CGAffineTransform(scaleX:10, y:10)
+		guard let output = filter.outputImage?.transformed(by:transform) else { return nil }
+	
+		// Convert to NSImage
+		
+		return NSImage(with:output)
+	}
 }
 
 
