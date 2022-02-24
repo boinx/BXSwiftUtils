@@ -1,7 +1,7 @@
 # BXSwiftUtils
-[![build status](https://api.travis-ci.org/boinx/BXSwiftUtils.svg?branch=master)](https://travis-ci.org/boinx/BXSwiftUtils) ![lines of code](https://tokei.rs/b1/github/boinx/bxswiftutils?category=code) ![comments](https://tokei.rs/b1/github/boinx/bxswiftutils?category=comments)
+![lines of code](https://tokei.rs/b1/github/boinx/bxswiftutils?category=code) ![comments](https://tokei.rs/b1/github/boinx/bxswiftutils?category=comments)
 
-Swift Extensions and Classes written by Boinx Software Ltd. & IMAGINE GbR
+Swift extensions and utils written by Boinx Software Ltd. & IMAGINE GbR
 
 This framework/package provides many useful classes, extensions, or utils that where written purely in Swift. Documentation is currently not available, so check the source code comments.
 
