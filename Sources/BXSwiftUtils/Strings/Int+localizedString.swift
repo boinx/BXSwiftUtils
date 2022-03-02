@@ -98,6 +98,18 @@ public extension Int
 		let format = "%d license(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
 		return String(format:format,self)
 	}
+
+	var localizedSlidesString : String
+	{
+		let format = "%d slide(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
+
+	var localizedSongsString : String
+	{
+		let format = "%d song(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		return String(format:format,self)
+	}
 }
 
 

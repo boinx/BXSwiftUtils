@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
 	<key>%d time(s)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -20,6 +21,7 @@
 			<string>%d times</string>
 		</dict>
 	</dict>
+	
 	<key>%d file(s)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -38,6 +40,7 @@
 			<string>%d files</string>
 		</dict>
 	</dict>
+	
 	<key>%d item(s)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -56,6 +59,7 @@
 			<string>%d items</string>
 		</dict>
 	</dict>
+	
 	<key>%d object(s)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -74,6 +78,7 @@
 			<string>%d objects</string>
 		</dict>
 	</dict>
+	
 	<key>%d image(s)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -92,6 +97,7 @@
 			<string>%d images</string>
 		</dict>
 	</dict>
+	
 	<key>%d video(s)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -260,6 +266,44 @@
 			<string>1 license</string>
 			<key>other</key>
 			<string>%d licenses</string>
+		</dict>
+	</dict>
+
+	<key>%d slide(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@SLIDE@</string>
+		<key>SLIDE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 slides</string>
+			<key>one</key>
+			<string>1 slide</string>
+			<key>other</key>
+			<string>%d slides</string>
+		</dict>
+	</dict>
+
+	<key>%d song(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@SONG@</string>
+		<key>SONG</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 songs</string>
+			<key>one</key>
+			<string>1 song</string>
+			<key>other</key>
+			<string>%d songs</string>
 		</dict>
 	</dict>
 
