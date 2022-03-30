@@ -41,7 +41,7 @@ extension BXSignpostMixin
 	/// - parameter function: the name of the calling function
 	/// - returns: An identifier that can be passed to the endSignpost() function
 	
-	public func beginSignpost(in name:StaticString,_ function:String = #function) -> Any?
+	public static func beginSignpost(in name:StaticString,_ function:String = #function) -> Any?
 	{
 		if #available(iOS 12.0, OSX 10.14, *)
 		{
@@ -53,13 +53,18 @@ extension BXSignpostMixin
 		return nil
 	}
 
+	public func beginSignpost(in name:StaticString,_ function:String = #function) -> Any?
+	{
+		Self.beginSignpost(in:name,function)
+	}
+
 
 	/// Ends a signpost for measuring the execution time of a function
 	/// - parameter identifier: The identifier that was returned by the beginSignpost() function
 	/// - parameter name: The name of the calling class
 	/// - parameter function: the name of the calling function
 	
-	public func endSignpost(with identifier:Any?,in name:StaticString,_ function:String = #function)
+	public static func endSignpost(with identifier:Any?,in name:StaticString,_ function:String = #function)
 	{
 		if #available(iOS 12.0, OSX 10.14, *)
 		{
@@ -67,7 +72,12 @@ extension BXSignpostMixin
 			os_signpost(.end, log:signpostlog, name:name, signpostID:signpostID, "%@.end",function)
 		}
 	}
-	
+
+	public func endSignpost(with identifier:Any?,in name:StaticString,_ function:String = #function)
+	{
+		Self.endSignpost(with:identifier, in:name,function)
+	}
+
 }
 
 
