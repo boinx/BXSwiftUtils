@@ -391,6 +391,12 @@ public extension URL
 		return CMTimeGetSeconds(CMTimeRangeGetEnd(track.timeRange))
 	}
 	
+	var duration:Double
+	{
+		let asset = AVURLAsset(url:self)
+		return CMTimeGetSeconds(asset.duration)
+	}
+	
 	
 //----------------------------------------------------------------------------------------------------------------------
 
