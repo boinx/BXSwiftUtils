@@ -60,10 +60,11 @@ public extension URL
 		guard let source = CGImageSourceCreateWithURL(self as CFURL,nil) else { return [:] }
 		guard let properties = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
 		
-		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize])
+		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate])
 
 		var metadata = properties as? [CFString:Any] ?? [:]
 		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
+		metadata[kMDItemFSCreationDate] = spotlight[kMDItemFSCreationDate]
 		return metadata
 	}
 
