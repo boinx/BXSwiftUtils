@@ -2,7 +2,7 @@
 //
 //  Array+Exclude.swift
 //	Various Array operations
-//  Copyright ©2020 Peter Baumgartner. All rights reserved.
+//  Copyright ©2020-2022 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -29,6 +29,35 @@ extension Array where Element:AnyObject
 			return true
 		}
 	}
+
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+// Taken from https://www.hackingwithswift.com/example-code/language/how-to-remove-duplicate-items-from-an-array
+
+extension Array where Element: Hashable
+{
+	/// Removes duplicate elements from the array, preserving the original order of the elements.
+	
+    public func removingDuplicates() -> [Element]
+    {
+        var knownElements:[Element:Bool] = [:]
+
+        return filter
+        {
+            knownElements.updateValue(true,forKey:$0) == nil
+        }
+    }
+
+	/// Removes duplicate elements from the array, preserving the original order of the elements.
+	
+    public mutating func removeDuplicates()
+    {
+        self = self.removingDuplicates()
+    }
 }
 
 
