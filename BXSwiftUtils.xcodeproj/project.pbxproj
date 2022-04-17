@@ -69,6 +69,7 @@
 		D013E7A224252B2900207D48 /* Set+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013E7A124252B2900207D48 /* Set+Concatenation.swift */; };
 		D0149008213D566500A38870 /* KVO+propagateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0149006213D566500A38870 /* KVO+propagateChanges.swift */; };
 		D0157ED0227DB41F00E34D65 /* Bundle+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0157ECF227DB41F00E34D65 /* Bundle+Localizations.swift */; };
+		D015BC4B280C5D5700CCB1E2 /* String+MetadataKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D015BC4A280C5D5700CCB1E2 /* String+MetadataKeys.swift */; };
 		D0177B1926F9F0CB0088BF48 /* Array+safeInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0177B1826F9F0CB0088BF48 /* Array+safeInsert.swift */; };
 		D0177B1B26FA11660088BF48 /* String+demangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0177B1A26FA11660088BF48 /* String+demangle.swift */; };
 		D026B3A922A11DB6002B9B02 /* BXStopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */; };
@@ -226,6 +227,7 @@
 		D013E7A124252B2900207D48 /* Set+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Concatenation.swift"; sourceTree = "<group>"; };
 		D0149006213D566500A38870 /* KVO+propagateChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KVO+propagateChanges.swift"; sourceTree = "<group>"; };
 		D0157ECF227DB41F00E34D65 /* Bundle+Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localizations.swift"; sourceTree = "<group>"; };
+		D015BC4A280C5D5700CCB1E2 /* String+MetadataKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MetadataKeys.swift"; sourceTree = "<group>"; };
 		D0177B1826F9F0CB0088BF48 /* Array+safeInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+safeInsert.swift"; sourceTree = "<group>"; };
 		D0177B1A26FA11660088BF48 /* String+demangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+demangle.swift"; sourceTree = "<group>"; };
 		D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXStopWatch.swift; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				D0898134263305EF0079F1E1 /* String+Crypto.swift */,
 				D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */,
 				D0177B1A26FA11660088BF48 /* String+demangle.swift */,
+				D015BC4A280C5D5700CCB1E2 /* String+MetadataKeys.swift */,
 				48C2480F2088CE9400DC9317 /* NSAttributedString+Codable.swift */,
 				D0A4F1122552A43B00FAEBD8 /* Int+localizedString.swift */,
 				D0EF1BC1258A7F0E00DB3EF4 /* Int+localizedString.stringsdict */,
@@ -1018,6 +1021,7 @@
 				D0B6AF6723D30ACF00EDDB74 /* LocalizableIntEnum.swift in Sources */,
 				D07F995023FEDBDC003BEA9D /* Dictionary+Concatenation.swift in Sources */,
 				D08F44E121708CD90060FBAE /* String+Regex.swift in Sources */,
+				D015BC4B280C5D5700CCB1E2 /* String+MetadataKeys.swift in Sources */,
 				D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */,
 				98B04DC4262458A00099ADE5 /* URL+QueryComponents.swift in Sources */,
 				48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
