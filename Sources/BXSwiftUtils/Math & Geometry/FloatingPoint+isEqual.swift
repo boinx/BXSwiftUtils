@@ -7,6 +7,16 @@
 //**********************************************************************************************************************
 
 
+import Foundation
+
+#if os(iOS)
+import CoreGraphics // for CGFloat
+#endif
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 extension Double
 {
 	/// Returns true if the two values are alomost equal, i.e. their difference is smaller than epsilon

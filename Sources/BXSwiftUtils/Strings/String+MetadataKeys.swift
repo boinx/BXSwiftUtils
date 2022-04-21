@@ -29,6 +29,8 @@ import Foundation
 //----------------------------------------------------------------------------------------------------------------------
 
 
+#if os(macOS)
+
 public extension String
 {
 	// General metadata
@@ -84,5 +86,64 @@ public extension String
 	static var audioChannelCountKey = kMDItemAudioChannelCount as String
 }
 
+#else
+
+public extension String
+{
+	// General metadata
+	
+	static var fileSizeKey = "kMDItemFSSize"
+	static var kindKey = "kMDItemKind"
+	static var descriptionKey = "kMDItemDescription"
+	static var creationDateKey = "kMDItemFSCreationDate"
+	static var modificationDateKey = "kMDItemFSContentChangeDate"
+	static var whereFromsKey = "kMDItemWhereFroms"
+	static var copyrightKey = "kMDItemCopyright"
+	static var authorAddressesKey = "kMDItemAuthorAddresses"
+
+	// Image metadata
+	
+	static var widthKey = "kMDItemPixelWidth"
+	static var heightKey = "kMDItemPixelHeight"
+	static var profileNameKey = "kMDItemProfileName"
+	static var modelKey = "kMDItemColorSpace"
+
+	static var exifApertureKey = "kMDItemAperture"
+	static var exifExposureTimeKey = "kMDItemExposureTimeSeconds"
+	static var exifFocalLengthKey = "kMDItemFocalLength35mm"
+	static var exifISOSpeedKey = "kMDItemISOSpeed"
+	static var exifCaptureDateKey = "DateTimeOriginal"
+
+	static var alititudeKey = "kMDItemAltitude"
+	static var latitudeKey = "kMDItemLatitude"
+	static var longitudeKey = "kMDItemLongitude"
+	static var locationNameKey = "kMDItemNamedLocation"
+
+	// Video metadata
+	
+	static var codecsKey = "kMDItemCodecs"
+	static var videoCodecKey = "videoCodec"
+	static var audioCodecKey = "audioCodec"
+	static var videoBitRateKey = "kMDItemVideoBitRate"
+	static var audioBitRateKey = "kMDItemAudioBitRate"
+	static var fpsKey = "fps"
+
+	// Audio metadata
+	
+	static var durationKey = "kMDItemDurationSeconds"
+	static var titleKey = "kMDItemTitle"
+	static var albumKey = "kMDItemAlbum"
+	static var authorsKey = "kMDItemAuthors"
+	static var composerKey = "kMDItemComposer"
+	static var genreKey = "kMDItemMusicalGenre"
+	static var tempoKey = "kMDItemTempo"
+	static var keySignatureKey = "kMDItemKeySignature"
+	static var timeSignatureKey = "kMDItemTimeSignature"
+	static var audioSampleRateKey = "kMDItemAudioSampleRate"
+	static var audioChannelCountKey = "kMDItemAudioChannelCount"
+}
+
+#endif
 
 //----------------------------------------------------------------------------------------------------------------------
+
