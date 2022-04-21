@@ -89,94 +89,95 @@ public extension MTLTexture
 
 	/// Creates a CVPixelBuffer from a Metal texture
 	
-	func createPixelBuffer(with pixelFormat:OSType = kCVPixelFormatType_32ARGB) -> CVPixelBuffer?
-	{
-		// Allocate a new buffer
-		
-		let width = self.width
-		let height = self.height
-		let rowBytes = self.recommendedRowBytes
-		let size = rowBytes * height
-		
-		guard let buffer = malloc(size) else
-		{
-			log.error {"MTLTexture.\(#function) ERROR out of memory"}
-    		return nil
-  		}
-		
-		// Free the buffer again once the CVPixelBuffer is deallocated
-		
-		let releaseCallback:CVPixelBufferReleaseBytesCallback =
-		{
-			_, ptr in
-    		guard let ptr = ptr else { return }
-    		free(UnsafeMutableRawPointer(mutating:ptr))
-		}
-		
-		// Copy pixels from GPU texture to the buffer
-		
-		let region = MTLRegionMake2D(0,0,width,height)
-		self.getBytes(buffer, bytesPerRow:rowBytes, from:region, mipmapLevel:0)
-
-		// Wrap the buffer in a CVPixelBuffer
-		
-		var pixelbuffer:CVPixelBuffer? = nil
-
-		let err = CVPixelBufferCreateWithBytes(
-			kCFAllocatorDefault,
-			width,
-			height,
-			pixelFormat,
-			buffer,
-			rowBytes,
-			releaseCallback,
-			nil,
-			nil,
-			&pixelbuffer)
-		
-		if err != noErr
-		{
-			log.error {"MTLTexture.\(#function) ERROR \(err) trying to create CVPixelBuffer"}
-		}
-
-		return pixelbuffer
-	}
+//	func createPixelBuffer(with pixelFormat:OSType = kCVPixelFormatType_32ARGB) -> CVPixelBuffer?
+//	{
+//		// Allocate a new buffer
+//		
+//		let width = self.width
+//		let height = self.height
+//		let rowBytes = self.recommendedRowBytes
+//		let size = rowBytes * height
+//		
+//		guard let buffer = malloc(size) else
+//		{
+//			log.error {"MTLTexture.\(#function) ERROR out of memory"}
+//    		return nil
+//  		}
+//		
+//		// Free the buffer again once the CVPixelBuffer is deallocated
+//		
+//		let releaseCallback:CVPixelBufferReleaseBytesCallback =
+//		{
+//			_, ptr in
+//    		guard let ptr = ptr else { return }
+//    		free(UnsafeMutableRawPointer(mutating:ptr))
+//		}
+//		
+//		// Copy pixels from GPU texture to the buffer
+//		
+//		let region = MTLRegionMake2D(0,0,width,height)
+//		self.getBytes(buffer, bytesPerRow:rowBytes, from:region, mipmapLevel:0)
+//#warning("TODO: Max: eliminate GPU-CPU-GPU roundtrip - user iosurface instead to make direct conversion")
+//
+//		// Wrap the buffer in a CVPixelBuffer
+//		
+//		var pixelbuffer:CVPixelBuffer? = nil
+//
+//		let err = CVPixelBufferCreateWithBytes(
+//			kCFAllocatorDefault,
+//			width,
+//			height,
+//			pixelFormat,
+//			buffer,
+//			rowBytes,
+//			releaseCallback,
+//			nil,
+//			nil,
+//			&pixelbuffer)
+//		
+//		if err != noErr
+//		{
+//			log.error {"MTLTexture.\(#function) ERROR \(err) trying to create CVPixelBuffer"}
+//		}
+//
+//		return pixelbuffer
+//	}
 
 
 	/// Copies a Metal texture to a CVPixelBuffer
 
-	func copy(to pixelBuffer:CVPixelBuffer)
-	{
-		// Check that the texture and the pixelBuffer match in size
-		
-		let srcWidth = self.width
-		let srcHeight = self.height
-//		let srcRowbytes = self.recommendedRowBytes
-		
-		let dstWidth = CVPixelBufferGetWidth(pixelBuffer)
-		let dstHeight = CVPixelBufferGetHeight(pixelBuffer)
-		let dstRowbytes = CVPixelBufferGetBytesPerRow(pixelBuffer)
-
-		guard srcWidth == dstWidth && srcHeight == dstHeight else
-		{
-			log.error {"MTLTexture.\(#function) ERROR srcWidth=\(srcWidth) dstWidth=\(dstWidth) srcHeight=\(srcHeight) dstHeight=\(dstHeight)"}
-			return
-		}
-
-		// Copy pixels from GPU texture to the buffer
-		
-		CVPixelBufferLockBaseAddress(pixelBuffer,[])
-		defer { CVPixelBufferUnlockBaseAddress(pixelBuffer,[]) }
-		
-		guard let buffer = CVPixelBufferGetBaseAddress(pixelBuffer) else
-		{
-			log.error {"MTLTexture.\(#function) ERROR pixelBuffer.baseAddress = nil"}
-			return
-		}
-		
-		let region = MTLRegionMake2D(0,0,srcWidth,srcHeight)
-		self.getBytes(buffer, bytesPerRow:dstRowbytes, from:region, mipmapLevel:0)
-	}
+//	func copy(to pixelBuffer:CVPixelBuffer)
+//	{
+//		// Check that the texture and the pixelBuffer match in size
+//
+//		let srcWidth = self.width
+//		let srcHeight = self.height
+////		let srcRowbytes = self.recommendedRowBytes
+//
+//		let dstWidth = CVPixelBufferGetWidth(pixelBuffer)
+//		let dstHeight = CVPixelBufferGetHeight(pixelBuffer)
+//		let dstRowbytes = CVPixelBufferGetBytesPerRow(pixelBuffer)
+//
+//		guard srcWidth == dstWidth && srcHeight == dstHeight else
+//		{
+//			log.error {"MTLTexture.\(#function) ERROR srcWidth=\(srcWidth) dstWidth=\(dstWidth) srcHeight=\(srcHeight) dstHeight=\(dstHeight)"}
+//			return
+//		}
+//
+//		// Copy pixels from GPU texture to the buffer
+//
+//		CVPixelBufferLockBaseAddress(pixelBuffer,[])
+//		defer { CVPixelBufferUnlockBaseAddress(pixelBuffer,[]) }
+//
+//		guard let buffer = CVPixelBufferGetBaseAddress(pixelBuffer) else
+//		{
+//			log.error {"MTLTexture.\(#function) ERROR pixelBuffer.baseAddress = nil"}
+//			return
+//		}
+//
+//		let region = MTLRegionMake2D(0,0,srcWidth,srcHeight)
+//		self.getBytes(buffer, bytesPerRow:dstRowbytes, from:region, mipmapLevel:0)
+//	}
 	
 	
 //----------------------------------------------------------------------------------------------------------------------
