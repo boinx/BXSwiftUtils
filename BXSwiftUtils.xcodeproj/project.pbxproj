@@ -827,9 +827,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4875F270205299A6009985EC /* Build configuration list for PBXNativeTarget "BXSwiftUtils" */;
 			buildPhases = (
+				4875F25C205299A6009985EC /* Headers */,
 				4875F25A205299A6009985EC /* Sources */,
 				4875F25B205299A6009985EC /* Frameworks */,
-				4875F25C205299A6009985EC /* Headers */,
 				4875F25D205299A6009985EC /* Resources */,
 				481A257821748DAC00FB8E9A /* Export Product Location */,
 			);

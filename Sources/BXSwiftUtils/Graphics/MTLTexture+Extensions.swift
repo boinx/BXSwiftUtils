@@ -33,7 +33,7 @@ public extension MTLTexture
 		desc.storageMode = self.storageMode
 		desc.usage = self.usage
 		
-		if #available(macOS 10.14, *)
+		if #available(macOS 10.14, iOS 12.0, *)
 		{
 			desc.allowGPUOptimizedContents = self.allowGPUOptimizedContents
 		}
