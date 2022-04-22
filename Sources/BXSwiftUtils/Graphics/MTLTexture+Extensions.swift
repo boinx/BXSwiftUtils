@@ -20,6 +20,32 @@ import CoreVideo
 public extension MTLTexture
 {
 
+	/// Creates a new MTLTexture with the same size and format
+	
+	func newTextureWithSameFormat() -> MTLTexture?
+	{
+		let desc = MTLTextureDescriptor.texture2DDescriptor(
+			pixelFormat:pixelFormat,
+			width:width,
+			height:height,
+			mipmapped:mipmapLevelCount>1)
+			
+		desc.storageMode = self.storageMode
+		desc.usage = self.usage
+		
+		if #available(macOS 10.14, *)
+		{
+			desc.allowGPUOptimizedContents = self.allowGPUOptimizedContents
+		}
+		
+		let texture = self.device.makeTexture(descriptor:desc)
+		return texture
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Returns the number of bytes per row in this MTLTexture. If this info is not available from the
 	/// MTLTexture, a recommended value will be calculated.
 	
