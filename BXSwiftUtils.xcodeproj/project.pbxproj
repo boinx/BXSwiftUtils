@@ -133,6 +133,7 @@
 		D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */; };
 		D0B78BDD2412930D004179A5 /* CGSize+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B78BDC2412930D004179A5 /* CGSize+Init.swift */; };
 		D0C117C3247EDB7B00F5CE66 /* Array+DoubleLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C117C2247EDB7B00F5CE66 /* Array+DoubleLinkedList.swift */; };
+		D0C1CBAB281D839F00128DED /* CGImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1CBAA281D839E00128DED /* CGImage+Extensions.swift */; };
 		D0C2294021BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
 		D0C7FDBE264CF0DF00235995 /* String+Obfuscate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */; };
@@ -298,6 +299,7 @@
 		D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXSelectionController+Combine.swift"; sourceTree = "<group>"; };
 		D0B78BDC2412930D004179A5 /* CGSize+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Init.swift"; sourceTree = "<group>"; };
 		D0C117C2247EDB7B00F5CE66 /* Array+DoubleLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DoubleLinkedList.swift"; sourceTree = "<group>"; };
+		D0C1CBAA281D839E00128DED /* CGImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Extensions.swift"; sourceTree = "<group>"; };
 		D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
 		D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Obfuscate.swift"; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
 				D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */,
 				D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */,
+				D0C1CBAA281D839E00128DED /* CGImage+Extensions.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 				D0C117C3247EDB7B00F5CE66 /* Array+DoubleLinkedList.swift in Sources */,
 				481A25C12175D38700FB8E9A /* CACornerMask+Convenience.swift in Sources */,
 				4875F276205299F7009985EC /* Array+Concatenation.swift in Sources */,
+				D0C1CBAB281D839F00128DED /* CGImage+Extensions.swift in Sources */,
 				D0B125DD27A2F0D800B32D9A /* URL+Bookmark.swift in Sources */,
 				D0177B1B26FA11660088BF48 /* String+demangle.swift in Sources */,
 				D0B6AF6423D3034900EDDB74 /* BXSelectionController.swift in Sources */,
