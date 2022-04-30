@@ -13,16 +13,25 @@ import Foundation
 //----------------------------------------------------------------------------------------------------------------------
 
 
-#if os(macOS)
-	
 public extension URL
 {
 	func bookmarkData() throws -> Data
 	{
+		#if os(macOS)
+	
 		try self.bookmarkData(
 			options:[.withSecurityScope],
 			includingResourceValuesForKeys:nil,
 			relativeTo:nil)
+		
+		#else
+		
+		try self.bookmarkData(
+			options:[],
+			includingResourceValuesForKeys:nil,
+			relativeTo:nil)
+		
+		#endif
 	}
 	
 	init?(with bookmark:Data)
@@ -31,11 +40,23 @@ public extension URL
 		
 		do
 		{
+			#if os(macOS)
+	
 			try self.init(
 				resolvingBookmarkData:bookmark,
 				options:[.withSecurityScope],
 				relativeTo:nil,
 				bookmarkDataIsStale:&isStale)
+			
+			#else
+			
+			try self.init(
+				resolvingBookmarkData:bookmark,
+				options: [.withoutUI],
+				relativeTo:nil,
+				bookmarkDataIsStale:&isStale)
+			
+			#endif
 			
 			if isStale { return nil }
 		}
@@ -45,8 +66,6 @@ public extension URL
 		}
 	}
 }
-	
-#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
