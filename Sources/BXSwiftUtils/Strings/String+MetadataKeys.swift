@@ -29,7 +29,56 @@ import Foundation
 //----------------------------------------------------------------------------------------------------------------------
 
 
-#if os(macOS)
+// Since the following constants are not available on iOS we'll define them for cross-platform code
+
+#if os(iOS)
+
+let kMDItemFSSize = "kMDItemFSSize" as CFString
+let kMDItemKind = "kMDItemKind" as CFString
+let kMDItemDescription = "kMDItemDescription" as CFString
+let kMDItemFSCreationDate = "kMDItemFSCreationDate" as CFString
+let kMDItemFSContentChangeDate = "kMDItemFSContentChangeDate" as CFString
+let kMDItemWhereFroms = "kMDItemWhereFroms" as CFString
+let kMDItemCopyright = "kMDItemCopyright" as CFString
+let kMDItemAuthorAddresses = "kMDItemAuthorAddresses" as CFString
+let kMDItemComment = "kMDItemComment" as CFString
+
+let kMDItemPixelWidth = "kMDItemPixelWidth" as CFString
+let kMDItemPixelHeight = "kMDItemPixelHeight" as CFString
+let kMDItemProfileName = "kMDItemProfileName" as CFString
+let kMDItemColorSpace = "kMDItemColorSpace" as CFString
+
+let kMDItemAperture = "kMDItemAperture" as CFString
+let kMDItemExposureTimeSeconds = "kMDItemExposureTimeSeconds" as CFString
+let kMDItemFocalLength35mm = "kMDItemFocalLength35mm" as CFString
+let kMDItemISOSpeed = "kMDItemISOSpeed" as CFString
+
+let kMDItemAltitude = "kMDItemAltitude" as CFString
+let kMDItemLatitude = "kMDItemLatitude" as CFString
+let kMDItemLongitude = "kMDItemLongitude" as CFString
+let kMDItemNamedLocation = "kMDItemNamedLocation" as CFString
+
+let kMDItemCodecs = "kMDItemCodecs" as CFString
+let kMDItemVideoBitRate = "kMDItemVideoBitRate" as CFString
+let kMDItemAudioBitRate = "kMDItemAudioBitRate" as CFString
+
+let kMDItemDurationSeconds = "kMDItemDurationSeconds" as CFString
+let kMDItemTitle = "kMDItemTitle" as CFString
+let kMDItemAlbum = "kMDItemAlbum" as CFString
+let kMDItemAuthors = "kMDItemAuthors" as CFString
+let kMDItemComposer = "kMDItemComposer" as CFString
+let kMDItemMusicalGenre = "kMDItemMusicalGenre" as CFString
+let kMDItemTempo = "kMDItemTempo" as CFString
+let kMDItemKeySignature = "kMDItemKeySignature" as CFString
+let kMDItemTimeSignature = "kMDItemTimeSignature" as CFString
+let kMDItemAudioSampleRate = "kMDItemAudioSampleRate" as CFString
+let kMDItemAudioChannelCount = "kMDItemAudioChannelCount" as CFString
+
+#endif
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 public extension String
 {
@@ -86,64 +135,61 @@ public extension String
 	static var audioChannelCountKey = kMDItemAudioChannelCount as String
 }
 
-#else
+//public extension String
+//{
+//	// General metadata
+//
+//	static var fileSizeKey = "kMDItemFSSize"
+//	static var kindKey = "kMDItemKind"
+//	static var descriptionKey = "kMDItemDescription"
+//	static var creationDateKey = "kMDItemFSCreationDate"
+//	static var modificationDateKey = "kMDItemFSContentChangeDate"
+//	static var whereFromsKey = "kMDItemWhereFroms"
+//	static var copyrightKey = "kMDItemCopyright"
+//	static var authorAddressesKey = "kMDItemAuthorAddresses"
+//
+//	// Image metadata
+//
+//	static var widthKey = "kMDItemPixelWidth"
+//	static var heightKey = "kMDItemPixelHeight"
+//	static var profileNameKey = "kMDItemProfileName"
+//	static var modelKey = "kMDItemColorSpace"
+//
+//	static var exifApertureKey = "kMDItemAperture"
+//	static var exifExposureTimeKey = "kMDItemExposureTimeSeconds"
+//	static var exifFocalLengthKey = "kMDItemFocalLength35mm"
+//	static var exifISOSpeedKey = "kMDItemISOSpeed"
+//	static var exifCaptureDateKey = "DateTimeOriginal"
+//
+//	static var alititudeKey = "kMDItemAltitude"
+//	static var latitudeKey = "kMDItemLatitude"
+//	static var longitudeKey = "kMDItemLongitude"
+//	static var locationNameKey = "kMDItemNamedLocation"
+//
+//	// Video metadata
+//
+//	static var codecsKey = "kMDItemCodecs"
+//	static var videoCodecKey = "videoCodec"
+//	static var audioCodecKey = "audioCodec"
+//	static var videoBitRateKey = "kMDItemVideoBitRate"
+//	static var audioBitRateKey = "kMDItemAudioBitRate"
+//	static var fpsKey = "fps"
+//
+//	// Audio metadata
+//
+//	static var durationKey = "kMDItemDurationSeconds"
+//	static var titleKey = "kMDItemTitle"
+//	static var albumKey = "kMDItemAlbum"
+//	static var authorsKey = "kMDItemAuthors"
+//	static var composerKey = "kMDItemComposer"
+//	static var genreKey = "kMDItemMusicalGenre"
+//	static var tempoKey = "kMDItemTempo"
+//	static var keySignatureKey = "kMDItemKeySignature"
+//	static var timeSignatureKey = "kMDItemTimeSignature"
+//	static var audioSampleRateKey = "kMDItemAudioSampleRate"
+//	static var audioChannelCountKey = "kMDItemAudioChannelCount"
+//}
 
-public extension String
-{
-	// General metadata
-	
-	static var fileSizeKey = "kMDItemFSSize"
-	static var kindKey = "kMDItemKind"
-	static var descriptionKey = "kMDItemDescription"
-	static var creationDateKey = "kMDItemFSCreationDate"
-	static var modificationDateKey = "kMDItemFSContentChangeDate"
-	static var whereFromsKey = "kMDItemWhereFroms"
-	static var copyrightKey = "kMDItemCopyright"
-	static var authorAddressesKey = "kMDItemAuthorAddresses"
-
-	// Image metadata
-	
-	static var widthKey = "kMDItemPixelWidth"
-	static var heightKey = "kMDItemPixelHeight"
-	static var profileNameKey = "kMDItemProfileName"
-	static var modelKey = "kMDItemColorSpace"
-
-	static var exifApertureKey = "kMDItemAperture"
-	static var exifExposureTimeKey = "kMDItemExposureTimeSeconds"
-	static var exifFocalLengthKey = "kMDItemFocalLength35mm"
-	static var exifISOSpeedKey = "kMDItemISOSpeed"
-	static var exifCaptureDateKey = "DateTimeOriginal"
-
-	static var alititudeKey = "kMDItemAltitude"
-	static var latitudeKey = "kMDItemLatitude"
-	static var longitudeKey = "kMDItemLongitude"
-	static var locationNameKey = "kMDItemNamedLocation"
-
-	// Video metadata
-	
-	static var codecsKey = "kMDItemCodecs"
-	static var videoCodecKey = "videoCodec"
-	static var audioCodecKey = "audioCodec"
-	static var videoBitRateKey = "kMDItemVideoBitRate"
-	static var audioBitRateKey = "kMDItemAudioBitRate"
-	static var fpsKey = "fps"
-
-	// Audio metadata
-	
-	static var durationKey = "kMDItemDurationSeconds"
-	static var titleKey = "kMDItemTitle"
-	static var albumKey = "kMDItemAlbum"
-	static var authorsKey = "kMDItemAuthors"
-	static var composerKey = "kMDItemComposer"
-	static var genreKey = "kMDItemMusicalGenre"
-	static var tempoKey = "kMDItemTempo"
-	static var keySignatureKey = "kMDItemKeySignature"
-	static var timeSignatureKey = "kMDItemTimeSignature"
-	static var audioSampleRateKey = "kMDItemAudioSampleRate"
-	static var audioChannelCountKey = "kMDItemAudioChannelCount"
-}
-
-#endif
 
 //----------------------------------------------------------------------------------------------------------------------
 

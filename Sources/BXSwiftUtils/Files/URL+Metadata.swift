@@ -7,11 +7,18 @@
 //**********************************************************************************************************************
 
 
-#if os(macOS)
-
 import Foundation
 import AVFoundation
 import CoreSpotlight
+
+#if canImport(UniformTypeIdentifiers)
+import UniformTypeIdentifiers
+#endif
+
+#if canImport(MobileCoreServices)
+import MobileCoreServices
+#endif
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -553,6 +560,8 @@ public extension URL
 	{
 		var metadata:[CFString:Any] = [:]
 
+		#if os(macOS)
+		
 		guard let item = MDItemCreateWithURL(nil,self as CFURL) else { return metadata }
 		guard let attributes = MDItemCopyAttributes(item,keys as CFArray) as? [CFString:Any] else { return metadata }
 		
@@ -560,6 +569,8 @@ public extension URL
 		{
 			metadata[key] = value
 		}
+		
+		#endif
 		
 		return metadata
 	}
@@ -577,6 +588,3 @@ public extension URL
 
 
 //----------------------------------------------------------------------------------------------------------------------
-
-
-#endif
