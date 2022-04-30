@@ -33,46 +33,46 @@ import Foundation
 
 #if os(iOS)
 
-let kMDItemFSSize = "kMDItemFSSize" as CFString
-let kMDItemKind = "kMDItemKind" as CFString
-let kMDItemDescription = "kMDItemDescription" as CFString
-let kMDItemFSCreationDate = "kMDItemFSCreationDate" as CFString
-let kMDItemFSContentChangeDate = "kMDItemFSContentChangeDate" as CFString
-let kMDItemWhereFroms = "kMDItemWhereFroms" as CFString
-let kMDItemCopyright = "kMDItemCopyright" as CFString
-let kMDItemAuthorAddresses = "kMDItemAuthorAddresses" as CFString
-let kMDItemComment = "kMDItemComment" as CFString
+public let kMDItemFSSize = "kMDItemFSSize" as CFString
+public let kMDItemKind = "kMDItemKind" as CFString
+public let kMDItemDescription = "kMDItemDescription" as CFString
+public let kMDItemFSCreationDate = "kMDItemFSCreationDate" as CFString
+public let kMDItemFSContentChangeDate = "kMDItemFSContentChangeDate" as CFString
+public let kMDItemWhereFroms = "kMDItemWhereFroms" as CFString
+public let kMDItemCopyright = "kMDItemCopyright" as CFString
+public let kMDItemAuthorAddresses = "kMDItemAuthorAddresses" as CFString
+public let kMDItemComment = "kMDItemComment" as CFString
 
-let kMDItemPixelWidth = "kMDItemPixelWidth" as CFString
-let kMDItemPixelHeight = "kMDItemPixelHeight" as CFString
-let kMDItemProfileName = "kMDItemProfileName" as CFString
-let kMDItemColorSpace = "kMDItemColorSpace" as CFString
+public let kMDItemPixelWidth = "kMDItemPixelWidth" as CFString
+public let kMDItemPixelHeight = "kMDItemPixelHeight" as CFString
+public let kMDItemProfileName = "kMDItemProfileName" as CFString
+public let kMDItemColorSpace = "kMDItemColorSpace" as CFString
 
-let kMDItemAperture = "kMDItemAperture" as CFString
-let kMDItemExposureTimeSeconds = "kMDItemExposureTimeSeconds" as CFString
-let kMDItemFocalLength35mm = "kMDItemFocalLength35mm" as CFString
-let kMDItemISOSpeed = "kMDItemISOSpeed" as CFString
+public let kMDItemAperture = "kMDItemAperture" as CFString
+public let kMDItemExposureTimeSeconds = "kMDItemExposureTimeSeconds" as CFString
+public let kMDItemFocalLength35mm = "kMDItemFocalLength35mm" as CFString
+public let kMDItemISOSpeed = "kMDItemISOSpeed" as CFString
 
-let kMDItemAltitude = "kMDItemAltitude" as CFString
-let kMDItemLatitude = "kMDItemLatitude" as CFString
-let kMDItemLongitude = "kMDItemLongitude" as CFString
-let kMDItemNamedLocation = "kMDItemNamedLocation" as CFString
+public let kMDItemAltitude = "kMDItemAltitude" as CFString
+public let kMDItemLatitude = "kMDItemLatitude" as CFString
+public let kMDItemLongitude = "kMDItemLongitude" as CFString
+public let kMDItemNamedLocation = "kMDItemNamedLocation" as CFString
 
-let kMDItemCodecs = "kMDItemCodecs" as CFString
-let kMDItemVideoBitRate = "kMDItemVideoBitRate" as CFString
-let kMDItemAudioBitRate = "kMDItemAudioBitRate" as CFString
+public let kMDItemCodecs = "kMDItemCodecs" as CFString
+public let kMDItemVideoBitRate = "kMDItemVideoBitRate" as CFString
+public let kMDItemAudioBitRate = "kMDItemAudioBitRate" as CFString
 
-let kMDItemDurationSeconds = "kMDItemDurationSeconds" as CFString
-let kMDItemTitle = "kMDItemTitle" as CFString
-let kMDItemAlbum = "kMDItemAlbum" as CFString
-let kMDItemAuthors = "kMDItemAuthors" as CFString
-let kMDItemComposer = "kMDItemComposer" as CFString
-let kMDItemMusicalGenre = "kMDItemMusicalGenre" as CFString
-let kMDItemTempo = "kMDItemTempo" as CFString
-let kMDItemKeySignature = "kMDItemKeySignature" as CFString
-let kMDItemTimeSignature = "kMDItemTimeSignature" as CFString
-let kMDItemAudioSampleRate = "kMDItemAudioSampleRate" as CFString
-let kMDItemAudioChannelCount = "kMDItemAudioChannelCount" as CFString
+public let kMDItemDurationSeconds = "kMDItemDurationSeconds" as CFString
+public let kMDItemTitle = "kMDItemTitle" as CFString
+public let kMDItemAlbum = "kMDItemAlbum" as CFString
+public let kMDItemAuthors = "kMDItemAuthors" as CFString
+public let kMDItemComposer = "kMDItemComposer" as CFString
+public let kMDItemMusicalGenre = "kMDItemMusicalGenre" as CFString
+public let kMDItemTempo = "kMDItemTempo" as CFString
+public let kMDItemKeySignature = "kMDItemKeySignature" as CFString
+public let kMDItemTimeSignature = "kMDItemTimeSignature" as CFString
+public let kMDItemAudioSampleRate = "kMDItemAudioSampleRate" as CFString
+public let kMDItemAudioChannelCount = "kMDItemAudioChannelCount" as CFString
 
 #endif
 
