@@ -27,16 +27,16 @@ public extension CGImage
 {
 	/// Returns the CGImage with the specified name from the Resources of a particular Bundle
 	
-	static func image(named:String, in bundle:Bundle?) -> CGImage?
+	static func image(named name:String, in bundle:Bundle?) -> CGImage?
 	{
 		#if os(macOS)
 		
 		let bundle = bundle ?? Bundle.main
-		return bundle.image(forResource:"Unsplash")?.CGImage
+		return bundle.image(forResource:name)?.CGImage
 		
 		#else
 		
-		UIImage(named:"Unsplash", in:bundle, compatibleWith:nil)?.cgImage
+		UIImage(named:name, in:bundle, compatibleWith:nil)?.cgImage
 		
 		#endif
 	}
