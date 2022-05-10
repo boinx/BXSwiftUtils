@@ -55,13 +55,19 @@ public extension URL
 	
     var isCorruptedAppleLoopFile:Bool
     {
+		// Is this a caf file in "Library/Audio/Apple Loops/"
+		
 		guard self.pathExtension == "caf" else { return false }
 		guard self.path.contains("Apple Loops") else { return false }
 		
-		// This check for file size < 50K is reasonable fast, but of course it is by no means reliable!
+		// The check for file size < 30K is reasonable fast, but of course it is by no means reliable!
+		
+		// Looks like the file size correlates with the audio duration, e.g. a 10s loop has approximately 10K bytes
+		// file size. This would be a more reliable check, but then we would have to get the audio duration, which
+		// is too expensive a t this point.
 		
 		let size = self.fileSize ?? 0
-		return size < 50000
+		return size < 30000
     }
 }
 
