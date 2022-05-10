@@ -49,6 +49,20 @@ public extension URL
 		guard let uti = self.uti else { return false }
 		return UTTypeConformsTo(uti as CFString, kUTTypeMovie)
 	}
+
+    /// Returns true if the file at the specified URL is an Apple Loop file that cannot be used because it is
+	/// incomplete, e.g. because it has not been fully downloaded yet.
+	
+    var isCorruptedAppleLoopFile:Bool
+    {
+		guard self.pathExtension == "caf" else { return false }
+		guard self.path.contains("Apple Loops") else { return false }
+		
+		// This check for file size < 50K is reasonable fast, but of course it is by no means reliable!
+		
+		let size = self.fileSize ?? 0
+		return size < 50000
+    }
 }
 
 
