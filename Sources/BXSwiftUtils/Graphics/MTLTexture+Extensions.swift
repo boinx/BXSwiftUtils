@@ -269,3 +269,34 @@ public extension MTLTexture
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+public extension MTLDevice
+{
+	/// Creates a shared MTLTexture from the IOSurface of the supplied CVPixelBuffer.
+	///
+	/// This texture can be used to render directly to the CVPixelBuffer, without having to copy any bytes.
+
+	func newTexture(with pixelBuffer:CVPixelBuffer, usage:MTLTextureUsage = .renderTarget) -> MTLTexture?
+	{
+		guard let ioSurface = CVPixelBufferGetIOSurface(pixelBuffer)?.takeUnretainedValue() else { return nil }
+		let width = CVPixelBufferGetWidth(pixelBuffer)
+		let height = CVPixelBufferGetHeight(pixelBuffer)
+		
+		let desc = MTLTextureDescriptor()
+		desc.pixelFormat = .bgra8Unorm
+		desc.width = width
+		desc.height = height
+		desc.usage = usage
+		#if os(macOS)
+		desc.storageMode = .managed
+		#else
+		desc.storageMode = .shared
+		#endif
+		
+		return self.makeTexture(descriptor:desc, iosurface:ioSurface, plane:0)
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
