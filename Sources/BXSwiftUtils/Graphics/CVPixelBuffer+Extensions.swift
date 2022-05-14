@@ -17,6 +17,31 @@ import VideoToolbox
 
 public extension CVPixelBuffer
 {
+	/// Creates an IOSurface backed CVPixelBuffer of the specified size.
+	///
+	/// When creating a MTLTexture from this CVPixelBuffer, you can render directly to this CVPixelBuffer.
+
+	static func create(width:Int, height:Int, pixelFormat:OSType = kCVPixelFormatType_32BGRA) -> CVPixelBuffer?
+	{
+		guard width > 0 else { return nil }
+		guard height > 0 else { return nil }
+			
+		let attributes:[String:Any] =
+		[
+			kCVPixelBufferPixelFormatTypeKey as String : NSNumber(value: kCVPixelFormatType_32BGRA),
+			kCVPixelBufferWidthKey as String : width,
+			kCVPixelBufferHeightKey as String : height,
+			kCVPixelBufferMetalCompatibilityKey as String : true,
+			kCVPixelBufferIOSurfacePropertiesKey as String : [:]  // This forces creation of an IOSurface
+		]
+
+		var pixelBuffer:CVPixelBuffer? = nil
+		let result = CVPixelBufferCreate(nil, width, height, pixelFormat, attributes as CFDictionary, &pixelBuffer)
+		guard result == kCVReturnSuccess else { return nil }
+		return pixelBuffer
+	}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
