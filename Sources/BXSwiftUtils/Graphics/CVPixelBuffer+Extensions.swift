@@ -2,7 +2,7 @@
 //
 //  CVPixelBuffer+Extensions.swift
 //	Adds convenience methods
-//  Copyright ©2018 Peter Baumgartner. All rights reserved.
+//  Copyright ©2018-2022 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -17,6 +17,23 @@ import VideoToolbox
 
 public extension CVPixelBuffer
 {
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Returns a CGImage for a CVPixelBuffer
+	
+	@available(OSX 10.11, *)
+	
+	var CGImage : CGImage?
+	{
+    	var image:CGImage? = nil
+		VTCreateCGImageFromCVPixelBuffer(self, options:nil, imageOut:&image)
+		return image
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 	/// Resizes the image in a CVPixelBuffer to the specified size, returning a new CVPixelBuffer
 	///  - parameter size: The new size of the resulting CVPixelBuffer
@@ -88,20 +105,6 @@ public extension CVPixelBuffer
 		}
 		
 		return dstPixelBuffer
-	}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	/// Returns a CGImage for a CVPixelBuffer
-	
-	@available(OSX 10.11, *)
-	var CGImage : CGImage?
-	{
-    	var image:CGImage? = nil
-		VTCreateCGImageFromCVPixelBuffer(self,options:nil,imageOut:&image)
-		return image
 	}
 
 
