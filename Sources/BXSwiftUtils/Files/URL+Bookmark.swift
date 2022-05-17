@@ -19,7 +19,7 @@ public extension URL
 	{
 		#if os(macOS)
 	
-		try self.bookmarkData(
+		return try self.bookmarkData(
 			options:[.withSecurityScope],
 			includingResourceValuesForKeys:nil,
 			relativeTo:nil)
