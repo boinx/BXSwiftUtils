@@ -87,6 +87,7 @@ public extension String
 	static var fileSizeKey = kMDItemFSSize as String
 	static var kindKey = kMDItemKind as String
 	static var descriptionKey = kMDItemDescription as String //"description"
+	static var captureDateKey = kMDItemContentCreationDate as String 
 	static var creationDateKey = kMDItemFSCreationDate as String //"creationDate"
 	static var modificationDateKey = kMDItemFSContentChangeDate as String //"modificationDate"
 	static var whereFromsKey = kMDItemWhereFroms as String

@@ -441,6 +441,7 @@ public extension URL
 			kMDItemFSSize,
 			kMDItemKind,
 			kMDItemCodecs,
+			kMDItemContentCreationDate
 		]
 		
 		let spotlight = self.spotlightMetadata(for:keys)
@@ -562,6 +563,7 @@ public extension URL
 		metadata["fps" as CFString] = fps
 		metadata["videoCodec" as CFString] = videoCodec
 		metadata["audioCodec" as CFString] = audioCodec
+		metadata[kMDItemContentCreationDate] = spotlight[kMDItemContentCreationDate] as? Date
 		return metadata
 	}
 }
