@@ -2,7 +2,7 @@
 //
 //  Synchronized.swift
 //	Simulates the @synchronized directive of Objective-C
-//  Copyright ©2016 Peter Baumgartner. All rights reserved.
+//  Copyright ©2016-2022 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -29,7 +29,7 @@ import Foundation
  - Returns: The return value of the block is returned to the caller.
  - Throws: Re-throws if the given block throws.
 */
-public func synchronized<T>(_ lock: AnyObject, _ closure: () throws -> T) rethrows -> T
+public func synchronized<T>(_ lock: Any, _ closure: () throws -> T) rethrows -> T
 {
     objc_sync_enter(lock)
     defer { objc_sync_exit(lock) }
