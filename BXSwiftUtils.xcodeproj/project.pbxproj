@@ -137,6 +137,7 @@
 		D0C1CBAB281D839F00128DED /* CGImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C1CBAA281D839E00128DED /* CGImage+Extensions.swift */; };
 		D0C2294021BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */; };
 		D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */; };
+		D0C4B9D328468F340016FD6E /* GenericPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B9D228468F320016FD6E /* GenericPublisher.swift */; };
 		D0C7FDBE264CF0DF00235995 /* String+Obfuscate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */; };
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
 		D0CA564A256CEA1700D2C09D /* MTKTextureLoader+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */; };
@@ -304,6 +305,7 @@
 		D0C1CBAA281D839E00128DED /* CGImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Extensions.swift"; sourceTree = "<group>"; };
 		D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		D0C47CE320EE55DA003D3FA3 /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
+		D0C4B9D228468F320016FD6E /* GenericPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPublisher.swift; sourceTree = "<group>"; };
 		D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Obfuscate.swift"; sourceTree = "<group>"; };
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
 		D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Draw.swift"; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */,
 				D084549A25E7A96E00BBE2CA /* NotificationCenter+postOnMain.swift */,
 				D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */,
+				D0C4B9D228468F320016FD6E /* GenericPublisher.swift */,
 			);
 			path = "KVO & Notifications";
 			sourceTree = "<group>";
@@ -1049,6 +1052,7 @@
 				D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
 				D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */,
 				D0A4F1132552A43B00FAEBD8 /* Int+localizedString.swift in Sources */,
+				D0C4B9D328468F340016FD6E /* GenericPublisher.swift in Sources */,
 				48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */,
