@@ -81,8 +81,8 @@ extension BXLogger
 		
 		// NSLog automatically appends a return, but for the fileDestination we need to do this manually
 		
-		let timestamp = Date()
 		let line = "\(timestamp):    \(message) \n"
+		let timestamp = timestampFormatter.string(for:Date()) ?? ""
 		
 		// Append the line to the end of the logfile
 		
@@ -133,6 +133,17 @@ extension BXLogger
 		}
 	}
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+	
+fileprivate let timestampFormatter:Formatter =
+{
+	let formatter = DateFormatter()
+	formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS Z"
+	return formatter
+}()
 
 
 //----------------------------------------------------------------------------------------------------------------------
