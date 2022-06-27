@@ -106,6 +106,17 @@ extension BXLogger
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	/// Closes the current logfile, deletes it, and then opens a fresh logfile
+	
+	public static func clearLogFile() throws
+	{
+		guard let url = self.logFile.url else { return }
+		
+		self.closeLogFile()
+		try FileManager.default.removeItem(at:url)
+		try self.openLogFile(at:url)
+	}
+	
 	/// Loads the logfile and calls the sendHandler that can do whatever it wants with it
 	
 	public static func sendLogFile(sendHandler:(URL,Data,String)->Void) throws
