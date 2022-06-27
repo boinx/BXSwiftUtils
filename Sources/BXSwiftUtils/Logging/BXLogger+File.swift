@@ -81,8 +81,9 @@ extension BXLogger
 		
 		// NSLog automatically appends a return, but for the fileDestination we need to do this manually
 		
-		let line = "\(timestamp):    \(message) \n"
 		let timestamp = timestampFormatter.string(for:Date()) ?? ""
+		let icon = level == .error ? "🛑 " : (level == .warning ? "⚠️ " : "")
+		let line = "\(timestamp):    \(icon)\(message) \n"
 		
 		// Append the line to the end of the logfile
 		
