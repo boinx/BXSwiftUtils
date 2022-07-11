@@ -170,7 +170,7 @@ extension URL
 		for filename in filenames
 		{
 			let url = self.appendingPathComponent(filename)
-			if url.isDirectory { return true }
+			if url.isDirectory && !url.isPackage { return true }
 		}
 		
 		return false
