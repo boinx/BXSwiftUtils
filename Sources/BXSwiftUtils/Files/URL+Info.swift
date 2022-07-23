@@ -443,3 +443,35 @@ extension URL
 
 //----------------------------------------------------------------------------------------------------------------------
 
+
+// MARK: -
+
+extension URL
+{
+	/// Returns the URL of the common ancestor folder of self and otherURL
+	
+	public func commonAncestor(with otherURL:URL) -> URL?
+	{
+		let path1 = self.pathComponents
+		let path2 = otherURL.pathComponents
+		var commonPath = ""
+		
+		for (name1,name2) in zip(path1,path2)
+		{
+			guard name1 == name2 else { break }
+			guard name1 != "/" else { continue }
+			commonPath += "/" + name1
+		}
+		
+		if !commonPath.isEmpty
+		{
+			return URL(fileURLWithPath:commonPath)
+		}
+		
+		return nil
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
