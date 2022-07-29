@@ -156,6 +156,7 @@
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
 		D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */; };
 		D0EF1BC3258A7F0E00DB3EF4 /* Int+localizedString.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D0EF1BC1258A7F0E00DB3EF4 /* Int+localizedString.stringsdict */; };
+		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */; };
 		F66019A3249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
@@ -328,6 +329,7 @@
 		D0EF1BC2258A7F0E00DB3EF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = "Sources/BXSwiftUtils/en.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
 		D0EF1BC6258A7F1500DB3EF4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = "Sources/BXSwiftUtils/de.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
 		D0EF1BC7258A7F1E00DB3EF4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = "Sources/BXSwiftUtils/fr.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
+		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 		F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wrapper+Atomic.swift"; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */,
 				D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */,
 				D0CD307A2652978D0042046D /* Thread+stackTrace.swift */,
+				D0F49D23288EFC8C008B21F6 /* Bash.swift */,
 			);
 			path = Threading;
 			sourceTree = "<group>";
@@ -1017,6 +1020,7 @@
 				D0C4B9D72849D6790016FD6E /* URL+repairAccessRights.swift in Sources */,
 				D0B125DD27A2F0D800B32D9A /* URL+Bookmark.swift in Sources */,
 				D0177B1B26FA11660088BF48 /* String+demangle.swift in Sources */,
+				D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */,
 				D0B6AF6423D3034900EDDB74 /* BXSelectionController.swift in Sources */,
 				D06CC92B2178EADA009C2991 /* Data+Checksum.swift in Sources */,
 				481BE6D42098362C00F12EDF /* Sequence+CompactMap.swift in Sources */,
