@@ -583,15 +583,26 @@ public extension URL
 		var metadata:[CFString:Any] = [:]
 
 		#if os(macOS)
-		
-		guard let item = MDItemCreateWithURL(nil,self as CFURL) else { return metadata }
-		guard let attributes = MDItemCopyAttributes(item,keys as CFArray) as? [CFString:Any] else { return metadata }
-		
-		for (key,value) in attributes
+
+		if #available(macOS 13, *)
 		{
-			metadata[key] = value
+			#warning("FIXME: Remove this when bug in Ventura is fixed!")
+			// Skip this due to a bug in early Ventura betas - blocks for 10s and then fails
 		}
-		
+		else
+		{
+			//log.error {"\(Self.self).\(#function) MDItemCreateWithURL"}
+			guard let item = MDItemCreateWithURL(nil,self as CFURL) else { return metadata }
+			//log.error {"\(Self.self).\(#function) MDItemCopyAttributes"}
+			guard let attributes = MDItemCopyAttributes(item,keys as CFArray) as? [CFString:Any] else { return metadata }
+			//log.error {"\(Self.self).\(#function) attributes.count = \(attributes.count)"}
+
+			for (key,value) in attributes
+			{
+				metadata[key] = value
+			}
+		}
+
 		#endif
 		
 		return metadata
