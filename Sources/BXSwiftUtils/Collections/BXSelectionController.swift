@@ -130,7 +130,7 @@ open class BXSelectionController : NSObject
 
 	/// When you set an UndoManager on this controller, then any changes to the selection will be undoable
 
-	public var undoManager:UndoManager? = nil
+	public weak var undoManager:UndoManager? = nil
 	
 	/// Set this to nil if no notifications should be sent
 	
