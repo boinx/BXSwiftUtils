@@ -38,7 +38,7 @@ extension Array where Element:AnyObject
 
 // Taken from https://www.hackingwithswift.com/example-code/language/how-to-remove-duplicate-items-from-an-array
 
-extension Array where Element: Hashable
+extension Array where Element:Hashable
 {
 	/// Removes duplicate elements from the array, preserving the original order of the elements.
 	
@@ -52,6 +52,19 @@ extension Array where Element: Hashable
         }
     }
 
+    public func removingDuplicates(with closure:(Element)->String) -> [Element]
+    {
+        var isUsed:[String:Bool] = [:]
+
+        return filter
+        {
+			let key = closure($0)
+			guard isUsed[key] == nil else { return false }
+			isUsed[key] = true
+			return true
+        }
+    }
+    
 	/// Removes duplicate elements from the array, preserving the original order of the elements.
 	
     public mutating func removeDuplicates()
