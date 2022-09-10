@@ -64,6 +64,7 @@
 		95F2DBA821B7DD9000865AE4 /* Bool+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */; };
 		95F2DBAB21B7E3FE00865AE4 /* Bool+OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */; };
 		98B04DC4262458A00099ADE5 /* URL+QueryComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B04DC3262458A00099ADE5 /* URL+QueryComponents.swift */; };
+		D003977D28CA1E3A00EB7F25 /* BXJobQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003977C28CA1E3A00EB7F25 /* BXJobQueue.swift */; };
 		D00507EE25190383004843E9 /* Dictionary+BXValidPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00507ED25190383004843E9 /* Dictionary+BXValidPlist.swift */; };
 		D00AEFAD23A3FD7E0020AE51 /* BXLogger+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00AEFAC23A3FD7D0020AE51 /* BXLogger+File.swift */; };
 		D00D6DE6283B637E00013C39 /* Dictionary+Threadsafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D6DE5283B637E00013C39 /* Dictionary+Threadsafe.swift */; };
@@ -230,6 +231,7 @@
 		95F2DBA721B7DD9000865AE4 /* Bool+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Operators.swift"; sourceTree = "<group>"; };
 		95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+OperatorsTests.swift"; sourceTree = "<group>"; };
 		98B04DC3262458A00099ADE5 /* URL+QueryComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+QueryComponents.swift"; sourceTree = "<group>"; };
+		D003977C28CA1E3A00EB7F25 /* BXJobQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXJobQueue.swift; sourceTree = "<group>"; };
 		D00507ED25190383004843E9 /* Dictionary+BXValidPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+BXValidPlist.swift"; sourceTree = "<group>"; };
 		D00AEFAC23A3FD7D0020AE51 /* BXLogger+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXLogger+File.swift"; sourceTree = "<group>"; };
 		D00D6DE5283B637E00013C39 /* Dictionary+Threadsafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Threadsafe.swift"; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 				D0DA3331213DA04900994E89 /* DispatchGroup+Once.swift */,
 				D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */,
 				D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */,
+				D003977C28CA1E3A00EB7F25 /* BXJobQueue.swift */,
 				D0CD307A2652978D0042046D /* Thread+stackTrace.swift */,
 				D0F49D23288EFC8C008B21F6 /* Bash.swift */,
 			);
@@ -1045,6 +1048,7 @@
 				D0177B1926F9F0CB0088BF48 /* Array+safeInsert.swift in Sources */,
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
 				F66019A7249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift in Sources */,
+				D003977D28CA1E3A00EB7F25 /* BXJobQueue.swift in Sources */,
 				D026B3A922A11DB6002B9B02 /* BXStopWatch.swift in Sources */,
 				48B6191F215E35DB00E6E037 /* OptionalType.swift in Sources */,
 				D0B6AF6723D30ACF00EDDB74 /* LocalizableIntEnum.swift in Sources */,
