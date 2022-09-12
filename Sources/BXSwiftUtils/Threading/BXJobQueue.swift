@@ -47,6 +47,8 @@ public class BXJobQueue<Target>
 		
 		let jobs = synchronized(self)
 		{
+			()->[BXJob] in
+			
 			let copy = self.jobs
 			self.jobs.removeAll()
 			return copy
