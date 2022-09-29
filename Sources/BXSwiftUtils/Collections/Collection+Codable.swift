@@ -96,6 +96,10 @@ extension KeyedEncodingContainer
 			{
 				try container.encode(value)
 			}
+			else if let value = v as? Codable
+			{
+				try container.encode(value)
+			}
 			else
 			{
 				throw EncodingError.invalidValue(v, EncodingError.Context(
