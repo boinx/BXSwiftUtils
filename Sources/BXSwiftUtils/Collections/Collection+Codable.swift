@@ -60,10 +60,6 @@ extension KeyedEncodingContainer
 			{
 				try container.encode(value)
 			}
-			else if let value = v as? CGFloat
-			{
-				try container.encode(value)
-			}
 			else if let value = v as? Float
 			{
 				try container.encode(value)
@@ -85,6 +81,22 @@ extension KeyedEncodingContainer
 				try container.encode(value)
 			}
 			else if let value = v as? Data
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGPoint
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGSize
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGRect
 			{
 				try container.encode(value)
 			}
@@ -125,10 +137,6 @@ extension KeyedEncodingContainer
 			{
 				try container.encode(value, forKey: key)
 			}
-			else if let value = v as? CGFloat
-			{
-				try container.encode(value, forKey: key)
-			}
 			else if let value = v as? Float
 			{
 				try container.encode(value, forKey: key)
@@ -153,11 +161,31 @@ extension KeyedEncodingContainer
 			{
 				try container.encode(value, forKey: key)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? CGPoint
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? CGSize
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? CGRect
+			{
+				try container.encode(value, forKey: key)
+			}
 			else if let value = v as? [Any]
 			{
 				try container.encode(value, forKey: key)
 			}
 			else if let value = v as? [String:Any]
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? Codable
 			{
 				try container.encode(value, forKey: key)
 			}
@@ -216,10 +244,6 @@ extension UnkeyedEncodingContainer
 			{
 				try container.encode(value)
 			}
-			else if let value = v as? CGFloat
-			{
-				try container.encode(value)
-			}
 			else if let value = v as? Float
 			{
 				try container.encode(value)
@@ -244,11 +268,31 @@ extension UnkeyedEncodingContainer
 			{
 				try container.encode(value)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGPoint
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGSize
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? CGRect
+			{
+				try container.encode(value)
+			}
 			else if let value = v as? [Any]
 			{
 				try container.encode(value)
 			}
 			else if let value = v as? [String:Any]
+			{
+				try container.encode(value)
+			}
+			else if let value = v as? Codable
 			{
 				try container.encode(value)
 			}
@@ -277,10 +321,6 @@ extension UnkeyedEncodingContainer
 			{
 				try container.encode(value, forKey: key)
 			}
-			else if let value = v as? CGFloat
-			{
-				try container.encode(value, forKey: key)
-			}
 			else if let value = v as? Float
 			{
 				try container.encode(value, forKey: key)
@@ -305,11 +345,31 @@ extension UnkeyedEncodingContainer
 			{
 				try container.encode(value, forKey: key)
 			}
+			else if let value = v as? CGFloat
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? CGPoint
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? CGSize
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? CGRect
+			{
+				try container.encode(value, forKey: key)
+			}
 			else if let value = v as? [Any]
 			{
 				try container.encode(value, forKey: key)
 			}
 			else if let value = v as? [String:Any]
+			{
+				try container.encode(value, forKey: key)
+			}
+			else if let value = v as? Codable
 			{
 				try container.encode(value, forKey: key)
 			}
@@ -373,10 +433,6 @@ extension KeyedDecodingContainer
 			{
 				array += value
 			}
-			else if let value = try? container.decode(CGFloat.self)
-			{
-				array += value
-			}
 			else if let value = try? container.decode(Float.self)
 			{
 				array += value
@@ -402,6 +458,22 @@ extension KeyedDecodingContainer
 				array += value
 			}
 			else if let value = try? container.decode([Any].self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGFloat.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGPoint.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGSize.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGRect.self)
 			{
 				array += value
 			}
@@ -435,10 +507,6 @@ extension KeyedDecodingContainer
 			{
 				dictionary[k.stringValue] = value
 			}
-			else if let value = try? container.decode(CGFloat.self, forKey: k)
-			{
-				dictionary[k.stringValue] = value
-			}
 			else if let value = try? container.decode(Float.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
@@ -460,6 +528,22 @@ extension KeyedDecodingContainer
 				dictionary[k.stringValue] = value
 			}
 			else if let value = try? container.decode(Data.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGFloat.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGPoint.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGSize.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGRect.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
 			}
@@ -532,10 +616,6 @@ extension UnkeyedDecodingContainer
 			{
 				array += value
 			}
-			else if let value = try? container.decode(CGFloat.self)
-			{
-				array += value
-			}
 			else if let value = try? container.decode(Float.self)
 			{
 				array += value
@@ -557,6 +637,22 @@ extension UnkeyedDecodingContainer
 				array += value
 			}
 			else if let value = try? container.decode(Data.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGFloat.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGPoint.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGSize.self)
+			{
+				array += value
+			}
+			else if let value = try? container.decode(CGRect.self)
 			{
 				array += value
 			}
@@ -594,10 +690,6 @@ extension UnkeyedDecodingContainer
 			{
 				dictionary[k.stringValue] = value
 			}
-			else if let value = try? container.decode(CGFloat.self, forKey: k)
-			{
-				dictionary[k.stringValue] = value
-			}
 			else if let value = try? container.decode(Float.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
@@ -619,6 +711,22 @@ extension UnkeyedDecodingContainer
 				dictionary[k.stringValue] = value
 			}
 			else if let value = try? container.decode(Data.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGFloat.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGPoint.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGSize.self, forKey: k)
+			{
+				dictionary[k.stringValue] = value
+			}
+			else if let value = try? container.decode(CGRect.self, forKey: k)
 			{
 				dictionary[k.stringValue] = value
 			}
