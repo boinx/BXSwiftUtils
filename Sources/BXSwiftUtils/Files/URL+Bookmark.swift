@@ -58,7 +58,7 @@ public extension URL
 			
 			#endif
 			
-			if isStale { return nil }
+//			if isStale { return nil }
 		}
 		catch
 		{
