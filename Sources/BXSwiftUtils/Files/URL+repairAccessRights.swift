@@ -88,7 +88,9 @@ public extension URL
 		catch
 		{
 			#if DEBUG
+			#if os(macOS)
 			DispatchQueue.main.async { NSWorkspace.shared.activateFileViewerSelecting([self]) }
+			#endif
 			#endif
 			
 			do
