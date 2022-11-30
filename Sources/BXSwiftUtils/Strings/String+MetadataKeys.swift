@@ -38,6 +38,7 @@ public let kMDItemKind = "kMDItemKind" as CFString
 public let kMDItemDescription = "kMDItemDescription" as CFString
 public let kMDItemFSCreationDate = "kMDItemFSCreationDate" as CFString
 public let kMDItemFSContentChangeDate = "kMDItemFSContentChangeDate" as CFString
+public let kMDItemContentCreationDate = "kMDItemContentCreationDate" as CFString
 public let kMDItemWhereFroms = "kMDItemWhereFroms" as CFString
 public let kMDItemCopyright = "kMDItemCopyright" as CFString
 public let kMDItemAuthorAddresses = "kMDItemAuthorAddresses" as CFString
