@@ -23,3 +23,8 @@ CLANG_ENABLE_MODULES = YES
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks
 LD_RUNPATH_SEARCH_PATHS[sdk=macosx*] = $(inherited) @executable_path/../Frameworks @loader_path/../Frameworks
+
+// Don't strip smybols so that crashlogs are easier to read
+
+STRIP_INSTALLED_PRODUCT = NO
+STRIP_SWIFT_SYMBOLS = NO
