@@ -510,8 +510,6 @@ open class BXSelectionController : NSObject
 			}
 			
 			// Send notification for selection change
-		
-			notificationCenter?.post(name:Self.selectionDidChangeNotification, object:self)
 			
 			if objectIsAlive
 			{
@@ -520,6 +518,7 @@ open class BXSelectionController : NSObject
 			
 			// Publish common values to the UI
 		
+			notificationCenter?.post(name:Self.selectionDidChangeNotification, object:self)
 			self.publish()
 		}
 	}
@@ -555,7 +554,7 @@ open class BXSelectionController : NSObject
 
 	/// Replaces the current selection with a new one
 	
-	open func setSelectedObjects(_ objects: [NSObject], registerUndo:Bool = true)
+	open func setSelectedObjects(_ objects:[NSObject], registerUndo:Bool = true)
 	{
 		let oldSelection = self.selection
 		let oldSelectedObjects = oldSelection.values.compactMap { $0.object }
