@@ -447,7 +447,7 @@ open class BXSelectionController : NSObject
 
 		(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
 		{
-			[weak self] in self?.removeSelectedObject($0, registerUndo:$1, objectIsAlive:false)
+			[weak self] in self?.removeSelectedObject($0, registerUndo:$1, objectIsAlive:$1)
 		}
 
 		// Register an undo action
@@ -585,7 +585,7 @@ open class BXSelectionController : NSObject
 		
 				(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
 				{
-					[weak self] in self?.removeSelectedObject($0, registerUndo:$1)
+					[weak self] in self?.removeSelectedObject($0, registerUndo:$1, objectIsAlive:$1)
 				}
 			}
 		}
