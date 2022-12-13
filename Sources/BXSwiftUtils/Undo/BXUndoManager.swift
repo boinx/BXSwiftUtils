@@ -263,6 +263,17 @@ open class BXUndoManager : UndoManager
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	// MARK: - Error Handling
+	
+	/// This error handler is called when an exception is thrown because the UndoManager is in an inconsistent state.
+	/// The application can set this handler and alert the user, providing further instructions.
+	
+	public var errorHandler:((Error,String)->Void)? = nil
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	// MARK: - Long Lived Groups
 	
 	
@@ -425,44 +436,64 @@ open class BXUndoManager : UndoManager
 
 	override open func endUndoGrouping()
 	{
-		// Log the endUndoGrouping()
-		
-		let name = self.undoActionName
-		if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
 		let stackTrace = Thread.callStackSymbols
-		self.logStep(#function, stackTrace:stackTrace)
 
-		// Call super to actually close a group
-		
-		self.publishObjectWillChange()
-		super.endUndoGrouping()
-
-		// Update the preliminary name of a group. It might have been "No undo name" when the group was started,
-		// but multiple actionNames might have been set in the meantime, so find the correct name and set it on
-		// the group.
-		
-		if let currentGroup = self.currentGroup, !self.isUndoing && !self.isRedoing
+		do
 		{
-			if let step = currentGroup.firstErrorStep
+			// Log the endUndoGrouping()
+			
+			let name = self.undoActionName
+			if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
+			self.logStep(#function, stackTrace:stackTrace)
+
+			// Call super to actually close a group
+		
+			self.publishObjectWillChange()
+		
+//			super.endUndoGrouping()
+
+			try NSException.toSwiftError
 			{
-				currentGroup.kind = step.kind
-				currentGroup.name = step.message
+				super.endUndoGrouping()
 			}
-			else if let step = currentGroup.firstWarningStep
+
+			// Update the preliminary name of a group. It might have been "No undo name" when the group was started,
+			// but multiple actionNames might have been set in the meantime, so find the correct name and set it on
+			// the group.
+			
+			if let currentGroup = self.currentGroup, !self.isUndoing && !self.isRedoing
 			{
-				currentGroup.kind = step.kind
-				currentGroup.name = step.message
+				if let step = currentGroup.firstErrorStep
+				{
+					currentGroup.kind = step.kind
+					currentGroup.name = step.message
+				}
+				else if let step = currentGroup.firstWarningStep
+				{
+					currentGroup.kind = step.kind
+					currentGroup.name = step.message
+				}
+				else
+				{
+					currentGroup.kind = .group
+					currentGroup.name = name
+				}
 			}
-			else
+			
+			// Pop the group off the stack
+			
+			self.groupStack.removeLast()
+		}
+		catch let error
+		{
+			let stack = stackTrace.joined(separator: "\n")
+			BXSwiftUtils.log.error {"\(Self.self).\(#function) ERROR \(error)\n\n\(stack)\n"}
+			
+			DispatchQueue.main.asyncIfNeeded
 			{
-				currentGroup.kind = .group
-				currentGroup.name = name
+				self.errorHandler?(error,stack)
 			}
 		}
-		
-		// Pop the group off the stack
-		
-		self.groupStack.removeLast()
 	}
 		
 		
