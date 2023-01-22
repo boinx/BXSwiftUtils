@@ -277,14 +277,14 @@ public extension MTLDevice
 	///
 	/// This texture can be used to render directly to the CVPixelBuffer, without having to copy any bytes.
 
-	func newTexture(with pixelBuffer:CVPixelBuffer, usage:MTLTextureUsage = .renderTarget) -> MTLTexture?
+	func newTexture(with pixelBuffer:CVPixelBuffer, pixelFormat:MTLPixelFormat = .bgra8Unorm, usage:MTLTextureUsage = .renderTarget) -> MTLTexture?
 	{
 		guard let ioSurface = CVPixelBufferGetIOSurface(pixelBuffer)?.takeUnretainedValue() else { return nil }
 		let width = CVPixelBufferGetWidth(pixelBuffer)
 		let height = CVPixelBufferGetHeight(pixelBuffer)
 		
 		let desc = MTLTextureDescriptor()
-		desc.pixelFormat = .bgra8Unorm
+		desc.pixelFormat = pixelFormat
 		desc.width = width
 		desc.height = height
 		desc.usage = usage
