@@ -11,6 +11,8 @@ import Foundation
 
 extension Dictionary where Key: StringProtocol
 {
+	/// Returns a (strongly typed) nested value inside a dictionary
+	
 	public func value<T>(forKeyPath keyPath:String) -> T?
 	{
 		guard var dict = self as? [String:Any] else { return nil }
@@ -28,5 +30,28 @@ extension Dictionary where Key: StringProtocol
 		}
 		
 		return nil
+	}
+
+
+	/// Returns an (untyped) nested value inside a dictionary
+
+	public func untypedValue(for keyPath:String) -> Any?
+	{
+		guard var dict = self as? [String:Any] else { return nil }
+		let keys = keyPath.components(separatedBy:".")
+
+		var value:Any? = nil
+
+		for key  in keys
+		{
+			value = dict[key]
+
+			if let value = value as? [String:Value]
+			{
+				dict = value
+			}
+		}
+
+		return value
 	}
 }
