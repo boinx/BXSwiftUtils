@@ -158,6 +158,16 @@ extension CGPoint
 		
 		return (AP-AP2).length
 	}
+	
+	/// Round the coordinates to the nearest integer values
+	
+	public var rounded:CGPoint
+	{
+		var p = self
+		p.x = round(p.x)
+		p.y = round(p.y)
+		return p
+	}
 }
 
 
