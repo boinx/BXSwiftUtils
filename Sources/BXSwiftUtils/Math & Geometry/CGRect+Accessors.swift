@@ -163,6 +163,35 @@ public extension CGRect
 		if self.size.height.isInfinite || self.size.height.isNaN || self.size.height.isSignalingNaN { return false }
 		return true
 	}
+	
+	/// Returns the bounds of a rect that has been rotated by the specified angle (in radians)
+	
+	func rotatedBounds(by radians:CGFloat) -> CGRect
+	{
+		// Get the 4 corner points and rotate them
+		
+		let center = self.center
+		let p1 = center + (self.bottomLeft-center).rotated(by:radians)
+		let p2 = center + (self.bottomRight-center).rotated(by:radians)
+		let p3 = center + (self.topLeft-center).rotated(by:radians)
+		let p4 = center + (self.topRight-center).rotated(by:radians)
+		
+		// Find horizontal range
+		
+		let xlist = [p1.x,p2.x,p3.x,p4.x]
+		let xmin = xlist.min() ?? 0.0
+		let xmax = xlist.max() ?? 0.0
+		let dx = abs(xmax-xmin)
+
+		// Find vertical range
+		
+		let ylist = [p1.y,p2.y,p3.y,p4.y]
+		let ymin = ylist.min() ?? 0.0
+		let ymax = ylist.max() ?? 0.0
+		let dy = abs(ymax-ymin)
+		
+		return CGRect(x:xmin, y:ymin, width:dx, height:dy)
+	}
 }
 
 
