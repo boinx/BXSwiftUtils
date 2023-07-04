@@ -18,6 +18,15 @@ import CoreGraphics
 
 public extension CGRect
 {
+	init(from:CGPoint, to:CGPoint)
+	{
+		let x = min(from.x,to.x)
+		let y = min(from.y,to.y)
+		let w = abs(from.x-to.x)
+		let h = abs(from.y-to.y)
+		self.init(x:x, y:y, width:w, height:h)
+	}
+	
 	/// Returns the center point of a CGRect
 	
 	var center: CGPoint
