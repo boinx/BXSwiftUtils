@@ -149,6 +149,7 @@
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
 		D0C8773E2971353A003DA744 /* Array+Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8773D2971353A003DA744 /* Array+Matrix.swift */; };
 		D0CA564A256CEA1700D2C09D /* MTKTextureLoader+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */; };
+		D0CB5DC42A5FD3B60024C70F /* Collection+UniqueValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CB5DC32A5FD3B60024C70F /* Collection+UniqueValue.swift */; };
 		D0CD307B2652978D0042046D /* Thread+stackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD307A2652978D0042046D /* Thread+stackTrace.swift */; };
 		D0D0EE5727B242740050E20D /* BXValueThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0EE5627B242730050E20D /* BXValueThrottler.swift */; };
 		D0D6B6412473F6E900EC4E5B /* NSObject+onChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */; };
@@ -326,6 +327,7 @@
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
 		D0C8773D2971353A003DA744 /* Array+Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Matrix.swift"; sourceTree = "<group>"; };
 		D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+Draw.swift"; sourceTree = "<group>"; };
+		D0CB5DC32A5FD3B60024C70F /* Collection+UniqueValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+UniqueValue.swift"; sourceTree = "<group>"; };
 		D0CD307A2652978D0042046D /* Thread+stackTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+stackTrace.swift"; sourceTree = "<group>"; };
 		D0D0EE5627B242730050E20D /* BXValueThrottler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXValueThrottler.swift; sourceTree = "<group>"; };
 		D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+onChanged.swift"; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */,
 				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				D0A740AD22E880CF00145203 /* Collection+Union.swift */,
+				D0CB5DC32A5FD3B60024C70F /* Collection+UniqueValue.swift */,
 				48DE068920876612000246CD /* Dictionary+EnumKeys.swift */,
 				481BE6D22098362C00F12EDF /* Sequence+CompactMap.swift */,
 				D046DF84216B7ED0004331C3 /* Optional+If.swift */,
@@ -1077,6 +1080,7 @@
 				D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */,
 				98B04DC4262458A00099ADE5 /* URL+QueryComponents.swift in Sources */,
 				48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */,
+				D0CB5DC42A5FD3B60024C70F /* Collection+UniqueValue.swift in Sources */,
 				D046B13924ED87FD00F2554A /* Array+Exclude.swift in Sources */,
 				D0C47CE520EE55DA003D3FA3 /* Number+Random.swift in Sources */,
 				D084549B25E7A96E00BBE2CA /* NotificationCenter+postOnMain.swift in Sources */,
