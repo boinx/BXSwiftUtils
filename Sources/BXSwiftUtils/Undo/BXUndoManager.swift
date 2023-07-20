@@ -297,9 +297,10 @@ open class BXUndoManager : UndoManager
 		}
 		else
 		{
-			self._didOpenLongLivedUndoGroup = true
 			self.groupsByEvent = false
 			self.beginUndoGrouping()
+
+			self._didOpenLongLivedUndoGroup = true
 		}
 	}
 	
@@ -311,8 +312,30 @@ open class BXUndoManager : UndoManager
 		if _didOpenLongLivedUndoGroup
 		{
 			self._didOpenLongLivedUndoGroup = false
-			self.endUndoGrouping()
-			self.groupsByEvent = true
+			
+			// If the groupingLevel is already at 0 we cannot call endUndoGrouping() again, or this will cause an exception
+			// that leads to a serious crash. Since we do not know the cause for the inconsistency, we will alert the user and
+			// ask him/her to send us the undo log, so we can analyze it and track down the cause of the problem. The issue is
+			// documented at https://boinx.assembla.com/spaces/fotomagico/tickets/realtime_cardwall?ticket=2395
+			
+			if self.groupingLevel == 0
+			{
+				let stackTrace = Thread.callStackSymbols
+				self.logStep("🛑 endLongLivedUndoGrouping(): groupingLevel is already at 0", stackTrace:stackTrace, kind:.error)
+
+				let location = stackTrace.joined(separator:"\n")
+				let userInfo:[String:Any] = ["location":location]
+				let error = NSError(domain:"NSInternalInconsistencyException", code:0, userInfo:userInfo)
+				self.errorHandler?(error,location)
+			}
+			
+			// If the groupingLevel is ok, then we can end the current undo group
+			
+			else
+			{
+				self.endUndoGrouping()
+				self.groupsByEvent = true
+			}
 		}
 //		else
 //		{
