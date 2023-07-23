@@ -32,10 +32,10 @@ extension Comparable
 	 */
 	public mutating func clip(min minValue: Self, max maxValue: Self)
 	{
-		if minValue > maxValue
-		{
-			NSException.raise(.invalidArgumentException, format: "Can't clip value \(self) with maxValue \(maxValue) being larger than minValue \(minValue)", arguments: getVaList([]))
-		}
+//		if minValue > maxValue
+//		{
+//			NSException.raise(.invalidArgumentException, format: "Can't clip value \(self) with maxValue \(maxValue) being larger than minValue \(minValue)", arguments: getVaList([]))
+//		}
 		
 		if self < minValue
 		{
