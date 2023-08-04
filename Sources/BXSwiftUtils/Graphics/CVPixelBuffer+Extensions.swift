@@ -26,13 +26,15 @@ public extension CVPixelBuffer
 		guard width > 0 else { return nil }
 		guard height > 0 else { return nil }
 			
+		let createIOSurfaceProperties:[String:Any] = [:] // This forces creation of an IOSurface
+
 		let attributes:[String:Any] =
 		[
 			kCVPixelBufferPixelFormatTypeKey as String : NSNumber(value: kCVPixelFormatType_32BGRA),
 			kCVPixelBufferWidthKey as String : width,
 			kCVPixelBufferHeightKey as String : height,
 			kCVPixelBufferMetalCompatibilityKey as String : true,
-			kCVPixelBufferIOSurfacePropertiesKey as String : [:]  // This forces creation of an IOSurface
+			kCVPixelBufferIOSurfacePropertiesKey as String : createIOSurfaceProperties
 		]
 
 		var pixelBuffer:CVPixelBuffer? = nil
