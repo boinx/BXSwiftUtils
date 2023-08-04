@@ -113,14 +113,16 @@ extension BXSelectionController
 		{
 			if let object = object as? C
 			{
-				if let valueArray = object[keyPath:keyPath] as? [T]
+				let value = object[keyPath:keyPath]
+				
+				if let valueArray = value as? [T]
 				{
-					for value in valueArray
+					for v in valueArray
 					{
-						values.insert(value)
+						values.insert(v)
 					}
 				}
-				else if let value = object[keyPath:keyPath] as? T
+				else 
 				{
 					values.insert(value)
 				}
