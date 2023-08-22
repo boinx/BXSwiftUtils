@@ -165,6 +165,7 @@
 		D0EF1BC3258A7F0E00DB3EF4 /* Int+localizedString.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D0EF1BC1258A7F0E00DB3EF4 /* Int+localizedString.stringsdict */; };
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
+		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
 		D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */; };
 		F66019A3249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
 		F66019A4249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
@@ -345,6 +346,7 @@
 		D0EF1BC7258A7F1E00DB3EF4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = "Sources/BXSwiftUtils/fr.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
+		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
 		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 		F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wrapper+Atomic.swift"; sourceTree = "<group>"; };
 		F66019A6249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+AudioProperties.swift"; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */,
 				D0E9E01D22D5EA5D00ADB450 /* Collection+Assign.swift */,
 				D06F462C209073D0000986B8 /* Collection+Codable.swift */,
+				D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */,
 				D0E6B50924DDB5D000369C24 /* Array+HeterogenousDecoding.swift */,
 				487E641D20A0A659007C4A8A /* Collection+Flatten.swift */,
 				D0A740AD22E880CF00145203 /* Collection+Union.swift */,
@@ -1087,6 +1090,7 @@
 				D03234EB205BF939003D6CCB /* URL+Info.swift in Sources */,
 				D08CEB482272DB9600F88170 /* BXMainThreadDelegate.swift in Sources */,
 				4826E57F208F533400A5BA9B /* Array+Decodable.swift in Sources */,
+				D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */,
 				D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
 				D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */,
 				D0A4F1132552A43B00FAEBD8 /* Int+localizedString.swift in Sources */,
