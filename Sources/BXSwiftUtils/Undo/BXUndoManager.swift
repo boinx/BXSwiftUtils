@@ -136,6 +136,11 @@ open class BXUndoManager : UndoManager
 	
 	public func logStep(_ message:String, group:Group? = nil, stackTrace:[String]? = nil, kind:Kind = .hidden)
 	{
+		if _exceptionCount > 0 && kind != .error
+		{
+			return
+		}
+			
 		if enableLogging
 		{
 			// Create new Step struct
@@ -268,7 +273,81 @@ open class BXUndoManager : UndoManager
 	/// This error handler is called when an exception is thrown because the UndoManager is in an inconsistent state.
 	/// The application can set this handler and alert the user, providing further instructions.
 	
-	public var errorHandler:((Error,String)->Void)? = nil
+	public var errorHandler:((Error,String,@escaping ()->Void) -> Void)? = nil
+	
+
+	/// Executes the supplied closure. Any exception that are thrown by Apple in the superclass are caught, converted to a Swift error,
+	/// and will be reported to the user via an external errorHandler.
+	
+	private func catchingExceptions(in functionName:StaticString = #function, _ closure:()->Void )
+	{
+		let stackTrace = Thread.callStackSymbols
+		let stack = stackTrace.joined(separator: "\n")
+
+		// Execute the supplied closure. Catch any NSException that are thrown (by Apple)
+		// and convert them to a NSError.
+		
+		do
+		{
+			try NSException.toSwiftError
+			{
+				closure()
+			}
+		}
+		
+		// Any potential errors are handled here
+		
+		catch let error
+		{
+			_exceptionCount += 1
+			_error = error
+			_stack = stack
+
+			// Log the error to the console
+			
+			BXSwiftUtils.log.error {"\(Self.self).\(functionName) ERROR \(error)\n\n\(stack)\n"}
+			
+			// Also log it in the BXUndoManager
+			
+			if _exceptionCount <= _exceptionLimit
+			{
+				let description = error.localizedDescription.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+				self.logStep("🛑 \(description)", stackTrace:stackTrace, kind:.error)
+			}
+		
+			// Call the errorHandler (supplied by the host application), which will show an alert to the user
+			
+			DispatchQueue.main.asyncIfNeeded
+			{
+				self.performCoalesced(#selector(self.callErrorHandler))
+			}
+		}
+	}
+
+	/// This helper function calls the external errorHandler, which usually shows an alert to the user
+	
+	@objc private func callErrorHandler()
+	{
+		if _exceptionCount == 1, let _error = _error, let _stack = _stack
+		{
+			self.errorHandler?(_error,_stack)
+			{
+				[weak self] in
+				
+				DispatchQueue.main.asyncAfter(deadline:.now()+10)
+				{
+					self?._error = nil
+					self?._stack = nil
+					self?._exceptionCount = 0
+				}
+			}
+		}
+	}
+	
+	private var _error:Error? = nil
+	private var _stack:String? = nil
+	private var _exceptionCount = 0
+	private let _exceptionLimit = 5
 	
 	
 //----------------------------------------------------------------------------------------------------------------------
@@ -326,7 +405,7 @@ open class BXUndoManager : UndoManager
 				let location = stackTrace.joined(separator:"\n")
 				let userInfo:[String:Any] = ["location":location]
 				let error = NSError(domain:"NSInternalInconsistencyException", code:0, userInfo:userInfo)
-				self.errorHandler?(error,location)
+				self.errorHandler?(error,location,{})
 			}
 			
 			// If the groupingLevel is ok, then we can end the current undo group
@@ -365,44 +444,65 @@ open class BXUndoManager : UndoManager
 
 	override open func disableUndoRegistration()
     {
-		self.logStep(#function)
-		super.disableUndoRegistration()
+		self.catchingExceptions()
+		{
+			self.logStep(#function)
+			super.disableUndoRegistration()
+		}
     }
         
     override open func enableUndoRegistration()
     {
-		self.logStep(#function)
-		super.enableUndoRegistration()
+		self.catchingExceptions()
+		{
+			self.logStep(#function)
+			super.enableUndoRegistration()
+		}
     }
     
      override open func setActionIsDiscardable(_ discardable:Bool)
      {
-		self.logStep("setActionIsDiscardable(\(discardable))")
-		super.setActionIsDiscardable(discardable)
+		self.catchingExceptions()
+		{
+			self.logStep("setActionIsDiscardable(\(discardable))")
+			super.setActionIsDiscardable(discardable)
+		}
      }
           
 	override open func setActionName(_ actionName:String)
 	{
-		super.setActionName(actionName)
-		self.logStep("actionName = \"\(actionName)\"", kind:.name) // Since super.setActionName can lazily start a new undo grou if necessary, log this step afterwards to get correct order
+		self.catchingExceptions()
+		{
+			super.setActionName(actionName)
+			self.logStep("actionName = \"\(actionName)\"", kind:.name) // Since super.setActionName can lazily start a new undo grou if necessary, log this step afterwards to get correct order
+		}
 	}
 	
 	override open func undoNestedGroup()
 	{
-		self.logStep(#function, kind:.hidden)
-		super.undoNestedGroup()
+		self.catchingExceptions()
+		{
+			self.logStep(#function, kind:.hidden)
+			super.undoNestedGroup()
+		}
 	}
 		
 	override open func removeAllActions()
 	{
-		self.logStep(#function, kind:.action)
-		super.removeAllActions()
+		self.catchingExceptions()
+		{
+			self.logStep(#function, kind:.action)
+			super.removeAllActions()
+		}
 	}
 
 	override open func removeAllActions(withTarget target:Any)
 	{
-		self.logStep("removeAllActions(withTarget:\(target))", kind:.action)
-		super.removeAllActions(withTarget:target)
+		self.catchingExceptions()
+		{
+			self.logStep("removeAllActions(withTarget:\(target))", kind:.action)
+			super.removeAllActions(withTarget:target)
+		}
 	}
 
 
@@ -411,46 +511,49 @@ open class BXUndoManager : UndoManager
 
 	override open func beginUndoGrouping()
 	{
-		// Create a new group with an appropriate initial name and kind
-		
-		var kind:Kind = .warning
-		var name = "⚠️ No undo name"
-		
-		if self.isUndoing
+		self.catchingExceptions()
 		{
-			kind = .group
-			name = self.undoActionName
-		}
-		else if self.isRedoing
-		{
-			kind = .group
-			name = self.redoActionName
-		}
+			// Create a new group with an appropriate initial name and kind
+			
+			var kind:Kind = .warning
+			var name = "⚠️ No undo name"
+			
+			if self.isUndoing
+			{
+				kind = .group
+				name = self.undoActionName
+			}
+			else if self.isRedoing
+			{
+				kind = .group
+				name = self.redoActionName
+			}
 
-		if name.isEmpty
-		{
-			kind = .warning
-			name = "⚠️ No undo name"
+			if name.isEmpty
+			{
+				kind = .warning
+				name = "⚠️ No undo name"
+			}
+			
+			let group = Group()
+			group.kind = kind
+			group.name = name
+
+			// Push the group onto the stack
+			
+			self.logStep(name, group:group, kind:.group)
+			self.groupStack.append(group)
+
+			// Log the beginUndoGrouping()
+			
+			let stackTrace = Thread.callStackSymbols
+			self.logStep(#function, stackTrace:stackTrace)
+			
+			// Finally call super
+			
+			self.publishObjectWillChange()
+			super.beginUndoGrouping()
 		}
-		
-		let group = Group()
-		group.kind = kind
-		group.name = name
-
-		// Push the group onto the stack
-		
-		self.logStep(name, group:group, kind:.group)
-		self.groupStack.append(group)
-
-		// Log the beginUndoGrouping()
-		
-		let stackTrace = Thread.callStackSymbols
-		self.logStep(#function, stackTrace:stackTrace)
-		
-		// Finally call super
-		
-		self.publishObjectWillChange()
-		super.beginUndoGrouping()
 	}
 
 
@@ -459,26 +562,21 @@ open class BXUndoManager : UndoManager
 
 	override open func endUndoGrouping()
 	{
-		let stackTrace = Thread.callStackSymbols
-
-		do
+		self.catchingExceptions()
 		{
 			// Log the endUndoGrouping()
 			
 			let name = self.undoActionName
 			if name.isEmpty { self.logStep("⚠️ No undo name", kind:.warning) }
+
+			let stackTrace = Thread.callStackSymbols
 			self.logStep(#function, stackTrace:stackTrace)
 
 			// Call super to actually close a group
 		
 			self.publishObjectWillChange()
 		
-//			super.endUndoGrouping()
-
-			try NSException.toSwiftError
-			{
-				super.endUndoGrouping()
-			}
+			super.endUndoGrouping()
 
 			// Update the preliminary name of a group. It might have been "No undo name" when the group was started,
 			// but multiple actionNames might have been set in the meantime, so find the correct name and set it on
@@ -507,16 +605,6 @@ open class BXUndoManager : UndoManager
 			
 			self.groupStack.removeLast()
 		}
-		catch let error
-		{
-			let stack = stackTrace.joined(separator: "\n")
-			BXSwiftUtils.log.error {"\(Self.self).\(#function) ERROR \(error)\n\n\(stack)\n"}
-			
-			DispatchQueue.main.asyncIfNeeded
-			{
-				self.errorHandler?(error,stack)
-			}
-		}
 	}
 		
 		
@@ -525,16 +613,19 @@ open class BXUndoManager : UndoManager
 
 	override open func registerUndo(withTarget target:Any, selector:Selector, object:Any?)
 	{
-		// Call super to actually record
-		
-		super.registerUndo(withTarget:target, selector:selector, object:object)
-		
-		// Log the step. Since registering an undo action can internally open a new undo group,
-		// log this step after the group was opened.
-
-		if isUndoRegistrationEnabled
+		self.catchingExceptions()
 		{
-			self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+			// Call super to actually record
+			
+			super.registerUndo(withTarget:target, selector:selector, object:object)
+			
+			// Log the step. Since registering an undo action can internally open a new undo group,
+			// log this step after the group was opened.
+
+			if isUndoRegistrationEnabled
+			{
+				self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+			}
 		}
 	}
 	
@@ -562,16 +653,19 @@ open class BXUndoManager : UndoManager
 	
     open func _registerUndoOperation<TargetType>(withTarget target:TargetType, callingFunction:String = #function, handler: @escaping (TargetType)->Void) where TargetType:AnyObject
     {
-		// Call "super" to actually record
-		
-		self.registerUndo(withTarget:target, handler:handler)
-
-		// Log the step. Since registering an undo action can internally open a new undo group,
-		// log this step after the group was opened.
-		
-		if isUndoRegistrationEnabled
+		self.catchingExceptions()
 		{
-			self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+			// Call "super" to actually record
+			
+			self.registerUndo(withTarget:target, handler:handler)
+
+			// Log the step. Since registering an undo action can internally open a new undo group,
+			// log this step after the group was opened.
+			
+			if isUndoRegistrationEnabled
+			{
+				self.logStep(#function, stackTrace:Thread.callStackSymbols, kind:.action)
+			}
 		}
 	}
 	
@@ -581,27 +675,30 @@ open class BXUndoManager : UndoManager
 
 	override open func undo()
 	{
-		let level = self.groupingLevel
-		
-		// If we are at top level, log step and call super to actually undo
-		
-		if level == 0
+		self.catchingExceptions()
 		{
-			self.logStep(#function, kind:.action)
-			super.undo()
-		}
-		
-		// If we still have an open group this is an inconstistent state. Log an error and
-		// DO NOT call super, as this would lead to a crash due to unhandled exception.
-		
-		else if let currentGroup = self.currentGroup
-		{
-			let message = "🛑 \(#function) called with groupingLevel \(level)"
-			self.logStep(message, kind:.error)
-			currentGroup.kind = .error
-			currentGroup.name = message
+			let level = self.groupingLevel
+			
+			// If we are at top level, log step and call super to actually undo
+			
+			if level == 0
+			{
+				self.logStep(#function, kind:.action)
+				super.undo()
+			}
+			
+			// If we still have an open group this is an inconstistent state. Log an error and
+			// DO NOT call super, as this would lead to a crash due to unhandled exception.
+			
+			else if let currentGroup = self.currentGroup
+			{
+				let message = "🛑 \(#function) called with groupingLevel \(level)"
+				self.logStep(message, kind:.error)
+				currentGroup.kind = .error
+				currentGroup.name = message
 
-//			super.undo() // This would crash due to an exception
+	//			super.undo() // This would crash due to an exception
+			}
 		}
 	}
 	
@@ -611,31 +708,33 @@ open class BXUndoManager : UndoManager
 
 	override open func redo()
 	{
-		let level = self.groupingLevel
-		
-		// If we are at top level, log step and call super to actually redo
-		
-		if level == 0
+		self.catchingExceptions()
 		{
-			self.logStep(#function, kind:.action)
-			super.redo()
-		}
+			let level = self.groupingLevel
+			
+			// If we are at top level, log step and call super to actually redo
+			
+			if level == 0
+			{
+				self.logStep(#function, kind:.action)
+				super.redo()
+			}
 
-		// If we still have an open group this is an inconstistent state. Log an error and
-		// DO NOT call super, as this would lead to a crash due to unhandled exception.
-		
-		else if let currentGroup = self.currentGroup
-		{
-			let message = "🛑 \(#function) called with groupingLevel \(level)"
-			self.logStep(message, kind:.error)
-			currentGroup.kind = .error
-			currentGroup.name = message
+			// If we still have an open group this is an inconstistent state. Log an error and
+			// DO NOT call super, as this would lead to a crash due to unhandled exception.
+			
+			else if let currentGroup = self.currentGroup
+			{
+				let message = "🛑 \(#function) called with groupingLevel \(level)"
+				self.logStep(message, kind:.error)
+				currentGroup.kind = .error
+				currentGroup.name = message
 
-//			super.redo() // This would crash due to an exception
+	//			super.redo() // This would crash due to an exception
+			}
 		}
 	}
-	
-	
+
 }
 
 
