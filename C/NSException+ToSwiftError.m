@@ -19,7 +19,14 @@
     }
     @catch (NSException *exception)
     {
-        *error = [[NSError alloc] initWithDomain:exception.name code:0 userInfo:exception.userInfo];
+		NSDictionary* userInfo =
+		@{
+			NSLocalizedDescriptionKey: exception.description,
+			NSLocalizedFailureReasonErrorKey: exception.reason,
+			NSDebugDescriptionErrorKey: exception.debugDescription
+		};
+		
+        *error = [[NSError alloc] initWithDomain:exception.name code:0 userInfo:userInfo];
         return NO;
     }
 }
