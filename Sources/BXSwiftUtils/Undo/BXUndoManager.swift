@@ -434,12 +434,36 @@ open class BXUndoManager : UndoManager
 	
 	override open var groupsByEvent:Bool
 	{
-		willSet { self.logStep("groupsByEvent = \(newValue)") }
+		set
+		{
+			self.catchingExceptions()
+			{
+				self.logStep("groupsByEvent = \(newValue)")
+				super.groupsByEvent = newValue
+			}
+		}
+		
+		get
+		{
+			super.groupsByEvent
+		}
 	}
 
 	override open var levelsOfUndo:Int
 	{
-		willSet { self.logStep("levelsOfUndo = \(newValue)") }
+		set
+		{
+			self.catchingExceptions()
+			{
+				self.logStep("levelsOfUndo = \(newValue)")
+				super.levelsOfUndo = newValue
+			}
+		}
+		
+		get
+		{
+			super.levelsOfUndo
+		}
 	}
 
 	override open func disableUndoRegistration()
