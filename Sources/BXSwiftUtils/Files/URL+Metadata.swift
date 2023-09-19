@@ -182,42 +182,42 @@ public extension URL
 
 		// Authors
 		
-		var authors:[String]? = nil
+		var authors:[String] = []
 		
-		if authors == nil
-		{
-			authors = spotlight[kMDItemAuthors] as? [String]
-		}
-		
-		if authors == nil
-		{
-			authors = self.values(from:common, key:AVMetadataKey.commonKeyArtist, space:AVMetadataKeySpace.common)
-		}
-		
-		if authors == nil
-		{
-			authors = self.values(from:common, key:AVMetadataKey.commonKeyAuthor, space:AVMetadataKeySpace.common)
-		}
-		
-		if authors == nil
-		{
-			authors = self.values(from:common, key:AVMetadataKey.commonKeyCreator, space:AVMetadataKeySpace.common)
-		}
-		
-		if authors == nil
-		{
-			authors = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOriginalArtist, space:AVMetadataKeySpace.id3)
-		}
-		
-		if authors == nil
-		{
-			authors = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyLeadPerformer, space:AVMetadataKeySpace.id3)
-		}
-		
-		if authors == nil
-		{
-			authors = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyBand, space:AVMetadataKeySpace.id3)
-		}
+//		if authors == nil
+//		{
+			authors += (spotlight[kMDItemAuthors] as? [String]) ?? []
+//		}
+//
+//		if authors == nil
+//		{
+			authors += self.values(from:common, key:AVMetadataKey.commonKeyArtist, space:AVMetadataKeySpace.common)
+//		}
+//
+//		if authors == nil
+//		{
+			authors += self.values(from:common, key:AVMetadataKey.commonKeyAuthor, space:AVMetadataKeySpace.common)
+//		}
+//
+//		if authors == nil
+//		{
+			authors += self.values(from:common, key:AVMetadataKey.commonKeyCreator, space:AVMetadataKeySpace.common)
+//		}
+//
+//		if authors == nil
+//		{
+			authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOriginalArtist, space:AVMetadataKeySpace.id3)
+//		}
+//
+//		if authors == nil
+//		{
+			authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyLeadPerformer, space:AVMetadataKeySpace.id3)
+//		}
+//
+//		if authors == nil
+//		{
+			authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyBand, space:AVMetadataKeySpace.id3)
+//		}
 		
 		// Composer
 
@@ -257,30 +257,6 @@ public extension URL
 			album = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOriginalAlbumTitle, space:AVMetadataKeySpace.id3).first
 		}
 
-		// URLs
-		
-		var urls:[String]? = nil
-		
-		if urls == nil
-		{
-			urls = spotlight[kMDItemWhereFroms] as? [String]
-		}
-		
-		if urls == nil
-		{
-			urls = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialArtistWebpage, space:AVMetadataKeySpace.id3)
-		}
-		
-		if urls == nil
-		{
-			urls = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialAudioFileWebpage, space:AVMetadataKeySpace.id3)
-		}
-		
-		if urls == nil
-		{
-			urls = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialPublisherWebpage, space:AVMetadataKeySpace.id3)
-		}
-
 		// Copyright
 		
 		var copyright:String? = nil
@@ -295,6 +271,40 @@ public extension URL
 			copyright = self.values(from:id3, key:AVMetadataKey.id3MetadataKeyCopyright, space:AVMetadataKeySpace.id3).first
 		}
 		
+		// URLs
+		
+		var urls:[String] = [] //? = nil
+		
+//		if urls == nil
+//		{
+			urls += spotlight[kMDItemWhereFroms] as? [String] ?? []
+//		}
+//
+//		if urls == nil
+//		{
+			urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialAudioFileWebpage, space:AVMetadataKeySpace.id3)
+//		}
+//
+//		if urls == nil
+//		{
+			urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialArtistWebpage, space:AVMetadataKeySpace.id3)
+//		}
+//
+//		if urls == nil
+//		{
+			urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialPublisherWebpage, space:AVMetadataKeySpace.id3)
+//		}
+
+		if urls.isEmpty
+		{
+			urls += URL.extract(from:comment ?? "")?.absoluteString
+		}
+		
+		if urls.isEmpty
+		{
+			urls += URL.extract(from:copyright ?? "")?.absoluteString
+		}
+
 		// Genre
 		
 		var genre:String? = nil
@@ -617,6 +627,37 @@ public extension URL
 			$0.stringValue
 		}
 	}
+	
+	static func extract(from string:String) -> URL?
+	{
+		// Regular expression pattern to match URLs
+		
+		let pattern = #"https?://[-\w.]+(:\d+)?(/([\w/_.]*)?)?"#
+    
+		do
+		{
+			let regex = try NSRegularExpression(pattern:pattern, options:[])
+			let nsString = string as NSString
+			let range = NSRange(location:0, length:nsString.length)
+			
+			if let match = regex.firstMatch(in:string, options:[], range:range)
+			{
+				let matchedString = nsString.substring(with:match.range)
+				
+				if let url = URL(string:matchedString)
+				{
+					return url
+				}
+			}
+		}
+		catch
+		{
+			print("Error creating regular expression: \(error.localizedDescription)")
+		}
+		
+		return nil
+	}
+
 }
 
 
