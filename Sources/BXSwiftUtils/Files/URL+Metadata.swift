@@ -184,40 +184,13 @@ public extension URL
 		
 		var authors:[String] = []
 		
-//		if authors == nil
-//		{
-			authors += (spotlight[kMDItemAuthors] as? [String]) ?? []
-//		}
-//
-//		if authors == nil
-//		{
-			authors += self.values(from:common, key:AVMetadataKey.commonKeyArtist, space:AVMetadataKeySpace.common)
-//		}
-//
-//		if authors == nil
-//		{
-			authors += self.values(from:common, key:AVMetadataKey.commonKeyAuthor, space:AVMetadataKeySpace.common)
-//		}
-//
-//		if authors == nil
-//		{
-			authors += self.values(from:common, key:AVMetadataKey.commonKeyCreator, space:AVMetadataKeySpace.common)
-//		}
-//
-//		if authors == nil
-//		{
-			authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOriginalArtist, space:AVMetadataKeySpace.id3)
-//		}
-//
-//		if authors == nil
-//		{
-			authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyLeadPerformer, space:AVMetadataKeySpace.id3)
-//		}
-//
-//		if authors == nil
-//		{
-			authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyBand, space:AVMetadataKeySpace.id3)
-//		}
+		authors += (spotlight[kMDItemAuthors] as? [String]) ?? []
+		authors += self.values(from:common, key:AVMetadataKey.commonKeyArtist, space:AVMetadataKeySpace.common)
+		authors += self.values(from:common, key:AVMetadataKey.commonKeyAuthor, space:AVMetadataKeySpace.common)
+		authors += self.values(from:common, key:AVMetadataKey.commonKeyCreator, space:AVMetadataKeySpace.common)
+		authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOriginalArtist, space:AVMetadataKeySpace.id3)
+		authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyLeadPerformer, space:AVMetadataKeySpace.id3)
+		authors += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyBand, space:AVMetadataKeySpace.id3)
 		
 		// Composer
 
@@ -275,25 +248,10 @@ public extension URL
 		
 		var urls:[String] = [] //? = nil
 		
-//		if urls == nil
-//		{
-			urls += spotlight[kMDItemWhereFroms] as? [String] ?? []
-//		}
-//
-//		if urls == nil
-//		{
-			urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialAudioFileWebpage, space:AVMetadataKeySpace.id3)
-//		}
-//
-//		if urls == nil
-//		{
-			urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialArtistWebpage, space:AVMetadataKeySpace.id3)
-//		}
-//
-//		if urls == nil
-//		{
-			urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialPublisherWebpage, space:AVMetadataKeySpace.id3)
-//		}
+		urls += spotlight[kMDItemWhereFroms] as? [String] ?? []
+		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialAudioFileWebpage, space:AVMetadataKeySpace.id3)
+		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialArtistWebpage, space:AVMetadataKeySpace.id3)
+		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialPublisherWebpage, space:AVMetadataKeySpace.id3)
 
 		if urls.isEmpty
 		{
