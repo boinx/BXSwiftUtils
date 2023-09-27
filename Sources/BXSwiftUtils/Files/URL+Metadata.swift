@@ -250,6 +250,7 @@ public extension URL
 		
 		urls += spotlight[kMDItemWhereFroms] as? [String] ?? []
 		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialAudioFileWebpage, space:AVMetadataKeySpace.id3)
+		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialAudioSourceWebpage, space:AVMetadataKeySpace.id3)
 		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialArtistWebpage, space:AVMetadataKeySpace.id3)
 		urls += self.values(from:id3, key:AVMetadataKey.id3MetadataKeyOfficialPublisherWebpage, space:AVMetadataKeySpace.id3)
 
