@@ -12,7 +12,7 @@ public typealias observeSafe = TypedKVO
 
 public class TypedKVO<Root, Value> : KVO where Root : NSObject
 {
-    public struct Change<Value>
+    public struct Change
     {
         public let oldValue: Value?
         public let newValue: Value?
@@ -33,7 +33,7 @@ public class TypedKVO<Root, Value> : KVO where Root : NSObject
      
      - throws: `invalidArgumentException` if the keyPath contains properties that are not exposed to Objective-C.
      */
-    public init(_ observedObject: Root, _ keyPath: KeyPath<Root, Value>, options: NSKeyValueObservingOptions = [.initial, .new], _ closure: @escaping (_ target: Root, _ change: Change<Value>) -> Void)
+    public init(_ observedObject: Root, _ keyPath: KeyPath<Root, Value>, options: NSKeyValueObservingOptions = [.initial, .new], _ closure: @escaping (_ target: Root, _ change: Change) -> Void)
     {
         guard let keyPathString = keyPath._kvcKeyPathString else
         {
@@ -52,7 +52,7 @@ public class TypedKVO<Root, Value> : KVO where Root : NSObject
         { [weak observedObject] (old, new) in
             guard let observedObject = observedObject else { return }
             
-            let change = Change<Value>(oldValue: old as? Value, newValue: new as? Value)
+            let change = Change(oldValue: old as? Value, newValue: new as? Value)
             closure(observedObject, change)
         }
     }
