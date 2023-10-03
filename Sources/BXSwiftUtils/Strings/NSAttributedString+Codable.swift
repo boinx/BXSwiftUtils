@@ -2,12 +2,18 @@
 //
 //  NSAttributedString+Codable.swift
 //  Adds codable support
-//  Copyright ©2018 Peter Baumgartner. All rights reserved.
+//  Copyright ©2018-2023 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
 
 import Foundation
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -17,7 +23,7 @@ extension NSAttributedString
 {
     public var data:Data
     {
-        return NSKeyedArchiver.archivedData(withRootObject: self)
+        (try? NSKeyedArchiver.archivedData(withRootObject:self, requiringSecureCoding:false)) ?? Data()
     }
 }
 
@@ -26,7 +32,8 @@ extension NSAttributedString: Encodable
     public func encode(to encoder: Encoder) throws
     {
         var container = encoder.singleValueContainer()
-        try container.encode(self.data)
+        let data = try NSKeyedArchiver.archivedData(withRootObject:self, requiringSecureCoding:false)
+        try container.encode(data)
     }
 }
 
@@ -40,17 +47,22 @@ extension KeyedDecodingContainer
     public func decode(_ type: NSAttributedString.Type, forKey key: Key) throws -> NSAttributedString
     {
         let decoder = try self.superDecoder(forKey: key)
-        
         let container = try decoder.singleValueContainer()
         let data = try container.decode(Data.self)
-        
-        let result = NSKeyedUnarchiver.unarchiveObject(with: data)
+
+		#if os(macOS)
+		let result = try NSKeyedUnarchiver.unarchivedObject(ofClasses:[NSAttributedString.self,NSDictionary.self,NSArray.self,NSString.self,NSNumber.self,NSColor.self,NSFont.self,NSParagraphStyle.self], from:data)
+		#else
+		let result = try NSKeyedUnarchiver.unarchivedObject(ofClasses:[NSAttributedString.self,NSDictionary.self,NSArray.self,NSString.self,NSNumber.self,UIColor.self,UIFont.self,NSParagraphStyle.self], from:data)
+		#endif
+
         guard let str = result as? NSAttributedString else
         {
-            throw DecodingError.typeMismatch(NSAttributedString.self, DecodingError.Context(
-                codingPath: decoder.codingPath,
-                debugDescription: "Expected NSAttributedString but found \(String(describing: result))"
-            ))
+            throw DecodingError.typeMismatch(NSAttributedString.self,
+				DecodingError.Context(
+					codingPath: decoder.codingPath,
+					debugDescription: "Expected NSAttributedString but found \(String(describing:result))"
+				))
         }
         return str
     }
