@@ -166,6 +166,7 @@
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
+		D0FDCC9C2AE3B5F800123F6D /* Double+clusteredDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDCC9B2AE3B5F800123F6D /* Double+clusteredDuration.swift */; };
 		D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */; };
 		F66019A3249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
 		F66019A4249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
@@ -347,6 +348,7 @@
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
+		D0FDCC9B2AE3B5F800123F6D /* Double+clusteredDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+clusteredDuration.swift"; sourceTree = "<group>"; };
 		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 		F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wrapper+Atomic.swift"; sourceTree = "<group>"; };
 		F66019A6249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+AudioProperties.swift"; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 				D032350C205C362A003D6CCB /* Date+Components.swift */,
 				D0E8881027AA8D6100310BB9 /* Date+Formatted.swift */,
 				D086A25F21B95CD000ACF9CA /* CMTime+Logging.swift */,
+				D0FDCC9B2AE3B5F800123F6D /* Double+clusteredDuration.swift */,
 			);
 			path = "Date & Time";
 			sourceTree = "<group>";
@@ -1099,6 +1102,7 @@
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */,
 				D089124B215B723C00403100 /* CGRect+String.swift in Sources */,
+				D0FDCC9C2AE3B5F800123F6D /* Double+clusteredDuration.swift in Sources */,
 				48AD6C9E2147FCC400225D9C /* String+UniqueByIncrementing.swift in Sources */,
 				D0D9419B21A56B8800D6B43F /* DisplayableEnum.swift in Sources */,
 				D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */,
