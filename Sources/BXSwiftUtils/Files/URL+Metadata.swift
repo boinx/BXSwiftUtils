@@ -10,6 +10,7 @@
 import Foundation
 import AVFoundation
 import CoreSpotlight
+import CoreLocation
 
 #if canImport(UniformTypeIdentifiers)
 import UniformTypeIdentifiers
@@ -87,11 +88,33 @@ public extension URL
 		guard let source = CGImageSourceCreateWithURL(self as CFURL,nil) else { return [:] }
 		guard let properties = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
 		
-		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate])
-
+		// Get all metadata from ImageIO
+		
 		var metadata = properties as? [CFString:Any] ?? [:]
+
+		// Copy relevant info from the GPS dictionary to the main level
+		
+		if let gpsInfo = metadata[kCGImagePropertyGPSDictionary] as? [String:Any]
+		{
+			if let latitude = gpsInfo[kCGImagePropertyGPSLatitude as String] as? CLLocationDegrees,
+			   let longitude = gpsInfo[kCGImagePropertyGPSLongitude as String] as? CLLocationDegrees
+			{
+				metadata[kMDItemLatitude] = NSNumber(value:latitude)
+				metadata[kMDItemLongitude] = NSNumber(value:longitude)
+			}
+
+			if let altitude = gpsInfo[kCGImagePropertyGPSAltitude as String] as? Double
+			{
+				metadata[kMDItemAltitude] = NSNumber(value:altitude)
+			}
+		}
+
+		// Also gather some info via Spotlight
+		
+		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate,kMDItemLatitude,kMDItemLongitude])
 		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
 		metadata[kMDItemFSCreationDate] = spotlight[kMDItemFSCreationDate]
+
 		return metadata
 	}
 
