@@ -96,9 +96,13 @@ public extension URL
 		
 		if let gpsInfo = metadata[kCGImagePropertyGPSDictionary] as? [String:Any]
 		{
-			if let latitude = gpsInfo[kCGImagePropertyGPSLatitude as String] as? CLLocationDegrees,
-			   let longitude = gpsInfo[kCGImagePropertyGPSLongitude as String] as? CLLocationDegrees
+			if var latitude = gpsInfo[kCGImagePropertyGPSLatitude as String] as? CLLocationDegrees,
+			   var longitude = gpsInfo[kCGImagePropertyGPSLongitude as String] as? CLLocationDegrees,
+			   let latitudeRef = gpsInfo[kCGImagePropertyGPSLatitudeRef as String] as? String,
+			   let longitudeRef = gpsInfo[kCGImagePropertyGPSLongitudeRef as String] as? String
 			{
+				if latitudeRef.uppercased()=="S" { latitude *= -1 }
+				if longitudeRef.uppercased()=="W" { longitude *= -1 }
 				metadata[kMDItemLatitude] = NSNumber(value:latitude)
 				metadata[kMDItemLongitude] = NSNumber(value:longitude)
 			}
