@@ -86,12 +86,38 @@ public extension URL
 	var imageMetadata:[CFString:Any]
 	{
 		guard let source = CGImageSourceCreateWithURL(self as CFURL,nil) else { return [:] }
-		guard let properties = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
+		guard let properties1 = CGImageSourceCopyProperties(source,nil) else { return [:] }
+		guard let properties2 = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
 		
 		// Get all metadata from ImageIO
 		
-		var metadata = properties as? [CFString:Any] ?? [:]
-
+		let metadata1 = properties1 as? [CFString:Any] ?? [:]
+		let metadata2 = properties2 as? [CFString:Any] ?? [:]
+		var metadata = metadata1
+		metadata += metadata2
+		
+		// Copy capture date from TIFF or EXIF dictionaries
+		
+		if let tiffInfo = metadata[kCGImagePropertyTIFFDictionary] as? [String:Any]
+		{
+			if let dateString = tiffInfo[kCGImagePropertyTIFFDateTime as String] as? String, let date = dateString.date
+			{
+				metadata[kMDItemContentCreationDate] = date
+			}
+		}
+		
+		if let exifInfo = metadata[kCGImagePropertyExifDictionary] as? [String:Any]
+		{
+			if let dateString = exifInfo[kCGImagePropertyExifDateTimeDigitized as String] as? String, let date = dateString.date
+			{
+				metadata[kMDItemContentCreationDate] = date
+			}
+			if let dateString = exifInfo[kCGImagePropertyExifDateTimeOriginal as String] as? String, let date = dateString.date
+			{
+				metadata[kMDItemContentCreationDate] = date
+			}
+		}
+		
 		// Copy relevant info from the GPS dictionary to the main level
 		
 		if let gpsInfo = metadata[kCGImagePropertyGPSDictionary] as? [String:Any]
