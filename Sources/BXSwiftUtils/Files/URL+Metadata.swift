@@ -139,11 +139,18 @@ public extension URL
 			}
 		}
 
-		// Also gather some info via Spotlight
+//		// Also gather some info via Spotlight
+//		
+//		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate,kMDItemLatitude,kMDItemLongitude])
+//		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
+//		metadata[kMDItemFSCreationDate] = spotlight[kMDItemFSCreationDate]
+				 
+		// Get file creation/modification date from URL
 		
-		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate,kMDItemLatitude,kMDItemLongitude])
-		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
-		metadata[kMDItemFSCreationDate] = spotlight[kMDItemFSCreationDate]
+		metadata[kMDItemFSSize] = self.fileSize
+		metadata[kMDItemFSCreationDate] = self.creationDate
+		metadata[kMDItemFSContentChangeDate] = self.modificationDate
+
 
 		return metadata
 	}
