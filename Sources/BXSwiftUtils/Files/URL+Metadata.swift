@@ -488,6 +488,7 @@ public extension URL
 		var audioCodec:AudioFormatID? = nil
 		var codecs:[String]? = nil
 		var size:Int? = nil
+		var date:Date? = nil
 		
 		if duration == nil
 		{
@@ -579,6 +580,11 @@ public extension URL
 			size = spotlight[kMDItemFSSize] as? Int
 		}
 	
+		if date == nil
+		{
+			date = self.creationDate ?? spotlight[kMDItemContentCreationDate] as? Date
+		}
+	
 		// Build metadata dictionary
 		
 		var metadata:[CFString:Any] = [:]
@@ -592,7 +598,8 @@ public extension URL
 		metadata["fps" as CFString] = fps
 		metadata["videoCodec" as CFString] = videoCodec
 		metadata["audioCodec" as CFString] = audioCodec
-		metadata[kMDItemContentCreationDate] = spotlight[kMDItemContentCreationDate] as? Date
+		metadata[kMDItemFSCreationDate] = date
+		metadata[kMDItemContentCreationDate] = date
 		return metadata
 	}
 }
