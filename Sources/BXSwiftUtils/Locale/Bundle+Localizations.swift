@@ -13,15 +13,21 @@ import Foundation
 //----------------------------------------------------------------------------------------------------------------------
 
 
-public extension Bundle
+extension Bundle
 {
 	/// Returns the code of the preferred user interface language for this application
 	
-	var preferredLanguageCode:String
+	public var preferredLanguageCode:String
 	{
 		return Bundle.preferredLocalizations(from:Bundle.main.localizations).first ?? "en"
 	}
 
+	/// Returns the Bundle that contains the specified class
+	
+	public static func `for`(_ type:AnyClass) -> Bundle
+	{
+		Bundle(for:type)
+	}
 }
 
 
