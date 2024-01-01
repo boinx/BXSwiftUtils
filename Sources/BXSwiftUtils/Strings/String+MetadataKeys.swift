@@ -108,7 +108,7 @@ public extension String
 	static var exifISOSpeedKey = kMDItemISOSpeed as String
 	static var exifCaptureDateKey = "DateTimeOriginal"
 
-	static var alititudeKey = kMDItemAltitude as String
+	static var altitudeKey = kMDItemAltitude as String
 	static var latitudeKey = kMDItemLatitude as String
 	static var longitudeKey = kMDItemLongitude as String
 	static var locationNameKey = kMDItemNamedLocation as String
@@ -163,7 +163,7 @@ public extension String
 //	static var exifISOSpeedKey = "kMDItemISOSpeed"
 //	static var exifCaptureDateKey = "DateTimeOriginal"
 //
-//	static var alititudeKey = "kMDItemAltitude"
+//	static var altitudeKey = "kMDItemAltitude"
 //	static var latitudeKey = "kMDItemLatitude"
 //	static var longitudeKey = "kMDItemLongitude"
 //	static var locationNameKey = "kMDItemNamedLocation"

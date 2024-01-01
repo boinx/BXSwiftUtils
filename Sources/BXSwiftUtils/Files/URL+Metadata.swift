@@ -10,6 +10,7 @@
 import Foundation
 import AVFoundation
 import CoreSpotlight
+import CoreLocation
 
 #if canImport(UniformTypeIdentifiers)
 import UniformTypeIdentifiers
@@ -85,13 +86,72 @@ public extension URL
 	var imageMetadata:[CFString:Any]
 	{
 		guard let source = CGImageSourceCreateWithURL(self as CFURL,nil) else { return [:] }
-		guard let properties = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
+		guard let properties1 = CGImageSourceCopyProperties(source,nil) else { return [:] }
+		guard let properties2 = CGImageSourceCopyPropertiesAtIndex(source,0,nil) else { return [:] }
 		
-		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate])
+		// Get all metadata from ImageIO
+		
+		let metadata1 = properties1 as? [CFString:Any] ?? [:]
+		let metadata2 = properties2 as? [CFString:Any] ?? [:]
+		var metadata = metadata1
+		metadata += metadata2
+		
+		// Copy capture date from TIFF or EXIF dictionaries
+		
+		if let tiffInfo = metadata[kCGImagePropertyTIFFDictionary] as? [String:Any]
+		{
+			if let dateString = tiffInfo[kCGImagePropertyTIFFDateTime as String] as? String, let date = dateString.date
+			{
+				metadata[kMDItemContentCreationDate] = date
+			}
+		}
+		
+		if let exifInfo = metadata[kCGImagePropertyExifDictionary] as? [String:Any]
+		{
+			if let dateString = exifInfo[kCGImagePropertyExifDateTimeDigitized as String] as? String, let date = dateString.date
+			{
+				metadata[kMDItemContentCreationDate] = date
+			}
+			if let dateString = exifInfo[kCGImagePropertyExifDateTimeOriginal as String] as? String, let date = dateString.date
+			{
+				metadata[kMDItemContentCreationDate] = date
+			}
+		}
+		
+		// Copy relevant info from the GPS dictionary to the main level
+		
+		if let gpsInfo = metadata[kCGImagePropertyGPSDictionary] as? [String:Any]
+		{
+			if var latitude = gpsInfo[kCGImagePropertyGPSLatitude as String] as? CLLocationDegrees,
+			   var longitude = gpsInfo[kCGImagePropertyGPSLongitude as String] as? CLLocationDegrees,
+			   let latitudeRef = gpsInfo[kCGImagePropertyGPSLatitudeRef as String] as? String,
+			   let longitudeRef = gpsInfo[kCGImagePropertyGPSLongitudeRef as String] as? String
+			{
+				if latitudeRef.uppercased()=="S" { latitude *= -1 }
+				if longitudeRef.uppercased()=="W" { longitude *= -1 }
+				metadata[kMDItemLatitude] = NSNumber(value:latitude)
+				metadata[kMDItemLongitude] = NSNumber(value:longitude)
+			}
 
-		var metadata = properties as? [CFString:Any] ?? [:]
-		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
-		metadata[kMDItemFSCreationDate] = spotlight[kMDItemFSCreationDate]
+			if let altitude = gpsInfo[kCGImagePropertyGPSAltitude as String] as? Double
+			{
+				metadata[kMDItemAltitude] = NSNumber(value:altitude)
+			}
+		}
+
+//		// Also gather some info via Spotlight
+//		
+//		let spotlight = self.spotlightMetadata(for:[kMDItemFSSize,kMDItemFSCreationDate,kMDItemLatitude,kMDItemLongitude])
+//		metadata[kMDItemFSSize] = spotlight[kMDItemFSSize]
+//		metadata[kMDItemFSCreationDate] = spotlight[kMDItemFSCreationDate]
+				 
+		// Get file creation/modification date from URL
+		
+		metadata[kMDItemFSSize] = self.fileSize
+		metadata[kMDItemFSCreationDate] = self.creationDate
+		metadata[kMDItemFSContentChangeDate] = self.modificationDate
+
+
 		return metadata
 	}
 
@@ -428,6 +488,7 @@ public extension URL
 		var audioCodec:AudioFormatID? = nil
 		var codecs:[String]? = nil
 		var size:Int? = nil
+		var date:Date? = nil
 		
 		if duration == nil
 		{
@@ -519,6 +580,11 @@ public extension URL
 			size = spotlight[kMDItemFSSize] as? Int
 		}
 	
+		if date == nil
+		{
+			date = self.creationDate ?? spotlight[kMDItemContentCreationDate] as? Date
+		}
+	
 		// Build metadata dictionary
 		
 		var metadata:[CFString:Any] = [:]
@@ -532,7 +598,8 @@ public extension URL
 		metadata["fps" as CFString] = fps
 		metadata["videoCodec" as CFString] = videoCodec
 		metadata["audioCodec" as CFString] = audioCodec
-		metadata[kMDItemContentCreationDate] = spotlight[kMDItemContentCreationDate] as? Date
+		metadata[kMDItemFSCreationDate] = date
+		metadata[kMDItemContentCreationDate] = date
 		return metadata
 	}
 }
