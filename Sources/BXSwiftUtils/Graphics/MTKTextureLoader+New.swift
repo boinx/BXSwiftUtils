@@ -40,7 +40,7 @@ extension MTKTextureLoader
 
 	/// Loads a texture from an image
 	
-	public static func newTexture(image:CGImage, device:MTLDevice, allowSRGB:Bool = false, textureUsage:MTLTextureUsage = .shaderRead, storageMode:MTLStorageMode = .private, mipmap:Bool = false, highQuality:Bool = false, debug:Bool = false) throws -> MTLTexture
+	public static func newTexture(image:CGImage, device:MTLDevice, allowSRGB:Bool = false, textureUsage:MTLTextureUsage = .shaderRead, storageMode:MTLStorageMode = .private, mipmap:Bool = false, blur:Double = 0.0) throws -> MTLTexture
 	{
 		let options:[MTKTextureLoader.Option:NSObject] = self.createOptions(
 			allowSRGB:allowSRGB,
@@ -51,13 +51,9 @@ extension MTKTextureLoader
 		let loader = MTKTextureLoader(device:device)
 		var texture = try loader.newTexture(cgImage:image,options:options)
 		
-		if debug
+		if mipmap
 		{
-			Self.setMipMapDebugColors(texture:texture)
-		}
-		else if highQuality
-		{
-			Self.createHighQualityMipmap(texture:&texture, device:device)
+			Self.createHighQualityMipmap(texture:&texture, device:device, blur:blur)
 		}
 		
 		return texture
@@ -77,13 +73,45 @@ extension MTKTextureLoader
         if mipmap
         {
             options[MTKTextureLoader.Option.allocateMipmaps] = true as NSNumber
-            options[MTKTextureLoader.Option.generateMipmaps] = true as NSNumber
+//            options[MTKTextureLoader.Option.generateMipmaps] = true as NSNumber
         }
 		
 		return options
 	}
 	
 	
+	/// Fills a mipmap texture with different colors in each level, so that shadert code can be visually debugged.
+	
+	public static func createHighQualityMipmap(texture:inout MTLTexture, device:MTLDevice, blur:Double)
+	{
+		guard let commandQueue = device.makeCommandQueue() else { return }
+		guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
+		
+		// Do a minimal blur on level 0 to reduce the highest image frequencies
+		
+		if blur > 0.0
+		{
+			let lowpass = MPSImageGaussianBlur(device:device, sigma:Float(blur))
+			lowpass.edgeMode = .clamp
+			lowpass.encode(commandBuffer:commandBuffer, inPlaceTexture:&texture)
+		}
+		
+		// Create the mipmap levels 1 and lower with high quality gaussian interpolation. For more info about mipmap textures refer to
+		// https://developer.apple.com/documentation/metal/textures/improving_texture_sampling_quality_and_performance_with_mipmaps
+		
+		if texture.mipmapLevelCount > 1
+		{
+			let gaussianPyramid = MPSImageGaussianPyramid(device:device)
+			gaussianPyramid.encode(commandBuffer:commandBuffer, inPlaceTexture:&texture, fallbackCopyAllocator:nil)
+		}
+		
+		// Wait until done
+		
+		commandBuffer.commit()
+		commandBuffer.waitUntilCompleted()
+	}
+	
+
 	/// Fills a mipmap texture with different colors in each level, so that shadert code can be visually debugged.
 	
 	public static func setMipMapDebugColors(texture:MTLTexture)
@@ -129,34 +157,6 @@ print("level=\(level) color \(j) = \(colors[j])")
 	}
 	
 	
-	/// Fills a mipmap texture with different colors in each level, so that shadert code can be visually debugged.
-	
-	public static func createHighQualityMipmap(texture:inout MTLTexture, device:MTLDevice)
-	{
-		guard let commandQueue = device.makeCommandQueue() else { return }
-		guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
-		
-		// Do a minimal blur on level 0 to reduce the highest image frequencies
-		
-		let blur = MPSImageGaussianBlur(device:device, sigma:0.9)
-		blur.edgeMode = .clamp
-		blur.encode(commandBuffer:commandBuffer, inPlaceTexture:&texture)
-
-		// Create the mipmap levels 1 and lower with high quality gaussian interpolation
-		
-		if texture.mipmapLevelCount > 1
-		{
-			let gaussianPyramid = MPSImageGaussianPyramid(device:device)
-			gaussianPyramid.encode(commandBuffer:commandBuffer, inPlaceTexture:&texture, fallbackCopyAllocator:nil)
-		}
-		
-		// Wait until done
-		
-		commandBuffer.commit()
-		commandBuffer.waitUntilCompleted()
-	}
-	
-
 }
 
 
