@@ -135,6 +135,33 @@ extension Dictionary : BXValidPlist
 		
 		return true
 	}
+	
+	public func validatedPlist() -> [String:Any] where Key==String, Value:Any
+	{
+		var plist:[String:Any] = self
+		
+		for (key,value) in plist
+		{
+			if let subdict = value as? [String:Any]
+			{
+				plist[key] = subdict.validatedPlist()
+			}
+			else if let subarray = value as? [Any]
+			{
+				plist[key] = subarray.validatedPlist()
+			}
+			else if let value = value as? BXValidPlist
+			{
+				if !value.isValidPlist { plist.removeValue(forKey:key) }
+			}
+			else
+			{
+				plist.removeValue(forKey:key)
+			}
+		}
+		
+		return plist
+	}
 }
 
 
@@ -184,6 +211,33 @@ extension Array : BXValidPlist
 		}
 		
 		return true
+	}
+
+	public func validatedPlist() -> [Any] where Element:Any
+	{
+		var plist:[Any] = self
+		
+		for (i,value) in plist.enumerated()
+		{
+			if let subdict = value as? [String:Any]
+			{
+				plist[i] = subdict.validatedPlist()
+			}
+			else if let subarray = value as? [Any]
+			{
+				plist[i] = subarray.validatedPlist()
+			}
+			else if let value = value as? BXValidPlist
+			{
+				if !value.isValidPlist { plist.remove(at:i) }
+			}
+			else
+			{
+				plist.remove(at:i)
+			}
+		}
+		
+		return plist
 	}
 }
 
