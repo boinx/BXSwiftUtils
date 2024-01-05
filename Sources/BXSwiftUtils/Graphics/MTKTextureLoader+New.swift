@@ -51,11 +51,6 @@ extension MTKTextureLoader
 		let loader = MTKTextureLoader(device:device)
 		var texture = try loader.newTexture(cgImage:image,options:options)
 		
-		if mipmap
-		{
-			Self.createHighQualityMipmap(texture:&texture, device:device, blur:blur)
-		}
-		
 		return texture
 	}
 
@@ -78,85 +73,6 @@ extension MTKTextureLoader
 		
 		return options
 	}
-	
-	
-	/// Fills a mipmap texture with different colors in each level, so that shadert code can be visually debugged.
-	
-	public static func createHighQualityMipmap(texture:inout MTLTexture, device:MTLDevice, blur:Double)
-	{
-		guard let commandQueue = device.makeCommandQueue() else { return }
-		guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
-		
-		// Do a minimal blur on level 0 to reduce the highest image frequencies
-		
-		if blur > 0.0
-		{
-			let lowpass = MPSImageGaussianBlur(device:device, sigma:Float(blur))
-			lowpass.edgeMode = .clamp
-			lowpass.encode(commandBuffer:commandBuffer, inPlaceTexture:&texture)
-		}
-		
-		// Create the mipmap levels 1 and lower with high quality gaussian interpolation. For more info about mipmap textures refer to
-		// https://developer.apple.com/documentation/metal/textures/improving_texture_sampling_quality_and_performance_with_mipmaps
-		
-		if texture.mipmapLevelCount > 1
-		{
-			let gaussianPyramid = MPSImageGaussianPyramid(device:device)
-			gaussianPyramid.encode(commandBuffer:commandBuffer, inPlaceTexture:&texture, fallbackCopyAllocator:nil)
-		}
-		
-		// Wait until done
-		
-		commandBuffer.commit()
-		commandBuffer.waitUntilCompleted()
-	}
-	
-
-	/// Fills a mipmap texture with different colors in each level, so that shadert code can be visually debugged.
-	
-	public static func setMipMapDebugColors(texture:MTLTexture)
-	{
-		let W = texture.width
-		let H = texture.height
-		let n = texture.mipmapLevelCount
-		
-		let colors:[[UInt8]] =
-		[
-			[255,0,0,255],
-			[0,255,0,255],
-			[0,0,255,255],
-			[255,0,255,255],
-			[255,255,0,255],
-			[0,255,255,255],
-			[255,255,255,255],
-		]
-
-		for level in 1...n
-		{
-			let w = W >> level
-			let h = H >> level
-			let rowBytes = w * 4
-			let count = h * rowBytes
-			guard count >= 4 else { continue }
-			var buffer = [UInt8](repeating:0, count:count)
-			let j = (level-1) % colors.count
-			
-print("level=\(level) color \(j) = \(colors[j])")
-
-			for i in 0 ..< count/4
-			{
-				buffer[i*4+0] = colors[j][0]
-				buffer[i*4+1] = colors[j][1]
-				buffer[i*4+2] = colors[j][2]
-				buffer[i*4+3] = colors[j][3]
-			}
-			
-			let region = MTLRegionMake2D(0,0,w,h)
-			texture.replace(region:region, mipmapLevel:level, withBytes:&buffer, bytesPerRow:rowBytes)
-		}
-	}
-	
-	
 }
 
 
