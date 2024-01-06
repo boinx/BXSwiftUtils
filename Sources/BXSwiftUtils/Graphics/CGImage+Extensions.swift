@@ -77,6 +77,15 @@ public extension CGImage
 		
         return nil
 	}
+	
+	/// Returns the size of this CGImage
+	
+	var size:CGSize
+	{
+		let w = self.width
+		let h = self.height
+		return CGSize(w,h)
+	}
 }
 
 
