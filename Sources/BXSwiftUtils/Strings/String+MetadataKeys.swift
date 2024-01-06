@@ -99,6 +99,7 @@ public extension String
 	
 	static var widthKey = kMDItemPixelWidth as String
 	static var heightKey = kMDItemPixelHeight as String
+	static var orientationKey = "Orientation"
 	static var profileNameKey = kMDItemProfileName as String //"ProfileName"
 	static var modelKey = kMDItemColorSpace as String //"Model"
 
