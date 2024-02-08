@@ -229,7 +229,7 @@ extension KVO
 
 import AppKit
 
-#elseif os(iOS)
+#elseif os(iOS) || os(tvOS)
 
 public let NSNoSelectionMarker = "NSNoSelectionMarker" as AnyObject
 public let NSMultipleValuesMarker = "NSMultipleValuesMarker" as AnyObject

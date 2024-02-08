@@ -18,7 +18,7 @@ import Combine
 
 // Add support for Combine publishers when running on modern OS versions
 
-@available(macOS 10.15.2, iOS 13.2, *) extension BXSelectionController : ObservableObject
+@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *) extension BXSelectionController : ObservableObject
 {
 
 }
@@ -34,7 +34,7 @@ public extension BXSelectionController
 	
 	func publishObjectWillChange()
 	{
-		if #available(macOS 10.15.2, iOS 13.2, *)
+		if #available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 		{
 			if shouldPublishObjectWillChange
 			{
@@ -45,7 +45,7 @@ public extension BXSelectionController
 
 	/// A Combine publisher that broadcasts selection changes
 	
-	@available(macOS 10.15.2, iOS 13.2, *) var selectionDidChange : NotificationCenter.Publisher
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *) var selectionDidChange : NotificationCenter.Publisher
 	{
 		NotificationCenter.default.publisher(for: Self.selectionDidChangeNotification, object:self)
 	}

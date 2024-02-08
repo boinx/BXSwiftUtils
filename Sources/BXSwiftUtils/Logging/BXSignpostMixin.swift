@@ -43,7 +43,7 @@ extension BXSignpostMixin
 	
 	public static func beginSignpost(in name:StaticString,_ function:String = #function) -> Any?
 	{
-		if #available(iOS 12.0, OSX 10.14, *)
+		if #available(iOS 12.0, OSX 10.14, tvOS 13.0, *)
 		{
 			let signpostID = OSSignpostID(log:signpostlog)
 			os_signpost(.begin, log:signpostlog, name:name, signpostID:signpostID, "%@.begin",function)
@@ -66,7 +66,7 @@ extension BXSignpostMixin
 	
 	public static func endSignpost(with identifier:Any?,in name:StaticString,_ function:String = #function)
 	{
-		if #available(iOS 12.0, OSX 10.14, *)
+		if #available(iOS 12.0, OSX 10.14, tvOS 13.0, *)
 		{
 			guard let signpostID = identifier as? OSSignpostID else { return }
 			os_signpost(.end, log:signpostlog, name:name, signpostID:signpostID, "%@.end",function)

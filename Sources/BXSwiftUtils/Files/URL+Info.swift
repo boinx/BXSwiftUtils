@@ -374,8 +374,10 @@ extension URL
 	}
 
 	/// Return the free space on the volume
-	
-	@available (macOS 10.13, *)
+
+	#if os(iOS) || os(macOS)
+	@available(macOS 10.13, *)
+
 	public var volumeAvailableCapacityForImportantUsage: Int?
 	{
 		guard let volumeURL = self.volumeURL else { return nil }
@@ -388,7 +390,8 @@ extension URL
 
 	/// Return the free space on the volume
 	
-	@available (macOS 10.13, *)
+	@available(macOS 10.13, *)
+
 	public var volumeAvailableCapacityForOpportunisticUsage: Int?
 	{
 		guard let volumeURL = self.volumeURL else { return nil }
@@ -397,7 +400,7 @@ extension URL
 		guard let bytes = values?.volumeAvailableCapacityForOpportunisticUsage else { return nil }
 		return Int(bytes)
 	}
-	
+	#endif
 }
 
 

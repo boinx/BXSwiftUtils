@@ -49,7 +49,7 @@ extension MTKTextureLoader
 			mipmap:mipmap)
 
 		let loader = MTKTextureLoader(device:device)
-		var texture = try loader.newTexture(cgImage:image,options:options)
+		let texture = try loader.newTexture(cgImage:image,options:options)
 		
 		return texture
 	}

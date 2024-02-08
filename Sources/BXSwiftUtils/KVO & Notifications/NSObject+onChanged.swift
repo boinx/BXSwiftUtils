@@ -34,7 +34,7 @@ extension NSObjectProtocol where Self:NSObject
 	/// - parameter handler: The closure that is called when the value changes
 	/// - returns: A token that should be retained. Release this token to deactivate the KVO observer.
 	
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 
 	public func onChanged<Value>(_ keypath:KeyPath<Self,Value>, options:NSKeyValueObservingOptions = .new, handler: @escaping ((Value)->Void)) -> AnyCancellable?
 	{
@@ -56,7 +56,7 @@ extension NSObjectProtocol where Self:NSObject
 	/// - parameter handler: The closure that is called when the value changes
 	/// - returns: A token that should be retained. Release this token to deactivate the KVO observer.
 	
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 
 	public func onChanged<Value>(_ keypath:KeyPath<Self,Value?>, options:NSKeyValueObservingOptions = .new, handler: @escaping ((Value?)->Void)) -> AnyCancellable?
 	{
@@ -68,7 +68,7 @@ extension NSObjectProtocol where Self:NSObject
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value>, options:NSKeyValueObservingOptions = .new, throttle interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value)->Void)) -> AnyCancellable?
 	{
@@ -79,7 +79,7 @@ extension NSObjectProtocol where Self:NSObject
 	}
 
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value?>, options:NSKeyValueObservingOptions = .new, throttle interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value?)->Void)) -> AnyCancellable?
 	{
@@ -93,7 +93,7 @@ extension NSObjectProtocol where Self:NSObject
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value>, options:NSKeyValueObservingOptions = .new, debounce interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value)->Void)) -> AnyCancellable?
 	{
@@ -104,7 +104,7 @@ extension NSObjectProtocol where Self:NSObject
 	}
 
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 
 	public func onChanged<Value:Equatable>(_ keypath:KeyPath<Self,Value?>, options:NSKeyValueObservingOptions = .new, debounce interval:DispatchQueue.SchedulerTimeType.Stride, handler: @escaping ((Value?)->Void)) -> AnyCancellable?
 	{

@@ -31,7 +31,7 @@ import Foundation
 
 // Since the following constants are not available on iOS we'll define them for cross-platform code
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 
 public let kMDItemFSSize = "kMDItemFSSize" as CFString
 public let kMDItemKind = "kMDItemKind" as CFString

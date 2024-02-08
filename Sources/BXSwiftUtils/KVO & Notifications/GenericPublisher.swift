@@ -17,10 +17,10 @@ import Combine
 
 /// GenericPublisher can be used at the call site to trigger work based on a event stream
 
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 public typealias GenericPublisher = PassthroughSubject<Void,Never>
 
-@available(macOS 10.15, iOS 13, *)
+@available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension GenericPublisher
 {
 	// These function with different sames (but identical functionality) are provide better readbility at the call site

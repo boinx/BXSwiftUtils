@@ -8,7 +8,7 @@
 
 
 import Foundation
-#if os(iOS)
+#if os(iOS)  || os(tvOS)
 import UIKit
 #endif
 
@@ -22,7 +22,7 @@ extension CGPoint
 	
 	public var string:String
 	{
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
 		return NSCoder.string(for:self) //NSStringFromCGPoint(self)
         #else
 		return NSStringFromPoint(self)
@@ -33,7 +33,7 @@ extension CGPoint
 	
 	public init(with string:String)
 	{
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
 		let tmp = NSCoder.cgPoint(for:string) //CGPointFromString(string)
         #else
 		let tmp = NSPointFromString(string)

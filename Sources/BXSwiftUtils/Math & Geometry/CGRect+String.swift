@@ -8,7 +8,7 @@
 
 
 import Foundation
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 #endif
 
@@ -22,7 +22,7 @@ extension CGRect
 	
 	public var string:String
 	{
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
 		return NSCoder.string(for:self) //NSStringFromCGRect(self)
         #else
 		return NSStringFromRect(self)
@@ -33,7 +33,7 @@ extension CGRect
 	
 	public init(with string:String)
 	{
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
 		let tmp = NSCoder.cgRect(for:string) //CGRectFromString(string)
         #else
 		let tmp = NSRectFromString(string)
