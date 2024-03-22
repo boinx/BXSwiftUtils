@@ -65,7 +65,7 @@ public struct BXKeychain
     {
         var statusString: String = "\(status)"
         
-        if #available(iOS 11.3, *)
+		if #available(iOS 11.3, tvOS 13.0, *)
         {
             if let errorMessage = SecCopyErrorMessageString(status, nil)
             {

@@ -21,7 +21,7 @@ import Foundation
 /// On some machines (e.g. M1 Macs) the dragging events come in such high frequency, that the triggered
 /// re-layouting causes the app to go spinning beachball. Throttling the event stream avoids this problem.
 
-@available(macOS 10.15, iOS 13, *) public class BXValueThrottler<V>
+@available(macOS 10.15, iOS 13, tvOS 13.0, *) public class BXValueThrottler<V>
 {
 	private var interval: DispatchQueue.SchedulerTimeType.Stride
 	private var onBegan: (()->Void)? = nil

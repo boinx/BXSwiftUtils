@@ -15,7 +15,7 @@ import CoreVideo
 //----------------------------------------------------------------------------------------------------------------------
 
 
-@available(iOS 11.0,macOS 10.11, *)
+@available(iOS 11.0,macOS 10.11, tvOS 13.0, *)
 
 public extension MTLTexture
 {

@@ -25,7 +25,7 @@ public extension URL
 
 	static func resolving(aliasData:Data) throws -> URL?
 	{
-		#if os (iOS)
+		#if os (iOS) || os(tvOS)
 
 		// Since iOS doesn't support the CFURLCreateBookmarkDataFromAliasRecord function, we first write
 		// the aliasData to a temporary file, which will be deleted after we are done using it.

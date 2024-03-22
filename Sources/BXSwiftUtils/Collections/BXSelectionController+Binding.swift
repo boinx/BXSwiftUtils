@@ -23,7 +23,7 @@ extension BXSelectionController
 	/// - parameter keyPath: A keypath for a writable property of type T on class C
 	/// - returns: A Binding to a Set of values of type T.
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 	
 	public func binding<C,T:Hashable>(forKeyPath keyPath:ReferenceWritableKeyPath<C,T>) -> Binding<Set<T>>
 	{
@@ -47,7 +47,7 @@ extension BXSelectionController
 	/// - parameter keyPath: A keypath for a writable property of type T? on class C
 	/// - returns: A Binding to a Set of values of type T.
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 	
 	public func binding<C,T:Hashable>(forKeyPath keyPath:ReferenceWritableKeyPath<C,T?>) -> Binding<Set<T>>
 	{
@@ -73,7 +73,7 @@ extension BXSelectionController
 	/// - parameter keyPath: A keypath for a writable property of type Int on class C
 	/// - returns: A Binding to a Set of Double values
 
-	@available(macOS 10.15.2, iOS 13.2, *)
+	@available(macOS 10.15.2, iOS 13.2, tvOS 13.0, *)
 	
 	public func doubleBinding<C>(forKeyPath keyPath:ReferenceWritableKeyPath<C,Int>) -> Binding<Set<Double>>
 	{

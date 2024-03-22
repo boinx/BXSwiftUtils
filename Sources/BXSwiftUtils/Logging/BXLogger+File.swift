@@ -123,7 +123,7 @@ extension BXLogger
 	{
 		#if canImport(Combine)	// Ugly hack: compile time check for 10.15 SDK to make it build on macOS 10.13
 
-			if #available(iOS 13, macOS 10.15, *)
+			if #available(iOS 13, macOS 10.15, tvOS 13.0, *)
 			{
 				try self.logFile.handle?.synchronize()
 			}
