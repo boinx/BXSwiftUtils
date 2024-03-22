@@ -113,6 +113,20 @@ public extension CGRect
 		return sqrt(w*w + h*h)
 	}
 	
+	/// Returns the area of this CGRect
+	
+	public var area:CGFloat
+	{
+		self.width * self.height
+	}
+	
+	/// Returns the aspect ratio of this CGRect
+	
+	public var aspectRatio:CGFloat
+	{
+		self.width / self.height
+	}
+	
 	/// Scales a rectangle so that its longer edge has the specified length. This preserves the aspect ratio of the rect.
 	/// - parameter maxEdge: The length of the longer edge after scaling
 	/// - returns: The scaled CGRect
@@ -200,6 +214,34 @@ public extension CGRect
 		let dy = abs(ymax-ymin)
 		
 		return CGRect(x:xmin, y:ymin, width:dx, height:dy)
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+extension Array where Element==CGRect
+{
+	/// Returns the union of an Array of CGRects
+	
+	public var union:CGRect
+	{
+		var result:CGRect? = nil
+		
+		for rect in self
+		{
+			if let r = result
+			{
+				result = r.union(rect)
+			}
+			else
+			{
+				result = rect
+			}
+		}
+		
+		return result ?? .zero
 	}
 }
 
