@@ -115,14 +115,14 @@ public extension CGRect
 	
 	/// Returns the area of this CGRect
 	
-	public var area:CGFloat
+	var area:CGFloat
 	{
 		self.width * self.height
 	}
 	
 	/// Returns the aspect ratio of this CGRect
 	
-	public var aspectRatio:CGFloat
+	var aspectRatio:CGFloat
 	{
 		self.width / self.height
 	}
