@@ -245,6 +245,15 @@ extension URL
 		}
 	}
 
+	/// Returns true if this file is in the trash
+	
+	public var isInTrash:Bool
+	{
+		guard let trashURL = try? FileManager.default.url(for:.trashDirectory, in:.userDomainMask, appropriateFor:self, create:false) else { return false }
+		return self.path.contains(trashURL.path)
+	}
+
+
 	/// Returns the UTI of a file URL
 	
 	public var uti: String?
