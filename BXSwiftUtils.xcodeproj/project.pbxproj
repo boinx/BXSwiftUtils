@@ -151,6 +151,9 @@
 		D0C8773E2971353A003DA744 /* Array+Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8773D2971353A003DA744 /* Array+Matrix.swift */; };
 		D0CA564A256CEA1700D2C09D /* MTKTextureLoader+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */; };
 		D0CB5DC42A5FD3B60024C70F /* Collection+UniqueValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CB5DC32A5FD3B60024C70F /* Collection+UniqueValue.swift */; };
+		D0CB60242BE4D26D00A09EF4 /* NSAttributedString+Markup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CB60232BE4D26D00A09EF4 /* NSAttributedString+Markup.swift */; };
+		D0CB60262BE4D32600A09EF4 /* NSAttributedString+Markup.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D0CB60252BE4D32600A09EF4 /* NSAttributedString+Markup.xcstrings */; };
+		D0CB60282BE4D40400A09EF4 /* Bundle+BXSwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CB60272BE4D40400A09EF4 /* Bundle+BXSwiftUtils.swift */; };
 		D0CD307B2652978D0042046D /* Thread+stackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD307A2652978D0042046D /* Thread+stackTrace.swift */; };
 		D0D0EE5727B242740050E20D /* BXValueThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0EE5627B242730050E20D /* BXValueThrottler.swift */; };
 		D0D6B6412473F6E900EC4E5B /* NSObject+onChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6B6402473F6E900EC4E5B /* NSObject+onChanged.swift */; };
@@ -670,6 +673,7 @@
 		D03234F0205BFCA4003D6CCB /* Strings */ = {
 			isa = PBXGroup;
 			children = (
+				D0CB60272BE4D40400A09EF4 /* Bundle+BXSwiftUtils.swift */,
 				D03234ED205BFC9F003D6CCB /* String+Localized.swift */,
 				D07D760221DDF136008A6E32 /* Numeric+Localized.swift */,
 				D07D760421DDF71D008A6E32 /* String+Timecode.swift */,
@@ -1100,6 +1104,7 @@
 				D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */,
 				D0859FD52158F7E200F624C7 /* URL+ExtendedAttributes.swift in Sources */,
 				D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */,
+				D0CB60282BE4D40400A09EF4 /* Bundle+BXSwiftUtils.swift in Sources */,
 				D0A4F1132552A43B00FAEBD8 /* Int+localizedString.swift in Sources */,
 				D0C4B9D328468F340016FD6E /* GenericPublisher.swift in Sources */,
 				48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,

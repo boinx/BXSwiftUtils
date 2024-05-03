@@ -166,16 +166,3 @@ public extension Double
 
 
 //----------------------------------------------------------------------------------------------------------------------
-
-
-public extension Bundle
-{
-	#if SWIFT_PACKAGE
-	static let BXSwiftUtils = Bundle.module
-	#else
-	static let BXSwiftUtils = Bundle(identifier:"com.boinx.BXSwiftUtils")
-	#endif
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
