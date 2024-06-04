@@ -21,6 +21,8 @@ import UIKit
 
 extension NSAttributedString
 {
+	#if os(macOS)
+
 	/// Creates an NSAttributedString with the specified string. It uses the regular system font, but any occurances of "[AI]" will be styled in a special way.
 	
 	public convenience init(with string:String)
@@ -48,6 +50,10 @@ extension NSAttributedString
 		
 		self.init(attributedString:text)
 	}
+
+	#else
+
+	#endif
 }
 
 	
