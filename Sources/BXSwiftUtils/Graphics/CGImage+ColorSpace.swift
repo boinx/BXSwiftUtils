@@ -49,11 +49,10 @@ public extension CGImage
 	func convert(to colorSpaceName:CFString) -> CGImage?
 	{
 		guard let colorSpace = self.colorSpace else { return nil }
-		guard let name = colorSpace.name else { return nil }
 		
 		// If already in the correct color space then return the original image. This is the fast path.
 		
-		if colorSpace.model == .rgb && name == colorSpaceName
+		if let name = colorSpace.name, colorSpace.model == .rgb && name == colorSpaceName
 		{
 			return self
 		}
