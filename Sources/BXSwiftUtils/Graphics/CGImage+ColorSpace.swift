@@ -59,6 +59,11 @@ public extension CGImage
 
 		// Otherwise create a bitmap context with identical memory layout, but with the correct color space
 		
+		guard let newColorSpace = CGColorSpace(name:colorSpaceName) else
+		{
+			return nil
+		}
+		
 		let w = self.width
 		let h = self.height
         let bytesPerPixel = 4
@@ -72,7 +77,7 @@ public extension CGImage
 			height:h,
 			bitsPerComponent:8,
 			bytesPerRow:bytesPerRow,
-			space:CGColorSpace.displayP3(),
+			space:newColorSpace,
 			bitmapInfo:bitmapInfo) else { return nil }
 
 		// Draw this image into the new bitmap and return teh new image
