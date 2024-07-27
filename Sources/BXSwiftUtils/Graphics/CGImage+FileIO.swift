@@ -21,6 +21,10 @@ import UIKit
 import CoreGraphics
 #endif
 
+#if os(iOS)
+import MobileCoreServices
+#endif
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
