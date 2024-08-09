@@ -174,6 +174,7 @@
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
+		D0F921322C63B0630076350F /* NSView+EDRMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F921312C63B0630076350F /* NSView+EDRMixin.swift */; };
 		D0FDCC9C2AE3B5F800123F6D /* Double+clusteredDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDCC9B2AE3B5F800123F6D /* Double+clusteredDuration.swift */; };
 		D0FF2C102458823C008EBD9C /* BXActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */; };
 		F66019A3249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */; };
@@ -364,6 +365,7 @@
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
+		D0F921312C63B0630076350F /* NSView+EDRMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+EDRMixin.swift"; sourceTree = "<group>"; };
 		D0FDCC9B2AE3B5F800123F6D /* Double+clusteredDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+clusteredDuration.swift"; sourceTree = "<group>"; };
 		D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXActionWrapper.swift; sourceTree = "<group>"; };
 		F66019A2249B576600C8AB80 /* Wrapper+Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wrapper+Atomic.swift"; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 				D00E33082C5104A1007A57D7 /* CGImage+Convert.swift */,
 				D00E33062C5103D1007A57D7 /* CGImage+Metadata.swift */,
 				D00E33042C5103C3007A57D7 /* CGImage+ColorSpace.swift */,
+				D0F921312C63B0630076350F /* NSView+EDRMixin.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -1102,6 +1105,7 @@
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
 				F66019A7249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift in Sources */,
 				D003977D28CA1E3A00EB7F25 /* BXJobQueue.swift in Sources */,
+				D0F921322C63B0630076350F /* NSView+EDRMixin.swift in Sources */,
 				D00FCDC329558D510081F227 /* Collection+concurrentMap.swift in Sources */,
 				D026B3A922A11DB6002B9B02 /* BXStopWatch.swift in Sources */,
 				48B6191F215E35DB00E6E037 /* OptionalType.swift in Sources */,
