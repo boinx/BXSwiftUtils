@@ -80,7 +80,7 @@ public extension CGImage
 			space:newColorSpace,
 			bitmapInfo:bitmapInfo) else { return nil }
 
-		// Draw this image into the new bitmap and return teh new image
+		// Draw this image into the new bitmap and return the new image
 		
 		context.setAllowsAntialiasing(false)
 		context.setShouldAntialias(false)

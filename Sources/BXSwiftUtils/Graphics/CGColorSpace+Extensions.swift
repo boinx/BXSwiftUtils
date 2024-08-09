@@ -17,7 +17,7 @@ import CoreGraphics
 
 public extension CGColorSpace
 {
-	/// Returns the DisplayP3 color space
+	/// Returns the sRGB color space
 
 	static func sRGB() -> CGColorSpace
 	{
