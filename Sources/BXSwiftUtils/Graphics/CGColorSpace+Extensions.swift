@@ -34,3 +34,17 @@ public extension CGColorSpace
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+extension CFString
+{
+	/// Returns true if the name of the CGColorSpace contains "extended"
+
+	public var isEDR:Bool
+	{
+		(self as String).lowercased().contains("extended")
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
