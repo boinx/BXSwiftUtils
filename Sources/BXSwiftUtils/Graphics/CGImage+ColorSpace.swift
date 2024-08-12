@@ -64,18 +64,35 @@ public extension CGImage
 			return nil
 		}
 		
+		
 		let w = self.width
 		let h = self.height
-        let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * w
+		var bitsPerComponent = 8
+        var bytesPerPixel = 4
+        var bytesPerRow = bytesPerPixel * w
 		let rect = CGRect(x:0, y:0, width:w, height:h)
-		let bitmapInfo:UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
+		var bitmapInfo:UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
+		
+		if colorSpaceName.isEDR
+		{
+			bitsPerComponent = 16
+			bytesPerPixel = 8
+			bytesPerRow = Int(1024 * ceil(Double(bytesPerPixel * w) / 1024))
+//			bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder16Big.rawValue | CGBitmapInfo.floatComponents.rawValue
+			bitmapInfo = kCGBitmapByteOrder16Host.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.floatComponents.rawValue
+		}
+		
+//		kCGBitmapByteOrder16Host
+//		kCGBitmapFloatComponents
+//		kCGImagePropertyHasAlpha
+//		kCGImageAlphaPremultipliedLast
+		
 		
 		guard let context = CGContext(
 			data:nil,
 			width:w,
 			height:h,
-			bitsPerComponent:8,
+			bitsPerComponent:bitsPerComponent,
 			bytesPerRow:bytesPerRow,
 			space:newColorSpace,
 			bitmapInfo:bitmapInfo) else { return nil }
