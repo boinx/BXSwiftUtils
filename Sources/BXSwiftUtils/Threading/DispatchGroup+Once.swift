@@ -35,6 +35,13 @@ extension DispatchGroup
 			block = nil
 		}
 	}
+	
+	/// Returns true if this DispatchGroup is currently busy, i.e. not all enter() calls were balanced with leave() calls yet.
+	
+	public var isBusy:Bool
+	{
+		self.wait(timeout:.now()) == .timedOut
+	}
 }
 
 
