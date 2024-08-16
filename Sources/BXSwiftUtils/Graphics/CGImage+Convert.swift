@@ -39,6 +39,16 @@ public extension CGImage
 	}
 
 
+	/// If this CGImage was created from a bitmap CGContext, then the bitmap data is returned.
+
+	var bitmapData:Data?
+	{
+		guard let dataProvider = self.dataProvider else { return nil }
+		guard let cfdata = dataProvider.data else { return nil }
+		return cfdata as Data
+	}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
