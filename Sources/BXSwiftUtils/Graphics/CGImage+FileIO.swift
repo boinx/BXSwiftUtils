@@ -33,9 +33,10 @@ public extension CGImage
 {
 	/// Creates a CGImage from the specified image file.
 	/// - parameter url: The url of the image file
+	/// - parameter wantsEDR: Set to true if you want to load HDR assets
 	/// - returns: A CGImage
 	
-	class func load(from url:URL) -> CGImage?
+	class func load(from url:URL, wantsEDR:Bool = false) -> CGImage?
 	{
 		guard let uti = url.uti else { return nil }
 		
@@ -44,17 +45,28 @@ public extension CGImage
 			return loadPDF(from:url)
 		}
 
-		return loadImage(from:url)
+		return loadImage(from:url, wantsEDR:wantsEDR)
 	}
 
 
-	class func loadImage(from url:URL) -> CGImage?
+	class func loadImage(from url:URL, wantsEDR:Bool = false) -> CGImage?
 	{
 		if let source = CGImageSourceCreateWithURL(url as CFURL,nil)
 		{
 			let (_,index) = CGImage.biggestSize(for:source)
 		
-			if let image = CGImageSourceCreateImageAtIndex(source,index,nil)
+			var options:CFDictionary? = nil
+			
+			if #available(macOS 14, *)
+			{
+				options =
+				[
+					kCGImageSourceDecodeRequest : wantsEDR ? kCGImageSourceDecodeToHDR : kCGImageSourceDecodeToSDR
+				]
+				as? CFDictionary
+			}
+			
+			if let image = CGImageSourceCreateImageAtIndex(source,index,options)
 			{
 				return image
 			}
