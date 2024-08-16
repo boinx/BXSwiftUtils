@@ -73,6 +73,43 @@ extension MTKTextureLoader
 		
 		return options
 	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Creates a MTLTexture from bitmap data with the specified parameters. This call lets you choose the MTLPixelFormat, which the regular MTKTextureLoader
+	/// function won't let you do. That way you can create 16bit textures.
+	
+	public static func newTexture(device:MTLDevice, bitmapData:Data, width:Int, height:Int, rowBytes:Int, pixelFormat:MTLPixelFormat, textureUsage:MTLTextureUsage, storageMode:MTLStorageMode, mipmapped:Bool) -> MTLTexture?
+	{
+		let desc = MTLTextureDescriptor.texture2DDescriptor(
+			pixelFormat:pixelFormat,
+			width:width,
+			height:height,
+			mipmapped:mipmapped)
+			
+		desc.usage = textureUsage
+		desc.storageMode = storageMode
+		
+		let region = MTLRegionMake2D(0,0,width,height)
+		let texture = device.makeTexture(descriptor:desc)
+//		var pixels = bitmapData
+		
+		bitmapData.withUnsafeBytes
+		{
+			bytes in
+			
+			texture?.replace(
+				region:region,
+				mipmapLevel:0,
+				withBytes:bytes,
+				bytesPerRow:rowBytes)
+		}
+		
+		return texture
+	}
+	
 }
 
 
