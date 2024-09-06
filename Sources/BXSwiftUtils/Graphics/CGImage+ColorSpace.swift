@@ -46,47 +46,53 @@ public extension CGImage
 	
 	/// Converts this image to the RGB color space with the specified name
 	
-	func convert(to colorSpaceName:CFString) -> CGImage?
+	func convert(to newColorSpaceName:CFString) -> CGImage?
+	{
+		let w = self.width
+		let h = self.height
+		var bitsPerComponent = 8
+        var bytesPerPixel = 4
+		var bitmapInfo:UInt32 = /*CGBitmapInfo.byteOrder32Big.rawValue*/ kCGBitmapByteOrder32Host.rawValue /*CGBitmapInfo.byteOrder32Little.rawValue*/ | CGImageAlphaInfo.premultipliedFirst.rawValue
+		
+		if newColorSpaceName.isEDR	// Does new colorspace require 16bit floats?
+		{
+			bitsPerComponent = 16
+			bytesPerPixel = 8
+			bitmapInfo = kCGBitmapByteOrder16Host.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.floatComponents.rawValue
+		}
+
+		return self.convert(
+			to:newColorSpaceName,
+			bitsPerComponent:bitsPerComponent,
+			bytesPerPixel:bytesPerPixel,
+			bitmapInfo:bitmapInfo)
+	}
+	
+	
+	func convert(to newColorSpaceName:CFString, bitsPerComponent:Int, bytesPerPixel:Int, bitmapInfo:UInt32) -> CGImage?
 	{
 		guard let colorSpace = self.colorSpace else { return nil }
 		
 		// If already in the correct color space then return the original image. This is the fast path.
 		
-		if let name = colorSpace.name, colorSpace.model == .rgb && name == colorSpaceName
+		if let oldColorSpaceName = colorSpace.name,
+		   colorSpace.model == .rgb && oldColorSpaceName == newColorSpaceName,
+		   self.bitsPerComponent == bitsPerComponent,
+		   self.bitmapInfo.rawValue == bitmapInfo
 		{
 			return self
 		}
 
 		// Otherwise create a bitmap context with identical memory layout, but with the correct color space
 		
-		guard let newColorSpace = CGColorSpace(name:colorSpaceName) else
-		{
-			return nil
-		}
-		
-		
+		guard var newColorSpace = CGColorSpace(name:newColorSpaceName) else { return nil }
+
 		let w = self.width
 		let h = self.height
-		var bitsPerComponent = 8
-        var bytesPerPixel = 4
+		var bitsPerComponent = bitsPerComponent
+        var bytesPerPixel = bytesPerPixel
         var bytesPerRow = bytesPerPixel * w
-		let rect = CGRect(x:0, y:0, width:w, height:h)
-		var bitmapInfo:UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
-		
-		if colorSpaceName.isEDR
-		{
-			bitsPerComponent = 16
-			bytesPerPixel = 8
-			bytesPerRow = Int(1024 * ceil(Double(bytesPerPixel * w) / 1024))
-//			bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder16Big.rawValue | CGBitmapInfo.floatComponents.rawValue
-			bitmapInfo = kCGBitmapByteOrder16Host.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.floatComponents.rawValue
-		}
-		
-//		kCGBitmapByteOrder16Host
-//		kCGBitmapFloatComponents
-//		kCGImagePropertyHasAlpha
-//		kCGImageAlphaPremultipliedLast
-		
+		var bitmapInfo:UInt32 = bitmapInfo
 		
 		guard let context = CGContext(
 			data:nil,
@@ -99,12 +105,13 @@ public extension CGImage
 
 		// Draw this image into the new bitmap and return the new image
 		
+		let rect = CGRect(x:0, y:0, width:w, height:h)
+
 		context.setAllowsAntialiasing(false)
 		context.setShouldAntialias(false)
 		context.draw(self, in:rect)
 		return context.makeImage()
 	}
-	
 }
 
 
