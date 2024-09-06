@@ -30,6 +30,20 @@ public extension CGColorSpace
 	{
 		CGColorSpace(name:CGColorSpace.displayP3)!
 	}
+	
+	/// Returns the true if this is an extended range colorspace
+
+	var isEDR:Bool
+	{
+		if #available(macOS 12,*)
+		{
+			CGColorSpaceUsesExtendedRange(self) || CGColorSpaceIsHLGBased(self) || CGColorSpaceIsPQBased(self)
+		}
+		else
+		{
+			self.name?.isEDR ?? false
+		}
+	}
 }
 
 
@@ -42,7 +56,8 @@ extension CFString
 
 	public var isEDR:Bool
 	{
-		(self as String).lowercased().contains("extended")
+		let name = (self as String).lowercased()
+		return name.contains("extended") || name.contains("hlg") || name.contains("pq")
 	}
 }
 
