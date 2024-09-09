@@ -182,6 +182,25 @@ public extension CGImage
 	}
 	
 	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Returns true if this image uses a colorspace with extended dynamic range
+	
+	var hasEDR:Bool
+	{
+		self.colorSpace?.isEDR ?? false
+	}
+	
+	/// Returns true if this image has an alpha channel
+	
+	var hasAlpha:Bool
+	{
+		let info = self.alphaInfo
+		let hasAlpha = info == .alphaOnly || info == .first || info == .last || info == .premultipliedFirst || info == .premultipliedLast
+		return hasAlpha
+	}
+	
 	/// Returns true if  the image file at the specified URL has an alpha channel
 	
 	class func hasAlphaChannel(for url:URL) -> Bool
@@ -193,7 +212,6 @@ public extension CGImage
 		
 		return hasAlpha
 	}
-	
 	
 	/// Returns true if the alphaInfo of this CGImage is one of the specified allowed pixel formats
 	
