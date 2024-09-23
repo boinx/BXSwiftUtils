@@ -10,6 +10,7 @@
 import Metal
 import CoreGraphics
 import CoreVideo
+import MetalPerformanceShaders
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -42,8 +43,66 @@ public extension MTLTexture
 		return texture
 	}
 
+    
+    func newTexture(withPixelFormat pixelFormat:MTLPixelFormat) -> MTLTexture?
+    {
+        let desc = MTLTextureDescriptor.texture2DDescriptor(
+            pixelFormat:pixelFormat,
+            width:self.width,
+            height:self.height,
+            mipmapped:self.mipmapLevelCount>1)
+            
+        desc.storageMode = self.storageMode
+        desc.usage = self.usage
+        
+        if #available(macOS 10.14, iOS 12.0, *)
+        {
+            desc.allowGPUOptimizedContents = self.allowGPUOptimizedContents
+        }
+        
+        let texture = self.device.makeTexture(descriptor:desc)
+        return texture
+    }
 
-//----------------------------------------------------------------------------------------------------------------------
+    
+    func convertColorSpace(srcSolorSpaceName:CFString, dstSolorSpaceName:CFString, dstPixelFormat:MTLPixelFormat, alphaType:MPSAlphaType) -> MTLTexture?
+    {
+        // If source and dest colorspaces match, then we can return the texture as is
+        
+        if srcSolorSpaceName == dstSolorSpaceName && self.pixelFormat == dstPixelFormat { return self }
+
+        // Otherwise try to convert it to desired colorspace. In case of failure return nil
+        
+        guard let srcColorSpace = CGColorSpace(name:srcSolorSpaceName) else { return nil }
+        guard let dstColorSpace = CGColorSpace(name:dstSolorSpaceName) else { return nil }
+
+        let conversionInfo = CGColorConversionInfo(src:srcColorSpace,  dst:dstColorSpace)
+        
+        let imageConversion = MPSImageConversion(
+            device: self.device,
+            srcAlpha: alphaType,
+            destAlpha: alphaType,
+            backgroundColor: nil,
+            conversionInfo: conversionInfo)
+        
+        let srcTexture = self
+        guard let dstTexture = self.newTexture(withPixelFormat:dstPixelFormat) else { return nil }
+        
+        guard let commandQueue = device.makeCommandQueue() else { return nil }
+        guard let commandBuffer = commandQueue.makeCommandBuffer() else { return nil }
+        
+        imageConversion.encode(
+            commandBuffer: commandBuffer,
+            sourceTexture: srcTexture,
+            destinationTexture: dstTexture)
+        
+        commandBuffer.commit()
+        
+        return dstTexture
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------------
 
 
 	/// Returns the number of bytes per row in this MTLTexture. If this info is not available from the
