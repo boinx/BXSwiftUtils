@@ -37,11 +37,11 @@ public extension CGColorSpace
 	{
 		if #available(macOS 12,*)
 		{
-			CGColorSpaceUsesExtendedRange(self) || CGColorSpaceIsHLGBased(self) || CGColorSpaceIsPQBased(self)
+			return CGColorSpaceUsesExtendedRange(self) //|| CGColorSpaceIsHLGBased(self) || CGColorSpaceIsPQBased(self)
 		}
 		else
 		{
-			self.name?.isEDR ?? false
+			return self.name?.isEDR ?? false
 		}
 	}
 }
@@ -57,7 +57,7 @@ extension CFString
 	public var isEDR:Bool
 	{
 		let name = (self as String).lowercased()
-		return name.contains("extended") || name.contains("hlg") || name.contains("pq")
+		return name.contains("extended") //|| name.contains("hlg") || name.contains("pq")
 	}
 }
 
