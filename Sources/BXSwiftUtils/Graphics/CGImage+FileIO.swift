@@ -57,7 +57,7 @@ public extension CGImage
 		
 			var options:CFDictionary? = nil
 			
-			if #available(macOS 14, *)
+			if #available(macOS 14,iOS 17,*)
 			{
 				options =
 				[
