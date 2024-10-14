@@ -83,31 +83,46 @@ extension MTKTextureLoader
 	
 	public static func newTexture(device:MTLDevice, bitmapData:Data, width:Int, height:Int, rowBytes:Int, pixelFormat:MTLPixelFormat, textureUsage:MTLTextureUsage, storageMode:MTLStorageMode, mipmapped:Bool) -> MTLTexture?
 	{
-		let desc = MTLTextureDescriptor.texture2DDescriptor(
-			pixelFormat:pixelFormat,
-			width:width,
-			height:height,
-			mipmapped:mipmapped)
-			
-		desc.usage = textureUsage
-		desc.storageMode = storageMode
-		
-		let region = MTLRegionMake2D(0,0,width,height)
-		let texture = device.makeTexture(descriptor:desc)
-//		var pixels = bitmapData
-		
-		bitmapData.withUnsafeBytes
-		{
-			bytes in
-			
-			texture?.replace(
-				region:region,
-				mipmapLevel:0,
-				withBytes:bytes,
-				bytesPerRow:rowBytes)
-		}
-		
-		return texture
+        // Create a new texture
+        
+        let desc = MTLTextureDescriptor.texture2DDescriptor(
+            pixelFormat:pixelFormat,
+            width:width,
+            height:height,
+            mipmapped:mipmapped)
+            
+        desc.usage = textureUsage
+        desc.storageMode = storageMode
+        
+        let region = MTLRegionMake2D(0,0,width,height)
+        let texture = device.makeTexture(descriptor:desc)
+        
+        // Copy the pixel data into the texture
+        
+        bitmapData.withUnsafeBytes
+        {
+            (bytes:UnsafeRawBufferPointer) in
+            guard let address = bytes.baseAddress else { return }
+            
+            texture?.replace(
+                region:region,
+                mipmapLevel:0,
+                withBytes:address,
+                bytesPerRow:rowBytes)
+        }
+
+//        bitmapData.withUnsafeBytes    // Old code is deprecated, but still works
+//        {
+//            bytes in
+//
+//            texture?.replace(
+//                region:region,
+//                mipmapLevel:0,
+//                withBytes:bytes,
+//                bytesPerRow:rowBytes)
+//        }
+
+        return texture
 	}
 	
 }

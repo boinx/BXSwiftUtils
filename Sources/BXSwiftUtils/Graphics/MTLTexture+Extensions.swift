@@ -21,7 +21,55 @@ import MetalPerformanceShaders
 public extension MTLTexture
 {
 
-	/// Creates a new MTLTexture with the same size and format
+    /// Creates a MTLTexture from bitmap data with the specified parameters. This call lets you choose the MTLPixelFormat, which the regular MTKTextureLoader
+    /// function won't let you do. That way you can create 16bit textures.
+    
+    static func newTexture(device:MTLDevice, bitmapData:Data, width:Int, height:Int, rowBytes:Int, pixelFormat:MTLPixelFormat, textureUsage:MTLTextureUsage, storageMode:MTLStorageMode, mipmapped:Bool) -> MTLTexture?
+    {
+        // Create a new texture
+        
+        let desc = MTLTextureDescriptor.texture2DDescriptor(
+            pixelFormat:pixelFormat,
+            width:width,
+            height:height,
+            mipmapped:mipmapped)
+            
+        desc.usage = textureUsage
+        desc.storageMode = storageMode
+        
+        let region = MTLRegionMake2D(0,0,width,height)
+        let texture = device.makeTexture(descriptor:desc)
+        
+        // Copy the pixel data into the texture
+        
+        bitmapData.withUnsafeBytes
+        {
+            (bytes:UnsafeRawBufferPointer) in
+            guard let address = bytes.baseAddress else { return }
+            
+            texture?.replace(
+                region:region,
+                mipmapLevel:0,
+                withBytes:address,
+                bytesPerRow:rowBytes)
+        }
+
+//        bitmapData.withUnsafeBytes    // Old code is deprecated, but still works
+//        {
+//            bytes in
+//
+//            texture?.replace(
+//                region:region,
+//                mipmapLevel:0,
+//                withBytes:bytes,
+//                bytesPerRow:rowBytes)
+//        }
+
+        return texture
+    }
+
+    
+    /// Creates a new MTLTexture with the same size and format
 	
 	func newTextureWithSameFormat() -> MTLTexture?
 	{
@@ -67,15 +115,25 @@ public extension MTLTexture
     
     func convertColorSpace(srcSolorSpaceName:CFString, dstSolorSpaceName:CFString, dstPixelFormat:MTLPixelFormat, alphaType:MPSAlphaType) -> MTLTexture?
     {
+        guard let srcColorSpace = CGColorSpace(name:srcSolorSpaceName) else { return nil }
+        guard let dstColorSpace = CGColorSpace(name:dstSolorSpaceName) else { return nil }
+        
+        return self.convertColorSpace(
+            srcColorSpace: srcColorSpace,
+            dstColorSpace: dstColorSpace,
+            dstPixelFormat: dstPixelFormat,
+            alphaType: alphaType)
+    }
+
+
+    func convertColorSpace(srcColorSpace:CGColorSpace, dstColorSpace:CGColorSpace, dstPixelFormat:MTLPixelFormat, alphaType:MPSAlphaType) -> MTLTexture?
+    {
         // If source and dest colorspaces match, then we can return the texture as is
         
-        if srcSolorSpaceName == dstSolorSpaceName && self.pixelFormat == dstPixelFormat { return self }
+        if srcColorSpace.name == dstColorSpace.name && self.pixelFormat == dstPixelFormat { return self }
 
         // Otherwise try to convert it to desired colorspace. In case of failure return nil
         
-        guard let srcColorSpace = CGColorSpace(name:srcSolorSpaceName) else { return nil }
-        guard let dstColorSpace = CGColorSpace(name:dstSolorSpaceName) else { return nil }
-
         let conversionInfo = CGColorConversionInfo(src:srcColorSpace,  dst:dstColorSpace)
         
         let imageConversion = MPSImageConversion(
@@ -97,12 +155,13 @@ public extension MTLTexture
             destinationTexture: dstTexture)
         
         commandBuffer.commit()
+        commandBuffer.waitUntilCompleted()
         
         return dstTexture
     }
 
 
-    //----------------------------------------------------------------------------------------------------------------------
+   //----------------------------------------------------------------------------------------------------------------------
 
 
 	/// Returns the number of bytes per row in this MTLTexture. If this info is not available from the

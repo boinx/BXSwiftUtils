@@ -85,14 +85,14 @@ public extension CGImage
 
 		// Otherwise create a bitmap context with identical memory layout, but with the correct color space
 		
-		guard var newColorSpace = CGColorSpace(name:newColorSpaceName) else { return nil }
+		guard let newColorSpace = CGColorSpace(name:newColorSpaceName) else { return nil }
 
 		let w = self.width
 		let h = self.height
-		var bitsPerComponent = bitsPerComponent
-        var bytesPerPixel = bytesPerPixel
-        var bytesPerRow = bytesPerPixel * w
-		var bitmapInfo:UInt32 = bitmapInfo
+		let bitsPerComponent = bitsPerComponent
+        let bytesPerPixel = bytesPerPixel
+        let bytesPerRow = bytesPerPixel * w
+		let bitmapInfo:UInt32 = bitmapInfo
 		
 		guard let context = CGContext(
 			data:nil,

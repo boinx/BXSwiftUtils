@@ -2,7 +2,7 @@
 //
 //  CVPixelBuffer+Extensions.swift
 //	Adds convenience methods
-//  Copyright ©2018-2022 Peter Baumgartner. All rights reserved.
+//  Copyright ©2018-2024 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -318,6 +318,77 @@ public extension CVPixelBuffer
 		guard Int(size.width) == w && Int(size.height) == h else { return false }
 		
 		return true
+    }
+    
+    
+    /// Converts this CVPixelBuffer to a new one with specified CGColorSpace and CVPixelFormatType
+    
+    func convert(to colorSpace:CGColorSpace, pixelFormat:OSType, session:VTPixelTransferSession?) -> CVPixelBuffer?
+    {
+        guard let pixelTransferSession = session else {  return nil }
+
+        // Create a new CVPixelBuffer with the desired pixel format and color space
+
+        let srcBuffer = self
+        var dstBuffer: CVPixelBuffer?
+        
+        let dstAttributes:[CFString:Any] =
+        [
+            kCVPixelBufferWidthKey: CVPixelBufferGetWidth(srcBuffer),
+            kCVPixelBufferHeightKey: CVPixelBufferGetHeight(srcBuffer),
+            kCVPixelBufferPixelFormatTypeKey: pixelFormat,
+            kCVPixelBufferIOSurfacePropertiesKey: [:], // Necessary to enable hardware acceleration
+
+//            kCVImageBufferCGColorSpaceKey: colorSpace,
+//            kCVImageBufferColorPrimariesKey: kCVImageBufferColorPrimaries_P3_D65,
+//            kCVImageBufferTransferFunctionKey: kCVImageBufferTransferFunction_sRGB,
+//            kCVImageBufferYCbCrMatrixKey: kCVImageBufferYCbCrMatrix_ITU_R_2020,
+            
+            kVTPixelTransferPropertyKey_DestinationColorPrimaries: kCVImageBufferColorPrimaries_P3_D65,
+            kVTPixelTransferPropertyKey_DestinationTransferFunction: kCVImageBufferTransferFunction_sRGB,
+            kVTPixelTransferPropertyKey_DestinationYCbCrMatrix: kCVImageBufferYCbCrMatrix_ITU_R_2020,
+        ]
+
+//        kVTPixelTransferPropertyKey_DestinationColorPrimaries
+//        kVTPixelTransferPropertyKey_DestinationTransferFunction
+//        kVTPixelTransferPropertyKey_DestinationICCProfile
+//        kVTPixelTransferPropertyKey_DestinationYCbCrMatrix
+        
+
+        
+        
+        let bufferStatus = CVPixelBufferCreate(kCFAllocatorDefault,
+                                               CVPixelBufferGetWidth(srcBuffer),
+                                               CVPixelBufferGetHeight(srcBuffer),
+                                               pixelFormat,
+                                               dstAttributes as CFDictionary,
+                                               &dstBuffer)
+        
+        guard bufferStatus == kCVReturnSuccess, let dstBuffer = dstBuffer else
+        {
+            print("Error creating destination pixel buffer: \(bufferStatus)")
+            return nil
+        }
+        
+        // Transfer the source pixel buffer to the destination pixel buffer using VTPixelTransferSessionTransferImage
+        
+        let transferStatus = VTPixelTransferSessionTransferImage(pixelTransferSession, from:srcBuffer, to:dstBuffer)
+        
+        if transferStatus != noErr
+        {
+            print("Error transferring pixel buffer: \(transferStatus)")
+            return nil
+        }
+
+        return dstBuffer
+    }
+
+    
+    /// Returns the CGColorSpace of this CVPixelBuffer
+    
+    var colorSpace:CGColorSpace?
+    {
+        CVImageBufferGetColorSpace(self)?.takeUnretainedValue()
     }
 }
 
