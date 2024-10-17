@@ -1080,7 +1080,7 @@
       }
     },
     "%d week(s)" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "variations" : {
