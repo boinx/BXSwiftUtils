@@ -113,6 +113,7 @@
 		D06CC9272178D209009C2991 /* Data+MutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9262178D209009C2991 /* Data+MutationTests.swift */; };
 		D06CC92B2178EADA009C2991 /* Data+Checksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC92A2178EADA009C2991 /* Data+Checksum.swift */; };
 		D06F462E209073D0000986B8 /* Collection+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F462C209073D0000986B8 /* Collection+Codable.swift */; };
+		D078D9862CC0E8BB00311994 /* Int+localizedString.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D078D9852CC0E8BB00311994 /* Int+localizedString.xcstrings */; };
 		D07D760321DDF136008A6E32 /* Numeric+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07D760221DDF136008A6E32 /* Numeric+Localized.swift */; };
 		D07D760521DDF71D008A6E32 /* String+Timecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07D760421DDF71D008A6E32 /* String+Timecode.swift */; };
 		D07F995023FEDBDC003BEA9D /* Dictionary+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F994F23FEDBDC003BEA9D /* Dictionary+Concatenation.swift */; };
@@ -170,7 +171,6 @@
 		D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+New.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA52D920F8992300A0EF6D /* MTKTextureLoader+New.swift */; };
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
 		D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */; };
-		D0EF1BC3258A7F0E00DB3EF4 /* Int+localizedString.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D0EF1BC1258A7F0E00DB3EF4 /* Int+localizedString.stringsdict */; };
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
@@ -301,6 +301,7 @@
 		D06CC9262178D209009C2991 /* Data+MutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+MutationTests.swift"; sourceTree = "<group>"; };
 		D06CC92A2178EADA009C2991 /* Data+Checksum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Checksum.swift"; sourceTree = "<group>"; };
 		D06F462C209073D0000986B8 /* Collection+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Codable.swift"; sourceTree = "<group>"; };
+		D078D9852CC0E8BB00311994 /* Int+localizedString.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = "Int+localizedString.xcstrings"; path = "Sources/BXSwiftUtils/Int+localizedString.xcstrings"; sourceTree = SOURCE_ROOT; };
 		D07D760221DDF136008A6E32 /* Numeric+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Localized.swift"; sourceTree = "<group>"; };
 		D07D760421DDF71D008A6E32 /* String+Timecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Timecode.swift"; sourceTree = "<group>"; };
 		D07F994F23FEDBDC003BEA9D /* Dictionary+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Concatenation.swift"; sourceTree = "<group>"; };
@@ -359,9 +360,6 @@
 		D0EA52D920F8992300A0EF6D /* MTKTextureLoader+New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+New.swift"; sourceTree = "<group>"; };
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
 		D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
-		D0EF1BC2258A7F0E00DB3EF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = "Sources/BXSwiftUtils/en.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
-		D0EF1BC6258A7F1500DB3EF4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = "Sources/BXSwiftUtils/de.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
-		D0EF1BC7258A7F1E00DB3EF4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = "Sources/BXSwiftUtils/fr.lproj/Int+localizedString.stringsdict"; sourceTree = SOURCE_ROOT; };
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
@@ -704,7 +702,7 @@
 				D0CB60252BE4D32600A09EF4 /* NSAttributedString+Markup.xcstrings */,
 				D08846CF2965CEC100350EF8 /* Int+Rating.swift */,
 				D0A4F1122552A43B00FAEBD8 /* Int+localizedString.swift */,
-				D0EF1BC1258A7F0E00DB3EF4 /* Int+localizedString.stringsdict */,
+				D078D9852CC0E8BB00311994 /* Int+localizedString.xcstrings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -968,7 +966,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0EF1BC3258A7F0E00DB3EF4 /* Int+localizedString.stringsdict in Resources */,
+				D078D9862CC0E8BB00311994 /* Int+localizedString.xcstrings in Resources */,
 				D0CB60262BE4D32600A09EF4 /* NSAttributedString+Markup.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1184,19 +1182,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		D0EF1BC1258A7F0E00DB3EF4 /* Int+localizedString.stringsdict */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0EF1BC2258A7F0E00DB3EF4 /* en */,
-				D0EF1BC6258A7F1500DB3EF4 /* de */,
-				D0EF1BC7258A7F1E00DB3EF4 /* fr */,
-			);
-			name = "Int+localizedString.stringsdict";
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		4875F2192051E70E009985EC /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1249,6 +1234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1303,6 +1289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1354,6 +1341,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtils;
 				PRODUCT_NAME = BXSwiftUtils;
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
@@ -1385,6 +1373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXSwiftUtils;
 				PRODUCT_NAME = BXSwiftUtils;
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
