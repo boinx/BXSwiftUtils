@@ -117,6 +117,21 @@ public extension URL
 		let path = self.path
 		return URL(fileURLWithPath:path)
 	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// This accessor returns a new URL instance built from self.absoluteString.
+    ///
+    /// Use the accessor in cases where the URL is in a corrupted state and leads to errors in other code trying to use the URL. In situations
+    /// like this, it sometimes helps to simply rebuild the URL from scratch with the same path.
+	
+	var rebuiltFromString:URL
+	{
+		let string = self.absoluteString
+		return URL(string:string) ?? self
+	}
 }
 
 
