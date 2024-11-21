@@ -388,7 +388,11 @@ public extension CVPixelBuffer
     
     var colorSpace:CGColorSpace?
     {
-        CVImageBufferGetColorSpace(self)?.takeUnretainedValue()
+        #if COREVIDEO_SUPPORTS_COLORSPACE
+        return CVImageBufferGetColorSpace(self)?.takeUnretainedValue()
+        #else
+        return nil
+        #endif
     }
 }
 
