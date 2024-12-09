@@ -35,6 +35,14 @@ public extension URL
 		return UTTypeConformsTo(uti as CFString, kUTTypeImage)
 	}
 
+	/// Returns true if this is a PDF file
+	
+	var isPDFFile:Bool
+	{
+		guard let uti = self.uti else { return false }
+		return UTTypeConformsTo(uti as CFString, kUTTypePDF)
+	}
+
 	/// Returns true if this is an audio file
 	
 	var isAudioFile:Bool
