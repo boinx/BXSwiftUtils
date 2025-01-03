@@ -48,8 +48,8 @@ public extension CGImage
 	
 	func convert(to newColorSpaceName:CFString) -> CGImage?
 	{
-		let w = self.width
-		let h = self.height
+//		let w = self.width
+//		let h = self.height
 		var bitsPerComponent = 8
         var bytesPerPixel = 4
 		var bitmapInfo:UInt32 = /*CGBitmapInfo.byteOrder32Big.rawValue*/ kCGBitmapByteOrder32Host.rawValue /*CGBitmapInfo.byteOrder32Little.rawValue*/ | CGImageAlphaInfo.premultipliedFirst.rawValue

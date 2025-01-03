@@ -330,7 +330,7 @@ public extension MTLTexture
 	/// If the specified texture doesn't match the allowed pixel formats (alpha position), then this function returns a new texture with swizzled channels
 	/// so that the byte order matches what is required for use in subsequent processing steps.
 	
-	@available (macOS 10.15,iOS 13,*) func fixPixelFormatIfNeeded(for srcImage:CGImage, allowedAlphaInfo:[CGImageAlphaInfo] = [.premultipliedLast,.last,.noneSkipLast]) -> MTLTexture
+	@available(macOS 10.15,iOS 13,*) func fixPixelFormatIfNeeded(for srcImage:CGImage, allowedAlphaInfo:[CGImageAlphaInfo] = [.premultipliedLast,.last,.noneSkipLast]) -> MTLTexture
 	{
 		#if os(macOS)
 		
@@ -360,7 +360,7 @@ public extension MTLTexture
 
 	/// Byte-order for video textures is broken on macOS with Intel processors, so swizzle the texture channels in this case. Note that Nvidia GPU crash when trying this, so skip on Nvidia
 	
-	@available (macOS 10.15, iOS 13, *) func swizzleIfNeeded() -> MTLTexture
+	@available(macOS 10.15, iOS 13, *) func swizzleIfNeeded() -> MTLTexture
 	{
 		#if os(macOS)
 		

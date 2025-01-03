@@ -13,7 +13,7 @@ import CoreMedia
 //----------------------------------------------------------------------------------------------------------------------
 
 
-extension CMTime : CustomDebugStringConvertible
+extension CoreMedia.CMTime : Swift.CustomDebugStringConvertible
 {
 
 	/// Returns a string that is suitable for logging

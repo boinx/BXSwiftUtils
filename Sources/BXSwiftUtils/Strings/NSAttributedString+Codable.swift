@@ -2,7 +2,7 @@
 //
 //  NSAttributedString+Codable.swift
 //  Adds codable support
-//  Copyright ©2018-2023 Peter Baumgartner. All rights reserved.
+//  Copyright ©2018-2025 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -27,7 +27,7 @@ extension NSAttributedString
     }
 }
 
-extension NSAttributedString: Encodable
+extension Foundation.NSAttributedString : Swift.Encodable
 {
     public func encode(to encoder: Encoder) throws
     {
