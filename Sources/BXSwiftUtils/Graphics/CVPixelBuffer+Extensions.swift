@@ -323,7 +323,7 @@ public extension CVPixelBuffer
     
     /// Converts this CVPixelBuffer to a new one with specified CGColorSpace and CVPixelFormatType
     
-    func convert(to colorSpace:CGColorSpace, pixelFormat:OSType, session:VTPixelTransferSession?) -> CVPixelBuffer?
+	@available(iOS 16.0,*) func convert(to colorSpace:CGColorSpace, pixelFormat:OSType, session:VTPixelTransferSession?) -> CVPixelBuffer?
     {
         guard let pixelTransferSession = session else {  return nil }
 
