@@ -258,7 +258,7 @@ extension BXSelectionController
 			{
 				if let _ = object[keyPath:keyPath] as? [T]
 				{
-					#warning("TODO: implement")
+					// TODO: implement
 				}
 				else
 				{
