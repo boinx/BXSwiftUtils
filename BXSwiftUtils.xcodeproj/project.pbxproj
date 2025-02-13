@@ -102,6 +102,7 @@
 		D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046DF87216BAB59004331C3 /* String+DataDetection.swift */; };
 		D04BEB7A2683AA3800ABCF04 /* BXLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */; };
 		D04D7D7726F71DC800116F17 /* BXUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D7D7626F71DC800116F17 /* BXUndoManager.swift */; };
+		D04DE36A2D5C9F630000D056 /* NSFileCoordinator+asyncAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04DE3692D5C9F630000D056 /* NSFileCoordinator+asyncAwait.swift */; };
 		D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */; };
 		D05245CE2199A83900F1A9B5 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4875F25F205299A6009985EC /* BXSwiftUtils.framework */; };
 		D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0721C6687100FAF3CC /* String+Paths.swift */; };
@@ -285,6 +286,7 @@
 		D046DF87216BAB59004331C3 /* String+DataDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataDetection.swift"; sourceTree = "<group>"; };
 		D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXLocalizedError.swift; sourceTree = "<group>"; };
 		D04D7D7626F71DC800116F17 /* BXUndoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXUndoManager.swift; sourceTree = "<group>"; };
+		D04DE3692D5C9F630000D056 /* NSFileCoordinator+asyncAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFileCoordinator+asyncAwait.swift"; sourceTree = "<group>"; };
 		D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXSelectionController+Binding.swift"; sourceTree = "<group>"; };
 		D0542502219978E200BE2A42 /* BXSwiftUtils.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXSwiftUtils.xcconfig; sourceTree = "<group>"; };
 		D056D42E205276ED00849EF2 /* DispatchQueue+Throttle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Throttle.swift"; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 				D0B125DC27A2F0D800B32D9A /* URL+Bookmark.swift */,
 				D0C4B9D62849D6780016FD6E /* URL+repairAccessRights.swift */,
 				D043108F28EF3F5B00A070B6 /* NSURL+fileReference.swift */,
+				D04DE3692D5C9F630000D056 /* NSFileCoordinator+asyncAwait.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 				D0EA52DB20F8992300A0EF6D /* MTKTextureLoader+New.swift in Sources */,
 				48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */,
 				D0839A70280EF42C00D2F64E /* FloatingPoint+Safety.swift in Sources */,
+				D04DE36A2D5C9F630000D056 /* NSFileCoordinator+asyncAwait.swift in Sources */,
 				D09FF4E925C97EFF00C58119 /* Host+macAddress.swift in Sources */,
 				D09B34402B0CF8330082C906 /* Collection+Math.swift in Sources */,
 				D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */,
