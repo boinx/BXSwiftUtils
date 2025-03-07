@@ -289,7 +289,7 @@ open class BXUndoManager : UndoManager
 		
 		do
 		{
-			try NSException.toSwiftError
+			try NSException.catch
 			{
 				closure()
 			}
