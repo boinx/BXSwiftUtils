@@ -108,6 +108,7 @@
 		D05D0C0821C6687100FAF3CC /* String+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0721C6687100FAF3CC /* String+Paths.swift */; };
 		D05D0C0A21C69EE200FAF3CC /* URL+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */; };
 		D05D0C0E21CD17AD00FAF3CC /* BXSignpostMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */; };
+		D05E8E6C2D7AE53F00E40DB2 /* NSException+catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E8E6B2D7AE53F00E40DB2 /* NSException+catch.swift */; };
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
 		D06CC9232178C5F9009C2991 /* Data+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9222178C5F9009C2991 /* Data+Mutation.swift */; };
@@ -297,6 +298,7 @@
 		D05D0C0721C6687100FAF3CC /* String+Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Paths.swift"; sourceTree = "<group>"; };
 		D05D0C0921C69EE200FAF3CC /* URL+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Resolving.swift"; sourceTree = "<group>"; };
 		D05D0C0D21CD17AD00FAF3CC /* BXSignpostMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXSignpostMixin.swift; sourceTree = "<group>"; };
+		D05E8E6B2D7AE53F00E40DB2 /* NSException+catch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSException+catch.swift"; sourceTree = "<group>"; };
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
 		D06CC91E2178B089009C2991 /* String+RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegexTests.swift"; sourceTree = "<group>"; };
 		D06CC9222178C5F9009C2991 /* Data+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mutation.swift"; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				D04BEB792683AA3800ABCF04 /* BXLocalizedError.swift */,
+				D05E8E6B2D7AE53F00E40DB2 /* NSException+catch.swift */,
 				48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */,
 				48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */,
 			);
@@ -1148,6 +1151,7 @@
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */,
 				D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */,
+				D05E8E6C2D7AE53F00E40DB2 /* NSException+catch.swift in Sources */,
 				D0C4B9D5284760930016FD6E /* NSObject+retain+release.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
