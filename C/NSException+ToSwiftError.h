@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSException (ToSwiftError)
 
-+ (BOOL)toSwiftError:(__attribute__((noescape)) void(^)(void))block error:(__autoreleasing NSError **)error;
++ (BOOL) toSwiftError:(__attribute__((noescape)) void(^)(void))block error:(__autoreleasing NSError**)outError;
+
++ (BOOL) toSwiftErrorThrowing:(__attribute__((noescape)) void(^)(__autoreleasing NSError**))block error:(__autoreleasing NSError**)outError;
 
 @end
 
