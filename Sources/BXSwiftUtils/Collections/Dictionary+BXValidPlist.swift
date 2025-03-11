@@ -128,7 +128,7 @@ extension Dictionary : BXValidPlist
 			}
 			else
 			{
-				log.error {"\(#function): Value \(value) is not allowed in a plist!"}
+				log.error {"\(#function): Value \(value) (in dictionary for key \(key)) is not allowed in a plist!"}
 				return false
 			}
 		}
@@ -183,7 +183,7 @@ extension NSDictionary : BXValidPlist
 			}
 			else
 			{
-				log.error {"\(#function): Value \(value) is not allowed in a plist!"}
+				log.error {"\(#function): Value \(value)  (in dictionary for key \(key)) is not allowed in a plist!"}
 				return false
 			}
 		}
@@ -205,7 +205,7 @@ extension Array : BXValidPlist
 			}
 			else
 			{
-				log.error {"\(#function): Value \(element) is not allowed in a plist!"}
+				log.error {"\(#function): Value \(element) (in array) is not allowed in a plist!"}
 				return false
 			}
 		}
@@ -254,7 +254,7 @@ extension NSArray : BXValidPlist
 			}
 			else
 			{
-				log.error {"\(#function): Value \(element) is not allowed in a plist!"}
+				log.error {"\(#function): Value \(element) (in array) is not allowed in a plist!"}
 				return false
 			}
 		}
