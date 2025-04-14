@@ -364,6 +364,19 @@ public extension MTLTexture
 	{
 		#if os(macOS)
 		
+		// We have reports of a user using macOS Sequoia 15.3.3 on an Intel MacBook Pro. He reported incorrect colors
+		// for video textures, which seems to suggest that swiztling is no longer necessary. Maybe Apple has fixed
+		// the problem a while ago (we can't be sure), so starting with 15.0 we will just skip the swizzling.
+		// Let's see if any other user will complain, but I guess that there aren't that many user who still work on
+		// Intel machines, so this issue might become moot anyway.
+		
+		if #available(macOS 15,*)
+		{
+			return self
+		}
+		
+		// On older version of macOS we'll still perform swizzling
+		
 		if self.usage.contains(.pixelFormatView)
 		{
 			// Nvidia GPUs crash with the following exception:
