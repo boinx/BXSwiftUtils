@@ -23,7 +23,7 @@ public typealias GenericPublisher = PassthroughSubject<Void,Never>
 @available(macOS 10.15, iOS 13, tvOS 13, *)
 public extension GenericPublisher
 {
-	// These function with different sames (but identical functionality) are provide better readbility at the call site
+	// These function with different sames (but identical functionality) are provide better readability at the call site
 	
 	func send()
 	{
