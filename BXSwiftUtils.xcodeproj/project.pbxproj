@@ -174,6 +174,7 @@
 		D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */; };
 		D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */; };
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
+		D0F5606A2DD5E17A00F4DF70 /* BXObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
 		D0F921322C63B0630076350F /* NSView+EDRMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F921312C63B0630076350F /* NSView+EDRMixin.swift */; };
@@ -365,6 +366,7 @@
 		D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numeric.swift"; sourceTree = "<group>"; };
 		D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
+		D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXObservableArray.swift; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
 		D0F921312C63B0630076350F /* NSView+EDRMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+EDRMixin.swift"; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				D0B6AF6223D3034900EDDB74 /* BXSelectionController.swift */,
 				D0B6AF6A23D322BD00EDDB74 /* BXSelectionController+Combine.swift */,
 				D050C8D423F3D2900075E575 /* BXSelectionController+Binding.swift */,
+				D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -1183,6 +1186,7 @@
 				D08FAA7F22BA17A4001D05D2 /* BXNetwork+isReachable.swift in Sources */,
 				D0CD307B2652978D0042046D /* Thread+stackTrace.swift in Sources */,
 				48C248112088CE9400DC9317 /* NSAttributedString+Codable.swift in Sources */,
+				D0F5606A2DD5E17A00F4DF70 /* BXObservableArray.swift in Sources */,
 				D0323500205C2919003D6CCB /* CGPoint+Operators.swift in Sources */,
 				D0DA3333213DA04A00994E89 /* DispatchGroup+Once.swift in Sources */,
 			);
