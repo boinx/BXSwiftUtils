@@ -42,6 +42,7 @@ import Combine
 ///
 ///	Whenever any array element changes the wrapper class fires its objectWillChange publisher.
 
+@available(iOS 14,*)
 public class BXObservableArray<T:ObservableObject> : ObservableObject
 {
 	/// The array whose elements will be observed

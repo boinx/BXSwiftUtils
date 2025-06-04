@@ -13,6 +13,7 @@ import Foundation
 //----------------------------------------------------------------------------------------------------------------------
 
 
+@available(iOS 13,*)
 public extension NSFileCoordinator
 {
     /// Async method to coordinate reading access to a file
@@ -99,6 +100,7 @@ public extension NSFileCoordinator
 //----------------------------------------------------------------------------------------------------------------------
 
 
+@available(iOS 13,*)
 public extension URL
 {
 	/// If the file at this URL is a cloud based item (e.g. on iCloud Drive, Dropbox, One Drive, etc) and the file isn't available locally yet, this function triggers
