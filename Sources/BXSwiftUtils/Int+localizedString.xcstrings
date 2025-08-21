@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%d day(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -79,7 +78,6 @@
       }
     },
     "%d file(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -156,7 +154,6 @@
       }
     },
     "%d hour(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -233,7 +230,6 @@
       }
     },
     "%d image(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -310,7 +306,6 @@
       }
     },
     "%d item(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -387,7 +382,6 @@
       }
     },
     "%d license(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -464,7 +458,6 @@
       }
     },
     "%d minute(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -541,7 +534,6 @@
       }
     },
     "%d month(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -618,7 +610,6 @@
       }
     },
     "%d object(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -695,7 +686,6 @@
       }
     },
     "%d second(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -772,7 +762,6 @@
       }
     },
     "%d slide(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -849,7 +838,6 @@
       }
     },
     "%d song(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -926,7 +914,6 @@
       }
     },
     "%d time(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -1003,7 +990,6 @@
       }
     },
     "%d video(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -1156,8 +1142,30 @@
         }
       }
     },
+    "%d weeks(s)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d Woche(n)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d weeks(s)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d semaine(s)"
+          }
+        }
+      }
+    },
     "%d year(s)" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "de" : {
           "variations" : {
