@@ -17,97 +17,97 @@ public extension Int
 {
 	var localizedTimesString : String
 	{
-		let format = "%d time(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d time(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedFilesString : String
 	{
-		let format = "%d file(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d file(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedItemsString : String
 	{
-		let format = "%d item(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d item(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedObjectsString : String
 	{
-		let format = "%d object(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d object(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedImagesString : String
 	{
-		let format = "%d image(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d image(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedVideosString : String
 	{
-		let format = "%d video(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d video(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedSecondsString : String
 	{
-		let format = "%d second(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d second(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedMinutesString : String
 	{
-		let format = "%d minute(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d minute(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedHoursString : String
 	{
-		let format = "%d hour(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d hour(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedDaysString : String
 	{
-		let format = "%d day(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d day(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedWeeksString : String
 	{
-		let format = "%d weeks(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d weeks(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedMonthsString : String
 	{
-		let format = "%d month(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d month(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedYearsString : String
 	{
-		let format = "%d year(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d year(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedLicensesString : String
 	{
-		let format = "%d license(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d license(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedSlidesString : String
 	{
-		let format = "%d slide(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d slide(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 
 	var localizedSongsString : String
 	{
-		let format = "%d song(s)".localized(from:"Int+localizedString", bundle:Bundle.BXSwiftUtils)
+		let format = NSLocalizedString("%d song(s)", tableName:"Int+localizedString", bundle:.BXSwiftUtils, comment:"")
 		return String(format:format,self)
 	}
 }
