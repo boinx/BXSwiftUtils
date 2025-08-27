@@ -15,14 +15,13 @@ import Foundation
 
 public extension String
 {
-	private static var formatter:DateFormatter? = nil
+	private static let formatter = DateFormatter()
 	
 	/// Creates a Date from an Exif string
 	
 	var date:Date?
 	{
-		if Self.formatter == nil { Self.formatter = DateFormatter() }
-		guard let formatter = Self.formatter else { return nil }
+		let formatter = Self.formatter
 		
 		formatter.dateFormat = "yyyy:MM:dd HH:mm:ss"
 		
