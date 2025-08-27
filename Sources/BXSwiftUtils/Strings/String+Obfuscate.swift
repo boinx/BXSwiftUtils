@@ -208,7 +208,7 @@ public extension String {
     var ampersand: NSMutableString { append("&"); return self }
     var caret: NSMutableString { append("^"); return self }
     var percent: NSMutableString { append("%"); return self }
-    var `$`: NSMutableString { append("$"); return self }
+    var dollar: NSMutableString { append("$"); return self }
     var pound: NSMutableString { append("#"); return self }
     var at: NSMutableString { append("@"); return self }
     var exclamation: NSMutableString { append("!"); return self }
