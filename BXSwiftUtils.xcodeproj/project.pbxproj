@@ -81,6 +81,7 @@
 		D015BC4D280DAD7F00CCB1E2 /* FloatingPoint+isEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = D015BC4C280DAD7E00CCB1E2 /* FloatingPoint+isEqual.swift */; };
 		D0177B1926F9F0CB0088BF48 /* Array+safeInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0177B1826F9F0CB0088BF48 /* Array+safeInsert.swift */; };
 		D0177B1B26FA11660088BF48 /* String+demangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0177B1A26FA11660088BF48 /* String+demangle.swift */; };
+		D01B57E22E6AC96100279E42 /* BXFileCleanupPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B57E12E6AC96100279E42 /* BXFileCleanupPool.swift */; };
 		D026B3A922A11DB6002B9B02 /* BXStopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */; };
 		D02C351B21E38D5100D8463F /* Numeric+LocalizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */; };
 		D02CB936276A4AAA005A08EB /* ProcessInfo+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CB935276A475B005A08EB /* ProcessInfo+Version.swift */; };
@@ -268,6 +269,7 @@
 		D015BC4C280DAD7E00CCB1E2 /* FloatingPoint+isEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+isEqual.swift"; sourceTree = "<group>"; };
 		D0177B1826F9F0CB0088BF48 /* Array+safeInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+safeInsert.swift"; sourceTree = "<group>"; };
 		D0177B1A26FA11660088BF48 /* String+demangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+demangle.swift"; sourceTree = "<group>"; };
+		D01B57E12E6AC96100279E42 /* BXFileCleanupPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXFileCleanupPool.swift; sourceTree = "<group>"; };
 		D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXStopWatch.swift; sourceTree = "<group>"; };
 		D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+LocalizedTests.swift"; sourceTree = "<group>"; };
 		D02CB935276A475B005A08EB /* ProcessInfo+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Version.swift"; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				D0C4B9D62849D6780016FD6E /* URL+repairAccessRights.swift */,
 				D043108F28EF3F5B00A070B6 /* NSURL+fileReference.swift */,
 				D04DE3692D5C9F630000D056 /* NSFileCoordinator+asyncAwait.swift */,
+				D01B57E12E6AC96100279E42 /* BXFileCleanupPool.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				D0C4B9D5284760930016FD6E /* NSObject+retain+release.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
+				D01B57E22E6AC96100279E42 /* BXFileCleanupPool.swift in Sources */,
 				D043109028EF3F5B00A070B6 /* NSURL+fileReference.swift in Sources */,
 				D0891244215A762200403100 /* CGPoint+String.swift in Sources */,
 				F6BB6AA92578F50A00BB836F /* Dictionary+DeepMerge.swift in Sources */,
