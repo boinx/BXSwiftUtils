@@ -78,11 +78,13 @@ public class BXFileCleanupPool
 
 	/// Deletes all file/folder stored in self.urls from the file system
 	
-	private func cleanup()
+	public func cleanup()
 	{
 		let urls = synchronized(self)
 		{
-			self.urls
+			let urls = self.urls
+			self.urls.removeAll()
+			return urls
 		}
 		
 		for url in urls
