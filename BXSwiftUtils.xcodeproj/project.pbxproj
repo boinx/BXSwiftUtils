@@ -82,6 +82,7 @@
 		D0177B1926F9F0CB0088BF48 /* Array+safeInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0177B1826F9F0CB0088BF48 /* Array+safeInsert.swift */; };
 		D0177B1B26FA11660088BF48 /* String+demangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0177B1A26FA11660088BF48 /* String+demangle.swift */; };
 		D01B57E22E6AC96100279E42 /* BXFileCleanupPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B57E12E6AC96100279E42 /* BXFileCleanupPool.swift */; };
+		D01B57E42E700DDB00279E42 /* MTKTextureLoader+CubeLUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B57E32E700DDB00279E42 /* MTKTextureLoader+CubeLUT.swift */; };
 		D026B3A922A11DB6002B9B02 /* BXStopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */; };
 		D02C351B21E38D5100D8463F /* Numeric+LocalizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */; };
 		D02CB936276A4AAA005A08EB /* ProcessInfo+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CB935276A475B005A08EB /* ProcessInfo+Version.swift */; };
@@ -270,6 +271,7 @@
 		D0177B1826F9F0CB0088BF48 /* Array+safeInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+safeInsert.swift"; sourceTree = "<group>"; };
 		D0177B1A26FA11660088BF48 /* String+demangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+demangle.swift"; sourceTree = "<group>"; };
 		D01B57E12E6AC96100279E42 /* BXFileCleanupPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXFileCleanupPool.swift; sourceTree = "<group>"; };
+		D01B57E32E700DDB00279E42 /* MTKTextureLoader+CubeLUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTKTextureLoader+CubeLUT.swift"; sourceTree = "<group>"; };
 		D026B3A822A11DB6002B9B02 /* BXStopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXStopWatch.swift; sourceTree = "<group>"; };
 		D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+LocalizedTests.swift"; sourceTree = "<group>"; };
 		D02CB935276A475B005A08EB /* ProcessInfo+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Version.swift"; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 				D0323502205C2C3B003D6CCB /* MTLTexture+Extensions.swift */,
 				D0EA52D920F8992300A0EF6D /* MTKTextureLoader+New.swift */,
 				D0CA5649256CEA1700D2C09D /* MTKTextureLoader+Draw.swift */,
+				D01B57E32E700DDB00279E42 /* MTKTextureLoader+CubeLUT.swift */,
 				D03F13B720F36D57004C8306 /* MTLComputeCommandEncoder+Extensions.swift */,
 				D0323506205C2CB8003D6CCB /* float4x4+ConvenienceInit.swift */,
 				D0C2293F21BFD2D100A624F5 /* CVPixelBuffer+Extensions.swift */,
@@ -1144,6 +1147,7 @@
 				D0A4F1132552A43B00FAEBD8 /* Int+localizedString.swift in Sources */,
 				D0C4B9D328468F340016FD6E /* GenericPublisher.swift in Sources */,
 				48B61918215E2C8000E6E037 /* BXCleanupPool.swift in Sources */,
+				D01B57E42E700DDB00279E42 /* MTKTextureLoader+CubeLUT.swift in Sources */,
 				487A39D320693A25007BEC66 /* KVO.swift in Sources */,
 				D0B6AF6B23D322BD00EDDB74 /* BXSelectionController+Combine.swift in Sources */,
 				D089124B215B723C00403100 /* CGRect+String.swift in Sources */,
