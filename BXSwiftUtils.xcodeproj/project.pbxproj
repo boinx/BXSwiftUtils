@@ -177,6 +177,7 @@
 		D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */; };
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F5606A2DD5E17A00F4DF70 /* BXObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */; };
+		D0F621DD2E741ED700AC7A16 /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F621DC2E741ED700AC7A16 /* Date+Compare.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
 		D0F921322C63B0630076350F /* NSView+EDRMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F921312C63B0630076350F /* NSView+EDRMixin.swift */; };
@@ -371,6 +372,7 @@
 		D0EC2D1024C7418B0001CCF5 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXObservableArray.swift; sourceTree = "<group>"; };
+		D0F621DC2E741ED700AC7A16 /* Date+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
 		D0F921312C63B0630076350F /* NSView+EDRMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+EDRMixin.swift"; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 			children = (
 				D032350C205C362A003D6CCB /* Date+Components.swift */,
 				D0E8881027AA8D6100310BB9 /* Date+Formatted.swift */,
+				D0F621DC2E741ED700AC7A16 /* Date+Compare.swift */,
 				D086A25F21B95CD000ACF9CA /* CMTime+Logging.swift */,
 				D0FDCC9B2AE3B5F800123F6D /* Double+clusteredDuration.swift */,
 			);
@@ -1128,6 +1131,7 @@
 				D08F44E121708CD90060FBAE /* String+Regex.swift in Sources */,
 				D08846D02965CEC100350EF8 /* Int+Rating.swift in Sources */,
 				D03EB3A6294B47E600010B97 /* BXUndoGroupingHelper.swift in Sources */,
+				D0F621DD2E741ED700AC7A16 /* Date+Compare.swift in Sources */,
 				D015BC4B280C5D5700CCB1E2 /* String+MetadataKeys.swift in Sources */,
 				D0EC2D1124C7418B0001CCF5 /* NSImage+Extensions.swift in Sources */,
 				98B04DC4262458A00099ADE5 /* URL+QueryComponents.swift in Sources */,
