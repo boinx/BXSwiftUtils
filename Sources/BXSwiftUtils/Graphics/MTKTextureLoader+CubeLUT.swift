@@ -169,7 +169,13 @@ extension MTKTextureLoader
 
 		// Create 3D texture descriptor (width=height=depth=size).
 		
-		let descriptor = MTLTextureDescriptor.textureCubeDescriptor(pixelFormat:MTLPixelFormat.rgba32Float, size:size, mipmapped:false)
+		let descriptor = MTLTextureDescriptor()
+		descriptor.textureType = .type3D
+		descriptor.pixelFormat = .rgba32Float
+		descriptor.width  = size
+		descriptor.height = size
+		descriptor.depth  = size
+		descriptor.mipmapLevelCount = 1
 		descriptor.usage = [.shaderRead]
 		
 		// Allocate texture memory
