@@ -59,7 +59,10 @@ extension MTKTextureLoader
 			
 			// Break a line into components, separated by whitespace
 			
-			let parts = trimmed.split(separator:" ", omittingEmptySubsequences:true)
+			let parts = trimmed
+				.components(separatedBy:CharacterSet.whitespaces)
+				.filter { !$0.isEmpty }
+				
 			if parts.count == 0 { continue }
 			
 			// Find and parse LUT_3D_SIZE
