@@ -178,6 +178,7 @@
 		D0F49D24288EFC8D008B21F6 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F49D23288EFC8C008B21F6 /* Bash.swift */; };
 		D0F5606A2DD5E17A00F4DF70 /* BXObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */; };
 		D0F621DD2E741ED700AC7A16 /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F621DC2E741ED700AC7A16 /* Date+Compare.swift */; };
+		D0F621E32E79580500AC7A16 /* URL+download.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F621E22E79580500AC7A16 /* URL+download.swift */; };
 		D0F6B74C2455C1B0004EC894 /* Optional+logDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */; };
 		D0F7FAC52A94A12C0047F1E6 /* ClosedRange+SafeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */; };
 		D0F921322C63B0630076350F /* NSView+EDRMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F921312C63B0630076350F /* NSView+EDRMixin.swift */; };
@@ -373,6 +374,7 @@
 		D0F49D23288EFC8C008B21F6 /* Bash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash.swift; sourceTree = "<group>"; };
 		D0F560692DD5E17A00F4DF70 /* BXObservableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXObservableArray.swift; sourceTree = "<group>"; };
 		D0F621DC2E741ED700AC7A16 /* Date+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
+		D0F621E22E79580500AC7A16 /* URL+download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+download.swift"; sourceTree = "<group>"; };
 		D0F6B74B2455C1AF004EC894 /* Optional+logDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+logDescription.swift"; sourceTree = "<group>"; };
 		D0F7FAC42A94A12C0047F1E6 /* ClosedRange+SafeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+SafeInit.swift"; sourceTree = "<group>"; };
 		D0F921312C63B0630076350F /* NSView+EDRMixin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+EDRMixin.swift"; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 				D08FAA7E22BA17A4001D05D2 /* BXNetwork+isReachable.swift */,
 				D09FF4E825C97EFF00C58119 /* Host+macAddress.swift */,
 				98B04DC3262458A00099ADE5 /* URL+QueryComponents.swift */,
+				D0F621E22E79580500AC7A16 /* URL+download.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1167,6 +1170,7 @@
 				D050C8D523F3D2900075E575 /* BXSelectionController+Binding.swift in Sources */,
 				D05E8E6C2D7AE53F00E40DB2 /* NSException+catch.swift in Sources */,
 				D0C4B9D5284760930016FD6E /* NSObject+retain+release.swift in Sources */,
+				D0F621E32E79580500AC7A16 /* URL+download.swift in Sources */,
 				48DE068B20876612000246CD /* Dictionary+EnumKeys.swift in Sources */,
 				48C3DF6620E10DC300359288 /* TypedKVO+propagateChanges.swift in Sources */,
 				D01B57E22E6AC96100279E42 /* BXFileCleanupPool.swift in Sources */,
