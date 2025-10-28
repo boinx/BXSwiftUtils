@@ -236,7 +236,7 @@ extension URL
 
 #if compiler(>=5.5) //&& canImport(_Concurrency)
     
-extension URL
+@available(macOS 10.15, iOS 13.0, *) extension URL
 {
     /// Checks if the URL is reachable
 	

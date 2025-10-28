@@ -21,7 +21,7 @@ import UIKit
 //----------------------------------------------------------------------------------------------------------------------
 
 
-public class BXFileCleanupPool
+@available(macOS 10.15,iOS 13, *) public class BXFileCleanupPool
 {
 	/// By default cleanup will be performed just before the app terminates.
 	///
@@ -97,12 +97,22 @@ public class BXFileCleanupPool
 
 	private func cleanup(_ url:URL)
 	{
+		#if os(macOS)
+		
 		// Get rid of an existing file or folder. Please note that we are not doing this via NSFileManager (which
 		// takes forever and is synchronous), but via NSTask an rm, which is asynchronous. The benefit is that we
 		// return immediately, and the app can be terminated, while the rm task continues to run until done.
 
 		let path = url.path
 		Process.launchedProcess(launchPath:"/bin/rm",arguments:["-fr",path])
+		
+		#else
+		
+		// On iOS this isn't available, so we'll have to use a synchronous call
+		
+		try? FileManager.default.removeItem(at:url)
+		
+		#endif
 	}
 }
 
