@@ -155,6 +155,7 @@
 		D0C4B9D328468F340016FD6E /* GenericPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B9D228468F320016FD6E /* GenericPublisher.swift */; };
 		D0C4B9D5284760930016FD6E /* NSObject+retain+release.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B9D4284760930016FD6E /* NSObject+retain+release.swift */; };
 		D0C4B9D72849D6790016FD6E /* URL+repairAccessRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4B9D62849D6780016FD6E /* URL+repairAccessRights.swift */; };
+		D0C586D02ECC867900ED0399 /* String+Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C586CF2ECC867900ED0399 /* String+Email.swift */; };
 		D0C7FDBE264CF0DF00235995 /* String+Obfuscate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */; };
 		D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */; };
 		D0C8773E2971353A003DA744 /* Array+Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8773D2971353A003DA744 /* Array+Matrix.swift */; };
@@ -351,6 +352,7 @@
 		D0C4B9D228468F320016FD6E /* GenericPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPublisher.swift; sourceTree = "<group>"; };
 		D0C4B9D4284760930016FD6E /* NSObject+retain+release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+retain+release.swift"; sourceTree = "<group>"; };
 		D0C4B9D62849D6780016FD6E /* URL+repairAccessRights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+repairAccessRights.swift"; sourceTree = "<group>"; };
+		D0C586CF2ECC867900ED0399 /* String+Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Email.swift"; sourceTree = "<group>"; };
 		D0C7FDBD264CF0DF00235995 /* String+Obfuscate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Obfuscate.swift"; sourceTree = "<group>"; };
 		D0C8448A21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+AutoRemoving.swift"; sourceTree = "<group>"; };
 		D0C8773D2971353A003DA744 /* Array+Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Matrix.swift"; sourceTree = "<group>"; };
@@ -709,6 +711,7 @@
 				48AD6C9C2147FCC400225D9C /* String+UniqueByIncrementing.swift */,
 				D046DF87216BAB59004331C3 /* String+DataDetection.swift */,
 				D08F44DF21708CD90060FBAE /* String+Regex.swift */,
+				D0C586CF2ECC867900ED0399 /* String+Email.swift */,
 				D0EA873D22FAF3A60078AC7B /* String+Numeric.swift */,
 				D05D0C0721C6687100FAF3CC /* String+Paths.swift */,
 				D0898134263305EF0079F1E1 /* String+Crypto.swift */,
@@ -1164,6 +1167,7 @@
 				D0859FD22158F7DD00F624C7 /* URL+Contents.swift in Sources */,
 				D00D6DE6283B637E00013C39 /* Dictionary+Threadsafe.swift in Sources */,
 				D0323504205C2C3B003D6CCB /* MTLTexture+Extensions.swift in Sources */,
+				D0C586D02ECC867900ED0399 /* String+Email.swift in Sources */,
 				D0B78BDD2412930D004179A5 /* CGSize+Init.swift in Sources */,
 				487E641F20A0A659007C4A8A /* Collection+Flatten.swift in Sources */,
 				D046DF88216BAB59004331C3 /* String+DataDetection.swift in Sources */,
