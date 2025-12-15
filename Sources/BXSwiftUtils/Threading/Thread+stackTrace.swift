@@ -21,6 +21,11 @@ public extension Thread
 			.dropFirst()
 			.joined(separator:"\n")
 	}
+	
+	static var icon:String
+	{
+		Thread.isMainThread ? "◼︎" : "☐"
+	}
 }
 
 
