@@ -2,7 +2,7 @@
 //
 //  FloatingPoint+Safety.swift
 //	Safety checks for floating point numbers
-//  Copyright ©2022 Peter Baumgartner. All rights reserved.
+//  Copyright ©2022-2026 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -21,7 +21,9 @@ public extension FloatingPoint
 	
 	func validated(fallbackValue:Self) -> Self
 	{
-		self.isFinite ? self : fallbackValue
+		guard !self.isNaN else { return fallbackValue }
+		guard self.isFinite else { return fallbackValue }
+		return self
 	}
 }
 
@@ -35,21 +37,21 @@ public extension Int
 	
 	init(validating value:Double, fallbackValue:Double = 0.0)
 	{
-		self.init(value.validated(fallbackValue:fallbackValue))
+		self.init(value.safeInt(fallbackValue:fallbackValue))
 	}
 	
 	/// Creates an Int from a Float value, using the fallbackValue instead if values was NaN or Inf
 	
 	init(validating value:Float, fallbackValue:Float = 0.0)
 	{
-		self.init(value.validated(fallbackValue:fallbackValue))
+		self.init(value.safeInt(fallbackValue:fallbackValue))
 	}
 	
 	/// Creates an Int from a CGFloat value, using the fallbackValue instead if values was NaN or Inf
 	
 	init(validating value:CGFloat, fallbackValue:CGFloat = 0.0)
 	{
-		self.init(value.validated(fallbackValue:fallbackValue))
+		self.init(value.safeInt(fallbackValue:fallbackValue))
 	}
 }
 
@@ -63,7 +65,10 @@ extension Double
 	
 	func safeInt(fallbackValue:Double = 0.0) -> Int
 	{
-		Int(validating:self, fallbackValue:fallbackValue)
+		let value = self.validated(fallbackValue:fallbackValue)
+		if value < Double(Int.min) { return Int.min }
+		if value > Double(Int.max) { return Int.max }
+		return Int(value)
 	}
 }
 
@@ -74,7 +79,10 @@ extension Float
 	
 	func safeInt(fallbackValue:Float = 0.0) -> Int
 	{
-		Int(validating:self, fallbackValue:fallbackValue)
+		let value = self.validated(fallbackValue:fallbackValue)
+		if value < Float(Int.min) { return Int.min }
+		if value > Float(Int.max) { return Int.max }
+		return Int(value)
 	}
 }
 
@@ -85,7 +93,10 @@ extension CGFloat
 	
 	func safeInt(fallbackValue:CGFloat = 0.0) -> Int
 	{
-		Int(validating:self, fallbackValue:fallbackValue)
+		let value = self.validated(fallbackValue:fallbackValue)
+		if value < CGFloat(Int.min) { return Int.min }
+		if value > CGFloat(Int.max) { return Int.max }
+		return Int(value)
 	}
 }
 
