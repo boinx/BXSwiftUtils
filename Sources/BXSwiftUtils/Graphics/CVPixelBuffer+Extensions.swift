@@ -2,7 +2,7 @@
 //
 //  CVPixelBuffer+Extensions.swift
 //	Adds convenience methods
-//  Copyright ©2018-2024 Peter Baumgartner. All rights reserved.
+//  Copyright ©2018-2026 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -10,6 +10,7 @@
 import CoreVideo
 import Accelerate
 import VideoToolbox
+import CoreImage
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -394,6 +395,48 @@ public extension CVPixelBuffer
         return nil
         #endif
     }
+    
+    
+	/// Returns a new CVPixelBuffer with the given JPEG/EXIF orientation applied.
+    /// - Parameter orientation: EXIF orientation value (1–8)
+	
+    func applyingOrientation(_ orientation:Int) -> CVPixelBuffer?
+    {
+        let image = CIImage(cvPixelBuffer:self)
+		let orientedImage = image.oriented(forExifOrientation: Int32(orientation))
+        let context = CIContext(options: nil)
+        let width = Int(orientedImage.extent.width)
+        let height = Int(orientedImage.extent.height)
+		let colorSpace = image.colorSpace ?? CGColorSpace.sRGB()
+		
+        let attrs: [CFString:Any] =
+        [
+            kCVPixelBufferMetalCompatibilityKey: true,
+            kCVPixelBufferCGImageCompatibilityKey: true,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: true
+        ]
+
+        var outputPixelBuffer:CVPixelBuffer? = nil
+
+        let status = CVPixelBufferCreate(
+            kCFAllocatorDefault,
+            width,
+            height,
+            CVPixelBufferGetPixelFormatType(self),
+            attrs as CFDictionary,
+            &outputPixelBuffer
+        )
+
+        guard status == kCVReturnSuccess, let pixelBuffer = outputPixelBuffer else { return nil }
+
+        context.render(
+            orientedImage,
+            to:pixelBuffer,
+            bounds:orientedImage.extent,
+            colorSpace:colorSpace)
+
+        return pixelBuffer
+    }    
 }
 
 
