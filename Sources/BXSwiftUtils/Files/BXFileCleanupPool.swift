@@ -93,6 +93,7 @@ import UIKit
 		}
 	}
 	
+
 	/// Deletes the specified file/folder from the file system
 
 	private func cleanup(_ url:URL)
@@ -113,6 +114,44 @@ import UIKit
 		try? FileManager.default.removeItem(at:url)
 		
 		#endif
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Scans the given directory (non-recursively) for entries matching `predicate` and schedules each match for
+	/// asynchronous deletion via the same /bin/rm path used by cleanup(). Intended to remove leftovers from
+	/// previous app sessions where the willTerminate notification did not fire (crash, force-quit, etc.).
+	///
+	/// Enumeration is performed synchronously, so the set of paths to delete is frozen before this method
+	/// returns. Only entries whose modification date is strictly older than `cutoff` are considered, which
+	/// prevents the sweep from ever touching a directory created concurrently after this call began (e.g. an
+	/// open-document event arriving on the same runloop turn).
+	///
+	/// Safe to call on a missing directory.
+
+	public func cleanupLeftovers(in directoryURL:URL, olderThan cutoff:Date = Date(), matching predicate:(URL) -> Bool)
+	{
+		let keys:[URLResourceKey] = [.contentModificationDateKey]
+
+		guard let urls = try? FileManager.default.contentsOfDirectory(
+			at:directoryURL,
+			includingPropertiesForKeys:keys,
+			options:[]) else { return }
+
+		for url in urls
+		{
+			guard predicate(url) else { continue }
+
+			// Skip anything we can't measure, or anything created at-or-after the cutoff — that may be the
+			// working directory of a document opened concurrently with this sweep.
+
+			let values = try? url.resourceValues(forKeys:Set(keys))
+			guard let modDate = values?.contentModificationDate, modDate<cutoff else { continue }
+
+			self.cleanup(url)
+		}
 	}
 }
 
