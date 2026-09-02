@@ -118,6 +118,7 @@
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
 		D0AB91000000000000000002 /* String+TimecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB91000000000000000001 /* String+TimecodeTests.swift */; };
 		D0AB93000000000000000012 /* IsAboutEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB93000000000000000011 /* IsAboutEqualTests.swift */; };
+		D0AB93000000000000000022 /* BXKeyValueStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB93000000000000000021 /* BXKeyValueStoreTests.swift */; };
 		D06CC9232178C5F9009C2991 /* Data+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9222178C5F9009C2991 /* Data+Mutation.swift */; };
 		D06CC9272178D209009C2991 /* Data+MutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9262178D209009C2991 /* Data+MutationTests.swift */; };
 		D06CC92B2178EADA009C2991 /* Data+Checksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC92A2178EADA009C2991 /* Data+Checksum.swift */; };
@@ -138,6 +139,7 @@
 		D089124B215B723C00403100 /* CGRect+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089124A215B723C00403100 /* CGRect+String.swift */; };
 		D0898135263305EF0079F1E1 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898134263305EF0079F1E1 /* String+Crypto.swift */; };
 		D08AC6402285AFF700DFBD66 /* BXKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AC63F2285AFF700DFBD66 /* BXKeychain.swift */; };
+		D02CB936276A4AAA005A08F4 /* BXKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02CB935276A475B005A08F3 /* BXKeyValueStore.swift */; };
 		D08CEB482272DB9600F88170 /* BXMainThreadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */; };
 		D08D35AE30272E86000F09FC /* BXSelectionMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08D35AD30272E86000F09FC /* BXSelectionMarker.swift */; };
 		D08F44E121708CD90060FBAE /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08F44DF21708CD90060FBAE /* String+Regex.swift */; };
@@ -320,6 +322,7 @@
 		D06CC91E2178B089009C2991 /* String+RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegexTests.swift"; sourceTree = "<group>"; };
 		D0AB91000000000000000001 /* String+TimecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TimecodeTests.swift"; sourceTree = "<group>"; };
 		D0AB93000000000000000011 /* IsAboutEqualTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IsAboutEqualTests.swift"; sourceTree = "<group>"; };
+		D0AB93000000000000000021 /* BXKeyValueStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXKeyValueStoreTests.swift"; sourceTree = "<group>"; };
 		D06CC9222178C5F9009C2991 /* Data+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mutation.swift"; sourceTree = "<group>"; };
 		D06CC9262178D209009C2991 /* Data+MutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+MutationTests.swift"; sourceTree = "<group>"; };
 		D06CC92A2178EADA009C2991 /* Data+Checksum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Checksum.swift"; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 		D089124A215B723C00403100 /* CGRect+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+String.swift"; sourceTree = "<group>"; };
 		D0898134263305EF0079F1E1 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
 		D08AC63F2285AFF700DFBD66 /* BXKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXKeychain.swift; sourceTree = "<group>"; };
+		D02CB935276A475B005A08F3 /* BXKeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXKeyValueStore.swift"; sourceTree = "<group>"; };
 		D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMainThreadDelegate.swift; sourceTree = "<group>"; };
 		D08D35AD30272E86000F09FC /* BXSelectionMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXSelectionMarker.swift; sourceTree = "<group>"; };
 		D08F44DF21708CD90060FBAE /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
@@ -494,6 +498,7 @@
 		4875F2142051E70E009985EC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0AB93000000000000000023 /* Data */,
 				48A971E32159121000215F9F /* Enums */,
 				48DA819C206A5239009D1E6C /* Exceptions */,
 				48DF72EE20697DCE00D224AA /* KVO */,
@@ -640,6 +645,14 @@
 				D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		D0AB93000000000000000023 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D0AB93000000000000000021 /* BXKeyValueStoreTests.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		48D9E35F21A6B73D0057B930 /* Math & Geometry */ = {
@@ -875,6 +888,7 @@
 				D06CC92A2178EADA009C2991 /* Data+Checksum.swift */,
 				D06CC9222178C5F9009C2991 /* Data+Mutation.swift */,
 				D08AC63F2285AFF700DFBD66 /* BXKeychain.swift */,
+				D02CB935276A475B005A08F3 /* BXKeyValueStore.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1047,6 +1061,7 @@
 				D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */,
 				D0AB91000000000000000002 /* String+TimecodeTests.swift in Sources */,
 				D0AB93000000000000000012 /* IsAboutEqualTests.swift in Sources */,
+				D0AB93000000000000000022 /* BXKeyValueStoreTests.swift in Sources */,
 				D06CC9272178D209009C2991 /* Data+MutationTests.swift in Sources */,
 				48DE068D20876E52000246CD /* Dictionary+EnumKeysTests.swift in Sources */,
 				48D9E36121A6B75E0057B930 /* Comparable+ClipTests.swift in Sources */,
@@ -1085,6 +1100,7 @@
 				D034B97A221C1F5900E94722 /* Mirror+IterateProperties.swift in Sources */,
 				D0EA873E22FAF3A60078AC7B /* String+Numeric.swift in Sources */,
 				D08AC6402285AFF700DFBD66 /* BXKeychain.swift in Sources */,
+				D02CB936276A4AAA005A08F4 /* BXKeyValueStore.swift in Sources */,
 				F66019A3249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */,
 				D00507EE25190383004843E9 /* Dictionary+BXValidPlist.swift in Sources */,
 				D0C8448B21D5FB3500229319 /* NotificationCenter+AutoRemoving.swift in Sources */,
