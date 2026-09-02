@@ -15,7 +15,7 @@ import CoreGraphics
 
 
 /// isAboutEqual is the comparison every FotoMagico test suite reaches for, so a change in what it accepts changes
-/// what several hundred assertions mean. Its edge behavior is also what distinguishes it from the neighbouring
+/// what several hundred assertions mean. Its edge behavior is also what distinguishes it from the neighboring
 /// Double.isEqual, and picking the wrong one of those is an easy mistake to make.
 
 @Suite("isAboutEqual")
@@ -84,7 +84,7 @@ struct IsAboutEqualTests
 		#expect(!isAboutEqual(.infinity, 1e308))
 		#expect(!isAboutEqual(1.0, .infinity))
 
-		// The distinction from the neighbouring helper, stated so a change to either is deliberate
+		// The distinction from the neighboring helper, stated so a change to either is deliberate
 
 		#expect(Double.isEqual(.infinity, .infinity) == false)
 	}
