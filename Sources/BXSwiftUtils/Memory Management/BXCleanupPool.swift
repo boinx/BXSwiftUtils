@@ -54,7 +54,7 @@ public class BXCleanupPool
         guard self.isRegistrationEnabled else { return }
 
     	let wrapper = ClosureWrapper(target,cleanupClosure)
-		self.pool.append(wrapper)
+		self.addItemToPool(wrapper)
     }
 
 
@@ -182,7 +182,12 @@ fileprivate struct ClosureWrapper<Base: AnyObject> : Cleanable
 		}
     }
 
-	// Since closures are anonymous and can contain anything, we assume they are never equal!
+	// Since closures are anonymous and can contain anything, we assume they are never equal - so registering a
+	// second closure for the same target never replaces the first, and every one of them runs.
+	//
+	// This is the ONLY thing enforcing that. Closure registration used to bypass addItemToPool() and append
+	// directly, which had the same effect by accident and left this method unreachable - a mutation making it
+	// return true was caught by nothing at all.
 	
     func equals(_ other: Cleanable) -> Bool
     {
