@@ -117,6 +117,7 @@
 		D0606C9520A5CFB50090D981 /* BXInstanceInfoMixin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */; };
 		D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC91E2178B089009C2991 /* String+RegexTests.swift */; };
 		D0AB91000000000000000002 /* String+TimecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB91000000000000000001 /* String+TimecodeTests.swift */; };
+		D0AB93000000000000000032 /* String+UniqueByIncrementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB93000000000000000031 /* String+UniqueByIncrementingTests.swift */; };
 		D0AB93000000000000000012 /* IsAboutEqualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB93000000000000000011 /* IsAboutEqualTests.swift */; };
 		D0AB93000000000000000022 /* BXKeyValueStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB93000000000000000021 /* BXKeyValueStoreTests.swift */; };
 		D06CC9232178C5F9009C2991 /* Data+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC9222178C5F9009C2991 /* Data+Mutation.swift */; };
@@ -321,6 +322,7 @@
 		D0606C9320A5CFB50090D981 /* BXInstanceInfoMixin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXInstanceInfoMixin.swift; sourceTree = "<group>"; };
 		D06CC91E2178B089009C2991 /* String+RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegexTests.swift"; sourceTree = "<group>"; };
 		D0AB91000000000000000001 /* String+TimecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TimecodeTests.swift"; sourceTree = "<group>"; };
+		D0AB93000000000000000031 /* String+UniqueByIncrementingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UniqueByIncrementingTests.swift"; sourceTree = "<group>"; };
 		D0AB93000000000000000011 /* IsAboutEqualTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IsAboutEqualTests.swift"; sourceTree = "<group>"; };
 		D0AB93000000000000000021 /* BXKeyValueStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BXKeyValueStoreTests.swift"; sourceTree = "<group>"; };
 		D06CC9222178C5F9009C2991 /* Data+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mutation.swift"; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 				48C248132088CF4100DC9317 /* NSAttributedString+CodableTests.swift */,
 				D06CC91E2178B089009C2991 /* String+RegexTests.swift */,
 				D0AB91000000000000000001 /* String+TimecodeTests.swift */,
+				D0AB93000000000000000031 /* String+UniqueByIncrementingTests.swift */,
 				D02C351A21E38D5000D8463F /* Numeric+LocalizedTests.swift */,
 			);
 			path = Strings;
@@ -1060,6 +1063,7 @@
 				484D065620592898003C6CA3 /* Array+AllEqualTests.swift in Sources */,
 				D06CC91F2178B089009C2991 /* String+RegexTests.swift in Sources */,
 				D0AB91000000000000000002 /* String+TimecodeTests.swift in Sources */,
+				D0AB93000000000000000032 /* String+UniqueByIncrementingTests.swift in Sources */,
 				D0AB93000000000000000012 /* IsAboutEqualTests.swift in Sources */,
 				D0AB93000000000000000022 /* BXKeyValueStoreTests.swift in Sources */,
 				D06CC9272178D209009C2991 /* Data+MutationTests.swift in Sources */,
