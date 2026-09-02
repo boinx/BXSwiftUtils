@@ -96,10 +96,19 @@ extension String
         let fileExtension = nsString.pathExtension
         let fileName = nsString.deletingPathExtension
         
+        // A name with no extension must not acquire one. Appending ".\(fileExtension)" unconditionally turned "bla"
+        // into "bla." - and worse, it made the rejector see "bla." while the caller's list holds "bla", so the very
+        // collision this function exists to avoid went unnoticed and the original name came back with a dot on it.
+        // Dotfiles are the same case: NSString reports no extension for ".gitignore", which became ".gitignore.".
+        
+        guard !fileExtension.isEmpty else
+        {
+            return fileName.uniqueStringByIncrementing(rejectIf: rejector, appendAnnotation: appendAnnotation, separator: separator)
+        }
+        
         let collisionFreeName = fileName.uniqueStringByIncrementing(rejectIf: { rejector("\($0).\(fileExtension)") }, appendAnnotation: appendAnnotation, separator: separator)
         
         return "\(collisionFreeName).\(fileExtension)"
-        
     }
     
     fileprivate func separatedBaseAndCounter(for annotation: String, separator: String) -> (base: String, counter: Int)?
