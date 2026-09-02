@@ -43,6 +43,7 @@ public protocol BXKeyValueStore : AnyObject
 	func boolValue(forKey key:String) -> Bool?
 	func intValue(forKey key:String) -> Int?
 	func doubleValue(forKey key:String) -> Double?
+	func dataValue(forKey key:String) -> Data?
 
 	/// Passing nil removes the value, so that the accessors above report it as absent again
 
@@ -50,6 +51,7 @@ public protocol BXKeyValueStore : AnyObject
 	func setBoolValue(_ value:Bool?, forKey key:String)
 	func setIntValue(_ value:Int?, forKey key:String)
 	func setDoubleValue(_ value:Double?, forKey key:String)
+	func setDataValue(_ value:Data?, forKey key:String)
 
 	/// Forgets the value entirely. Equivalent to setting nil, but says so without having to name a type it may not be.
 
@@ -94,6 +96,14 @@ extension UserDefaults : BXKeyValueStore
 		return self.double(forKey:key)
 	}
 
+	/// Already optional in UserDefaults, so there is nothing to add - archived values (a color, say) are the reason
+	/// Data belongs in this protocol at all.
+
+	public func dataValue(forKey key:String) -> Data?
+	{
+		return self.data(forKey:key)
+	}
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -114,6 +124,11 @@ extension UserDefaults : BXKeyValueStore
 	}
 
 	public func setDoubleValue(_ value:Double?, forKey key:String)
+	{
+		self.setOrRemove(value, forKey:key)
+	}
+
+	public func setDataValue(_ value:Data?, forKey key:String)
 	{
 		self.setOrRemove(value, forKey:key)
 	}
