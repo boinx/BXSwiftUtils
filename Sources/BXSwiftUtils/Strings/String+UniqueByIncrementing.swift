@@ -62,7 +62,14 @@ extension String
         }
         
         // Create candidate strings until one of them does not collide with an existing name.
-        return (workingCounter ..< .max)
+        // A CLOSED range, so that Int.max is itself a usable counter. Half open, the range is empty when the
+        // counter parsed out of the input is already Int.max - a filename ending in that many digits is enough -
+        // and the force unwrap below then has nothing to unwrap, which crashed rather than answering anything.
+        //
+        // The unwrap can still fail for a rejector that rejects EVERY candidate, and that is left as it is: it
+        // would spin through ~9.2e18 names first, so a caller who writes one has hung long before it crashes.
+
+        return (workingCounter ... .max)
             .lazy
             .map(
             { counter in
