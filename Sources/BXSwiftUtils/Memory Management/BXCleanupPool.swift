@@ -97,8 +97,15 @@ public class BXCleanupPool
         self.isRegistrationEnabled = false
         defer { self.isRegistrationEnabled = true }
         
-        self.pool.forEach { $0.cleanup() }
+        // Take the items OUT of the pool BEFORE running them. Running them first and emptying afterwards meant a
+        // cleanup closure that called cleanup() again - a handler tearing down the object that owns the pool, say -
+        // re-entered over the very same items and recursed until the stack was gone. Emptied first, a nested call
+        // finds nothing to do and returns, and every item still runs exactly once.
+        
+        let items = self.pool
         self.pool = []
+        
+        items.forEach { $0.cleanup() }
     }
     
     deinit
