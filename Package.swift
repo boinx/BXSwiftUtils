@@ -33,7 +33,14 @@ let package = Package(
 
     targets:
     [
-        .target(name:"BXSwiftUtils", dependencies:[]),
+        // Objective-C helper that NSException+catch.swift relies on. Lives outside Sources/ so it needs its own target.
+        .target(name:"BXSwiftUtilsObjC", path:"C", publicHeadersPath:"."),
+
+        .target(name:"BXSwiftUtils", dependencies:["BXSwiftUtilsObjC"], resources:
+        [
+            .process("Int+localizedString.xcstrings"),
+            .process("Strings/NSAttributedString+Markup.xcstrings"),
+        ]),
 //		.testTarget( name:"BXMediaBrowserTests", dependencies:["BXMediaBrowser"]),
     ]
 )
