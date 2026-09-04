@@ -27,23 +27,25 @@ public extension Data
 
     mutating func xor(with data: Data, maximumRepeatCount: Int = 0)
     {
+    	// Index from startIndex rather than from zero. Data has SLICE semantics: `data[2...]` keeps its parent's
+    	// indices, so subscripting a slice with 0..<count either reads the wrong bytes or runs off the end and traps.
+    	// The same applies to the key, which can just as easily be a slice of a larger buffer.
+    	
     	let n1 = self.count
     	let n2 = data.count
-		
-		if maximumRepeatCount > 0
+    	
+    	// An empty key would make `i % n2` a division by zero, which traps rather than doing nothing
+    	
+    	guard n2 > 0 else { return }
+    	
+    	let start = self.startIndex
+    	let keyStart = data.startIndex
+    	
+		for i in 0..<n1
 		{
-			for i in 0..<n1
-			{
-				if i/n2 >= maximumRepeatCount { break }
-				self[i] ^= data[i % n2]
-			}
-		}
-		else
-		{
-			for i in 0..<n1
-			{
-				self[i] ^= data[i % n2]
-			}
+			if maximumRepeatCount > 0 && i/n2 >= maximumRepeatCount { break }
+			
+			self[start + i] ^= data[keyStart + (i % n2)]
 		}
      }
 
@@ -56,12 +58,13 @@ public extension Data
 
     func inverted() -> Data
     {
-   		let n = self.count
+    	// Iterating `indices` rather than 0..<count, for the same slice reason as xor(with:) above
+    	
     	var copy = self
-		
-		for i in 0..<n
+    	
+		for i in copy.indices
 		{
-			copy[i] = ~self[i]
+			copy[i] = ~copy[i]
 		}
 		
 		return copy
