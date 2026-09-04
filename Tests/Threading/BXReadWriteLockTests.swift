@@ -50,13 +50,26 @@ struct BXReadWriteLockTests
 
 			let finished = DispatchSemaphore(value:0)
 
-			Thread.detachNewThread
+			// Both sides run at the QoS the test itself does. Thread.detachNewThread starts at DEFAULT, and a test
+			// body - which Swift Testing runs at user-initiated - waiting on that is a priority inversion: a high
+			// priority thread blocked on a low priority one. Note the queue's own qos argument does not settle it,
+			// because libdispatch OVERRIDES a block upward to the QoS of whoever submitted it - so the waiter is
+			// user-initiated whatever this asks for, and it is the worker that has to be raised to match.
+			//
+			// One inversion remains that no test can remove: BXReadWriteLock creates its queue with no QoS, so a
+			// raised thread blocking in `concurrentQueue.sync` is waiting on an unspecified-QoS queue. Fixing that
+			// means giving the production queue a QoS, which is a decision about the lock rather than about a test.
+
+			let worker = Thread
 			{
 				body()
 				finished.signal()
 			}
 
-			DispatchQueue.global().async
+			worker.qualityOfService = .userInitiated
+			worker.start()
+
+			DispatchQueue.global(qos:.userInitiated).async
 			{
 				continuation.resume(returning:finished.wait(timeout:.now() + seconds) == .success)
 			}
@@ -155,15 +168,18 @@ struct BXReadWriteLockTests
 			// The coordinator lives INSIDE the timed body, or the readers would be waiting for a release that only
 			// happens after the measurement has already given up
 
-			Thread.detachNewThread
+			let coordinator = Thread
 			{
 				for _ in 0 ..< readers { arrived.wait() }
 				for _ in 0 ..< readers { released.signal() }
 			}
 
+			coordinator.qualityOfService = .userInitiated
+			coordinator.start()
+
 			for _ in 0 ..< readers
 			{
-				Thread.detachNewThread
+				let reader = Thread
 				{
 					lock.read
 					{
@@ -173,6 +189,9 @@ struct BXReadWriteLockTests
 
 					done.signal()
 				}
+
+				reader.qualityOfService = .userInitiated
+				reader.start()
 			}
 
 			for _ in 0 ..< readers { done.wait() }
@@ -198,11 +217,14 @@ struct BXReadWriteLockTests
 
 			lock.write
 			{
-				Thread.detachNewThread
+				let reader = Thread
 				{
 					lock.read { }
 					readerFinished.signal()
 				}
+
+				reader.qualityOfService = .userInitiated
+				reader.start()
 
 				if readerFinished.wait(timeout:.now() + 0.25) == .timedOut
 				{
