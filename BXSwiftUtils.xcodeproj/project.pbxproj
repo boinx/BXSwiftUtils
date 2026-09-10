@@ -18,6 +18,7 @@
 		4853E38A2056BDE400938B82 /* SynchronizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E3892056BDE400938B82 /* SynchronizedTests.swift */; };
 		4853E38E2056CF2C00938B82 /* BXReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */; };
 		4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */; };
+		702F3AFBF52676D8CCD51C2E /* BXConcurrencyLimiterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C59177257B94074B92B3B /* BXConcurrencyLimiterTests.swift */; };
 		485E0CF120B580CD001F2247 /* DispatchQueue+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E0CEF20B580CD001F2247 /* DispatchQueue+Main.swift */; };
 		487107F020A9B8E000120024 /* BXAtomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487107EE20A9B8E000120024 /* BXAtomic.swift */; };
 		4875F24F2051ECF9009985EC /* Array+ConcatenationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875F24E2051ECF9009985EC /* Array+ConcatenationTests.swift */; };
@@ -65,6 +66,7 @@
 		95F2DBAB21B7E3FE00865AE4 /* Bool+OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */; };
 		98B04DC4262458A00099ADE5 /* URL+QueryComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B04DC3262458A00099ADE5 /* URL+QueryComponents.swift */; };
 		D003977D28CA1E3A00EB7F25 /* BXJobQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003977C28CA1E3A00EB7F25 /* BXJobQueue.swift */; };
+		840C9668343D6A304BC27993 /* BXConcurrencyLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EDC4ECA5CDBE672A20F42E /* BXConcurrencyLimiter.swift */; };
 		D00507EE25190383004843E9 /* Dictionary+BXValidPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00507ED25190383004843E9 /* Dictionary+BXValidPlist.swift */; };
 		D00AEFAD23A3FD7E0020AE51 /* BXLogger+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00AEFAC23A3FD7D0020AE51 /* BXLogger+File.swift */; };
 		D00D6DE6283B637E00013C39 /* Dictionary+Threadsafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D6DE5283B637E00013C39 /* Dictionary+Threadsafe.swift */; };
@@ -215,6 +217,7 @@
 		4853E3892056BDE400938B82 /* SynchronizedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedTests.swift; sourceTree = "<group>"; };
 		4853E38C2056CF2C00938B82 /* BXReadWriteLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXReadWriteLock.swift; sourceTree = "<group>"; };
 		4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXReadWriteLockTests.swift; sourceTree = "<group>"; };
+		B18C59177257B94074B92B3B /* BXConcurrencyLimiterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXConcurrencyLimiterTests.swift; sourceTree = "<group>"; };
 		485E0CEF20B580CD001F2247 /* DispatchQueue+Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Main.swift"; sourceTree = "<group>"; };
 		487107EE20A9B8E000120024 /* BXAtomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXAtomic.swift; sourceTree = "<group>"; };
 		4875F20A2051E70E009985EC /* BXSwiftUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXSwiftUtils.h; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 		95F2DBA921B7E3C200865AE4 /* Bool+OperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+OperatorsTests.swift"; sourceTree = "<group>"; };
 		98B04DC3262458A00099ADE5 /* URL+QueryComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+QueryComponents.swift"; sourceTree = "<group>"; };
 		D003977C28CA1E3A00EB7F25 /* BXJobQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXJobQueue.swift; sourceTree = "<group>"; };
+		07EDC4ECA5CDBE672A20F42E /* BXConcurrencyLimiter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXConcurrencyLimiter.swift; sourceTree = "<group>"; };
 		D00507ED25190383004843E9 /* Dictionary+BXValidPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+BXValidPlist.swift"; sourceTree = "<group>"; };
 		D00AEFAC23A3FD7D0020AE51 /* BXLogger+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BXLogger+File.swift"; sourceTree = "<group>"; };
 		D00D6DE5283B637E00013C39 /* Dictionary+Threadsafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Threadsafe.swift"; sourceTree = "<group>"; };
@@ -446,6 +450,7 @@
 			children = (
 				4853E3892056BDE400938B82 /* SynchronizedTests.swift */,
 				4853E38F2056D11500938B82 /* BXReadWriteLockTests.swift */,
+				B18C59177257B94074B92B3B /* BXConcurrencyLimiterTests.swift */,
 			);
 			path = Threading;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				D08CEB472272DB9600F88170 /* BXMainThreadDelegate.swift */,
 				D0FF2C0F2458823B008EBD9C /* BXActionWrapper.swift */,
 				D003977C28CA1E3A00EB7F25 /* BXJobQueue.swift */,
+				07EDC4ECA5CDBE672A20F42E /* BXConcurrencyLimiter.swift */,
 				D0CD307A2652978D0042046D /* Thread+stackTrace.swift */,
 				D0F49D23288EFC8C008B21F6 /* Bash.swift */,
 			);
@@ -1087,6 +1093,7 @@
 				D08F44E32170A4850060FBAE /* URL+ExtendedAttributesTests.swift in Sources */,
 				95F2DBAB21B7E3FE00865AE4 /* Bool+OperatorsTests.swift in Sources */,
 				4853E3902056D11500938B82 /* BXReadWriteLockTests.swift in Sources */,
+				702F3AFBF52676D8CCD51C2E /* BXConcurrencyLimiterTests.swift in Sources */,
 				48A971E52159122800215F9F /* Enum+Comparable.swift in Sources */,
 				48C248142088CF4100DC9317 /* NSAttributedString+CodableTests.swift in Sources */,
 				48C3DF6820E10E2400359288 /* TypedKVO+propagateChangesTests.swift in Sources */,
@@ -1170,6 +1177,7 @@
 				D032350E205C362A003D6CCB /* Date+Components.swift in Sources */,
 				F66019A7249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift in Sources */,
 				D003977D28CA1E3A00EB7F25 /* BXJobQueue.swift in Sources */,
+				840C9668343D6A304BC27993 /* BXConcurrencyLimiter.swift in Sources */,
 				D0F921322C63B0630076350F /* NSView+EDRMixin.swift in Sources */,
 				D00FCDC329558D510081F227 /* Collection+concurrentMap.swift in Sources */,
 				D026B3A922A11DB6002B9B02 /* BXStopWatch.swift in Sources */,
