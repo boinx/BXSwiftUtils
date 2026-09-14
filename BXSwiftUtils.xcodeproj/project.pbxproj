@@ -52,7 +52,6 @@
 		48DA8199206A50DB009D1E6C /* NSException+ToSwiftError.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48DA819B206A50DB009D1E6C /* NSException+ToSwiftError.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */; };
 		48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */; };
-		48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */; };
 		48DA81D1206BCD92009D1E6C /* Collection+Pluck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */; };
 		D0AB1F002F00000000000002 /* Collection+MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB1F002F00000000000001 /* Collection+MathTests.swift */; };
 		48DA81D3206BCE1C009D1E6C /* Collection+PluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */; };
@@ -255,7 +254,6 @@
 		48DA8196206A50DB009D1E6C /* NSException+ToSwiftError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSException+ToSwiftError.h"; path = "../../../C/NSException+ToSwiftError.h"; sourceTree = "<group>"; };
 		48DA8197206A50DB009D1E6C /* NSException+ToSwiftError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSException+ToSwiftError.m"; path = "../../../C/NSException+ToSwiftError.m"; sourceTree = "<group>"; };
 		48DA819D206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSException+ToSwiftErrorTests.swift"; sourceTree = "<group>"; };
-		48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOTestsObjC.m; sourceTree = "<group>"; };
 		48DA81CF206BCD92009D1E6C /* Collection+Pluck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Pluck.swift"; sourceTree = "<group>"; };
 		D0AB1F002F00000000000001 /* Collection+MathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+MathTests.swift"; sourceTree = "<group>"; };
 		48DA81D2206BCE1C009D1E6C /* Collection+PluckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+PluckTests.swift"; sourceTree = "<group>"; };
@@ -698,7 +696,6 @@
 				48DA8192206A4E9C009D1E6C /* KVOTests.swift */,
 				48DF72F420697E1E00D224AA /* TypedKVOTests.swift */,
 				48C3DF6720E10E2400359288 /* TypedKVO+propagateChangesTests.swift */,
-				48DA81A5206B8154009D1E6C /* KVOTestsObjC.m */,
 			);
 			path = KVO;
 			sourceTree = "<group>";
@@ -1081,7 +1078,6 @@
 				F66019A4249B576600C8AB80 /* Wrapper+Atomic.swift in Sources */,
 				489E56A92052CAD00071BBF1 /* BXLoggerTests.swift in Sources */,
 				48A971DD2158F78400215F9F /* Equatable+IsContainedInTests.swift in Sources */,
-				48DA81A6206B8154009D1E6C /* KVOTestsObjC.m in Sources */,
 				F66019A8249B5F9D00C8AB80 /* CMSampleBuffer+AudioProperties.swift in Sources */,
 				48DA819E206A5268009D1E6C /* NSException+ToSwiftErrorTests.swift in Sources */,
 				487E642120A0A6C0007C4A8A /* Collection+Flatten.swift in Sources */,
