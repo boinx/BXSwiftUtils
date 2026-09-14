@@ -276,6 +276,131 @@ struct TimecodeTests
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	// MARK: - Field selection
+
+
+	/// The two flags select which fields are printed. This is what lets one implementation serve every shape the
+	/// apps need - BXTimeCodeFormatter used to carry its own copy of this arithmetic, and therefore its own copy
+	/// of the Int(_:) trap that the guards above exist to prevent.
+
+	@Test("The flags select which fields are printed", arguments:
+	[
+		(true, true, "1:01:01.500"),
+		(true, false, "1:01:01"),
+		(false, true, "61:01.500"),
+		(false, false, "61:01"),
+	])
+
+	func testFieldSelection(_ showsHours:Bool, _ showsFraction:Bool, _ expected:String)
+	{
+		#expect(3661.5.timecodeString(showsHours:showsHours, showsFraction:showsFraction) == expected)
+	}
+
+
+	/// With the hours hidden the minutes field holds the TOTAL minutes, not minutes past the hour.
+	///
+	/// Wrapping it at sixty is not a shorter way of saying the same thing: 1h15m would print as "15:00", which is
+	/// indistinguishable from a genuine fifteen minutes, and the hour would be gone without trace. The field is a
+	/// MINIMUM width, so three digit minutes print in full rather than being truncated to fit.
+
+	@Test("With the hours hidden the minutes do not wrap", arguments:
+	[
+		(3600.0, "60:00.000"),
+		(4500.0, "75:00.000"),
+		(7500.0, "125:00.000"),
+	])
+
+	func testHoursHiddenShowsTotalMinutes(_ seconds:Double, _ expected:String)
+	{
+		#expect(seconds.timecodeString(showsHours:false) == expected)
+	}
+
+
+	/// The sign is a property of the whole timecode in every shape, not of the hours field it happens to precede.
+
+	@Test("A negative value carries its sign in every shape", arguments:
+	[
+		(true, true, "-1:01:01.500"),
+		(true, false, "-1:01:01"),
+		(false, true, "-61:01.500"),
+		(false, false, "-61:01"),
+	])
+
+	func testNegativeInEveryShape(_ showsHours:Bool, _ showsFraction:Bool, _ expected:String)
+	{
+		#expect((-3661.5).timecodeString(showsHours:showsHours, showsFraction:showsFraction) == expected)
+	}
+
+
+	/// Dropping the fraction FLOORS rather than rounding through a tick count.
+	///
+	/// Rounding would push a value up into a second whose precision is not being shown - 59.6 would read as one
+	/// minute - and it would break the short form's documented truncation towards zero.
+
+	@Test("Dropping the fraction floors rather than rounds", arguments:
+	[
+		(59.6, "0:00:59"),
+		(59.999, "0:00:59"),
+		(-59.6, "-0:00:59"),
+	])
+
+	func testNoFractionFloors(_ seconds:Double, _ expected:String)
+	{
+		#expect(seconds.timecodeString(showsFraction:false) == expected)
+	}
+
+
+	/// The short form is exactly the hours-without-fraction shape, which is why it can delegate rather than carry
+	/// a second copy of the decomposition.
+
+	@Test("The short form is the hours-without-fraction shape", arguments:
+	[0.0, 0.9, 61.75, 3661.5, -5.5, -0.0])
+
+	func testShortFormDelegates(_ seconds:Double)
+	{
+		#expect(seconds.shortTimecodeString() == seconds.timecodeString(showsFraction:false), "\(seconds)")
+	}
+
+
+	/// The placeholder follows the same shape as the string it stands in for. A placeholder that kept fields the
+	/// real output does not have would not read as "this timecode is unknown" - it would read as a different
+	/// timecode entirely.
+
+	@Test("The placeholder follows the shape it stands in for", arguments:
+	[
+		(1000, true, true, "--:--:--.---"),
+		(1000, true, false, "--:--:--"),
+		(1000, false, true, "--:--.---"),
+		(1000, false, false, "--:--"),
+		(30, true, true, "--:--:--.--"),
+		(30, false, true, "--:--.--"),
+		(30, false, false, "--:--"),
+	])
+
+	func testPlaceholderShape(_ fps:Int, _ showsHours:Bool, _ showsFraction:Bool, _ expected:String)
+	{
+		#expect(Double.invalidTimecodeString(fps:fps, showsHours:showsHours, showsFraction:showsFraction) == expected)
+	}
+
+
+	/// A value that cannot be represented yields the placeholder for ITS shape, not the default one - the guards
+	/// are shared, so a caller asking for a narrower shape must not get a wider placeholder back.
+
+	@Test("An unrepresentable value yields the placeholder for its own shape", arguments:
+	[Double.nan, .infinity, -.infinity, .greatestFiniteMagnitude, 1.0e16])
+
+	func testUnrepresentableInEveryShape(_ seconds:Double)
+	{
+		#expect(seconds.timecodeString(showsHours:false) == "--:--.---", "\(seconds)")
+		#expect(seconds.timecodeString(showsHours:false, showsFraction:false) == "--:--", "\(seconds)")
+		#expect(seconds.timecodeString(showsFraction:false) == "--:--:--", "\(seconds)")
+	}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	// MARK: - Parsing
 
 

@@ -2,7 +2,7 @@
 //
 //  String+Timecode.swift
 //	Extension for displaying and parsing time codes
-//  Copyright ©2018 Peter Baumgartner. All rights reserved.
+//  Copyright ©2018-2026 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -26,10 +26,17 @@ extension Double
 	/// variable width (`%i`): "9:00:00.000" is one character shorter than "10:00:00.000". Two dashes are used for
 	/// the hours, matching the two-digit case, rather than one dash that could be misread as the minus sign a
 	/// negative duration now carries.
+	///
+	/// `showsHours` and `showsFraction` must match the arguments the string is standing in for, or the placeholder
+	/// stops looking like the timecode it replaces - which is the only thing that makes it readable as one.
 	
-	public static func invalidTimecodeString(fps: Int = 1000) -> String
+	public static func invalidTimecodeString(fps:Int = 1000, showsHours:Bool = true, showsFraction:Bool = true) -> String
 	{
-		return fps > 100 ? "--:--:--.---" : "--:--:--.--"
+		let fields = showsHours ? "--:--:--" : "--:--"
+		
+		guard showsFraction else { return fields }
+		
+		return fps > 100 ? fields + ".---" : fields + ".--"
 	}
 	
 	/// The placeholder for the short form
@@ -56,50 +63,89 @@ extension Double
 	/// Converts the number of seconds into a timecode string of format "HH:MM:SS.ff"
 	///
 	/// A value that cannot be represented - NaN, an infinity, or a magnitude beyond `maximumTimecodeSeconds` -
-	/// yields `invalidTimecodeString(fps:)` rather than crashing. It used to crash: `Int(_:)` traps on a
-	/// non-finite operand instead of saturating, so a NaN duration took the process down.
+	/// yields `invalidTimecodeString(fps:showsHours:showsFraction:)` rather than crashing. It used to crash:
+	/// `Int(_:)` traps on a non-finite operand instead of saturating, so a NaN duration took the process down.
 	///
 	/// A negative value is formatted from its magnitude with a leading minus, e.g. "-0:00:05.500". Previously the
 	/// sign leaked into the individual fields and produced unparseable output like "0:00:-5.-500".
 	///
 	/// A frame rate of zero or less has no meaning and yields the placeholder rather than dividing by it.
 	///
-	/// The `isFinite` test is deliberately redundant: `abs(nan) <= x` is already false, since every comparison
-	/// against NaN is, and an infinity exceeds any ceiling. It is kept because it states the intent - a mutation
-	/// that removes it cannot be caught by a test, so only this note stops it being "simplified" away on the
-	/// assumption that the magnitude check was doing that work by accident.
+	/// `showsHours` and `showsFraction` select which fields are printed, which is what lets a single implementation
+	/// serve every shape the apps need - including BXTimeCodeFormatter, which used to carry its own copy of this
+	/// arithmetic and therefore its own copy of the trap described above.
+	///
+	/// With the hours hidden the minutes field holds the TOTAL minutes rather than minutes past the hour, so
+	/// nothing is silently discarded. Wrapping it would render 1h15m as "15:00", which is not a shorter way of
+	/// saying the same thing - it is indistinguishable from a genuine fifteen minutes.
 	
-	public func timecodeString(fps: Int = 1000) -> String
+	public func timecodeString(fps:Int = 1000, showsHours:Bool = true, showsFraction:Bool = true) -> String
 	{
+		// The `isFinite` test is deliberately redundant: `abs(nan) <= x` is already false, since every comparison
+		// against NaN is, and an infinity exceeds any ceiling. It is kept because it states the intent - a mutation
+		// that removes it cannot be caught by a test, so only this note stops it being "simplified" away on the
+		// assumption that the magnitude check was doing that work by accident.
+	
 		guard self.isFinite, abs(self) <= Self.maximumTimecodeSeconds, fps > 0
-		else { return Self.invalidTimecodeString(fps:fps) }
+		else { return Self.invalidTimecodeString(fps:fps, showsHours:showsHours, showsFraction:showsFraction) }
 		
-		// Decompose from an integer tick count instead of repeatedly subtracting and dividing in floating point.
-		// The old arithmetic accumulated representation error: 3599.999 came out as "0:59:59.998", because 0.999
-		// times 1000 is 998.99999999 in binary and Int(_:) truncated it - losing a millisecond that the value
-		// genuinely had. Scaling and rounding ONCE, up front, removes that.
-		//
-		// It also makes the carry work. Rounding the fraction on its own would produce a field that does not fit:
-		// 59.9999 would round to 1000 thousandths and print "0:00:59.1000". Going through a tick count instead
-		// carries properly into the seconds, so it prints "0:01:00.000".
-		//
-		// Note this rounds to the NEAREST tick rather than truncating towards the current one. A value sitting
-		// exactly on a half tick therefore rounds away from zero - at 25 fps, 2.5s is frame 62.5 and becomes 63.
+		let magnitude = abs(self)
+		let totalSeconds:Int
+		let ff:Int
 		
-		let scaled = (abs(self) * Double(fps)).rounded()
+		if showsFraction
+		{
+			// Decompose from an integer tick count instead of repeatedly subtracting and dividing in floating point.
+			// The old arithmetic accumulated representation error: 3599.999 came out as "0:59:59.998", because 0.999
+			// times 1000 is 998.99999999 in binary and Int(_:) truncated it - losing a millisecond that the value
+			// genuinely had. Scaling and rounding ONCE, up front, removes that.
+			//
+			// It also makes the carry work. Rounding the fraction on its own would produce a field that does not fit:
+			// 59.9999 would round to 1000 thousandths and print "0:00:59.1000". Going through a tick count instead
+			// carries properly into the seconds, so it prints "0:01:00.000".
+			//
+			// Note this rounds to the NEAREST tick rather than truncating towards the current one. A value sitting
+			// exactly on a half tick therefore rounds away from zero - at 25 fps, 2.5s is frame 62.5 and becomes 63.
+			
+			let scaled = (magnitude * Double(fps)).rounded()
+			
+			guard scaled <= Self.maximumTimecodeTicks
+			else { return Self.invalidTimecodeString(fps:fps, showsHours:showsHours, showsFraction:showsFraction) }
+			
+			let ticks = Int(scaled)
+			totalSeconds = ticks / fps
+			ff = ticks % fps
+		}
+		else
+		{
+			// Without a fraction field the magnitude is FLOORED rather than rounded through a tick count. Rounding
+			// here would push a value up into a second whose precision is not being shown - 59.6 would read as
+			// "0:01:00" - and it would break the short form's documented truncation towards zero.
+			
+			totalSeconds = Int(floor(magnitude))
+			ff = 0
+		}
 		
-		guard scaled <= Self.maximumTimecodeTicks else { return Self.invalidTimecodeString(fps:fps) }
-		
-		let ticks = Int(scaled)
-		let totalSeconds = ticks / fps
-		
-		let ff = ticks % fps
 		let SS = totalSeconds % 60
-		let MM = (totalSeconds / 60) % 60
+		let MM = showsHours ? (totalSeconds/60) % 60 : totalSeconds/60
 		let HH = totalSeconds / 3600
 		
-		let format = fps > 100 ? "%i:%02i:%02i.%03i" : "%i:%02i:%02i.%02i"
-		let string = NSString(format:format as NSString,HH,MM,SS,ff) as String
+		var string = ""
+		
+		if showsHours
+		{
+			string = NSString(format:"%i:%02i:%02i" as NSString,HH,MM,SS) as String
+		}
+		else
+		{
+			string = NSString(format:"%02i:%02i" as NSString,MM,SS) as String
+		}
+		
+		if showsFraction
+		{
+			let format = fps > 100 ? ".%03i" : ".%02i"
+			string += NSString(format:format as NSString,ff) as String
+		}
 		
 		return self < 0.0 ? "-" + string : string
 	}
@@ -112,21 +158,7 @@ extension Double
 	
 	public func shortTimecodeString() -> String
 	{
-		guard self.isFinite, abs(self) <= Self.maximumTimecodeSeconds
-		else { return Self.invalidShortTimecodeString }
-		
-		// Whole seconds decompose exactly in integer arithmetic, so the same float error that cost
-		// timecodeString a millisecond cannot arise here either.
-		
-		let totalSeconds = Int(floor(abs(self)))
-		
-		let SS = totalSeconds % 60
-		let MM = (totalSeconds / 60) % 60
-		let HH = totalSeconds / 3600
-		
-		let string = NSString(format:"%i:%02i:%02i",HH,MM,SS) as String
-		
-		return self < 0.0 ? "-" + string : string
+		return self.timecodeString(showsFraction:false)
 	}
 }
 
