@@ -2,7 +2,7 @@
 //
 //  NSFileCoordinator+asyncAwait.swift
 //	Adds async await support to NSFileCoordinator
-//  Copyright ©2025 Peter Baumgartner. All rights reserved.
+//  Copyright ©2025-2026 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -27,7 +27,13 @@ public extension NSFileCoordinator
         {
 			continuation in
 			
-            self.coordinate(readingItemAt:url, options:options, error:nil)
+			// If coordination itself fails (offline, cancelled via cancel(), file provider error), the accessor block
+			// is never called. In that case the error must be passed on, or the continuation would never resume and
+			// the calling Task would hang forever.
+			
+			var error:NSError? = nil
+			
+            self.coordinate(readingItemAt:url, options:options, error:&error)
             {
 				fileURL in
 				
@@ -43,6 +49,11 @@ public extension NSFileCoordinator
                         continuation.resume(throwing:error)
                     }
                 }
+            }
+            
+            if let error
+            {
+				continuation.resume(throwing:error)
             }
         }
     }
@@ -66,7 +77,11 @@ public extension NSFileCoordinator
         {
 			continuation in
 			
-            self.coordinate(writingItemAt:url, options:options, error:nil)
+			// See comment in coordinate(readingItemAt:…) above
+			
+			var error:NSError? = nil
+			
+            self.coordinate(writingItemAt:url, options:options, error:&error)
             {
 				fileURL in
 				
@@ -82,6 +97,11 @@ public extension NSFileCoordinator
                         continuation.resume(throwing: error)
                     }
                 }
+            }
+            
+            if let error
+            {
+				continuation.resume(throwing:error)
             }
         }
     }
